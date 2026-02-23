@@ -26,7 +26,7 @@ Vamos lembrar de importantes interpretações geométricas destas operações.
 
 A soma dos vetores $v=(3, 2)$ e $w=(-1, 1)$ pode ser visualizada como o vetor com início da origem e fim no ponto obtido posicionando-se o vetor $w$ com início no ponto final do vetor $v$, conforme ilustrado abaixo.
 
-\begin{figure}[ht]
+\begin{figure}[ht]\label{figure:vectorSum}
     \centering
     \begin{tikzpicture}
     \draw[->,ultra thick] (-3,0)--(3,0) node[right]{$x$};
@@ -36,7 +36,7 @@ A soma dos vetores $v=(3, 2)$ e $w=(-1, 1)$ pode ser visualizada como o vetor co
     % Vetor w=(-1,1)
     \draw[->,thick] (0,0) -- (-1,1) node[left]{$w=(-1,1)$};
     % Vetor cópia w=(-1,1)
-    \draw[->,dotted] (3,2) -- (2,3);
+    \draw[->,dotted] (3,2) -- (2,3) node[midway, right, text=darkgray]{$w$};
     % Soma v+w
     \draw[->,thick] (0,0) -- (2,3) node[above, align=left]{$v+w=(2,3)$};
     \end{tikzpicture}
