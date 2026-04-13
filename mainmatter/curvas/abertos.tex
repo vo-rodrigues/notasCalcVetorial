@@ -1,15 +1,15 @@
 
 \section{Conjuntos abertos em $\mathbb R^n$}
-\begin{definition}
+\begin{definition}\index{conjunto aberto}\index{aberto|see{conjunto aberto}}
     Um conjunto $U \subseteq \mathbb R^n$ é dito aberto se, para todo $x \in U$, existe um raio $r > 0$ tal que a bola aberta $B(x, r)$ está contida em $U$.
 \end{definition}
-\begin{proposition}
+\begin{proposition}\index{conjunto aberto!propriedades}
     Sobre abertos de $\mathbb R^n$, temos as seguintes propriedades.
     \begin{enumerate}
         \item $\mathbb R^n$ e o conjunto vazio $\emptyset$ são abertos.
-        \item A união de qualquer coleção de conjuntos abertos é aberta.
-        \item A interseção de dois conjuntos abertos é aberta.
-        \item Bolas abertas são conjuntos abertos.
+        \item A união de qualquer coleção de conjuntos abertos é aberta.\index{conjunto aberto!união}
+        \item A interseção de dois conjuntos abertos é aberta.\index{conjunto aberto!interseção finita}
+        \item Bolas abertas são conjuntos abertos.\index{conjunto aberto!bola aberta}
     \end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -57,10 +57,10 @@
 Conjuntos abertos serão importantes ao trabalhar com diferenciabilidade.
 \section{Curvas e diferenciabilidade de curvas}
 \begin{definition}
-Uma curva (contínua) em $\mathbb R^m$ é uma função contínua $f: I\rightarrow \mathbb R^m$, onde $I$ é um intervalo de $\mathbb R$.
+Uma \emph{curva}\index{curva}\index{curva!definição} (contínua) em $\mathbb R^m$ é uma função contínua $f: I\rightarrow \mathbb R^m$, onde $I$ é um intervalo de $\mathbb R$.
 \end{definition}
 
-\begin{definition}
+\begin{definition}\index{curva!derivabilidade}\index{derivada}\index{função derivável|see{derivada}}
     Seja $I\subseteq \mathbb R$ um conjunto aberto e $f: I\rightarrow \mathbb R^m$ uma função contínua.
 
     Para $s \in I$, dizemos que $f$ é \emph{diferenciável}, ou \emph{derivável} em $s$ se existir o limite a seguir:
@@ -80,7 +80,7 @@ O ponto $s$ é um ponto de acumulação de $I\setminus\{s\}$, pois, se fosse iso
 Ao mesmo tempo, $I$ é aberto, logo, encolhendo $\delta$ se necessário, podemos garantir que $B(s, \delta)\subseteq I$.
 Mas $B(s, \delta)$ possui outros pontos além de $s$, o que é absurdo.
 
-\begin{proposition}
+\begin{proposition}\index{derivada!via funções coordenadas}
     Seja $I\subseteq \mathbb R$ um conjunto aberto e $f: I\rightarrow \mathbb R^m$.
 
     Seja $s \in I$.
@@ -104,7 +104,7 @@ Mas $B(s, \delta)$ possui outros pontos além de $s$, o que é absurdo.
 \end{proof}
 
 Funções deriváveis possuem o que chamamos de retas tangentes.
-\begin{definition}
+\begin{definition}\index{curva!reta tangente}\index{reta tangente}\index{tangente|see{reta tangente}}
     Seja $I\subseteq \mathbb R$ um conjunto aberto, $a \in I$ e $f: I\rightarrow \mathbb R^m$ uma função derivável em $a$ tal que $f'(a)\neq 0$.
 
     A reta tangente à trajetória (ou imagem) de $f$ em $a$ é a reta que passa por $f(a)$ e tem direção dada por $f'(a)$, ou seja, é o conjunto $r$ dado por:
@@ -117,7 +117,7 @@ Funções deriváveis possuem o que chamamos de retas tangentes.
 \end{definition}
 
 Além disso, temos a melhor aproximação linear possível para $f$ em $a$.
-\begin{definition}
+\begin{definition}\index{curva!melhor aproximação linear}\index{melhor aproximação linear}\index{aproximação linear|see{melhor aproximação linear}}\index{aproximação|seealso{reta tangente, melhor aproximação linear}}
     Seja $I\subseteq \mathbb R$ um conjunto aberto, $a \in I$ e $f: I\rightarrow \mathbb R^m$ uma função derivável em $a$.
 
     A \emph{melhor aproximação linear de $f$ em $a$} é a função $T: \mathbb R \to \mathbb R^m$ dada por:
@@ -126,7 +126,7 @@ Além disso, temos a melhor aproximação linear possível para $f$ em $a$.
     \end{equation*}
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\index{melhor aproximação linear!unicidade}
     Seja $I\subseteq \mathbb R$ um conjunto aberto, $a \in I$ e $f: I\rightarrow \mathbb R^m$.
 
     Se $f$ é derivável em $a$, então a melhor aproximação de $f$ em $a$, $T: \mathbb R \to \mathbb R^m$, é a única função afim (ou seja, a única função da forma $T(t) = w + t v$, onde $w, v \in \mathbb R^m$) tal que:

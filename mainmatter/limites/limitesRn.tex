@@ -23,7 +23,7 @@ Formalmente, definimos:
     Como $\delta>0$ foi arbitrário, concluímos que $1$ é um ponto de acumulação de $A$.
 \end{example}
 
-\begin{proposition}
+\begin{proposition}\index{continuidade!ponto isolado}
     Seja $A\subseteq \mathbb R^n$ um conjunto e $f: A \to \mathbb R^m$ uma função. Se $p \in A$ é um ponto isolado de $A$, então $f$ é contínua em $p$.
 \end{proposition}
 
@@ -86,7 +86,7 @@ No caso de isso não ocorrer, o que pode ocorrer?
 
 Uma das opções é que $f(x)$ se aproxime de outro valor $L \in \mathbb R^m$, com $L \neq f(p)$.
 
-\begin{definition}
+\begin{definition}\index{limite}\index{limite!definição}
     Seja $A\subseteq \mathbb R^n$ um conjunto, $f: A \to \mathbb R^m$ uma função e $p \in \mathbb R^n$ um ponto de acumulação de $A$.
 
     Seja $L \in \mathbb R^m$.
@@ -98,7 +98,7 @@ Uma das opções é que $f(x)$ se aproxime de outro valor $L \in \mathbb R^m$, c
         Ou, ainda, $L$ é limite de $f$ em $p$ se, para todo $\varepsilon > 0$, existe $\delta > 0$ tal que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta$, então $d(f(x), L) < \varepsilon$.
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\index{limite!unicidade}
     Seja $A\subseteq \mathbb R^n$ um conjunto, $f: A \to \mathbb R^m$ uma função e $p \in \mathbb R^n$ um ponto de acumulação de $A$.
 
     Então $f$ possui no máximo um limite em $p$.
@@ -130,7 +130,7 @@ Uma das opções é que $f(x)$ se aproxime de outro valor $L \in \mathbb R^m$, c
 
     o que é uma contradição. Logo, $L_1 = L_2$.
 \end{proof}
-\begin{definition}
+\begin{definition}\index{limite!notação}
     Seja $A\subseteq \mathbb R^n$ um conjunto, $f: A \to \mathbb R^m$ uma função e $p \in A$ um ponto de acumulação de $A$.
 
     Então, caso exista, o único limite de $f$ em $p$ é denotado por
@@ -140,7 +140,7 @@ Uma das opções é que $f(x)$ se aproxime de outro valor $L \in \mathbb R^m$, c
     \end{equation*}
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\index{continuidade!caracterização por limite}
     Seja $A\subseteq \mathbb R^n$ um conjunto, $f: A \to \mathbb R^m$ uma função e $p \in A$ um ponto de acumulação de $A$.
 
     Então $f$ é contínua em $p$ se, e somente se, existe $\lim_{x\to p} f(x) = f(p)$.
@@ -157,7 +157,7 @@ Uma das opções é que $f(x)$ se aproxime de outro valor $L \in \mathbb R^m$, c
 \end{proof}
 
 
-\begin{proposition}
+\begin{proposition}\index{limite!via funções coordenadas}
     Seja $A\subseteq \mathbb R^n$ um conjunto, $f: A \to \mathbb R^m$ uma função e $p \in A$ um ponto de acumulação de $A$.
 
     Seja $L=(L_1, \dots, L_m)\in \mathbb R^m$.

@@ -1,7 +1,7 @@
 \section{Regras básicas de Continuidade em $\mathbb R^n$}
 
 
-\begin{proposition}
+\begin{proposition}\index{projeção}
     Seja $f: \mathbb R^n\rightarrow R$ uma projeção, ou seja, uma função da forma $f(x_1, \dots, x_n) = x_i$ para algum $i \in \{1, \dots, n\}$.
     Então $f$ é contínua.
 \end{proposition}
@@ -19,7 +19,7 @@
 
 Como um primeiro exemplo, tratemos das projeções: as funções que $\pi_i: \mathbb R^n\rightarrow \mathbb R$ dadas por $\pi_i(x_1, \dots, x_n) = x_i$ para cada $i \in \{1, \dots, n\}$.
 
-\begin{proposition}
+\begin{proposition}\index{projeção}
     Seja $n\geq 1$ e $i$ um inteiro com $1\leq i\leq n$.
     
     Considere a $i$-ésima projeção de $\mathbb R^n$ em $\mathbb R$, ou seja, a função $\pi_i: \mathbb R^n\rightarrow \mathbb R$ dada por $\pi_i(x_1, \dots, x_n) = x_i$.
@@ -40,7 +40,7 @@ Como um primeiro exemplo, tratemos das projeções: as funções que $\pi_i: \ma
 
 Outro exemplo de função contínua é a função constante.
 
-\begin{proposition}
+\begin{proposition}\index{função constante}
     Seja $f: \mathbb R^n\rightarrow \mathbb R$ uma função constante, ou seja, uma função da forma $f(x_1, \dots, x_n) = c$ para algum $c \in \mathbb R$.
     Então $f$ é contínua.
 \end{proposition}
@@ -60,7 +60,14 @@ Lembremos que se $f, g: A \to \mathbb R$, podemos definir as funções $f+g$, $f
 
 \begin{definition}
     Seja $A\subseteq \mathbb R^n$ um conjunto e $f, g: A \to \mathbb R$ funções.
-    Então, definimos as funções $f+g:A\rightarrow \mathbb R$, $f-g:A\rightarrow \mathbb R$, $fg:A\rightarrow \mathbb R$ e $\frac{f}{g}:B\rightarrow \mathbb R$, em que $B=\{x \in A : g(x)\neq 0\}$, por:
+    Então, definimos as funções \emph{soma}\index{soma de funções}, \emph{diferença}\index{diferença de funções}, \emph{produto}\index{produto de funções} e \emph{quociente}\index{quociente de funções} por:
+    \begin{align*}
+        f+g &: A\rightarrow \mathbb R \\
+        f-g &: A\rightarrow \mathbb R \\
+        fg &: A\rightarrow \mathbb R \\
+        \frac{f}{g} &: B\rightarrow \mathbb R,
+    \end{align*}
+    em que $B=\{x \in A : g(x)\neq 0\}$, e tais funções são dadas por:
     \begin{align*}
         (f+g)(x) &= f(x) + g(x) \\
         (f-g)(x) &= f(x) - g(x) \\
@@ -69,7 +76,7 @@ Lembremos que se $f, g: A \to \mathbb R$, podemos definir as funções $f+g$, $f
     \end{align*}
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\index{limite!operações algébricas}
     Seja $A\subseteq \mathbb R^n$ um conjunto e $f, g: A \to \mathbb R$ funções.
     Seja $a \in A$ um ponto de acumulação de $A$.
 
@@ -132,7 +139,7 @@ Lembremos que se $f, g: A \to \mathbb R$, podemos definir as funções $f+g$, $f
     Como a função constante $(-1)$ é contínua, decorre dos itens anteriores que o limite de $f-g$ em $a$ é $L +(-1)S = L - S$.
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}\index{continuidade!operações algébricas}
     Seja $A\subseteq \mathbb R^n$ um conjunto e $f, g: A \to \mathbb R$ funções e $a \in A$.
 
     Se $f, g$ são contínuas em $a$, então as funções $f+g$, $f-g$ e $fg$ são contínuas em $a$.
@@ -165,7 +172,7 @@ Com isso, temos alguns exemplos.
 \end{example}
 
 Sobre funções compostas, temos o seguinte resultado.
-\begin{proposition}
+\begin{proposition}\index{composição de funções}\index{limite!composição}
     Sejam $f: A \to \mathbb B$ e $g: B \to \mathbb R^k$, onde $A\subseteq \mathbb R^m$ e $B\subseteq \mathbb R^n$ são conjuntos tais que $f(A)\subseteq B$.
     Seja $a \in \mathbb R^n$ um ponto de acumulação de $A$ e $L \in B$.
 
@@ -194,7 +201,7 @@ Como consequência, temos os seguintes corolários.
     Se $\lim_{x\to a} f(x) = L$ e $g$ é contínua em $L$, então $\lim_{x\to a} (g\circ f)(x) = g(L)$.
 \end{corollary}
 
-\begin{corollary}
+\begin{corollary}\index{função recíproca}
     Sejam $f: A \to \mathbb R\setminus \{0\}$, com $A\subseteq \mathbb R^n$, e $a \in \mathbb R^n$ um ponto de acumulação de $A$.
 
     Se $\lim f(x) = L \neq 0$ e $f$ é contínua em $a$, $\lim_{x\to a} \frac{1}{f(x)} = \frac{1}{L}$.
@@ -204,14 +211,14 @@ Como consequência, temos os seguintes corolários.
     Note que a função $g:\mathbb R\setminus\{0\}\rightarrow \mathbb R$ dada por $g(x) = \frac{1}{x}$ é contínua em todo ponto de seu domínio.
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}\index{continuidade!função recíproca}
     Sejam $f: A \to \mathbb R\setminus \{0\}$, com $A\subseteq \mathbb R^n$, e $a \in A$.
 
     Se $f$ é contínua em $a$, então $\frac{1}{f}$ é contínua em $a$.
 \end{corollary}
 
 Sobre composição de funções, temos também o seguinte resultado.
-\begin{proposition}
+\begin{proposition}\index{limite!composição com curva}
     Sejam $f: A \rightarrow \mathbb R^n$, com $A\subseteq \mathbb R^m$, e $a$ ponto de acumulação de $A$.
 
     Suponha que exista $\lim_{x\to a} f(x) = L \in \mathbb R^n$.
@@ -244,7 +251,7 @@ Sobre composição de funções, temos também o seguinte resultado.
 
 Com isso, temos o seguinte.
 
-\begin{corollary}[Teste das curvas]
+\begin{corollary}[Teste das curvas]\index{teste das curvas}\index{limite!teste das curvas}\index{curvas|seealso{curva, teste das curvas}}
     Sejam $f: A \rightarrow \mathbb R$, com $A\subseteq \mathbb R^m$, e $p$ ponto de acumulação de $A$.
 
     Sejam $u, v: I\rightarrow A$, com $I\subseteq \mathbb R$ um intervalo aberto contínuas em $\alpha \in I$ e $u(\alpha) = v(\alpha) = p$.

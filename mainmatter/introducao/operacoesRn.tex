@@ -4,19 +4,19 @@ Algumas operações importantes em $\mathbb R^n$ incluem soma, produto escalar, 
 
 \begin{definition}
     Sejam $p=(x_1, \ldots, x_n)$ e $q=(y_1, \ldots, y_n)$ dois elementos de $\mathbb R^n$, e $\alpha \in \mathbb R$ um número real.
-    A \emph{soma} $p+q$ é definida como:
+    A \emph{soma}\index{soma vetorial} $p+q$ é definida como:
     \begin{equation*}
         p+q =(x_1, \ldots, x_n)+(y_1, \ldots, y_n)=(x_1+y_1, \ldots, x_n+y_n).
     \end{equation*}
-    A \emph{multiplicação por escalar} $\alpha p$ é definida como:
+    A \emph{multiplicação por escalar}\index{multiplicação por escalar} $\alpha p$ é definida como:
     \begin{equation*}
         \alpha p = \alpha (x_1, \ldots, x_n) = (\alpha x_1, \ldots, \alpha x_n).
     \end{equation*}
-    O \emph{produto escalar} $p \cdot q$ é definido como:
+    O \emph{produto escalar}\index{produto escalar} $p \cdot q$ é definido como:
     \begin{equation*}
         p \cdot q = (x_1, \ldots, x_n) \cdot (y_1, \ldots, y_n) = x_1y_1 + \ldots + x_ny_n=\sum_{i=1}^n x_iy_i.
     \end{equation*}
-    A \emph{norma} de $p$ é definida como:
+    A \emph{norma}\index{norma}\index{norma euclidiana|see{norma}} de $p$ é definida como:
     \begin{equation*}
         \|p\| = \sqrt{p\cdot p}=\sqrt{x_1^2 + \ldots + x_n^2} = \sqrt{\sum_{i=1}^n x_i^2}.
     \end{equation*}
@@ -65,7 +65,7 @@ Vendo $v$ como um ponto no espaço, sua norma denota a distância de $p$ até a 
 
 Quanto ao produto escalar, algumas propriedades importantes são as seguintes.
 
-\begin{proposition}
+\begin{proposition}\index{produto escalar!propriedades}
     $p, q, r \in \mathbb R^n$ e $\alpha \in \mathbb R$. Então:
     \begin{enumerate}
         \item $p \cdot q = q \cdot p$ (comutatividade);
@@ -99,13 +99,13 @@ Quanto ao produto escalar, algumas propriedades importantes são as seguintes.
 \end{proof}
 
 Algumas propriedades da norma são as seguintes.
-\begin{proposition}
+\begin{proposition}\index{norma!propriedades}
     Sejam $v, w \in \mathbb R^n$ e $\alpha \in \mathbb R$. Então:
     \begin{enumerate}[label=(\roman*)]
         \item $\|v\| = 0$ se, e somente se, $v=0$;
         \item $\|\alpha v\| = |\alpha| \|v\|$;
-        \item $|v\cdot w| \leq \|v\| \|w\|$ (desigualdade de Cauchy-Schwarz);
-        \item $\|v+w\| \leq \|v\| + \|w\|$ (desigualdade triangular).
+        \item $|v\cdot w| \leq \|v\| \|w\|$ (desigualdade de Cauchy-Schwarz)\index{desigualdade de Cauchy-Schwarz};
+        \item $\|v+w\| \leq \|v\| + \|w\|$ (desigualdade triangular)\index{desigualdade triangular}.
     \end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -135,8 +135,8 @@ Algumas propriedades da norma são as seguintes.
 \end{proof}
 
 
-O produto escalar pode ser utilizado para decidir-se ortogonalidade entre vetores.
-É fato conhecido que vale a recíproca do Teorema de Pitágoras: se $\triangle BAC$ é um triângulo, então o ângulo $\angle ABC$ é reto se, e somente se, sendo $a, b, c$ respectivamente as medidas dos segmentos $\overline{BC}, \overline{AC}, \overline{AB}$, temos que $a^2=b^2+c^2$.
+O produto escalar pode ser utilizado para decidir-se \emph{ortogonalidade}\index{ortogonalidade}\index{vetores ortogonais|see{ortogonalidade}} entre vetores.
+É fato conhecido que vale a recíproca do \emph{Teorema de Pitágoras}\index{Teorema de Pitágoras}: se $\triangle BAC$ é um triângulo, então o ângulo $\angle ABC$ é reto se, e somente se, sendo $a, b, c$ respectivamente as medidas dos segmentos $\overline{BC}, \overline{AC}, \overline{AB}$, temos que $a^2=b^2+c^2$.
 
 \begin{figure}[ht]
     \centering
