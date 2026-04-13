@@ -17,8 +17,31 @@
     Logo, tomando $\delta=\epsilon$, vemos que $f$ é contínua em $p$.
 \end{proof}
 
+Como um primeiro exemplo, tratemos das projeções: as funções que $\pi_i: \mathbb R^n\rightarrow \mathbb R$ dadas por $\pi_i(x_1, \dots, x_n) = x_i$ para cada $i \in \{1, \dots, n\}$.
+
 \begin{proposition}
-    Seja $f: \mathbb R^n\rightarrow R$ uma função constante, ou seja, uma função da forma $f(x_1, \dots, x_n) = k$ para algum $k \in \mathbb R$.
+    Seja $n\geq 1$ e $i$ um inteiro com $1\leq i\leq n$.
+    
+    Considere a $i$-ésima projeção de $\mathbb R^n$ em $\mathbb R$, ou seja, a função $\pi_i: \mathbb R^n\rightarrow \mathbb R$ dada por $\pi_i(x_1, \dots, x_n) = x_i$.
+
+    Então $\pi_i$ é contínua.
+\end{proposition}
+\begin{proof}
+    Seja $p=(p_1, \dots, p_n) \in \mathbb R^n$ e $\epsilon>0$.
+
+    Note que, dado qualquer $x=(x_1, \dots, x_n) \in \mathbb R^n$, temos que:
+    \begin{equation*}
+        d(\pi_i(x), \pi_i(p)) = |x_i - p_i| \leq \sqrt{(x_1 - p_1)^2 + \cdots + (x_n - p_n)^2} = d(x, p).
+    \end{equation*}
+
+    Assim, se $d(x, p)<\epsilon$, então $d(\pi_i(x), \pi_i(p))<\epsilon$.
+    Logo, tomando $\delta=\epsilon$, vemos que $\pi_i$ é contínua em $p$.
+\end{proof}
+
+Outro exemplo de função contínua é a função constante.
+
+\begin{proposition}
+    Seja $f: \mathbb R^n\rightarrow \mathbb R$ uma função constante, ou seja, uma função da forma $f(x_1, \dots, x_n) = c$ para algum $c \in \mathbb R$.
     Então $f$ é contínua.
 \end{proposition}
 \begin{proof}
@@ -26,10 +49,11 @@
 
     Note que, dado qualquer $x=(x_1, \dots, x_n) \in \mathbb R^n$, temos que:
     \begin{equation*}
-        d(f(x), f(p)) = |k-k|=0<\epsilon
+        d(f(x), f(p)) = |c - c| = 0 < \epsilon.
     \end{equation*}
 
-    Assim, escolhendo qualquer $\delta>0$ (por exemplo, $\delta=1$), vemos que $f$ é contínua em $p$.
+    Assim, se $d(x, p)<\epsilon$, então $d(f(x), f(p))<\epsilon$.
+    Logo, tomando $\delta=\epsilon$, vemos que $f$ é contínua em $p$.
 \end{proof}
 
 Lembremos que se $f, g: A \to \mathbb R$, podemos definir as funções $f+g$, $f-g$, $fg$ e $\frac{f}{g}$ (desde que $g(x)\neq 0$ para todo $x \in A$) como a seguir.
@@ -127,6 +151,19 @@ Lembremos que se $f, g: A \to \mathbb R$, podemos definir as funções $f+g$, $f
     Assim, $f+g$, $f-g$ e $fg$ são contínuas em $a$.
 \end{proof}
 
+Com isso, temos alguns exemplos.
+
+\begin{example}
+    Seja $f:\mathbb R^3\rightarrow \mathbb R$ dada por $f(x, y, z) = 3x^2yz$.
+    Então $f$ é contínua, pois $f$ é o produto das funções contínuas $3$, $x$, $y$ e $z$.
+    Ou seja, da função constante $3$, da projeção na coordenada $x$, da projeção na coordenada $y$ e da projeção na coordenada $z$.
+\end{example}
+
+\begin{example}
+    Seja $f:\mathbb R^2\rightarrow \mathbb R$ dada por $f(x, y) = 3x^2y + 2x + 5$.
+    Então $f$ é contínua.
+\end{example}
+
 Sobre funções compostas, temos o seguinte resultado.
 \begin{proposition}
     Sejam $f: A \to \mathbb B$ e $g: B \to \mathbb R^k$, onde $A\subseteq \mathbb R^m$ e $B\subseteq \mathbb R^n$ são conjuntos tais que $f(A)\subseteq B$.
@@ -145,7 +182,7 @@ Sobre funções compostas, temos o seguinte resultado.
 
     Agora, dado $x \in A\setminus\{a\}$ tal que $d(x, a) < \delta$, temos que $d(f(x), L) < \eta$, logo, $d((g\circ f)(x), g(L)) < \epsilon$.
 
-    Assim, $\lim_{x\to a} (g\circ f)(x) = g(Lssssss)$.
+    Assim, $\lim_{x\to a} (g\circ f)(x) = g(L)$.
 \end{proof}
 
 Como consequência, temos os seguintes corolários.
@@ -160,7 +197,7 @@ Como consequência, temos os seguintes corolários.
 \begin{corollary}
     Sejam $f: A \to \mathbb R\setminus \{0\}$, com $A\subseteq \mathbb R^n$, e $a \in \mathbb R^n$ um ponto de acumulação de $A$.
 
-    Se $\lim f(x) = L \neq 0$ e $f$ é contínua em $a$, $\lim _{x\to a} \frac{1}{f(x)} = \frac{1}{L}$.
+    Se $\lim f(x) = L \neq 0$ e $f$ é contínua em $a$, $\lim_{x\to a} \frac{1}{f(x)} = \frac{1}{L}$.
 \end{corollary}
 
 \begin{proof}
