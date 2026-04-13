@@ -11,6 +11,18 @@ Formalmente, definimos:
     Ainda mais, mesmo que $p \notin A$, se para todo $\delta>0$ existe $x \in B(p,\delta) \cap A\setminus\{p\}$, dizemos que $p$ é um \emph{ponto de acumulação} de $A$.
 \end{definition}
 
+\begin{example}
+    Considere o conjunto $A=]0, 1[ \cup \{2\}$.
+    O ponto $2$ é um ponto isolado de $A$, pois $B(2, 1)\cap A = \{2\}$.
+
+    Já o ponto $1$ é um ponto de acumulação de $A$.
+    Para ver isso, seja $\delta>0$.
+    Seja $p=\max\{1-\frac{\delta}{2}, \frac{1}{2}\}$.
+    Temos que $0<p<1$, que $p \in ]1-\frac{\delta}{2}, 1[ \subseteq B(1, \delta)$, e que $p\neq 1$.
+    Assim, $p \in B(1, \delta)\cap A\setminus\{1\}$.
+    Como $\delta>0$ foi arbitrário, concluímos que $1$ é um ponto de acumulação de $A$.
+\end{example}
+
 \begin{proposition}
     Seja $A\subseteq \mathbb R^n$ um conjunto e $f: A \to \mathbb R^m$ uma função. Se $p \in A$ é um ponto isolado de $A$, então $f$ é contínua em $p$.
 \end{proposition}
