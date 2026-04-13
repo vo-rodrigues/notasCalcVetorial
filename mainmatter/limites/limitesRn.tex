@@ -31,6 +31,53 @@ Formalmente, definimos:
     Seja $\epsilon>0$. Como $p$ é um ponto isolado de $A$, existe um $\delta>0$ tal que $B(p,\delta) \cap A = \{p\}$. Assim, se $x \in A$ e $d(x, p) < \delta$, temos que $x = p$. Portanto, $d(f(x), f(p)) = d(f(p), f(p)) = 0 < \epsilon$. Logo, $f$ é contínua em $p$.
 \end{proof}
 
+\begin{example}
+    Em $\mathbb R^2$, seja $A = B(0, 1)\cup \{(2, 0)\}$ e $f: A \to \mathbb R$ dada por:
+
+    \begin{equation*}
+        f(x, y) = \begin{cases}
+            x^2+y^2, & \text{se } (x, y) \in B(0, 1) \\
+            1, & \text{se } (x, y) = (2, 0)
+        \end{cases}
+    \end{equation*}
+
+    Temos que $(2, 0)$ é um ponto isolado de $A$, logo $f$ é contínua em $(2, 0)$.
+
+    Para ver que $(2, 0)$ é um ponto isolado de $A$, seja $\delta = 1$.
+    Então $B((2, 0), \delta)\cap A = \{(2, 0)\}$, pois, se existir $p \in B(0, 1)\cap B((2, 0), \delta)$, então $2=d((0, 0), (2, 0)) \leq d((0, 0), p) + d(p, (2, 0)) < 1 + 1 = 2$, o que é uma contradição.
+\end{example}
+\begin{center}
+\begin{tikzpicture}[scale=1.4]
+    % Eixos
+    \draw[->] (-1.6,0) -- (3.6,0) node[right] {$x$};
+    \draw[->] (0,-1.6) -- (0,1.6) node[above] {$y$};
+
+    % Bola aberta B(0,1)
+    \fill[blue!15] (0,0) circle (1);
+    \draw[blue, dashed, thick] (0,0) circle (1);
+
+    % Centro na origem
+    \fill (0,0) circle (1.2pt);
+    \node[below, yshift=-1.5mm] at (0,0) {$(0,0)$};
+
+    % Ponto isolado
+    \fill (2,0) circle (1.6pt);
+
+    % Bola em torno de (2,0)
+    \draw[red, dashed, thick] (2,0) circle (1);
+
+    % Labels das bolas
+    \node[blue!70!black, above] at (0.5,1) {$B(0,1)$};
+    \node[red!70!black, above] at (2.5,1) {$B((2,0),1)$};
+
+    % Marcas no eixo x
+    \draw (1,0.05) -- (1,-0.05);
+    \node[below] at (1,0) {$1$};
+
+    \draw (2,0.05) -- (2,-0.05);
+    \node[below, yshift=-1mm] at (2,0) {$(2,0)$};
+\end{tikzpicture}
+\end{center}
 E quanto a pontos não isolados?
 
 Podemos estudar a continuidade deles a partir da noção de limite.
@@ -149,3 +196,13 @@ Uma das opções é que $f(x)$ se aproxime de outro valor $L \in \mathbb R^m$, c
 
     Assim, se de partida, ao invés de $\epsilon$, tomarmos $\delta_1, \dots, \delta_n$ que funcione para $\epsilon'=\frac{\epsilon}{\sqrt{m}}$, concluiremos que para todo $x \in A\setminus\{p\}$ com $d(x, p) < \delta$, temos que $d(f(x), L) < \epsilon'$.
 \end{proof}
+
+O seguinte corolário sintetiza uma forma de se decidir se uma função é ou não é contínua.
+
+\begin{corollary}
+    Seja $A\subseteq \mathbb R^n$ um conjunto, $f: A \to \mathbb R^m$ uma função e $p \in A$.
+    \begin{itemize}
+        \item Se $p$ é um ponto isolado de $A$, então $f$ é contínua em $p$.
+        \item Se $p$ é um ponto de acumulação de $A$, então $f$ é contínua em $p$ se, e somente se, $\lim_{x\to p} f(x) = f(p)$.
+    \end{itemize}
+\end{corollary}
