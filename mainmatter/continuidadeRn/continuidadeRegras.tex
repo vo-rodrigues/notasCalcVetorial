@@ -168,8 +168,27 @@ Com isso, temos alguns exemplos.
 
 \begin{example}
     Seja $f:\mathbb R^2\rightarrow \mathbb R$ dada por $f(x, y) = 3x^2y + 2x + 5$.
-    Então $f$ é contínua.
+    Então $f$ é contínua, pois é soma de produtos de funções contínuas.
 \end{example}
+
+Para se efetivamente calcular limites, o seguinte resultado é essencial.
+
+\begin{proposition}
+    Sejam $A\subseteq \mathbb R^n$, $f: A \to \mathbb R^m$ e $a$ ponto de acumulação de $A$.
+    Suponha que exista uma função $g: A \to \mathbb R^m$ e uma bola aberta $B$ em torno de $a$ tal que, para todo $x \in B\cap A\setminus\{a\}$, temos que $f(x) = g(x)$.
+
+    Então, para qualquer que seja $L \in \mathbb R^m$, $\lim_{x\to a} f(x) = L$ se, e somente se, $\lim_{x\to a} g(x) = L$.
+\end{proposition}
+\begin{proof}
+    Se $\lim_{x\to a} f(x) = L$, então, para todo $\epsilon>0$, existe $\delta>0$ tal que, para todo $x \in A\setminus\{a\}$, se $d(x, a) < \delta$, então $d(f(x), L) < \epsilon$.
+
+    Seja $r>0$ tal que para todo $x \in B(a, r)\cap A\setminus\{a\}$, temos que $f(x) = g(x)$.
+    Seja $\delta' = \min\{\delta, r\}$.
+    Então para todo $x \in A\setminus\{a\}$, se $d(x, a) < \delta'$, então $d(g(x), L) = d(f(x), L) < \epsilon$.
+    Logo, $\lim_{x\to a} g(x) = L$.
+
+    A recíproca é análoga.
+\end{proof}
 
 Sobre funções compostas, temos o seguinte resultado.
 \begin{proposition}\index{composição de funções}\index{limite!composição}
