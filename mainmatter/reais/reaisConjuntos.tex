@@ -1,0 +1,257 @@
+\section{A linguagem de conjuntos e lógica básica}
+A linguagem de conjuntos é uma ferramenta poderosa para a construção de teorias matemáticas rigorosas modernas.
+
+Conjuntos podem ser pensados como coleções de objetos.
+Tais objetos, por sua vez, também são conjuntos.
+
+Utilizamos letras como $x, y, z, a, b, c$, etc, para denotar objetos (conjuntos).
+Formalmente, tais símbolos denotam o que chamamos de \emph{variáveis lógicas}.
+Intuitivamente, eles podem assumir o valor de qualquer objeto (conjunto) que desejarmos.
+
+Ao longo do desenvolvimento da teoria, símbolos que denotam objetos ``fixos'' serão inseridos, como o conjunto vazio $\emptyset$, o conjunto dos números reais $\mathbb R$, e os números reais $0, 1$ e $\pi$, por exemplo.
+Tais símbolos são chamados de \emph{constantes} e são introduzidos por meio de definições.
+Adiaremos a discussão sobre o significado de definir algo matematicamente para quando tal fenômeno ocorrer na prática, uma vez que tal discussão será mais natural naquela altura.
+
+Escrevemos $x\in y$ para representar a ideia de que $x$ é um elemento do conjunto $y$.
+Lemos $x\in y$ como ``$x$ pertence a $y$'' ou ``$x$ é um elemento de $y$''.
+
+Escrevemos $x=y$ para dizer que $x$ e $y$ são o mesmo objeto.
+Lemos $x=y$ como ``$x$ é igual a $y$''.
+
+O princípio lógico da substituição se aplica: se $x\in y$ e $x=z$, por exemplo, então podemos concluir que $z\in y$, uma vez que intuitivamente $x$ e $z$ são o mesmo objeto.
+
+As afirmações básicas sobre conjuntos são expressas por meio de fórmulas lógicas.
+As fórmulas mais simples são as do tipo $x\in y$ e do tipo $x=y$.
+Para obter fórmulas mais complexas, podemos usar os conectivos lógicos $\neg$ (negação), $\wedge$ (conjunção), $\vee$ (disjunção), $\to$ (condicional) e $\leftrightarrow$ (bicondicional), bem como os quantificadores $\forall$ (quantificador universal) e $\exists$ (quantificador existencial).
+
+No geral, denotamos fórmulas por letras gregas como $\phi$ e $\psi$ (lê-se: phi e psi, respectivamente).
+
+Fórmulas podem ser verdadeiras ou falsas.
+
+\subsection{A negação de uma fórmula}
+Se $\phi$ é uma fórmula, então $\neg \phi$ é a negação de $\phi$.
+Intuitivamente, $\neg \phi$ é verdadeira se e somente se $\phi$ é falsa.
+
+Se $\phi$ é a fórmula $x\in y$, então $\neg \phi$ é a fórmula $\neg(x\in y)$.
+Intuitivamente, se $x$ é um elemento de $y$, então $x\in y$ é verdadeira, e $\neg(x\in y)$ é falsa.
+Por outro lado, se $x$ não é um elemento de $y$, então $x\in y$ é falsa, e $\neg(x\in y)$ é verdadeira.
+
+Uma notação mais concisa para escrever $\neg(x\in y)$ é $x\notin y$.
+Lêmos $x\notin y$ como ``$x$ não pertence a $y$'' ou ``$x$ não é um elemento de $y$''.
+
+Da mesma forma, uma notação mais concisa para escrever $\neg(x=y)$ é $x\neq y$.
+Lêmos $x\neq y$ como ``$x$ é diferente de $y$'' ou ``$x$ não é igual a $y$''.
+
+A tabela abaixo resume a relação entre o valor de verdade de uma fórmula $\phi$ e sua negação $\neg \phi$.
+``V'' representa o valor de verdade verdadeiro, e ``F'' representa o valor de verdade falso.
+
+\begin{center}
+    \begin{tabular}{c|c}
+        $\phi$ & $\neg \phi$ \\
+        \hline
+        V & F \\
+        F & V
+    \end{tabular}
+\end{center}
+
+\begin{example}
+    Para ilustrar o comportamento do conectivo de negação, tomemos um exemplo ``cotidiano''.
+    Considere a afirmação ``a Terra é plana''.
+    Sua negação, ``$\neg$(a Terra é plana)'', é a afirmação ``a Terra não é plana''.
+    Uma vez que a afirmação ``a Terra é plana'' é falsa, sua negação ``a Terra não é plana'' é verdadeira.
+\end{example}
+
+\subsection{A conjunção de fórmulas}
+Se $\phi$ e $\psi$ são fórmulas, então $\phi\wedge \psi$ é a conjunção de $\phi$ e $\psi$.
+Lemos $\phi\wedge \psi$ como ``$\phi$ e $\psi$''.
+Também podemos escrever $\phi\wedge \psi$ como literalmente $\phi$ e $\psi$.
+
+\begin{example}
+    A conjunção de $x\in y$ com $x=y$ é a fórmula
+    \[
+        x\in y\wedge x=y.
+    \]
+    Tal fórmula pode ser escrita também como
+    \[
+        x\in y \text{ e } x=y.
+    \]
+\end{example}
+
+\begin{example}
+    A conjunção de $x\in y$ com $x=y$ é a fórmula
+    \[
+        x\in y\wedge x=y.
+    \]
+    Tal fórmula pode ser escrita também como
+    \[
+        x\in y \text{ e } x=y.
+    \]
+\end{example}
+
+Para que a fórmula $\phi\wedge \psi$ seja verdadeira, é necessário que ambas as fórmulas $\phi$ e $\psi$ sejam verdadeiras.
+Caso ao menos uma das fórmulas $\phi$ ou $\psi$ seja falsa, então $\phi\wedge \psi$ é falsa.
+
+A tabela abaixo resume a relação entre os valores de verdade de $\phi$, $\psi$ e $\phi\wedge \psi$.
+
+\begin{center}
+    \begin{tabular}{cc|c}
+        $\phi$ & $\psi$ & $\phi\wedge \psi$ \\
+        \hline
+        V & V & V \\
+        V & F & F \\
+        F & V & F \\
+        F & F & F
+    \end{tabular}
+\end{center}
+
+Façamos um exemplo ``cotidiano'' para ilustrar o conceito de conjunção.
+
+\begin{example}
+    Considere a afirmação ``existem patos em Vênus'' e a afirmação ``Os direitos e garantias individuais são uma cláusula pétrea da Constituição Federal de 1988''.
+
+    A conjunção dessas afirmações é a afirmação ``existem patos em Vênus e os direitos e garantias individuais são uma cláusula pétrea da Constituição Federal de 1988''.
+    Apesar de uma das afirmações que compõe a conjunção ser verdadeira, a conjunção é falsa, uma vez que a outra é falsa.
+\end{example}
+
+\subsection{A disjunção de fórmulas}
+Se $\phi$ e $\psi$ são fórmulas, então $\phi\vee \psi$ é a disjunção de $\phi$ e $\psi$.
+Lêmos $\phi\vee \psi$ como ``$\phi$ ou $\psi$''.
+Também podemos escrever $\phi\vee \psi$ como literalmente $\phi$ ou $\psi$
+
+\begin{example}
+    A disjunção da fórmula $x\in y\wedge x=y$ com a fórmula $x\in z$ é a fórmula
+    \[
+        \left(x\in y\wedge x=y\right) \vee (x\in z).
+    \]
+    Tal fórmula pode ser escrita também como
+    \[
+        (x\in y \text{ e } x=y) \text{ ou } x\in z.
+    \]
+\end{example}
+
+Para que a fórmula $\phi\vee \psi$ seja verdadeira, basta que ao menos uma das fórmulas $\phi$ ou $\psi$ seja verdadeira.
+Caso ambas as fórmulas $\phi$ e $\psi$ sejam falsas, então $\phi\vee \psi$ é falsa.
+
+A tabela abaixo resume a relação entre os valores de verdade de $\phi$, $\psi$ e $\phi\vee \psi$.
+
+\begin{center}
+    \begin{tabular}{cc|c}
+        $\phi$ & $\psi$ & $\phi\vee \psi$ \\
+        \hline
+        V & V & V \\
+        V & F & V \\
+        F & V & V \\
+        F & F & F
+    \end{tabular}
+\end{center}
+
+Como no exemplo acima, somos obrigados a utilizar parenteses sempre que for necessário evitar ambiguidades.
+Se não os utilizarmos e simplesmente escrevermos ``$x\in y\text{ e } x=y \text{ ou } x\in z$'', não saberemos se a fórmula é $\left(x\in y\wedge x=y\right) \vee (x\in z)$ ou $x\in y\wedge \left(x=y \vee x\in z\right)$, que tem, intuitivamente, significados diferentes (reflita sobre a razão).
+
+Novamente, vamos ilustrar o conceito de disjunção com um exemplo ``cotidiano''.
+
+\begin{example}
+    Considere a afirmação ``coelhos nascem de ovos'' e a afirmação ``vacinas previnem doenças''.
+
+    Sua disjunção é a afirmação ``coelhos nascem de ovos ou vacinas previnem doenças''.
+
+    Tal afirmação é verdadeira, uma vez que ao menos uma das afirmações que compõe a disjunção é verdadeira.
+\end{example}
+
+\subsection{O quantificador universal}
+Se $\phi$ é uma fórmula e $x$ é uma variável lógica, então $\forall x \phi$ é a fórmula que lê-se ``para todo $x$, $\phi$'' ou ``para cada $x$, $\phi$''.
+
+Ela é verdadeira se, para qualquer que seja o objeto $x$, a fórmula $\phi$ é verdadeira.
+\begin{example}
+    A fórmula $\forall x (x\notin \emptyset)$ é verdadeira, uma vez que para qualquer que seja o objeto $x$, $x$ não é um elemento do conjunto vazio $\emptyset$.
+\end{example}
+
+Novamente, vamos dar um exemplo ``cotidiano'' para ilustrar o conceito de quantificador universal.
+
+\begin{example}
+    A sentença ``todo mamífero é terrestre'' é falsa, uma vez que existem mamíferos aquáticos, como as baleias e golfinhos.
+
+    Por outro lado, a sentença ``todo mamífero é um animal'' é verdadeira, uma vez que qualquer que seja o mamífero, ele é um animal por definição.
+\end{example}
+
+\subsection{O quantificador existencial}
+Se $\phi$ é uma fórmula e $x$ é uma variável lógica, então $\exists x \phi$ é a fórmula que lê-se ``existe um $x$ tal que $\phi$'' ou ``existe pelo menos um $x$ tal que $\phi$''.
+
+Ela é verdadeira se existe pelo menos um objeto $x$ tal que a fórmula $\phi$ é verdadeira para ele.
+
+\begin{example}
+    A fórmula $\exists x (x\in \emptyset)$ é falsa, uma vez que não existe nenhum objeto $x$ tal que $x$ seja um elemento do conjunto vazio $\emptyset$.
+
+    Por outro lado, a fórmula $\exists x (x\in \mathbb R)$ é verdadeira, uma vez que existem objetos $x$ tais que $x$ é um elemento do conjunto dos números reais $\mathbb R$, como o número real $0$, por exemplo.
+\end{example}
+
+\begin{example}
+    A sentença ``existe um mamífero que é aquático'' é verdadeira, uma vez que existem mamíferos aquáticos, como as baleias e golfinhos.
+
+    Por outro lado, a sentença ``todo mamífero é aquático'' é falsa, uma vez que existem mamíferos terrestres, como os cães e gatos.
+\end{example}
+\subsection{O operador condicional}
+
+Se $\phi$ e $\psi$ são fórmulas, então $\phi\to \psi$ é a fórmula condicional de $\phi$ para $\psi$.
+Lemos $\phi\to \psi$ como ``se $\phi$, então $\psi$''.
+Também podemos escrever $\phi\to \psi$ como literalmente ``se $\phi$, então $\psi$''.
+
+A fórmula $\phi\to \psi$ é falsa quando $\phi$ é verdadeira e $\psi$ é falsa.
+Nos outros casos, é verdadeira.
+
+A tabela abaixo resume a relação entre os valores de verdade de $\phi$, $\psi$ e $\phi\to \psi$.
+
+\begin{center}
+    \begin{tabular}{cc|c}
+        $\phi$ & $\psi$ & $\phi\to \psi$ \\
+        \hline
+        V & V & V \\
+        V & F & F \\
+        F & V & V \\
+        F & F & V
+    \end{tabular}
+\end{center}
+
+Tal convenção pode soar contra-intuitiva à primeira vista.
+Para entender a razão por trás dessa convenção, convidamos o leitor a examinar o seguinte exemplo.
+\begin{example}
+    Considere a expressão ``para todo $x$, se $x$ é um número par, então $x$ é um número inteiro''.
+
+    Intuitivamente, tal expressão é verdadeira: números pares são inteiros por definição.
+    Porém, pelo exposto, para que $\forall x (x \text{ é um número par} \to x \text{ é inteiro})$ seja verdadeira, é necessário que para qualquer que seja o objeto $x$, a fórmula $x \text{ é um número par} \to x \text{ é inteiro}$ seja verdadeira.
+    Ora, existem números que não são inteiros nem pares, como $\pi$.
+    Para tais números, ambas as fórmulas $x \text{ é um número par}$ e $x \text{ é inteiro}$ são falsas.
+    Apesar disso, a implicação $x \text{ é um número par} \to x \text{ é inteiro}$ é verdadeira para tais $x$.
+
+    Notemos que se a tabela de verdade do condicional fosse diferente, a fórmula $\forall x (x \text{ é um número par} \to x \text{ é inteiro})$ seria falsa.
+    A intuição é que os únicos $x$ que tornam uma implicação falsa são aqueles que servem como um contra-exemplo para a afirmação expressa pela implicação.
+\end{example}
+
+Notemos que se é verdadeira uma implicação da forma $\phi\to \psi$, e $\phi$ é verdadeira, então $\psi$ é verdadeira (do contrário, a implicação seria falsa).
+Assim, de $\phi\to \psi$ e $\phi$, \emph{deduz-se} $\psi$.
+Tal fenômeno é conhecido como \emph{modus ponens}, e é um dos princípios mais fundamentais da lógica.
+Perceba que, se temos que $\phi\to \psi$ é verdadeira, e $\phi$ é falsa, então nada podemos concluir sobre $\psi$, uma vez que independentemente do valor de verdade de $\psi$, a implicação $\phi\to \psi$ é verdadeira, pela tabela.
+
+\subsection{O operador bicondicional}
+Se $\phi$ e $\psi$ são fórmulas, então $\phi\leftrightarrow \psi$ é a fórmula bicondicional de $\phi$ para $\psi$.
+Lemos $\phi\leftrightarrow \psi$ como ``$\phi$ se e somente se $\psi$''.
+Também podemos escrever $\phi\leftrightarrow \psi$ como literalmente ``$\phi$ se e somente se $\psi$'', ou, ainda, ``$\phi$ é equivalente a $\psi$''.
+
+A fórmula $\phi\leftrightarrow \psi$ é verdadeira quando $\phi$ e $\psi$ têm o mesmo valor de verdade, ou seja, quando ambas são verdadeiras ou ambas são falsas.
+Nos outros casos, é falsa.
+A tabela abaixo resume a relação entre os valores de verdade de $\phi$, $\psi$ e $\phi\leftrightarrow \psi$.
+
+\begin{center}
+    \begin{tabular}{cc|c}
+        $\phi$ & $\psi$ & $\phi\leftrightarrow \psi$ \\
+        \hline
+        V & V & V \\
+        V & F & F \\
+        F & V & F \\
+        F & F & V
+    \end{tabular}
+\end{center}
+\begin{example}
+    A expressão ``existem unicórnios se, e somente se existem dragões'' é verdadeira, uma vez que ambas as afirmações ``existem unicórnios'' e ``existem dragões'' são falsas.
+\end{example}
+
