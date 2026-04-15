@@ -1,0 +1,110 @@
+\section{O corpo dos números reais}
+A estrutura dos números reais é caracterizada por consistir em um conjunto, denotado por $\mathbb R$, munido de operações binárias $+$, $\cdot$, elementos destacados $0$ e $1$, e uma relação $<$ que satisfaz certas propriedades.
+
+Assumiremos, sem prova, que tal estrutura existe.
+Abaixo, enunciaremos todas as propriedades que caracterizam esta estrutura.
+A seguir, estudaremos-a em detalhes.
+
+\begin{definition}
+    A estrutura dos números reais consiste em um conjunto $\mathbb R$ munido de operações binárias $+: \mathbb R\times \mathbb R\to \mathbb R$ e $\cdot: \mathbb R\times \mathbb R\to \mathbb R$, elementos destacados $0$ e $1$, e uma relação $<\subseteq \mathbb R\times \mathbb R$ tal que, para quaisquer $x, y, z\in \mathbb R$:
+    \begin{enumerate}
+        \labeleditem{(A1)} $x+(y+z)=(x+y)+z$ (propriedade associativa);\label{defItem:associativaSoma} \label{defItem:primeiraSoma}
+        \labeleditem{(A2)} $x+y=y+x$ (propriedade comutativa); \label{defItem:comutativaSoma}
+        \labeleditem{(A3)} $x+0=x$ (elemento neutro para adição); \label{defItem:neutroSoma}
+        \labeleditem{(A4)} existe $u\in \mathbb R$ tal que $x+u=0$ (existência de elemento inverso para adição); \label{defItem:inversoSoma} \label{defItem:ultimoSoma}
+        \labeleditem{(M1)} $x\cdot (y\cdot z)=(x\cdot y)\cdot z$ (propriedade associativa); \label{defItem:associativaMultiplicacao} \label{defItem:primeiraMultiplicacao}
+        \labeleditem{(M2)} $x\cdot 1=x$ e $1\cdot x=x$ (elemento neutro para multiplicação); \label{defItem:neutroMultiplicacao}
+        \labeleditem{(M3)} $x(y+z)=x\cdot y+x\cdot z$ (propriedade distributiva); \label{defItem:distributiva}
+        \labeleditem{(M4)} Se $x\neq 0$, existe $v\in \mathbb R$ tal que $x\cdot v=1$ e $v\cdot x=1$ (existência de elemento inverso para multiplicação); \label{defItem:inversoMultiplicacao}
+        \labeleditem{(M5)} $0\neq 1$ (não trivialidade); \label{defItem:naoTrivialidade} \label{defItem:ultimoMultiplicacao}
+        \labeleditem{(O1)} Se $x<y$ e $y<z$, então $x<z$ (propriedade transitiva); \label{defItem:primeiraOrdem} \label{defItem:transitiva}
+        \labeleditem{(O2)} $x \not< x$ (propriedade irreflexiva); \label{defItem:segundaOrdem} \label{defItem:irreflexiva}
+        \labeleditem{(O3)} $x<y$ ou $x=y$ ou $y<x$ (propriedade de totalidade); \label{defItem:terceiraOrdem} \label{defItem:totalidade}
+        \labeleditem{(OA)} Se $x<y$, então $x+z<y+z$ (compatibilidade da adição com a ordem); \label{defItem:compatibilidadeSoma}
+        \labeleditem{(OM)} Se $x<y$ e $0<z$, então $x\cdot z<y\cdot z$ (compatibilidade da multiplicação com a ordem); \label{defItem:compatibilidadeMultiplicacao}
+        \labeleditem{(S)} Todo subconjunto de $\mathbb R$ não vazio e limitado superiormente tem um supremo (propriedade de completude). \label{defItem:supremo}
+    \end{enumerate}
+
+    Os elementos de $\mathbb R$ são chamados de números reais.
+\end{definition}
+
+A Propriedade~\ref{defItem:supremo}, também conhecida como a propriedade do supremo, certamente requer explicações adicionais.
+Deixá-la-emos por último.
+Solicitamos que o leitor não se preocupe com ela até que tal explicação seja concedida.
+
+Iniciaremos discutindo as propriedades do grupo \ref{defItem:primeiraSoma}-\ref{defItem:ultimoSoma}.
+Tais propriedades regem a adição de números reais isoladamente.
+Ela nos permite definir a operação de oposto.
+
+\begin{proposition}
+    Seja $x$ um número real.
+    Então existe um único número real $u$ tal que $x+u=0$.
+\end{proposition}
+\begin{proof}
+    Tome um número real $x$.
+    Pela propriedade \ref{defItem:inversoSoma}, existe um número real $u$ tal que $x+u=0$.
+    Vejamos que só existe um: ou seja, que se $u$ e $u'$ são números reais tais que $x+u=0$ e $x+u'=0$, então $u=u'$.
+
+    De fato, se $u$ e $u'$ são números reais tais que $x+u=0$ e $x+u'=0$, então
+\begin{align*}
+    u &= u + 0 \tag{0 é neutro da soma} \\
+    &= u + (x + u) \tag{pela escolha de $u$} \\
+    &= (u + x) + u' \tag{propriedade associativa} \\
+    &= 0 + u' \tag{pela escolha de $u'$} \\
+    &= u' \tag{0 é neutro da soma}
+\end{align*}
+Assim, $u=u'$.
+\end{proof}
+
+Dado um número real $x$, existe então um único número real $u$ tal que $x+u=0$.
+Tal número $u$ é completamente determinado por essa propriedade, e depende exclusivamente de $x$.
+Nada mais justo do que dar a ele um nome conveniente.
+
+\begin{definition}
+    Seja $x$ um número real.
+    O \emph{oposto}\index{oposto} de $x$, denotado por $-x$, é o único número real tal que $x+(-x)=0$.
+\end{definition}
+
+Com isso, podemos provar algumas das chamadas \emph{regras de sinais}.
+Primeiro, uma convenção.
+
+\begin{definition}
+    Sejam $x$, $y$ números reais.
+    Define-se a operação de subtração de números reais $-: \mathbb R\times \mathbb R\to \mathbb R$ por $x-y = x+(-y)$.
+\end{definition}
+
+Percebamos algo importante: há uma ambiguidade na notação de $-$.
+Acabamos de definir a notação $x-y$ como uma operação binária: $-(x, y)=x-y=x+(-y)$.
+Tal operação requer dois elementos.
+Ao mesmo tempo, a notação $-$ remete a um operador unário: dado $x$, $-x$ é o oposto de $x$.
+
+Utilizando as convenções aritméticas usuais, acaba não persistindo ambiguidade: se $-$ é escrito sem nada à esquerda que esteja claramente operando, então $-$ denota o oposto.
+Caso contrário, $-$ denota a operação de subtração.
+Parenteses são usados para evitar ambiguidades.
+
+\begin{proposition}
+    Sejam $x, y$ números reais.
+    Então:
+    \begin{enumerate}[label=(\alph*)]
+        \item $-0=0$;
+        \item $-(x+y)=(-x)+(-y)$;
+        \item $-(-x)=x$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Para a propriedade $(a)$, temos que $0+0=0$. Como $-0$ é o único número real tal que $0+(-0)=0$, então $-0=0$.
+
+    Para a propriedade $(b)$, temos que
+    \begin{align*}
+    (x+y)+((-x)+(-y)) &= [(x+y)+(-x)]+(-y) \tag{propriedade associativa} \\
+    &= [(y+x)+(-x)]+(-y) \tag{propriedade comutativa} \\
+    &= [y+(x+(-x))]+(-y) \tag{propriedade associativa} \\
+    &= (y+0)+(-y) \tag{pela definição de oposto} \\
+    &= y+(-y) \tag{0 é neutro da soma} \\
+    &= 0. \tag{pela definição de oposto}
+    \end{align*}
+    Como $-(x+y)$ é o único número real tal que $(x+y)+(-(x+y))=0$, então $-(x+y)=(-x)+(-y)$.
+
+    Para a propriedade $(c)$, temos que $(-x)+x=0$.
+    Como $-(-x)$ é o único número real tal que $(-x)+(-(-x))=0$, então $-(-x)=x$.
+\end{proof}

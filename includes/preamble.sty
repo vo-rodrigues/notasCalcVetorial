@@ -21,6 +21,14 @@
     bottom=2cm
 }
 
+% itemização personalizada
+\makeatletter
+\newcommand{\labeleditem}[1]{%
+\item[#1]\protected@edef\@currentlabel{#1}%
+}
+\makeatother
+
+
 % Teoremas e ambientes
 
 \theoremstyle{definition}
