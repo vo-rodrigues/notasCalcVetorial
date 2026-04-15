@@ -256,3 +256,94 @@ A tabela abaixo resume a relação entre os valores de verdade de $\phi$, $\psi$
     A expressão ``existem unicórnios se, e somente se existem dragões'' é verdadeira, uma vez que ambas as afirmações ``existem unicórnios'' e ``existem dragões'' são falsas.
 \end{example}
 
+\subsection{Elementos da linguagem de conjuntos}
+Dois conjuntos são iguais se possuem exatamente os mesmos elementos.
+Escrevemos $x\subseteq y$ ($x$ é um subconjunto de $y$) para dizer que todo elemento de $x$ é um elemento de $y$.
+Então $x=y$ se, e somente se, $x\subseteq y$ e $y\subseteq x$.
+
+Se $A$ é um conjunto de elemetos $x$ e $\phi(x, A, t_1, \dots, t_n)$ é uma fórmula (que também pode depender de $t_1, \dots, t_n$), então $\{x\in A: \phi(x, A, t_1, \dots, t_n)\}$ é o conjunto de elementos $x$ de $A$ tais que $\phi(x, A, t_1, \dots, t_n)$ é verdadeira.
+Por exemplo, $\{x\in \mathbb R: x>0\}$ é o conjunto de números reais $x$ tais que $x$ é maior do que $0$, ou seja, o conjunto dos números reais positivos.
+
+Se $x_1, \dots, x_n$ são conjuntos, podemos formar o conjunto $\{x_1, \dots, x_n\}$, cujos elementos são exatamente $x_1, \dots, x_n$.
+Note que, desse modo, $\{x_1, x_2\}=\{x_2, x_1\}$.
+
+Se $\mathcal A$ é uma coleção de conjuntos, a união de $\mathcal A$ é o conjunto $\bigcup \mathcal A=\{x: \text{ existe } A\in \mathcal A \text{ tal que } x\in A\}$.
+Ou seja, é o conjunto de todos os elementos de elementos de $A$.
+
+Para visualizar tal conjunto, imagine que $\mathcal A$ é um carrinho de supermercado cheio de sacolas com produtos.
+Cada sacola com produtos é um elemento de $\mathcal A$.
+O conjunto $\bigcup \mathcal A$ é o conjunto de todos os produtos que estão dentro das sacolas do carrinho.
+Para obtê-lo, basta abrir cada sacola e pegar os produtos que estão dentro dela, reunindo tudo em um novo conjunto (em uma caixa, por exemplo).
+
+Se $A$ e $B$ são conjuntos, $A\cup B=\bigcup \{A, B\}$ é o conjunto de elementos de $A$ ou de $B$.
+\[
+    A\cup B=\{x: x\in A \text{ ou } x\in B\}.
+\]
+Lembremos que, em matemática, a palavra ``ou'' é inclusiva, ou seja, se $x$ é um elemento comum de $A$ e de $B$, então ainda assim $x$ é um elemento de $A\cup B$.
+
+\begin{example}
+    Se $A=\{1, 2, 3\}$ e $B=\{3, 4, 5\}$, então $A\cup B=\{1, 2, 3, 4, 5\}$.
+\end{example}
+
+Se $\mathcal A$ é uma coleção não vazia de conjuntos, a interseção de $\mathcal A$ é o conjunto $\bigcap \mathcal A=\{x: \text{ para todo } A\in \mathcal A, x\in A\}$.
+Ou seja, é o conjunto de todos os elementos comuns a todos os elementos de $\mathcal A$.
+
+Se $A$ e $B$ são conjuntos, $A\cap B=\bigcap \{A, B\}$ é o conjunto de elementos de $A$ e $B$ (simultaneamente).
+\[
+    A\cap B=\{x: x\in A \text{ e } x\in B\}.
+\]
+
+\begin{example}
+    Se $A=\{1, 2, 3\}$ e $B=\{3, 4, 5\}$, então $A\cap B=\{3\}$.
+\end{example}
+
+Por fim, temos a diferença de conjuntos.
+Se $A$ e $B$ são conjuntos, $A\setminus B=\{x: x\in A \text{ e } x\notin B\}$ é o conjunto de elementos de $A$ que não são elementos de $B$.
+\begin{example}
+    Se $A=\{1, 2, 3\}$ e $B=\{3, 4, 5\}$, então $A\setminus B=\{1, 2\}$.
+\end{example}
+
+Há um tipo especial de conjuntos chamado de \emph{par ordenado}.
+Se $x$ e $y$ são pares ordenados, então $\langle x, y\rangle$ é o par ordenado de $x$ e $y$.
+Formalmente, $x$ e $y$ não são, em geral, elementos de $\langle x, y\rangle$, de modo que não podemos escrever $x\in \langle x, y\rangle$ ou $y\in \langle x, y\rangle$.
+Há construções formais específicas para criar tais objetos que não serão tratadas aqui.
+
+Pares ordenados tem a propriedade de que $\langle x_1, y_1\rangle = \langle x_2, y_2\rangle$ se, e somente se, $x_1=x_2$ e $y_1=y_2$.
+Dessa forma, diferente do que ocorre com $\{x_1, x_2\}$, a ordem dos termos que ocorrem no par ordenado é relevante.
+
+\begin{example}
+    $\langle 1, 2\rangle$ é um par ordenado de $1$ e $2$, e é diferente do par ordenado $\langle 2, 1\rangle$ de $2$ e $1$.
+
+    Temos ainda que $\{1, 2\}\neq \langle 1, 2\rangle$.
+    Enquanto o primeiro é o conjunto cujos únicos elementos são $1$ e $2$, o segundo possui outra constituição (não discutida aqui) e tem a propriedade fundamental de que, ao compará-lo com outro par ordenado, a ordem dos termos é relevante.
+\end{example}
+
+Se $A$ e $B$ são conjuntos, o produto cartesiano de $A$ e $B$ é o conjunto $A\times B=\{\langle x, y\rangle: x\in A \text{ e } y\in B\}$.
+Uma relação entre $A$ e $B$ é um subconjunto de $A\times B$, ou seja, um conjunto de pares ordenados $\langle x, y\rangle$ tal que $x\in A$ e $y\in B$.
+Uma função de $A$ em $B$ é uma relação $f\subseteq A\times B$ tal que, para cada $x\in A$, existe um único $y\in B$ tal que $\langle x, y\rangle \in f$.
+Tal único $y$ é chamado de imagem de $x$ por $f$, e é denotado por $f(x)$.
+Escrevemos $f: A\to B$ para dizer que $f$ é uma função de $A$ em $B$.
+Neste contexto, $A$ é chamado de domínio de $f$, e $B$ é chamado de um contradomínio de $f$.
+A imagem de $f$ é o conjunto $\{f(x): x\in A\}$, ou seja, o conjunto de todos os elementos de $B$ que são imagens de elementos de $A$ por $f$.
+Note que todo contradomínio de $f$ contém a imagem de $f$, mas pode conter outros elementos que não são imagens de nenhum elemento de $A$ por $f$.
+
+Uma função $f: A\to B$ é injetora se, para quaisquer $x_1, x_2\in A$, $f(x_1)=f(x_2)$ implica que $x_1=x_2$.
+Uma função $f: A\to B$ é sobrejetora se, para cada $y\in B$, existe um $x\in A$ tal que $f(x)=y$.
+Uma função $f: A\to B$ é bijetora se é injetora e sobrejetora.
+
+Se $A, B, C$ são conjuntos e $f: A\to B$ e $g: B\to C$ são funções, então a composição de $f$ e $g$ é a função $g\circ f: A\to C$ tal que, para cada $x\in A$, $(g\circ f)(x)=g(f(x))$.
+
+A função identidade de um conjunto $A$ é a função $\text{id}_A: A\to A$ tal que, para cada $x\in A$, $\text{id}_A(x)=x$.
+
+Se $R\subseteq A\times B$ é uma relação, então a inversa de $R$ é a relação $R^{-1}=\{\langle y, x\rangle: \langle x, y\rangle \in R\}$.
+Como toda função é uma relação, faz sentido considerar a inversa $f^{-1}$ de uma função $f$.
+Fica como exercício para o leitor verificar que, $f^{-1}$ é uma função se, e somente se, $f$ é injetora.
+Temos ainda que se $f: A\to B$ é uma função (com esse domínio e contradomínio), então $f^{-1}: B\to A$ é uma função (de $B$ em $A$), e somente se, $f$ é bijetora (de $A$ em $B$).
+
+Se $f:A\rightarrow B$, a restrição de $f$ à $C$, onde $C\subseteq A$, é a função $f\restriction C: A\cap C\to B$ tal que, para cada $x\in A\cap C$, $f\restriction C(x)=f(x)$.
+É muito comum fazer uso dessa notação quando $C$ já é, na verdade, um subconjunto do domínio de $f$, ou seja, quando $C\subseteq A$.
+Nesses casos, $A\cap C=C$, e, portanto, $f\restriction C: C\to B$ é a função tal que, para cada $x\in C$, $f\restriction C(x)=f(x)$.
+
+Se $A$ é um conjunto, uma operação binária em $A$ é uma função $f: A\times A\to A$.
+Um exemplo usual é a soma de números reais, $+: \mathbb R\times \mathbb R\to \mathbb R$.
+Em vez de escrevermos $+(\langle x, y\rangle)$, escrevemos $+(x, y)$, ou, muito mais normalmente, $x+y$.
