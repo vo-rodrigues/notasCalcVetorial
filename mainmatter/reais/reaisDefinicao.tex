@@ -108,3 +108,349 @@ Parenteses são usados para evitar ambiguidades.
     Para a propriedade $(c)$, temos que $(-x)+x=0$.
     Como $-(-x)$ é o único número real tal que $(-x)+(-(-x))=0$, então $-(-x)=x$.
 \end{proof}
+
+Notemos que a propriedade associativa nos diz que se $x, y, z$ são números reais, então $x+(y+z)=(x+y)+z$.
+Assim, não há ambiguidade em escrever $x+y+z$ sem parênteses.
+No futuro, escreveremos expressões como essa sem ressalvas.
+
+Outras consequências dessas propriedades são as seguintes.
+\begin{proposition}
+    Seja $x$ um número real.
+    Se $-x=0$, então $x=0$.
+    Em particular, $-1\neq 0$.
+\end{proposition}
+\begin{proof}
+    Se $-x=0$, então $x=(-(-x))=-0=0$, provando a primeira afirmação.
+    Para a segunda, aplique a primeira com $x=1$.
+    Como $1\neq 0$, segue que $-1\neq 0$ (ou teríamos $-1=0$, nos dando $1=0$).
+\end{proof}
+
+Agora vamos discutir um pouco acerca das propriedades do grupo \ref{defItem:primeiraMultiplicacao}-\ref{defItem:ultimoMultiplicacao}.
+Tais propriedades regem a multiplicação de números reais e sua relação com a soma.
+
+Começaremos mostrando que o produto por $0$ é sempre $0$.
+
+\begin{proposition}
+Seja $x$ um número real.
+Então $x\cdot 0=0$.
+\end{proposition}
+\begin{proof}
+    Temos que:
+    \begin{align*}
+    x\cdot 0 &= x\cdot (0+0) \tag{0 é neutro da soma} \\
+    &= x\cdot 0 + x\cdot 0 \tag{propriedade distributiva} \\
+    \end{align*}
+
+    Assim, $x\cdot 0 = x\cdot 0 + x\cdot 0$.
+    Temos, somando a ambos os lados $-(x\cdot 0)$, temos:
+    \begin{align*}
+    0 &= -(x\cdot 0) + (x\cdot 0 + x\cdot 0) \tag{pela propriedade do oposto $-(x\cdot 0)$} \\
+    &= (-(x\cdot 0) + x\cdot 0) + x\cdot 0 \tag{propriedade associativa} \\
+    &= 0 + x\cdot 0 \tag{pela definição de oposto} \\
+    &= x\cdot 0. \tag{0 é neutro da soma}
+    \end{align*}
+    Portanto, $x\cdot 0=0$.
+\end{proof}
+
+Podemos também demonstrar as regras de sinais que dizem respeito à multiplicação.
+
+\begin{proposition}
+    Sejam $x, y$ números reais.
+    Então:
+    \begin{enumerate}[label=(\alph*)]
+        \item $(-x)\cdot y = -(x\cdot y)=x\cdot (-y)$;
+        \item $(-x)(-y)=x\cdot y$.
+        \item $-x = (-1)\cdot x$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Para a primeira propriedade, notemos que $x\cdot y + (-(x\cdot y))=x\cdot[y+(-y)]=x\cdot 0=0$.
+    Como $-(x\cdot y)$ é o único número real tal que $(x\cdot y) + (-(x\cdot y))=0$, então $(-x)\cdot y = -(x\cdot y)$.
+
+    Para a segunda igualdade do primeiro item, note que, usando a primeira igualdade, que já provamos, temos que $x\cdot(-y)=(-y)\cdot x=-(y\cdot x)=-(x\cdot y)$.
+
+    Para o segundo item, iteramos a primeira propriedade:
+
+    \[
+    (-x)(-y) = -(x\cdot(-y)) = -(-(x\cdot y)) = x\cdot y.
+    \]
+
+    Para o último item, do primeiro, temos que $(-1)\cdot x = 1\cdot (-x) = -x$.
+\end{proof}
+
+Outra propriedade fundamental dos números reais é a seguinte.
+\begin{definition}
+    Suponha que $x$ e $y$ são números reais tais que $x\cdot y=0$.
+    Então $x=0$ ou $y=0$.
+\end{definition}
+\begin{proof}
+    Suponha que $x\cdot y=0$.
+    Se $x=0$, não há nada para provar.
+    Se $x\neq 0$, então existe um número real $v$ tal que $v\cdot x=1$.
+    Assim, temos que
+    \[
+    y=1\cdot y=(v\cdot x)\cdot y=v\cdot (x\cdot y)=v\cdot 0=0.
+    \]
+\end{proof}
+Abaixo, temos a proposição que nos permite definir frações da forma $\frac{a}{b}$.
+
+\begin{proposition}
+    Sejam $a, b$ números reais com $b\neq 0$.
+    Existe um único número real $r$ tal que $b\cdot r=a$.
+\end{proposition}
+
+\begin{proof}
+    Para a existência, pela propriedade \ref{defItem:inversoMultiplicacao}, existe um número real $v$ tal que $b\cdot v=1$.
+    Tomando $r=v\cdot a$, temos que:
+    \begin{align*}
+    b\cdot r &= b\cdot (v\cdot a) \tag{pela definição de $r$} \\
+    &= (b\cdot v)\cdot a \tag{propriedade associativa} \\
+    &= 1\cdot a \tag{pela escolha de $v$} \\
+    &= a. \tag{elemento neutro da multiplicação}
+    \end{align*}
+
+    Para a unicidade, sejam $r$ e $r'$ números reais tais que $b\cdot r=a$ e $b\cdot r'=a$.
+    Tome $v$ um número real tal que $b\cdot v=1$.
+    
+    Temos que $b\cdot r = b\cdot r'$.
+    Dessa forma, segue que
+    \[
+        v \cdot (b\cdot r) = v \cdot (b\cdot r').
+    \]
+
+    Pela propriedade associativa, temos
+    \[
+        (v \cdot b)\cdot r = (v \cdot b)\cdot r'.
+    \]
+    
+    Pela escolha de $v$, temos
+    \[
+        1\cdot r = 1\cdot r'.
+    \]
+    
+    Como $1$ é elemento neutro, temos
+    \[
+        r = r',
+    \]
+    como queríamos mostrar.
+\end{proof}
+
+\begin{definition}
+    Sejam $a, b$ números reais com $b\neq 0$.
+    A \emph{fração}\index{fração} $\dfrac{a}{b}$ é o único número real que satisfaz
+
+    \[
+        b\cdot \frac{a}{b} = a.
+    \]
+\end{definition}
+
+Notemos que, não é possível definir $\frac{a}{0}$.
+Se para algum $a \in \mathbb R\setminus\{0\}$ houvesse um número real $r$ tal que $0\cdot r=a$, então teríamos que $0=0\cdot r=a$.
+Mesmo que $a=0$, não é uma boa prática definir $\frac{0}{0}$.
+Apesar de ser verdade que existe $u$ tal que $0\cdot u=0$ (por exemplo, $u=0$), tal $u$ não é único: qualquer número real satisfaz $0\cdot u=0$ (por exemplo, $0$ e $1$ são distintos e satisfazem essa equação).
+
+Agora, demonstremos propriedades referentes às frações.
+A partir deste ponto, omitiremos frequentemente o símbolo de multiplicação $\cdot$, escrevendo apenas $ab$ ao invés de $a\cdot b$, a fim de limpar a notação.
+
+\begin{proposition}
+    Sejam $a, b, c, d$ números reais, com $b\neq 0$ e $d\neq 0$ (de modo que, consequentemente, $bd\neq 0$).
+    Então:
+    \begin{enumerate}[label=(\alph*)]
+        \item $\dfrac{a}{b}\cdot \dfrac{c}{d} = \dfrac{ac}{bd}$;
+        \item $\dfrac{d}{d}=1$;
+        \item $\dfrac{c}{1} = c$;
+        \item $\dfrac{a}{b} = \dfrac{ad}{bd}$;
+        \item $\dfrac{a}{b} + \dfrac{c}{b} = \dfrac{a+c}{b}$;
+        \item $\dfrac{a}{b} + \dfrac{c}{d} = \dfrac{ad + bc}{bd}$;
+        \item $\dfrac{ac}{b} = a\cdot \dfrac{c}{b}$;
+        \item $- \dfrac{a}{b} = \dfrac{-a}{b} = \dfrac{a}{-b}$;
+        \item $\dfrac{a}{c} - \dfrac{b}{c} = \dfrac{a-b}{c}$;
+        \item $\dfrac{a}{b} - \dfrac{c}{d} = \dfrac{ad - bc}{bd}$;
+        \item Se $a\neq 0$, então $\dfrac{a}{b}\neq 0$.
+        \item Se $c\neq 0$, então $\dfrac{\dfrac{a}{b}}{\dfrac{c}{d}} = \dfrac{ad}{bc}$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}\hfill
+    (a) Basta ver que $\left(\dfrac{a}{b}\cdot \dfrac{c}{d}\right)\cdot bd = ac$.
+    De fato, pelas propriedades comutativa e associativa da multiplicação, temos que
+    \[
+    \left(\dfrac{a}{b}\cdot \dfrac{c}{d}\right)\cdot bd = \left(\dfrac{a}{b} \cdot a\right) \cdot \left(\dfrac{c}{d}\cdot d\right) = ac.
+    \]
+
+    (b) Imediato, uma vez que $d\cdot 1=  d$.
+
+    (c) Imediato, uma vez que $1\cdot c = c$.
+
+    (d) Dos itens anteriores, temos que:
+    \[
+    \dfrac{ad}{bd} = \dfrac{a}{b}\cdot \dfrac{d}{d} = \dfrac{a}{b}\cdot 1 = \dfrac{a}{b}.
+    \]
+
+    (e) Basta ver que $\left(\dfrac{a}{b} + \dfrac{c}{b}\right)\cdot b = a+c$.
+    De fato, pela propriedade distributiva, temos que
+    \[
+    \left(\dfrac{a}{b} + \dfrac{c}{b}\right)\cdot b = \dfrac{a}{b}\cdot b + \dfrac{c}{b}\cdot b = a+c.
+    \]
+
+    (f) Das propriedades anteriores, temos que
+    \[
+        \dfrac{a}{c} + \dfrac{b}{d} = \dfrac{ad}{cd} + \dfrac{bc}{cd} = \dfrac{ad + bc}{cd}.
+    \]
+
+    (g) Das propriedades anteriores, temos que
+    \[
+        \dfrac{ac}{b} = \dfrac{a\cdot c}{1\cdot b} = \dfrac{a}{1}\cdot \dfrac{c}{b} = a\cdot \dfrac{c}{b}.
+    \]
+    (h) Das propriedades anteriores, temos que
+    \[
+        -\dfrac{a}{b} = (-1)\cdot \dfrac{a}{b} = \dfrac{(-1)a}{b} = \dfrac{-a}{b}
+    \]
+    Note que a fração $\dfrac{a}{-b}$ faz sentido, uma vez que $-b=0$ implica $b=0$, o que é uma contradição.
+    
+    Assim, $\dfrac{a}{-b}$ é bem definida, e temos que
+    \[
+        \dfrac{a}{-b} = \dfrac{a\cdot (-1)}{(-b)(-1)} = \dfrac{-a}{b}.
+    \]
+
+    (i) Pelas propriedades anteriores, temos que
+    \[
+        \dfrac{a}{c} - \dfrac{b}{c} = \dfrac{a}{c} + (-1)\cdot \dfrac{b}{c} = \dfrac{a}{c} + \dfrac{-b}{c} = \dfrac{a+(-b)}{c}=\dfrac{a-b}{c}.
+    \]
+
+    (j) Pelas propriedades anteriores, temos que
+    \[
+        \dfrac{a}{b} - \dfrac{c}{d} = \dfrac{ad}{bd} - \dfrac{bc}{bd} = \dfrac{ad - bc}{bd}.
+    \]
+
+    (k) Suponha que $\frac{a}{b}=0$.
+    Então $a=b\frac{a}{b}=b\cdot 0=0$
+    Dessa forma, se $a\neq 0$, então $\frac{a}{b}\neq 0$ (do contrário, teríamos $\frac{a}{b}=0$, o que implica $a=0$).
+
+    (l) Suponha que $c\neq 0$.
+    Então $\dfrac{c}{d}\neq 0$ e $bc\neq 0$.
+
+    Basta ver que $\left(\dfrac{ad}{bc}\right)\cdot \dfrac{c}{d} = \dfrac{a}{b}$.
+    De fato, pelas propriedades comutativa e associativa da multiplicação, temos que
+    \[
+        \left(\dfrac{ad}{bc}\right)\cdot \dfrac{c}{d} = \left(\dfrac{a}{b}\cdot \dfrac{d}{c}\right)\cdot \dfrac{c}{d} = \dfrac{a}{b}\cdot \left(\dfrac{d}{c}\cdot \dfrac{c}{d}\right) = \dfrac{a}{b}\cdot 1 = \dfrac{a}{b}.
+    \]
+\end{proof}
+
+Agora procederemos para o estudo das propriedades sobre a ordem $<$.
+A Propriedade~\ref{defItem:totalidade} nos diz que quaisquer dois números reais $x$ e $y$ são comparáveis: ou eles são o mesmo, ou um deles é o maior.
+Porém, a Propriedade~\ref{defItem:totalidade} não nos diz que apenas uma dessas possibilidades ocorre.
+Tal fato é, porém, uma consequência das outras propriedades.
+
+\begin{proposition}
+    Sejam $x$ e $y$ números reais.
+    Os seguintes itens NÃO podem ocorrer:
+    \begin{enumerate}[label=(\alph*)]
+        \item $x<y$ e $y<x$;
+        \item $x<y$ e $x=y$;
+        \item $y<x$ e $x=y$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Suponha que $x<y$ e $y<x$.
+    Pela propriedade transitiva, $x<y$ e $y<x$ implicam $x<x$, o que viola a propriedade irreflexiva.
+
+    Suponha que $x<y$ e $x=y$.
+    Substituindo $y$ por $x$ na primeira desigualdade, temos que $x<x$, o que viola a propriedade irreflexiva.
+
+    Por fim, suponha que $y<x$ e $x=y$.
+    Substituindo $x$ por $y$ na primeira desigualdade, temos que $y<y$, o que viola a propriedade irreflexiva.
+\end{proof}
+
+Símbolos muito usados em Matemática são as relações de ordem não estritas: $\leq$.
+
+\begin{definition}
+    Sejam $x$ e $y$ números reais.
+    Dizemos que:
+    \begin{itemize}
+        \item $x$ é \emph{menor ou igual a} $y$, denotado por $x\leq y$, se $x<y$ ou $x=y$;
+        \item $x$ é \emph{maior} que $y$, denotado por $x>y$, se $y<x$;
+        \item $x$ é \emph{maior ou igual a} $y$, denotado por $x\geq y$, se $y\leq x$.
+    \end{itemize}
+\end{definition}
+
+\begin{proposition}
+    Sejam $x$, $y$ e $z$ números reais.
+    \begin{enumerate}[label=(\alph*)]
+        \item Se $x\leq y$ e $y\leq z$, então $x\leq z$;
+        \item Se $x\leq y$ e $y\leq x$, então $x=y$;
+        \item $x\leq x$.
+        \item Se $x\leq y$, então $x+z \leq y+z$.
+        \item Se $x\leq y$ e $0\leq z$, então $xz \leq yz$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}\hfill
+    (a) Suponha que $x\leq y$ e $y\leq z$.
+    
+    Se $x=y$, temos que $y\leq z$ substituindo $y$ por $x$ na segunda desigualdade.
+
+    Se $y=z$, temos que $x\leq y$ substituindo $y$ por $z$ na primeira desigualdade.
+
+    Caso contrário, temos que $x<y$ e $y<z$, o que implica $x<z$ pela propriedade transitiva.
+
+    (b) Suponha que $x\leq y$ e $y\leq x$.
+
+    Suponha por absurdo que $x\neq y$.
+    Segue da definição de $\leq$ que $x<y$ e $y<x$, o que é uma contradição.
+
+    (c) Temos que $x=x$.
+    Logo, pela definição de $\leq$, $x\leq x$.
+
+    (d) Suponha que $x\leq y$.
+    Se $x=y$, então $y+z=x+z$ substituindo-se $y$ por $x$.
+    Se $x<y$, então $x+z<y+z$ pela propriedade de compatibilidade da adição com a ordem.
+
+    (e) Suponha que $x\leq y$ e $0\leq z$.
+    Se $x=y$, segue que $xz=yz$, e, portanto, $xz\leq yz$.
+    A partir daqui, suponha então que $x<y$.
+
+    Se $0=z$, temos que $xz=x\cdot 0 = 0$ e $yz=y\cdot 0=0$, de modo que $xz\leq yz$.
+
+    Por fim, resta o caso em que $0<z$ e $x<y$.
+    Pela propriedade de compatibilidade da multiplicação com a ordem, $xz<yz$, o que implica $xz\leq yz$.
+\end{proof}
+
+Isso será provado abaixo.
+É importante notar que o símbolo $-x$ não indica que $x$ é negativo.
+A operação $x\mapsto -x$ é apenas uma operação algébrica que mapeia $x$ em seu oposto aditivo.
+Note que para $x=-1$, temos que $-x=-(-1)=1$, que é positivo.
+Em verdade, ainda não provamos que $1>0$.
+Isso será feito abaixo.
+
+Denotamos, por $x^2$, o produto $x\cdot x$.
+
+\begin{proposition}
+    Para todo número real $x$, temos que $x^2\geq 0$.
+    Além disso, $x^2=0$ se e somente se $x=0$.
+\end{proposition}
+\begin{proof}
+    Fixe um número real $x$.
+    Vamos dividir a prova em casos.
+    Sabemos, pela totalidade, que $x<0$ ou $x=0$ ou $0<x$.
+
+    Caso $0<x$, temos que $0<x$ e $0<x$, de modo que, pela propriedade de compatibilidade da multiplicação com a ordem, $0x <xx=x^2$.
+    Assim, caso $0<x$, temos que $0<x^2$.
+
+    Caso $x<0$, temos que, pela compatibilidade da adição com a ordem, $x+(-x)<0+(-x)$, ou seja, $0<-x$.
+    Assim, pelo caso anterior, $0<(-x)^2=(-x)(-x)=x^2$.
+
+    Por fim, caso $x=0$, temos que $x^2=0^2=0\cdot 0=0$.
+
+    Notemos que o único destes casos em que $x^2=0$ é o caso em que $x=0$.
+\end{proof}
+
+Agora vamos provar nossas primeiras desigualdades estritas concretas.
+\begin{proposition}
+    Nos números reais, $-1<0<1$.
+\end{proposition}
+\begin{proof}
+    Note que $1\cdot 1=1$, logo, $1=1^2\geq 0$.
+    Como $1\neq 0$, segue que $0<1$.
+    Somando $(-1)$ a ambos os lados da desigualdade $0<1$, temos que $-1<0$.
+
+    Assim, $-1<0<1$.
+\end{proof}
