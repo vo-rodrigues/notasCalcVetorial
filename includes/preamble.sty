@@ -7,8 +7,13 @@
 \usepackage{indentfirst}
 \usepackage{makeidx}
 \usepackage{enumitem}
+\usepackage{float}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tikz, tikz-3dplot}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable, external}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usetikzlibrary{svg.path}
 \renewcommand{\seename}{ver}
 \renewcommand{\alsoname}{ver também}
@@ -28,15 +33,193 @@
 }
 \makeatother
 
+\newcommand{\dom}{\operatorname{dom}}
 
 % Teoremas e ambientes
 
+
+\definecolor{defback}{HTML}{FFFEFA}
+\definecolor{defline}{HTML}{8A7A5E}
+
+\definecolor{resultback}{HTML}{F8FBFF}
+\definecolor{resultline}{HTML}{2F5368}
+\definecolor{knowMoreBack}{HTML}{FDF8F5}
+\definecolor{knowMoreLine}{HTML}{8A7A5E}
+
+\definecolor{exampleline}{HTML}{D8D4C8}
+
+\newlength{\bookparindent}
+\setlength{\bookparindent}{\parindent}
+
+\newlength{\bookparskip}
+\setlength{\bookparskip}{\parskip}
+
+\tcbset{
+    exampleStyle/.style={
+      shield externalize,
+      enhanced,
+      breakable,
+      blanker,
+      borderline south={0.35pt}{0pt}{exampleline},
+      left=0pt,
+      right=0pt,
+      top=7pt,
+      bottom=12pt,
+      before skip=10pt,
+      after skip=10pt,
+      before upper={%
+        \setlength{\parindent}{\bookparindent}%
+        \setlength{\parskip}{\bookparskip}%
+      },
+    }
+}
+\tcolorboxenvironment{example}{
+    exampleStyle
+}
+\tcbset{
+    definitionStyle/.style={
+      enhanced,
+      breakable,
+      lines before break=3,
+      colback=defback,
+      colframe=defline,
+      boxrule=0.15pt,
+      leftrule=1.6pt,
+      arc=1.5pt,
+      left=5pt,
+      right=5pt,
+      top=6pt,
+      bottom=6pt,
+      before skip=10pt,
+      after skip=10pt,
+      toprule at break=0pt,
+      bottomrule at break=0pt,
+      before upper={%
+        \setlength{\parindent}{\bookparindent}%
+        \setlength{\parskip}{\bookparskip}%
+      },
+    },
+    knowMoreStyle/.style={
+      enhanced,
+      breakable,
+      lines before break=3,
+      colback=knowMoreBack,
+      colframe=knowMoreLine,
+      boxrule=0.15pt,
+      leftrule=1.6pt,
+      arc=1.5pt,
+      left=5pt,
+      right=5pt,
+      top=6pt,
+      bottom=6pt,
+      before skip=10pt,
+      after skip=10pt,
+      toprule at break=0pt,
+      bottomrule at break=0pt,
+      before upper={%
+        \setlength{\parindent}{\bookparindent}%
+        \setlength{\parskip}{\bookparskip}%
+      },
+    },
+  resultStyle/.style={
+    shield externalize,
+    enhanced,
+    breakable,
+    colback=resultback,
+    colframe=resultline,
+    boxrule=0.15pt,
+    leftrule=1.8pt,
+    arc=1.5pt,
+    left=5pt,
+    right=5pt,
+    top=6pt,
+    bottom=6pt,
+    before skip=10pt,
+    after skip=10pt,
+    toprule at break=0pt,
+    bottomrule at break=0pt,
+    before upper={%
+      \setlength{\parindent}{\bookparindent}%
+      \setlength{\parskip}{\bookparskip}%
+    },
+    }
+}
+
+\tcolorboxenvironment{metadefinition}{
+    definitionStyle
+}
+\tcolorboxenvironment{definition}{
+    definitionStyle
+}
+\tcolorboxenvironment{convention}{
+    definitionStyle
+}
+\tcolorboxenvironment{axiom}{
+    definitionStyle
+}
+\tcolorboxenvironment{displayaxiominner}{
+    definitionStyle
+}
+\tcolorboxenvironment{metatheorem}{
+    resultStyle
+}
+\tcolorboxenvironment{theorem}{
+    resultStyle
+}
+\tcolorboxenvironment{metalemma}{
+    resultStyle
+}
+\tcolorboxenvironment{lemma}{
+    resultStyle
+}
+\tcolorboxenvironment{metaproposition}{
+    resultStyle
+}
+\tcolorboxenvironment{proposition}{
+    resultStyle
+}
+\tcolorboxenvironment{metacorollary}{
+    resultStyle
+}
+\tcolorboxenvironment{corollary}{
+    resultStyle
+}
 \theoremstyle{definition}
 \newtheorem{definition}{Definição}[section]
-\newtheorem{proposition}[definition]{Proposição}
+\newtheorem{metadefinition}[definition]{Metadefinição}
 \newtheorem{example}[definition]{Exemplo}
+\newtheorem{proposition}[definition]{Proposição}
+\newtheorem{metaproposition}[definition]{Metaproposição}
+\newtheorem{convention}[definition]{Convenção}
+\newtheorem{metalemma}[definition]{Metalema}
+\newtheorem{metatheorem}[definition]{Metateorema}
+\newtheorem{metacorollary}[definition]{Metacorolário}
+\newtheorem{axiom}[definition]{Axioma}
 \newtheorem{lemma}[definition]{Lema}
 \newtheorem{corollary}[definition]{Corolário}
 \newtheorem{theorem}[definition]{Teorema}
 
-\newtheorem{exercise}{Exercício}[chapter]
+\newtheorem{exercise}{Exercício}[section]
+
+\newtheorem{claim}{Afirmação}[definition]
+\newtheorem*{theoremDisplay}{Teorema}
+\tcolorboxenvironment{theoremDisplay}{
+    resultStyle
+}
+\newtheorem*{knowMore}{Para saber mais}
+\tcolorboxenvironment{knowMore}{
+    knowMoreStyle
+}
+\newenvironment{displayaxiom}[1]{\begin{displayaxiominner}[#1]}{\end{displayaxiominner}}
+\newtheoremstyle{namedaxiom}
+  {6pt}
+  {6pt}
+  {}
+  {}
+  {\bfseries}
+  {}
+  {\newline}
+  {#3}
+\theoremstyle{namedaxiom}
+
+\newtheorem*{displayaxiominner}{}
