@@ -30,6 +30,10 @@ Algumas propriedades básicas da distância são as seguintes.
     \end{enumerate}
 \end{proof}
 
+\begin{knowMore}
+    Um espaço métrico é um par $(X, d)$ onde $X$ é um conjunto e $d: X\times X \to \mathbb R$ é uma função que satisfaz as propriedades acima.
+\end{knowMore}
+
 A seguir, definiremos generalizações da noção de intervalo aberto de $\mathbb R$, conceitos essenciais para o futuro estudo de limite, continuidade e diferenciabilidade em $\mathbb R^n$.
 
 \begin{definition}
@@ -44,23 +48,7 @@ A seguir, definiremos generalizações da noção de intervalo aberto de $\mathb
 \end{definition}
 
 Uma bola aberta de raio $r$ centrada em $p$ é ilustrada abaixo.
-
-\begin{figure}[ht]
-    \centering
-    \begin{tikzpicture}
-        % Eixo real
-        \draw[->,ultra thick] (-4,0)--(4,0) node[right]{$\mathbb R$};
-        % Intervalo aberto (p-r, p+r)
-        \draw[thick] (-2,0) -- (2,0);
-        % Pontos abertos nas extremidades
-        \draw[fill=white] (-2,0) circle (2pt) node[below]{$p - r$};
-        \draw[fill=white] (2,0) circle (2pt) node[below]{$p + r$};
-        % Centro p
-        \draw (0,0.1) -- (0,-0.1) node[below]{$p$};
-    \end{tikzpicture}
-    \caption{Bola aberta de centro $p$ e raio $r$ em $\mathbb R$.}
-\end{figure}
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \begin{tikzpicture}
     \draw[->,ultra thick] (-4,0)--(4,0) node[right]{$x$};
@@ -74,4 +62,22 @@ Uma bola aberta de raio $r$ centrada em $p$ é ilustrada abaixo.
     \draw[-,thick] (2,2) -- (3.5,2) node[above right]{$r$};
     \end{tikzpicture}
     \caption{Bola aberta de centro $p$ e raio $r$ em $\mathbb R^2$.}
+\end{figure}
+
+Em $\mathbb R$, a bola aberta de centro $p$ e raio $r$ é exatamente o intervalo aberto $(p-r, p+r)$, como ilustrado abaixo.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        % Eixo real
+        \draw[->,ultra thick] (-4,0)--(4,0) node[right]{$\mathbb R$};
+        % Intervalo aberto (p-r, p+r)
+        \draw[thick] (-2,0) -- (2,0);
+        % Pontos abertos nas extremidades
+        \draw[fill=white] (-2,0) circle (2pt) node[below]{$p - r$};
+        \draw[fill=white] (2,0) circle (2pt) node[below]{$p + r$};
+        % Centro p
+        \draw (0,0.1) -- (0,-0.1) node[below]{$p$};
+    \end{tikzpicture}
+    \caption{Bola aberta de centro $p$ e raio $r$ em $\mathbb R$.}
 \end{figure}
