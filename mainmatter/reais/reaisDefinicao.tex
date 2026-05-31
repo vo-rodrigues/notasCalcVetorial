@@ -444,8 +444,23 @@ Denotamos, por $x^2$, o produto $x\cdot x$.
 \end{proof}
 
 Agora vamos provar nossas primeiras desigualdades estritas concretas.
+\begin{definition}
+    Define-se:
+    \begin{itemize}
+        \item $2=1+1$;
+        \item $3=2+1$;
+        \item $4=3+1$;
+        \item $5=4+1$;
+        \item $6=5+1$;
+        \item $7=6+1$;
+        \item $8=7+1$;
+        \item $9=8+1$;
+        \item $10=9+1$.
+    \end{itemize}
+\end{definition}
+Os demais números reconhecidos como inteiros positivos serão definidos a partir do sistema decimal, que será introduzido mais tarde.
 \begin{proposition}
-    Nos números reais, $-1<0<1$.
+    Nos números reais, $-10<-9<-8<-7<-6<-5<-4<-3<-2<-1<0<1<2<3<4<5<6<7<8<9<10$.
 \end{proposition}
 \begin{proof}
     Note que $1\cdot 1=1$, logo, $1=1^2\geq 0$.
@@ -453,4 +468,79 @@ Agora vamos provar nossas primeiras desigualdades estritas concretas.
     Somando $(-1)$ a ambos os lados da desigualdade $0<1$, temos que $-1<0$.
 
     Assim, $-1<0<1$.
+
+    Somando $1$ em $0<1$, temos que $1<2$.
+
+    Somando $1$ em $1<2$, temos que $2<3$.
+
+    Somando $1$ em $2<3$, temos que $3<4$.
+
+    Somando $1$ em $3<4$, temos que $4<5$
+
+    Somando $1$ em $4<5$, temos que $5<6$.
+
+    Somando $1$ em $5<6$, temos que $6<7$.
+
+    Somando $1$ em $6<7$, temos que $7<8$.
+
+    Somando $1$ em $7<8$, temos que $8<9$
+
+    Somando $1$ em $8<9$, temos que $9<10$.
+
+    Somando $-1$ a ambos os lados da desigualdade $0<1$, temos que $-1<0$.
+
+    Somando $-1$ a ambos os lados da desigualdade $-1<0$, temos que $-2<-1$.
+
+    Somando $-1$ a ambos os lados da desigualdade $-2<-1$, temos que $-3<-2$.
+
+    Somando $-1$ a ambos os lados da desigualdade $-3<-2$, temos que $-4<-3$.
+
+    Somando $-1$ a ambos os lados da desigualdade $-4<-3$, temos que $-5<-4$.
+
+    Somando $-1$ a ambos os lados da desigualdade $-5<-4$, temos que $-6<-5$.
+
+    Somando $-1$ a ambos os lados da desigualdade $-6<-5$, temos que $-7<-6$.
+
+    Somando $-1$ a ambos os lados da desigualdade $-7<-6$, temos que $-8<-7$.
+
+    Somando $-1$ a ambos os lados da desigualdade $-8<-7$, temos que $-9<-8$.
+
+    Somando $-1$ a ambos os lados da desigualdade $-9<-8$, temos que $-10<-9$.
+
+    Assim, $-10<-9<-8<-7<-6<-5<-4<-3<-2<-1<0<1<2<3<4<5<6<7<8<9<10$.
+\end{proof}
+
+\begin{proposition}
+    Seja $a$ um número real.
+    Se $0<a$, então $0<\frac{1}{a}$.
+\end{proposition}
+\begin{proof}
+    Suponha que $0<a$.
+    Suponha por absurdo que $\frac{1}{a}\leq 0$.
+    Como $1\neq 0$, segue que $\frac{1}{a}\neq 0$.
+    Assim, $\frac{1}{a}<0$.
+    Multiplicando ambos os lados da desigualdade $\frac{1}{a}<0$ por $a>0$, temos que $1<0$, o que é uma contradição.
+\end{proof}
+
+A ordem dos números reais é uma ordem densa em si mesma (entre quaisquer dois números reais, existe um terceiro número real distinto de ambos).
+Além disso, ela não possui maior elemento nem menor elemento: dado um número real $x$, existe um número real menor que $x$ e um número real maior que $x$.
+\begin{proposition}
+    \begin{enumerate}[label=(\alph*)]
+        \item Se $x<y$, então existe um número real $z$ tal que $x<z<y$.
+        \item Para todo número real $x$, existem números reais $y$ e $z$ tais que $y<x<z$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    (a) Suponha que $x<y$.
+    Temos que $x+x<x+y$, logo, pela propriedade distributiva, $2x<x+y$.
+    Assim, multiplicando ambos os lados da desigualdade $2x<x+y$ por $\frac{1}{2}$, temos que $x<\frac{x+y}{2}$.
+    
+    Analogamente, $x+y<y+y$, logo, pela propriedade distributiva, $x+y<2y$.
+    Assim, multiplicando ambos os lados da desigualdade $x+y<2y$ por $\frac{1}{2}$, temos que $\frac{x+y}{2}<y$.
+    Portanto, $x<\frac{x+y}{2}<y$.
+
+    (b) Dado um número real $x$.
+    Temos que $-1<0<1$.
+    Somando $x$ a todos os membros da desigualdade $-1<0<1$, temos que $x-1<x<x+1$.
+    Assim, tomando $y=x-1$ e $z=x+1$, temos que $y<x<z$.
 \end{proof}

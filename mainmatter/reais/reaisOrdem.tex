@@ -1,0 +1,45 @@
+\section{A propriedade do supremo}
+
+Até então, todas as propriedades exploradas sobre os números reais são compartilhadas com os conhecidos números racionais.
+O que os difere é a propriedade do supremo.
+Lembremos que ela diz que todo subconjunto não vazio de $\mathbb R$ que é limitado superiormente tem um supremo.
+
+Para compreendê-la, é necessário entender o que é um supremo.
+
+\begin{definition}Sejam $a<b$ números reais.
+\begin{itemize}
+\item O intervalo aberto determinado por $a$ e $b$ é o conjunto $]a,b[=\{x\in\mathbb R: a<x<b\}$.
+\item O intervalo fechado determinado por $a$ e $b$ é o conjunto $[a,b]=\{x\in\mathbb R: a\leq x\leq b\}$.
+\item Os intervalos semiabertos determinados por $a$ e $b$ são os conjuntos $]a,b]=\{x\in\mathbb R: a<x\leq b\}$ e $[a,b[=\{x\in\mathbb R: a\leq x<b\}$.
+\item Define-se, ainda, os intervalos $]-\infty,a[=\{x\in\mathbb R: x<a\}$, $]-\infty,a]=\{x\in\mathbb R: x\leq a\}$, $]b,+\infty[=\{x\in\mathbb R: x>b\}$ e $[b,+\infty[=\{x\in\mathbb R: x\geq b\}$.
+\item Finalmente, por completude, define-se que $]-\infty,+\infty[=\mathbb R$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}Seja $A$ um subconjunto de $\mathbb R$.
+\begin{itemize}
+\item Dizemos que $M\in\mathbb R$ é um \textbf{limitante superior} de $A$ se, para todo $a\in A$, temos $a\leq M$.
+\item Dizemos que $m\in\mathbb R$ é um \textbf{limitante inferior} de $A$ se, para todo $a\in A$, temos $m\leq a$.
+\item Dizemos que $M\in\mathbb R$ é um \textbf{máximo} de $A$ se $M\in A$ e, para todo $a\in A$, temos $a\leq M$.
+\item Dizemos que $m\in\mathbb R$ é um \textbf{mínimo} de $A$ se $m\in A$ e, para todo $a\in A$, temos $m\leq a$.
+\item Dizemos que $M\in\mathbb R$ é o \textbf{supremo} de $A$ se $M$ é um limitante superior de $A$ e, para todo limitante superior $y$ de $A$, temos $M\leq y$.
+\item Dizemos que $m\in\mathbb R$ é o \textbf{ínfimo} de $A$ se $m$ é um limitante inferior de $A$ e, para todo limitante inferior $y$ de $A$, temos $y\leq m$.
+\item Dizemos que $A$ é \textbf{limitado superiormente} se $A$ possui um limitante superior.
+\item Dizemos que $A$ é \textbf{limitado inferiormente} se $A$ possui um limitante inferior.
+\item Dizemos que $A$ é \textbf{limitado} se $A$ é limitado superiormente e limitado inferiormente.
+\end{itemize}
+\end{definition}
+
+Vejamos alguns exemplos.
+\begin{example}
+Considere o conjunto $A=]0,1[$.
+O número $1$ é um limitante superior de $A$, pois se $x\in A$, então $0<x<1$, logo $x\leq 1$.
+$1$ é supremo de $A$, pois se $y<1$, existe $x\in A$ tal que $y<x<1$, logo $y$ não é limitante superior de $A$.
+De fato, para se obter $x$, defina $y'=\max\{y, 0\}$.
+Então $y\leq y'<\frac{y'+1}{2}<1$, logo $y'$ é um limitante superior de $A$ e $y<y'$, o que mostra que $y$ não é limitante superior de $A$.
+
+Agora considere $[1, 2]$.
+Temos que $1$ é um limitante inferior de $[1, 2]$, pois se $x\in [1, 2]$, então $1\leq x\leq 2$, logo $1\leq x$.
+$1$ é mínimo de $[1, 2]$, pois $1\in [1, 2]$.
+Assim, pela seguinte proposição, $1$ é ínfimo de $[1, 2]$.
+\end{example}
