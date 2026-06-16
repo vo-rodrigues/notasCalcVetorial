@@ -1,28 +1,29 @@
 \section{Noções topológicas}\index{noções topológicas}
-Nessa seção, discutiremos sucintamente noções topológicas básicas sobre os espaços $\mathbb R^n$.
-Ao longo dela, $n$ denota um inteiro positivo.
-Não é nosso objetivo, nesta seção, apresentar uma introdução completa à Topologia, mas apenas apresentar noções topológicas básicas que serão úteis para o estudo de limites, continuidade e diferenciabilidade em $\mathbb R^n$.
+Nesta seção, discutiremos sucintamente noções topológicas básicas em espaços métricos.
+Ao longo desta seção, $(M,d)$ denotará um espaço métrico arbitrário.
+
+Aconselhamos o leitor a sempre possuir em mente o exemplo $M=\mathbb R^n$.
 
 \subsection{Conjuntos abertos}
 
 \begin{definition}\index{conjunto aberto}
-    Seja $n\geq 1$ e seja $A$ um subconjunto de $\mathbb R^n$.
+    Seja $A$ um subconjunto de $M$.
     Dizemos que $A$ é \emph{aberto} se, para todo $p\in A$, existe $r>0$ tal que $B(p, r)\subseteq A$.
 \end{definition}
 
-A intuição de conjunto aberto é a seguinte: para que $A$ seja aberto, é necessário que cada um dos seus pontos possui uma ``folga'' dentro de $A$.
+A intuição de conjunto aberto é a seguinte: para que $A$ seja aberto, é necessário que cada um dos seus pontos possua uma ``folga'' dentro de $A$.
 
 \subimport{}{nocoesTopologicas-figuraAbertos}
 
 Iniciaremos vendo que a bola aberta é aberta, justificando seu nome.
 
 \begin{proposition}
-    Sejam $n\geq 1$, $p \in \mathbb R^n$ e $r>0$.
+    Sejam $(M,d)$ um espaço métrico, $p \in M$ e $r>0$.
     Então, a bola aberta $B(p, r)$ é um conjunto aberto.
 \end{proposition}
 \begin{proof}
     Seja $q \in B(p, r)$ arbitrário.
-    Note que $d(p, q) < r$, ou seja, $\|p-q\| < r$.
+    Note que $d(p, q) < r$.
 
     Seja $r' = r - d(p, q) > 0$.
     Veremos que $B(q, r') \subseteq B(p, r)$.
@@ -66,25 +67,25 @@ Iniciaremos vendo que a bola aberta é aberta, justificando seu nome.
 Algumas propriedades básicas dos conjuntos abertos são as seguintes.
 
 \begin{proposition}\index{conjunto aberto!propriedades}
-    Sobre abertos de $\mathbb R^n$, temos as seguintes propriedades.
+    Sobre os abertos de um espaço métrico $M$, temos as seguintes propriedades.
     \begin{enumerate}[label=(\roman*)]
-        \item $\mathbb R^n$ e o conjunto vazio $\emptyset$ são abertos.
+        \item $M$ e o conjunto vazio $\emptyset$ são abertos.
         \item A união de qualquer coleção de conjuntos abertos é aberta.\index{conjunto aberto!união}
         \item A interseção de dois conjuntos abertos é aberta.\index{conjunto aberto!interseção finita}
     \end{enumerate}
 \end{proposition}
 \begin{proof}
-    (i) O conjunto $\mathbb R^n$ é aberto porque, para todo $p \in \mathbb R^n$, temos que $B(p, 1) \subseteq \mathbb R^n$.
+    (i) O conjunto $M$ é aberto porque, para todo $p \in M$, temos que $B(p, 1) \subseteq M$.
     O conjunto vazio $\emptyset$ é aberto por vacuidade: do contrário, haveria um ponto $p \in \emptyset$ tal que, para todo $r>0$, $B(p, r)\not\subseteq \emptyset$, o que é absurdo, pois não existem pontos no conjunto vazio.
 
-    (ii) Seja $\{A_i\}_{i \in I}$ uma coleção indexada de conjuntos abertos de $\mathbb R^n$.
+    (ii) Seja $\{A_i\}_{i \in I}$ uma coleção indexada de conjuntos abertos de $M$.
     Seja $A = \bigcup_{i \in I} A_i$.
     Seja $p \in A$ arbitrário.
     Então, existe $j \in I$ tal que $p \in A_j$.
     Como $A_j$ é aberto, existe $r>0$ tal que $B(p, r) \subseteq A_j\subseteq A$, e, portanto, $B(p, r) \subseteq A$.
     Assim, $A$ é aberto.
 
-    (iii) Seja $A_1$ e $A_2$ conjuntos abertos de $\mathbb R^n$.
+    (iii) Sejam $A_1$ e $A_2$ conjuntos abertos de $M$.
     Seja $p \in A_1\cap A_2$ arbitrário.
     Existe $r_1>0$ tal que $B(p, r_1) \subseteq A_1$ e existe $r_2>0$ tal que $B(p, r_2) \subseteq A_2$.
     Seja $r = \min\{r_1, r_2\}$.
@@ -101,12 +102,12 @@ Algumas propriedades básicas dos conjuntos abertos são as seguintes.
         \item A interseção de dois conjuntos pertencentes a $\tau$ pertence a $\tau$.
     \end{enumerate}
     Nesse contexto, os conjuntos pertencentes a $\tau$ são chamados de \emph{conjuntos abertos} de $X$.
-    Assim, pela proposição anterior a definição de espaço topológico é uma generalização da noção de conjunto aberto que vimos para $\mathbb R^n$.
+    Assim, pela proposição anterior, todo espaço métrico determina um espaço topológico: basta tomar como $\tau$ a coleção dos subconjuntos abertos de $M$.
 \end{knowMore}
 
 \begin{example}\label{exemplo:intervalos-abertos-sao-abertos}
-    Em $\mathbb R$, intervalos abertos $]a, b[$ com $a<b$ são conjuntos abertos.
-    Para ver isso, podemos escrevê-lo como uma ``bola'' aberta.
+    Em $\mathbb R$, com a distância usual, intervalos abertos $]a, b[$ com $a<b$ são conjuntos abertos.
+    Para ver isso, podemos escrevê-lo como uma bola aberta.
     
     Seu ponto médio, $x=\frac{a+b}{2}$, é um candidato natural a ser o centro da bola aberta.
 
@@ -143,91 +144,76 @@ Algumas propriedades básicas dos conjuntos abertos são as seguintes.
     De fato, $]-\infty, a[ = \bigcup_{b<a} ]b, a[$ é uma união de conjuntos abertos, logo é aberto.
 \end{example}
 
-\subsection{Pontos isolados e de acumulação de subconjuntos de \texorpdfstring{$\mathbb R^n$}{Rn}}
+\subsection{Pontos isolados e de acumulação}
 
 A noção de ponto isolado captura a ideia de que um ponto de um conjunto é ``separado'' dos outros pontos do conjunto.
 Há uma ``folga'' em torno dele que o separa dos outros pontos do conjunto.
 
 \begin{definition}\index{ponto isolado}
-    Sejam
-    \begin{itemize}
-        \item $n\geq 1$,
-        \item $A\subseteq \mathbb R^n$, e\
-        \item $p \in A$.
-    \end{itemize}
-    Dizemos que um ponto $p \in A$ é um \emph{ponto isolado} de $A$ se existe $r>0$ tal que
+    Sejam $A\subseteq M$ e $p \in A$.
+    Dizemos que $p$ é um \emph{ponto isolado} de $A$ se existe $r>0$ tal que
     \[
         B(p, r)\cap A = \{p\}.
     \]
 \end{definition}
 
 \begin{example}
-    Em $\mathbb R^2$, seja $A = B(0, 1)\cup \{(2, 0)\}$ 
-    Temos que $p=(2, 0)$ é um ponto isolado de $A$, logo $f$ é contínua em $(2, 0)$.
+    Em $\mathbb R^2$, seja $A = B((0,0), 1)\cup \{(2, 0)\}$.
+    Temos que $p=(2, 0)$ é um ponto isolado de $A$.
     De fato, considere $r=1$.
     
     Temos que $B(p, r)\cap A=\{p\}$.
     Com efeito, temos que $p\in B(p, r)\cap A$, pois $p \in A$ e $d(p, p) = 0 < r$.
-    Reciprocamente, se $x \in B(p, r)\cap A$, temos que $x\notin B(0, 1)$, pois se $x \in B(0, 1)\cap B(p, r)$, então $d(0, p) \leq d(0, x) + d(x, p) < 1 + r = 2$, assim, $d(0, p)<2$.
-    Por outro lado, $d(0, p)=\sqrt{(2-0)^2 + (0-0)^2} = \sqrt{4} = 2$, o que é uma contradição.
+    Reciprocamente, se $x \in B(p, r)\cap A$, temos que $x\notin B((0,0), 1)$, pois se $x \in B((0,0), 1)\cap B(p, r)$, então $d((0,0), p) \leq d((0,0), x) + d(x, p) < 1 + r = 2$, assim, $d((0,0), p)<2$.
+    Por outro lado, $d((0,0), p)=\sqrt{(2-0)^2 + (0-0)^2} = \sqrt{4} = 2$, o que é uma contradição.
 \end{example}
 
 \subimport{}{nocoesTopologicas-figuraExemploPontoIsolado}
 
-Um ponto de acumulação de um subconjunto $A$ de $\mathbb R^n$ é, intuitivamente, um ponto que está ``grudado'' nos pontos de $A$ diferentes dele próprio.
+Um ponto de acumulação de um subconjunto $A$ de $M$ é, intuitivamente, um ponto que está ``grudado'' nos pontos de $A$ diferentes dele próprio.
 
 \begin{definition}\index{ponto de acumulação}
-    Sejam
-    \begin{itemize}
-    \item $n\geq 1$,
-    \item $A\subseteq\mathbb R^n$, e
-    \item $p \in \mathbb R^n$.
-    \end{itemize}
-    Dizemos que um ponto $p \in \mathbb R^n$ é um \emph{ponto de acumulação} de $A$ se, para todo $r>0$,
-    
+    Sejam $A\subseteq M$ e $p \in M$.
+    Dizemos que $p$ é um \emph{ponto de acumulação} de $A$ se, para todo $r>0$,
     \[
-        B(p, r)\cap A\setminus\{p\}\neq \emptyset.
+        \bigl(B(p, r)\cap A\bigr)\setminus\{p\}\neq \emptyset.
     \]
 \end{definition}
 
-A expressão $B(p, r)\cap A\setminus\{p\}\neq\emptyset$ significa que em $B(p, r)\cap A$, existe um ponto diferente de $p$.
+A expressão $\bigl(B(p, r)\cap A\bigr)\setminus\{p\}\neq\emptyset$ significa que em $B(p, r)\cap A$ existe um ponto diferente de $p$.
 
 Ou seja, independente de quão pequeno seja um raio $r$ dado, teremos um ponto de $A$ diferente de $p$ que dista de $p$ menos de $r$.
 
 \subimport{}{nocoesTopologicas-figuraPontoAcumulacao}
 
+Em $\mathbb R^n$, toda bola aberta centrada em um ponto $p$ contém pontos diferentes de $p$.
+De fato, dado $s>0$, basta tomar $q=p+\frac{s}{2}e_1$, em que $e_1=(1,0,\dots,0)$.
+Então $q\neq p$ e $d(p,q)=\frac{s}{2}<s$.
+Portanto, $\mathbb R^n$ não possui pontos isolados em si mesmo.
 
-Como um primeiro exemplo, veremos que os pontos de abertos de $\mathbb R^n$ são pontos de acumulação do aberto em questão.
+Em um espaço métrico geral, isso pode falhar.
+Diremos que $M$ \emph{não possui pontos isolados} se, para todo $p\in M$ e todo $r>0$, existe $q\in B(p,r)$ tal que $q\neq p$.
+
+Como um primeiro resultado, veremos que, em espaços métricos sem pontos isolados, os pontos de abertos são pontos de acumulação do aberto em questão.
+Em particular, o resultado vale para abertos de $\mathbb R^n$.
 
 \begin{proposition}\label{prop:abertosPontosAcumulacao}
-    Seja $n\geq 1$ e seja $A$ um subconjunto aberto de $\mathbb R^n$.
+    Seja $(M,d)$ um espaço métrico sem pontos isolados e seja $A$ um subconjunto aberto de $M$.
 
     Então todo ponto de $A$ é um ponto de acumulação de $A$.
 \end{proposition}
 \begin{proof}
-    Seja $A$ um conjunto aberto de $\mathbb R^n$ e seja $p \in A$ arbitrário.
+    Seja $A$ um conjunto aberto de $M$ e seja $p \in A$ arbitrário.
     Como $A$ é aberto, existe $r>0$ tal que $B(p, r)\subseteq A$.
 
-    Dado $s>0$, queremos ver que $B(p, s)\cap A\setminus\{p\}\neq \emptyset$.
+    Dado $s>0$, queremos ver que $\bigl(B(p, s)\cap A\bigr)\setminus\{p\}\neq \emptyset$.
 
     Seja $s'=\min\{s, r\}$.
-    Temos que:
+    Como $M$ não possui pontos isolados, existe $q\in B(p,s')$ tal que $q\neq p$.
+    Como $s'\leq s$, temos $q\in B(p,s)$.
+    Como $s'\leq r$, temos $q\in B(p,r)\subseteq A$.
 
-    \begin{align*}
-        B(p, s)\cap B(p, r)=&\{x \in \mathbb R^n : d(p, x) < s\} \cap \{x \in \mathbb R^n : d(p, x) < r\} \\=& \{x \in \mathbb R^n : d(p, x) < \min\{s, r\}\}\\=& B(p, \min\{s, r\})=B(p, s').
-    \end{align*}
-
-    Assim, temos que $B(p, s')=B(p, s)\cap B(p, r)\subseteq B(p, s)\cap A$.
-
-    Basta ver, então, que $B(p, s')$ possui pontos diferentes de $p$.
-    Daremos uma prova formal para esse fato ``visualmente intuitivo'' (recomenda-se tentar desenhar, caso tenha dificuldades em visualizar o desejado).
-
-    De fato, consideremos exemplo um pequeno deslocamento de $p$ na direção $e_1=(1, 0, \dots, 0)$, ou seja, considere $q=p+\delta e_1$ para algum $\delta > 0$ que será escolhido a seguir. Temos que
-    \[
-    d(q, p) = \|q-p\| = \|p+\delta e_1 - p\| = \|\delta e_1\| = \delta\|e_1\| = \delta.
-    \]
-
-    Tomando $\delta=\dfrac{s'}{2}$, temos que $d(q, p) = \delta < s'$, ou seja, $q \in B(p, s')$.
+    Portanto, $q\in \bigl(B(p, s)\cap A\bigr)\setminus\{p\}$.
 \end{proof}
 
 \subimport{}{nocoesTopologicas-figuraAbertosPontosAcumulacao}
@@ -235,7 +221,7 @@ Como um primeiro exemplo, veremos que os pontos de abertos de $\mathbb R^n$ são
 Pontos isolados e de acumulação são, em algum sentido, antagônicos.
 
 \begin{proposition}\index{ponto isolado!ponto de acumulação}
-    Seja $n\geq 1$, seja $A$ um subconjunto de $\mathbb R^n$ e seja $p \in A$.
+    Sejam $A$ um subconjunto de $M$ e $p \in A$.
     
     Então uma, e apenas uma das seguintes afirmações é verdadeira:
     \begin{enumerate}[label=(\roman*)]
@@ -246,90 +232,91 @@ Pontos isolados e de acumulação são, em algum sentido, antagônicos.
 \begin{proof}
     (i) e (ii) não podem valer simultaneamente:
     a primeira afirmação diz que existe $r>0$ tal que $B(p, r)\cap A = \{p\}$.
-    Mas, então, para esse mesmo $r>0$, temos que $B(p, r)\cap A\setminus\{p\} = \emptyset$, o que é uma contradição com a segunda afirmação.
+    Mas, então, para esse mesmo $r>0$, temos que $\bigl(B(p, r)\cap A\bigr)\setminus\{p\} = \emptyset$, o que é uma contradição com a segunda afirmação.
 
     Para ver que uma delas deve valer, vamos supor que não vale (ii) e mostrar que (i) segue.
-    Como (ii) não vale, existe $r>0$ tal que $B(p, r)\cap A\setminus\{p\} = \emptyset$.
+    Como (ii) não vale, existe $r>0$ tal que $\bigl(B(p, r)\cap A\bigr)\setminus\{p\} = \emptyset$.
     Veremos que $B(p, r)\cap A = \{p\}$.
 
     De fato, temos que $p \in B(p, r)\cap A$, pois $p \in A$ e $d(p, p) = 0 < r$.
-    Reciprocamente, se $x \in B(p, r)\cap A$, temos que $x=p$, do contrário, teríamos que $x \in B(p, r)\cap A\setminus\{p\}$, o que é uma contradição.
+    Reciprocamente, se $x \in B(p, r)\cap A$, temos que $x=p$, do contrário, teríamos que $x \in \bigl(B(p, r)\cap A\bigr)\setminus\{p\}$, o que é uma contradição.
 \end{proof}
 
 Temos ainda que pontos de acumulação são ``indestrutíveis'' pela remoção de um número finito de pontos.
 
 \begin{proposition}\label{proposicaoPontoAcumulacaoRemocaoPontos}
-    Seja $n\geq 1$, seja $A$ um subconjunto de $\mathbb R^n$ e seja $p \in \mathbb R^n$ um ponto de acumulação de $A$.
+    Sejam $A$ um subconjunto de $M$ e $p \in M$ um ponto de acumulação de $A$.
 
-    Então, para todo conjunto finito $F\subseteq \mathbb R^n$, o ponto $p$ é um ponto de acumulação de $A\setminus F$.
+    Então, para todo conjunto finito $F\subseteq M$, o ponto $p$ é um ponto de acumulação de $A\setminus F$.
 \end{proposition}
 \begin{proof}
-    Seja $F$ um conjunto finito de $\mathbb R^n$ e seja $s>0$ arbitrário.
+    Seja $F$ um conjunto finito de $M$ e seja $s>0$ arbitrário.
 
-    Devemos ver que $\big(B(p, s)\cap (A\setminus F)\big)\setminus\{p\}\neq \emptyset$.
+    Devemos ver que $\bigl(B(p, s)\cap (A\setminus F)\bigr)\setminus\{p\}\neq \emptyset$.
 
     Para cada $a \in F\setminus\{p\}$, seja $r_a = d(p, a)$.
     Seja $r = \min(\{s\}\cup\{r_a : a \in F\setminus\{p\}\})$.
     Temos que cada $r_a=d(p, a)$ é positivo, pois $a\neq p$.
     Assim, $r>0$.
 
-    Como $p$ é um ponto de acumulação de $A$, temos que $B(p, r)\cap A\setminus\{p\}\neq \emptyset$.
-    Seja $x \in B(p, r)\cap A\setminus\{p\}$ arbitrário.
+    Como $p$ é um ponto de acumulação de $A$, temos que $\bigl(B(p, r)\cap A\bigr)\setminus\{p\}\neq \emptyset$.
+    Seja $x \in \bigl(B(p, r)\cap A\bigr)\setminus\{p\}$ arbitrário.
 
     Temos que $x\in B(p, r)\subseteq B(p, s)$, pois $r\leq s$.
 
-    Temos que $x\notin F$, pois, dado $a \in F$, temos que $d(p, a)=r_s\geq r$, e $d(p, x)<r$.
+    Temos que $x\notin F$, pois, dado $a \in F\setminus\{p\}$, temos que $d(p, a)=r_a\geq r$, enquanto $d(p, x)<r$.
+    Além disso, $x\neq p$.
 
-    Assim, $x \in B(p, s)\cap (A\setminus F)\setminus\{p\}$.
+    Assim, $x \in \bigl(B(p, s)\cap (A\setminus F)\bigr)\setminus\{p\}$.
 
-    Portanto, $\big(B(p, s)\cap (A\setminus F)\big)\setminus\{p\}\neq \emptyset$.
+    Portanto, $\bigl(B(p, s)\cap (A\setminus F)\bigr)\setminus\{p\}\neq \emptyset$.
 \end{proof}
 
 Daí, o seguinte corolário é imediato.
 \begin{corollary}
-    Seja $n\geq 1$, seja $A$ um subconjunto aberto de $\mathbb R^n$.
-    Se $F$ é finito, então todo ponto de $A$ é um ponto de acumulação de $A\setminus F$.
+    Seja $(M,d)$ um espaço métrico sem pontos isolados e seja $A$ um subconjunto aberto de $M$.
+    Se $F\subseteq M$ é finito, então todo ponto de $A$ é um ponto de acumulação de $A\setminus F$.
 \end{corollary}
 \begin{proof}
     Seja $p \in A$ arbitrário.
-    Como $A$ é aberto, $p$ é um ponto de acumulação de $A$.
+    Como $A$ é aberto e $M$ não possui pontos isolados, $p$ é um ponto de acumulação de $A$.
     Como $F$ é finito, $p$ ainda é um ponto de acumulação de $A\setminus F$ pela proposição anterior.
 \end{proof}
 
-\subsection{Subconjuntos fechados de \texorpdfstring{$\mathbb R^n$}{Rn}}
+\subsection{Subconjuntos fechados}
 
 Intuitivamente, um conjunto fechado é um conjunto que contém todos os seus pontos que estão ``grudados'' nele.
 
 \begin{definition}\index{conjunto fechado}
-    Seja $n\geq 1$ e seja $A$ um subconjunto de $\mathbb R^n$.
+    Seja $A$ um subconjunto de $M$.
     Dizemos que $A$ é \emph{fechado} se, para todo ponto de acumulação $p$ de $A$, temos que $p \in A$.
 \end{definition}
 
 Uma forma frequentemente mais prática de verificar se um conjunto é fechado é o seguinte critério.
 \begin{proposition}
-    Seja $n\geq 1$ e seja $A$ um subconjunto de $\mathbb R^n$.
-    Então, $A$ é fechado se, e somente se, seu complemento $\mathbb R^n\setminus A$ é aberto.
+    Seja $A$ um subconjunto de $M$.
+    Então, $A$ é fechado se, e somente se, seu complemento $M\setminus A$ é aberto.
 \end{proposition}
 
 \begin{proof}
     Primeiramente, suponha que $A$ é fechado.
-    Veremos que $\mathbb R^n\setminus A$ é aberto.
+    Veremos que $M\setminus A$ é aberto.
 
-    Seja $p \in \mathbb R^n\setminus A$ arbitrário.
+    Seja $p \in M\setminus A$ arbitrário.
     O ponto $p$ não é um ponto de acumulação de $A$, pois, caso contrário, como $A$ é fechado, teríamos que $p \in A$, o que é uma contradição.
 
-    Assim, como $p$ não é ponto de acumulação de $A$, existe $r>0$ tal que $B(p, r)\cap A\setminus\{p\} = \emptyset$.
+    Assim, como $p$ não é ponto de acumulação de $A$, existe $r>0$ tal que $\bigl(B(p, r)\cap A\bigr)\setminus\{p\} = \emptyset$.
     Daí, $B(p, r)\cap A\subseteq \{p\}$.
     Como $p \notin A$, temos que $B(p, r)\cap A = \emptyset$.
-    Dessa forma, $B(p, r)\subseteq \mathbb R^n\setminus A$.
+    Dessa forma, $B(p, r)\subseteq M\setminus A$.
 
-    Reciprocamente, suponha que $\mathbb R^n\setminus A$ é aberto.
+    Reciprocamente, suponha que $M\setminus A$ é aberto.
     Veremos que $A$ é fechado.
-    Para tanto, devemos ver que para todo $p\in \mathbb R^n$, se $p$ é um ponto de acumulação de $A$, então $p \in A$.
-    Pela contrapositiva, basta ver que para todo $p\in \mathbb R^n$, se $p \notin A$, então $p$ não é um ponto de acumulação de $A$.
+    Para tanto, devemos ver que para todo $p\in M$, se $p$ é um ponto de acumulação de $A$, então $p \in A$.
+    Pela contrapositiva, basta ver que para todo $p\in M$, se $p \notin A$, então $p$ não é um ponto de acumulação de $A$.
 
-    De fato, dado $p \in \mathbb R^n\setminus A$, como $\mathbb R^n\setminus A$ é aberto, existe $r>0$ tal que $B(p, r)\subseteq \mathbb R^n\setminus A$, de modo que $B(p, r)\cap A = \emptyset$.
-    Assim, $B(p, r)\cap A\setminus\{p\} = \emptyset$, o que mostra que $p$ não é um ponto de acumulação de $A$.
+    De fato, dado $p \in M\setminus A$, como $M\setminus A$ é aberto, existe $r>0$ tal que $B(p, r)\subseteq M\setminus A$, de modo que $B(p, r)\cap A = \emptyset$.
+    Assim, $\bigl(B(p, r)\cap A\bigr)\setminus\{p\} = \emptyset$, o que mostra que $p$ não é um ponto de acumulação de $A$.
 \end{proof}
 
 \begin{example}
@@ -337,35 +324,39 @@ Uma forma frequentemente mais prática de verificar se um conjunto é fechado é
 \end{example}
 
 \begin{corollary}
-    Seja $n\geq 1$ e seja $A$ um subconjunto de $\mathbb R^n$.
-    Então, $A$ é aberto se, e somente se, seu complemento $\mathbb R^n\setminus A$ é fechado.
+    Seja $A$ um subconjunto de $M$.
+    Então, $A$ é aberto se, e somente se, seu complemento $M\setminus A$ é fechado.
 \end{corollary}
 \begin{proof}
-    Seja $B=\mathbb R^n\setminus A$.
-    Temos que $B$ é aberto se, e somente se, $\mathbb R^n\setminus B$ é fechado.
-    Mas $\mathbb R^n\setminus B = \mathbb R^n\setminus (\mathbb R^n\setminus A) = A$.
-    Assim, $B=\mathbb R^n\setminus A$ é aberto se, e somente se, $\mathbb R^n\setminus B = A$ é fechado.
+    Seja $B=M\setminus A$.
+    Temos que $B$ é aberto se, e somente se, $M\setminus B$ é fechado.
+    Mas $M\setminus B = M\setminus (M\setminus A) = A$.
+    Assim, $B=M\setminus A$ é aberto se, e somente se, $M\setminus B = A$ é fechado.
 \end{proof}
 
 \begin{proposition}
-    Seja $n\geq 1$ e seja $F$ um subconjunto de $\mathbb R^n$.
+    Seja $F$ um subconjunto finito de $M$.
     Então $F$ não possui pontos de acumulação.
     Em particular, $F$ é fechado.
 \end{proposition}
 \begin{proof}
-    Temos, pela Proposição~\ref{proposicaoPontoAcumulacaoRemocaoPontos} aplicado com $A=F$, que se $p$ é um ponto de acumulação de $F$, então $p$ é um ponto de acumulação de $F\setminus F=\emptyset$.
+    Seja $p\in M$ arbitrário.
+    Para cada $a\in F\setminus\{p\}$, seja $r_a=d(p,a)>0$.
 
-    Assim, basta notar que o conjunto vazio $\emptyset$ não possui pontos de acumulação.
-    De fato, seja $p \in \mathbb R^n$ arbitrário e seja $r>0$.
-    Temos que $B(p, r)\cap \emptyset\setminus\{p\} = \emptyset$.
+    Se $F\setminus\{p\}=\emptyset$, tome $r=1$.
+    Caso contrário, tome $r=\min\{r_a:a\in F\setminus\{p\}\}$.
 
-    Para a última afirmação, temos que $F$ não possui pontos de acumulação, logo, por vacuidade, todo ponto de acumulação de $F$ pertence a $F$ (do contrário, haveria um ponto de acumulação de $F$ que não pertence a $F$, o que é uma contradição, pois $F$ não possui pontos de acumulação).
+    Em ambos os casos, temos $r>0$ e $\bigl(B(p,r)\cap F\bigr)\setminus\{p\}=\emptyset$.
+    Logo, $p$ não é ponto de acumulação de $F$.
+
+    Como $p\in M$ foi arbitrário, $F$ não possui pontos de acumulação.
+    Portanto, por vacuidade, $F$ é fechado.
 \end{proof}
 
 \begin{proposition}
-    Seja $n\geq 1$, seja $A$ um subconjunto de $\mathbb R^n$ e seja $C$ um subconjunto fechado de $\mathbb R^n$.
-    Então $A\setminus C$ é um conjunto aberto de $\mathbb R^n$.
+    Sejam $A$ um subconjunto aberto de $M$ e $C$ um subconjunto fechado de $M$.
+    Então $A\setminus C$ é um conjunto aberto de $M$.
 \end{proposition}
 \begin{proof}
-    De fato, temos que $A\setminus C = A\cap(\mathbb R^n\setminus C)$ é uma interseção de dois conjuntos abertos, logo, é aberto.
+    De fato, temos que $A\setminus C = A\cap(M\setminus C)$ é uma interseção de dois conjuntos abertos, logo, é aberto.
 \end{proof}

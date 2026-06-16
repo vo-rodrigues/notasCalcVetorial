@@ -1,22 +1,57 @@
 \section{Distância em \texorpdfstring{$\mathbb R^n$}{Rn}}
-A distância entre dois pontos $p, q \in \mathbb R^n$ é dada pela métrica usual (Euclidiana), motivada pelo Teorema de Pitágoras.
+A distância euclidiana usual entre dois pontos $p,q\in\mathbb R^n$ é motivada pelo Teorema de Pitágoras:
+ela mede o comprimento do vetor deslocamento entre esses dois pontos.
 
 \begin{definition}
-    Sejam $p, q \in \mathbb R^n$. A \emph{distância (usual, também chamada de Euclidiana)}\index{distância euclidiana}\index{métrica euclidiana|see{distância euclidiana}} entre $p$ e $q$ é definida como:
+    Sejam $p=(p_1,\ldots,p_n)$ e $q=(q_1,\ldots,q_n)$ elementos de $\mathbb R^n$.
+    A \emph{distância euclidiana usual}\index{distância euclidiana}\index{métrica euclidiana|see{distância euclidiana}} entre $p$ e $q$ é definida como:
     \begin{equation*}
         d(p, q) = \|p-q\| = \sqrt{(p-q) \cdot (p-q)}=\sqrt{\sum_{i=1}^n (p_i - q_i)^2}.
     \end{equation*}
 \end{definition}
 
-Para as dimensões $n=1$, $n=2$ e $n=3$, essa é a conhecida distância usual entre dois pontos estudada na Geometria Analítica.
-Para dimensões maiores, tal distância pode ser encarada como uma generalização, por enquanto.
-Um teorema profundo da Análise garante que as propriedades topológicas advindas de distâncias em $\mathbb R^n$ com certas propriedades naturais são equivalentes, de modo que tal generalização fica teoricamente justificada.
+Assim, medir a distância entre $p$ e $q$ é medir o comprimento do vetor $p-q$.
+Como esse vetor representa um deslocamento entre os dois pontos, a definição acima estende a ideia pitagórica de distância.
 
-Algumas propriedades básicas da distância são as seguintes.
-\begin{proposition}
+No caso $n=1$, identificando $\mathbb R^1$ com $\mathbb R$, se $p,q\in\mathbb R$, então
+\[
+    d(p,q)=|p-q|.
+\]
+
+No caso $n=2$, se $p=(x_1,y_1)$ e $q=(x_2,y_2)$, então
+\[
+    d(p,q)=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2},
+\]
+que é exatamente a fórmula da distância no plano cartesiano.
+
+No caso $n=3$, se $p=(x_1,y_1,z_1)$ e $q=(x_2,y_2,z_2)$, recuperamos, analogamente, a fórmula usual da distância no espaço tridimensional:
+\[
+    d(p,q)=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2+(z_1-z_2)^2}.
+\]
+
+Para $n\geq 4$, a mesma fórmula será tomada como a extensão natural da distância pitagórica para pontos com $n$ coordenadas.
+
+\begin{example}
+    Se $p=(1,2)$ e $q=(4,6)$, então
+    \[
+        d(p,q)=\sqrt{(1-4)^2+(2-6)^2}
+        =\sqrt{9+16}=5.
+    \]
+    Geometricamente, estamos calculando o comprimento do vetor
+    \[
+        p-q=(-3,-4),
+    \]
+    que representa um deslocamento de $q$ até $p$.
+\end{example}
+
+As propriedades abaixo formalizam fatos esperados de qualquer boa noção de distância:
+a distância nunca é negativa; dois pontos têm distância zero exatamente quando são o mesmo ponto;
+a ordem dos pontos não altera a distância entre eles;
+e ir diretamente de $p$ até $r$ nunca é mais longo do que ir de $p$ até $q$ e depois de $q$ até $r$.
+\begin{proposition}\label{prop:distanciaRn}
     Sejam $p, q, r \in \mathbb R^n$. Então:
     \begin{enumerate}
-        \item $d(p, q) = 0$ se, e somente se, $p=q$.
+        \item $d(p, q)\geq 0$, e $d(p, q) = 0$ se, e somente se, $p=q$.
         \item $d(p, q) = d(q, p)$ (simetria);
         \item $d(p, r) \leq d(p, q) + d(q, r)$ (desigualdade triangular).
     \end{enumerate}
@@ -24,64 +59,58 @@ Algumas propriedades básicas da distância são as seguintes.
 \begin{proof}
     Vamos verificar cada uma das propriedades.
     \begin{enumerate}
-        \item Dados $p$ e $q$, temos que $d(p, q) = 0$ se, e somente se, $\|p-q\|=0$, o que ocorre se, e somente se, $p-q=0$, ou seja, $p=q$.
-        \item Temos que $d(p, q) = \|p-q\| = |-1|\|p-q\| = \|q-p\| = d(q, p)$.
-        \item Temos que:
+        \item Como $d(p,q)=\|p-q\|$, temos $d(p,q)\geq 0$. Além disso, $d(p, q) = 0$ se, e somente se, $\|p-q\|=0$, o que ocorre se, e somente se, $p-q=0$, ou seja, $p=q$.
+        \item Como $q-p=-(p-q)$, temos
+        \[
+            d(q,p)=\|q-p\|=\|-(p-q)\|=|-1|\|p-q\|=\|p-q\|=d(p,q).
+        \]
+        \item Como $p-r=(p-q)+(q-r)$, temos:
         \begin{align*}
-            d(p, r) &= \|p-r\| = \|p-q+q-r\| \\
+            d(p, r) &= \|p-r\| = \|(p-q)+(q-r)\| \\
             &\leq \|p-q\| + \|q-r\| = d(p, q) + d(q, r).
         \end{align*}
     \end{enumerate}
 \end{proof}
 
-\begin{knowMore}
-    Um espaço métrico é um par $(X, d)$ onde $X$ é um conjunto e $d: X\times X \to \mathbb R$ é uma função que satisfaz as propriedades acima.
-\end{knowMore}
+\begin{exercise}
+    Calcule as seguintes distâncias:
+    \begin{enumerate}[label=(\alph*)]
+        \item $d(-3,5)$ em $\mathbb R$;
+        \item $d((1,2),(4,6))$ em $\mathbb R^2$;
+        \item $d((0,0),(3,4))$ em $\mathbb R^2$;
+        \item $d((1,0,-1,2),(3,-1,2,2))$ em $\mathbb R^4$.
+    \end{enumerate}
+\end{exercise}
 
-A seguir, definiremos generalizações da noção de intervalo aberto de $\mathbb R$, conceitos essenciais para o futuro estudo de limite, continuidade e diferenciabilidade em $\mathbb R^n$.
+\begin{exercise}
+    Sejam $p,q,a\in\mathbb R^n$.
+    Mostre que
+    \[
+        d(p+a,q+a)=d(p,q).
+    \]
+    Interprete geometricamente essa igualdade.
+\end{exercise}
 
-\begin{definition}
-    Sejam $p \in \mathbb R^n$ e $r>0$. A \emph{bola aberta}\index{bola aberta}\index{bola|see{bola aberta}} de centro $p$ e raio $r$ é o conjunto:
-    \begin{equation*}
-        B(p, r) = \{q \in \mathbb R^n : d(p, q) < r\}.
-    \end{equation*}
-    A \emph{bola fechada}\index{bola fechada} de centro $p$ e raio $r$ é o conjunto:
-    \begin{equation*}
-        \overline B(p, r) = \{q \in \mathbb R^n : d(p, q) \leq r\}.
-    \end{equation*}
-\end{definition}
+\begin{exercise}
+    Sejam $p,q\in\mathbb R^n$ e $\alpha\in\mathbb R$.
+    Mostre que
+    \[
+        d(\alpha p,\alpha q)=|\alpha|d(p,q).
+    \]
+\end{exercise}
 
-Uma bola aberta de raio $r$ centrada em $p$ é ilustrada abaixo.
-\begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-    \draw[->,ultra thick] (-4,0)--(4,0) node[right]{$x$};
-    \draw[->,ultra thick] (0,-4)--(0,4) node[above]{$y$};
-    % Centro da bola
-    \filldraw[black] (2,2) circle (2pt);
-    \node[below right] at (2,2) {$p$};
-    % Raio da bola
-    \draw[dashed] (2,2) circle (1.5);
-    % Desenho do raio da bola
-    \draw[-,thick] (2,2) -- (3.5,2) node[above right]{$r$};
-    \end{tikzpicture}
-    \caption{Bola aberta de centro $p$ e raio $r$ em $\mathbb R^2$.}
-\end{figure}
+\begin{exercise}
+    Sejam $p,q,r\in\mathbb R^n$.
+    Use a desigualdade triangular para mostrar que
+    \[
+        d(p,r)-d(q,r)\leq d(p,q).
+    \]
+    Em seguida, conclua que
+    \[
+        |d(p,r)-d(q,r)|\leq d(p,q).
+    \]
+\end{exercise}
 
-Em $\mathbb R$, a bola aberta de centro $p$ e raio $r$ é exatamente o intervalo aberto $(p-r, p+r)$, como ilustrado abaixo.
-
-\begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-        % Eixo real
-        \draw[->,ultra thick] (-4,0)--(4,0) node[right]{$\mathbb R$};
-        % Intervalo aberto (p-r, p+r)
-        \draw[thick] (-2,0) -- (2,0);
-        % Pontos abertos nas extremidades
-        \draw[fill=white] (-2,0) circle (2pt) node[below]{$p - r$};
-        \draw[fill=white] (2,0) circle (2pt) node[below]{$p + r$};
-        % Centro p
-        \draw (0,0.1) -- (0,-0.1) node[below]{$p$};
-    \end{tikzpicture}
-    \caption{Bola aberta de centro $p$ e raio $r$ em $\mathbb R$.}
-\end{figure}
+\begin{exercise}
+    Determine o conjunto de todos os pontos $x\in\mathbb R$ tais que $d(x,3)<2$.
+\end{exercise}
