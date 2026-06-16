@@ -1,7 +1,13 @@
 \section{Pontos de acumulação e limites}
 
 \begin{proposition}\index{continuidade!ponto isolado}
-    Seja $A\subseteq \mathbb R^n$ um conjunto e $f: A \to \mathbb R^m$ uma função. Se $p \in A$ é um ponto isolado de $A$, então $f$ é contínua em $p$.
+    Sejam
+    \begin{itemize}
+        \item $A\subseteq \mathbb R^n$ um conjunto,
+        \item $f: A \to \mathbb R^m$ uma função, e
+        \item $p \in A$.
+    \end{itemize}
+        Se $p$ é um ponto isolado de $A$, então $f$ é contínua em $p$.
 \end{proposition}
 
 \begin{proof}
@@ -16,19 +22,27 @@ No caso de isso não ocorrer, o que pode ocorrer?
 Uma das opções é que $f(x)$ se aproxime de outro valor $L \in \mathbb R^m$, com $L \neq f(p)$.
 
 \begin{definition}\index{limite}\index{limite!definição}
-    Seja $A\subseteq \mathbb R^n$ um conjunto, $f: A \to \mathbb R^m$ uma função e $p \in \mathbb R^n$ um ponto de acumulação de $A$.
-
-    Seja $L \in \mathbb R^m$.
-
-    Dizemos que $L$ é limite de $f$ em $p$ se, para toda bola aberta $B$ em torno de $L$, existe uma bola aberta $B'$ em torno de $p$ tal que $f[B'\cap A\setminus\{p\}]\subseteq B$.
-
-    Equivalentemente, $L$ é limite de $f$ em $p$ se, para todo $\varepsilon > 0$, existe $\delta > 0$ tal que $f[B(p, \delta)\cap A\setminus\{p\}]\subseteq B(L, \varepsilon)$.
-
-        Ou, ainda, $L$ é limite de $f$ em $p$ se, para todo $\varepsilon > 0$, existe $\delta > 0$ tal que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta$, então $d(f(x), L) < \varepsilon$.
+    Sejam
+    \begin{itemize}
+        \item $n,m\geq 1$,
+        \item $A\subseteq \mathbb R^n$ um conjunto,
+        \item $f: A \to \mathbb R^m$ uma função, e
+        \item $p \in \mathbb R^n$ um ponto de acumulação de $A$.
+        \item $L \in \mathbb R^m$.
+    \end{itemize}
+    Dizemos que $L$ é limite de $f$ em $p$ se, para todo $\varepsilon > 0$, existe $\delta > 0$ tal que, para todo $x \in A\setminus\{p\}$,
+    \[
+        \text{se } d(x, p) < \delta, \text{ então } d(f(x), L) < \varepsilon.
+    \]
 \end{definition}
 
 \begin{proposition}\index{limite!unicidade}
-    Seja $A\subseteq \mathbb R^n$ um conjunto, $f: A \to \mathbb R^m$ uma função e $p \in \mathbb R^n$ um ponto de acumulação de $A$.
+    Sejam
+    \begin{itemize}
+        \item $A\subseteq \mathbb R^n$ um conjunto,
+        \item $f: A \to \mathbb R^m$ uma função, e
+        \item $p \in \mathbb R^n$ um ponto de acumulação de $A$.
+    \end{itemize}
 
     Então $f$ possui no máximo um limite em $p$.
 \end{proposition}
@@ -70,9 +84,17 @@ Uma das opções é que $f(x)$ se aproxime de outro valor $L \in \mathbb R^m$, c
 \end{definition}
 
 \begin{proposition}\index{continuidade!caracterização por limite}
-    Seja $A\subseteq \mathbb R^n$ um conjunto, $f: A \to \mathbb R^m$ uma função e $p \in A$ um ponto de acumulação de $A$.
+    Sejam:
+    \begin{itemize}
+        \item $A\subseteq \mathbb R^n$ um conjunto,
+        \item $f: A \to \mathbb R^m$ uma função, e
+        \item $p \in A$ um ponto de acumulação de $A$.
+    \end{itemize}
 
-    Então $f$ é contínua em $p$ se, e somente se, existe $\lim_{x\to p} f(x) = f(p)$.
+    Então:
+    \[
+    f \text{ é contínua em } p \text{ se, e somente se, existe } \lim_{x\to p} f(x) = f(p).
+    \]
 \end{proposition}
 
 \begin{proof}
@@ -86,11 +108,18 @@ Uma das opções é que $f(x)$ se aproxime de outro valor $L \in \mathbb R^m$, c
 \end{proof}
 
 
-\begin{proposition}\index{limite!via funções coordenadas}
-    Seja $A\subseteq \mathbb R^n$ um conjunto, $f: A \to \mathbb R^m$ uma função e $p \in A$ um ponto de acumulação de $A$.
+\begin{proposition}\index{limite!via funções coordenadas}Sejam
+    \begin{itemize}
+        \item $A\subseteq \mathbb R^n$ um conjunto,
+        \item $f: A \to \mathbb R^m$ uma função, e
+        \item $p \in A$ um ponto de acumulação de $A$.
+        \item $L=(L_1, \dots, L_m)\in \mathbb R^m$.
+    \end{itemize}
 
-    Seja $L=(L_1, \dots, L_m)\in \mathbb R^m$.
-    Então $L$ é limite de $f$ em $p$, se, e somente se, para todo $i$ entre $1$ e $m$, $L_i$ é limite de $f_i$ em $p$.
+    Então:
+    \[
+        L \text{ é limite de } f \text{ em } p \text{ se, e somente se, } \forall i \in \{1, \dots, m\}\, L_i \text{ é limite de } f_i \text{ em } p.
+    \]
 \end{proposition}
 
 \begin{proof}
@@ -135,3 +164,60 @@ O seguinte corolário sintetiza uma forma de se decidir se uma função é ou n�
         \item Se $p$ é um ponto de acumulação de $A$, então $f$ é contínua em $p$ se, e somente se, $\lim_{x\to p} f(x) = f(p)$.
     \end{itemize}
 \end{corollary}
+
+\begin{proposition}Sejam
+    \begin{itemize}
+        \item $A\subseteq \mathbb R^n$ um conjunto,
+        \item $B\subseteq A$,
+        \item $p$ ponto de acumulação de $B$,
+        \item $f: A \to \mathbb R^m$ uma função, e
+        \item $L=\lim_{x\to p} f(x)$.
+    \end{itemize}
+
+    Então
+    \[
+    \lim_{x\to p} (f|_B)(x) = L.
+    \]
+\end{proposition}
+
+\begin{proposition}Sejam
+    \begin{itemize}
+        \item $A\subseteq \mathbb R^n$ um conjunto,
+        \item $B\subseteq A$,
+        \item $p\in B$, e
+        \item $f: A \to \mathbb R^m$ uma função.
+    \end{itemize}
+
+    Se $f$ é contínua em $p$, então $f|_B$ é contínua em $p$.
+\end{proposition}
+
+
+\begin{proposition}Sejam
+    \begin{itemize}
+        \item $A\subseteq \mathbb R^n$ um conjunto,
+        \item $B\subseteq \mathbb R^m$ um conjunto,
+        \item $p \in \mathbb R^n$ um ponto de acumulação de $A$,
+        \item $f: A \to B$ uma função,
+        \item $g: B \to \mathbb R^k$ uma função, e
+        \item $L=\lim_{x\to p} f(x)$.
+    \end{itemize}
+
+    Se $L\in B$ e $g$ é contínua em $L$, então
+    \[
+    \lim_{x\to p} (g\circ f)(x) = g(L).
+    \]
+\end{proposition}
+
+\begin{proposition}Sejam
+    \begin{itemize}
+        \item $A\subseteq \mathbb R^n$ um conjunto,
+        \item $B\subseteq \mathbb R^m$ um conjunto,
+        \item $p \in A$,
+        \item $f: A \to B$ uma função,
+        \item $g: B \to \mathbb R^k$ uma função.
+    \end{itemize}
+
+    Se $f$ é contínua em $p$ e $g$ é contínua em $f(p)$, então $g\circ f$ é contínua em $p$.
+
+    Consequentemente, se $f$ e $g$ são contínuas, então $g\circ f$ é contínua.
+\end{proposition}

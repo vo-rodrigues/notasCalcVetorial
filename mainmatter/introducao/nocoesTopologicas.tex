@@ -148,8 +148,16 @@ A noção de ponto isolado captura a ideia de que um ponto de um conjunto é ``s
 Há uma ``folga'' em torno dele que o separa dos outros pontos do conjunto.
 
 \begin{definition}\index{ponto isolado}
-    Seja $n\geq 1$ e seja $A$ um subconjunto de $\mathbb R^n$.
-    Dizemos que um ponto $p \in A$ é um \emph{ponto isolado} de $A$ se existe $r>0$ tal que $B(p, r)\cap A = \{p\}$.
+    Sejam
+    \begin{itemize}
+        \item $n\geq 1$,
+        \item $A\subseteq \mathbb R^n$, e\
+        \item $p \in A$.
+    \end{itemize}
+    Dizemos que um ponto $p \in A$ é um \emph{ponto isolado} de $A$ se existe $r>0$ tal que
+    \[
+        B(p, r)\cap A = \{p\}.
+    \]
 \end{definition}
 
 \begin{example}
@@ -168,8 +176,17 @@ Há uma ``folga'' em torno dele que o separa dos outros pontos do conjunto.
 Um ponto de acumulação de um subconjunto $A$ de $\mathbb R^n$ é, intuitivamente, um ponto que está ``grudado'' nos pontos de $A$ diferentes dele próprio.
 
 \begin{definition}\index{ponto de acumulação}
-    Seja $n\geq 1$ e seja $A$ um subconjunto de $\mathbb R^n$.
-    Dizemos que um ponto $p \in \mathbb R^n$ é um \emph{ponto de acumulação} de $A$ se, para todo $r>0$, o conjunto $B(p, r)\cap A\setminus\{p\}$ é não vazio.
+    Sejam
+    \begin{itemize}
+    \item $n\geq 1$,
+    \item $A\subseteq\mathbb R^n$, e
+    \item $p \in \mathbb R^n$.
+    \end{itemize}
+    Dizemos que um ponto $p \in \mathbb R^n$ é um \emph{ponto de acumulação} de $A$ se, para todo $r>0$,
+    
+    \[
+        B(p, r)\cap A\setminus\{p\}\neq \emptyset.
+    \]
 \end{definition}
 
 A expressão $B(p, r)\cap A\setminus\{p\}\neq\emptyset$ significa que em $B(p, r)\cap A$, existe um ponto diferente de $p$.

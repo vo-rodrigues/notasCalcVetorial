@@ -8,7 +8,13 @@ Lembremos que se $p\in \mathbb R^n$ e $\epsilon>0$, então $B(p, \epsilon)=\{x\i
 Ao longo dessa seção, $n$ e $m$ denotarão números inteiros positivos.
 
 \begin{definition}\index{continuidade!definição}
-    Sejam $n,m\geq 1$, $A\subseteq \mathbb R^n$ um conjunto, $f: A \to \mathbb R^m$ uma função e $p\in A$.
+    Sejam:
+    \begin{itemize}
+        \item $n,m\geq 1$,
+        \item $A\subseteq \mathbb R^n$ um conjunto,
+        \item $f: A \to \mathbb R^m$ uma função, e
+        \item $p\in A$.
+    \end{itemize}
 
     Dizemos que $f$ é \emph{contínua em $p$} se, para todo $\varepsilon > 0$, existe $\delta > 0$ tal que, para todo $x \in A$,
     \[
@@ -17,15 +23,21 @@ Ao longo dessa seção, $n$ e $m$ denotarão números inteiros positivos.
 
     Dizemos que $f$ é \emph{contínua} se, para todo $q \in A$, $f$ é contínua em $q$.
 \end{definition}
-\subimport{}{continuidadeRn-figura.tex}
+
 Notemos que, se $n=m=1$, temos exatamente a definição de continuidade pra funções de uma variável real a valores reais.
+
+\subimport{}{continuidadeRn-figura.tex}
+
 
 Como um primeiro exemplo, tratemos das projeções.
 
 \begin{definition}\index{projeção}
     Seja $n\geq 1$ e $i$ um inteiro com $1\leq i\leq n$.
     
-    A \emph{$i$-ésima projeção} de $\mathbb R^n$ em $\mathbb R$ é a função $\pi_i: \mathbb R^n\rightarrow \mathbb R$ dada por $\pi_i(x_1, \dots, x_n) = x_i$.
+    A \emph{$i$-ésima projeção} de $\mathbb R^n$ em $\mathbb R$ é a função $\pi_i: \mathbb R^n\rightarrow \mathbb R$ dada por
+    \[
+        \pi_i(x_1, \dots, x_n) = x_i.
+    \]
 \end{definition}
 
 \begin{example}
@@ -36,7 +48,9 @@ As projeções são funções contínuas.
 \begin{proposition}\index{projeção}
     Seja $n\geq 1$ e $i$ um inteiro com $1\leq i\leq n$.
     
-    Considere a $i$-ésima projeção de $\mathbb R^n$ em $\mathbb R$, ou seja, a função $\pi_i: \mathbb R^n\rightarrow \mathbb R$ dada por $\pi_i(x_1, \dots, x_n) = x_i$.
+    A $i$-ésima projeção de $\mathbb R^n$ em $\mathbb R$, ou seja, a função é contínua.
+    
+    Ou seja, seja $\pi_i: \mathbb R^n\rightarrow \mathbb R$ dada por $\pi_i(x_1, \dots, x_n) = x_i$.
 
     Então $\pi_i$ é contínua.
 \end{proposition}
@@ -74,8 +88,17 @@ Assim, por exemplo, temos que:
 Outra classe de exemplos de funções contínuas simples são as funções constantes, ou seja, as funções da forma $f(x_1, \dots, x_n) = c$ para algum $c \in \mathbb R^m$.
 
 \begin{proposition}\index{função constante}
-    Sejam $n,m\geq 1$ e $c \in \mathbb R^m$.
-    Seja $f: \mathbb R^n\rightarrow \mathbb R^m$ uma função tal que $f(x) = c$ para todo $x \in \mathbb R^n$.
+    Sejam:
+    \begin{itemize}
+        \item $n,m\geq 1$
+        \item $c \in \mathbb R^m$.
+    \end{itemize}
+
+    Seja $f: \mathbb R^n\rightarrow \mathbb R^m$ uma função tal que, para todo $x \in \mathbb R^n$,
+    \[
+        f(x) = c.
+    \]
+
     Então $f$ é contínua.
 \end{proposition}
 \begin{proof}

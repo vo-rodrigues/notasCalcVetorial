@@ -1,5 +1,68 @@
 \section{O Teorema do Confronto}\index{Teorema do Confronto}\index{sanduíche, teorema do|see{Teorema do Confronto}}
 
+
+\begin{proposition}Sejam
+    \begin{itemize}
+        \item $A\subseteq \mathbb R^n$ um conjunto,
+        \item $f, g: A \to \mathbb R$ funções,
+        \item $p \in \mathbb R^n$ um ponto de acumulação de $A$,
+        \item $L=\lim_{x\to p} f(x)$, e,
+        \item $M=\lim_{x\to p} g(x)$.
+    \end{itemize}
+
+    Então:
+    \begin{enumerate}[label=(\alph*)]
+        \item $\displaystyle \lim_{x\to p}(f+g)(x) = L + M$,
+        \item $\displaystyle \lim_{x\to p}(f-g)(x) = L - M$, e 
+        \item $\displaystyle \lim_{x\to p}(fg)(x) = LM$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proposition}Sejam
+    \begin{itemize}
+        \item $A\subseteq \mathbb R^n$ um conjunto,
+        \item $f, g: A \to \mathbb R$ funções,
+        \item $p \in A$.
+    \end{itemize}
+
+    Se $f$ e $g$ são contínuas em $p$, então:
+    \begin{enumerate}[label=(\alph*)]
+        \item $f+g$ é contínua em $p$,
+        \item $f-g$ é contínua em $p$, e
+        \item $fg$ é contínua em $p$.
+    \end{enumerate}
+
+    Consequentemente, se $f$ e $g$ são contínuas, então $f+g$, $f-g$ e $fg$ são contínuas.
+\end{proposition}
+
+\begin{proposition}Sejam
+    \begin{itemize}
+        \item $A\subseteq \mathbb R^n$ um conjunto,
+        \item $f, g: A \to \mathbb R$ funções com $g(x)\neq 0$ para todo $x \in A$,
+        \item $p \in \mathbb R^n$ um ponto de acumulação de $A$,
+        \item $L=\lim_{x\to p} f(x)$, e,
+        \item $M=\lim_{x\to p} g(x)$.
+    \end{itemize}
+
+    Então:
+    \[
+        \lim_{x\to p}\frac{f(x)}{g(x)} = \frac{L}{M}.
+    \]
+\end{proposition}
+
+\begin{proposition}Sejam
+    \begin{itemize}
+        \item $A\subseteq \mathbb R^n$ um conjunto,
+        \item $f, g: A \to \mathbb R$ funções com $g(x)\neq 0$ para todo $x \in A$,
+        \item $p\in A$.
+    \end{itemize}
+
+    Se $f$ e $g$ são contínuas em $p$, então $\displaystyle\frac{f}{g}$ é contínua em $p$.
+
+    Consequentemente, se $f$ e $g$ são contínuas, então $\displaystyle\frac{f}{g}$ é contínua.
+\end{proposition}
+
+
 \begin{proposition}\index{limite!Teorema do Confronto}
     Sejam $f, g, h: A \to \mathbb R$ uma função, onde $A\subseteq \mathbb R^m$.
 
@@ -8,6 +71,26 @@
     Suponha que existe uma bola aberta $B$ em torno de $p$ tal que, para todo $x \in B\cap A\setminus\{p\}$, temos que $f(x) \leq g(x) \leq h(x)$.
 
     Nessas hipóteses, se $\lim_{x\to p} f(x) = \lim_{x\to p} h(x) = L$, então $\lim_{x\to p} g(x) = L$.
+\end{proposition}
+
+\begin{proposition}\index{limite!Teorema do Confronto}
+    Sejam
+    \begin{itemize}
+        \item $A\subseteq \mathbb R^n$ um conjunto,
+        \item $f, g, h: A \to \mathbb R$ funções,
+        \item $p \in \mathbb R^n$ um ponto de acumulação de $A$, e
+        \item $L \in \mathbb R$.
+    \end{itemize}
+
+    Suponha que existe uma bola aberta $B$ em torno de $p$ tal que, para todo $x \in B\cap A\setminus\{p\}$, temos
+    \[
+        f(x) \leq g(x) \leq h(x).
+    \]
+
+    Então:
+    \[
+        \text{se } \lim_{x\to p} f(x) = \lim_{x\to p} h(x) = L, \text{ então } \lim_{x\to p} g(x) = L.
+    \]
 \end{proposition}
 
 \begin{proof}
@@ -23,3 +106,39 @@
 
     Seja $x \in A\setminus\{p\}$ tal que $d(x, p) < \delta$, então $-\epsilon<f(x) - L \leq g(x) - L \leq h(x) - L < \epsilon$, logo, $|g(x) - L| < \epsilon$, ou seja, $d(g(x), L) < \epsilon$.
 \end{proof}
+\begin{corollary}
+    Sejam
+    \begin{itemize}
+        \item $A\subseteq \mathbb R^n$ um conjunto,
+        \item $f, g$ funções,
+        \item $p \in \mathbb R^n$ um ponto de acumulação de $A$, e
+        \item $L \in \mathbb R$.
+    \end{itemize}
+
+    Suponha que:
+    \begin{itemize}
+        \item existe uma bola aberta $B$ em torno de $p$ tal que $g|_B$ é limitada, ou seja, tal que existe $M>0$ tal que, para todo $x \in B\cap A\setminus\{p\}$, temos $|g(x)| < M$, e
+        \item $\lim_{x\to p} f(x) = 0$.
+     \end{itemize}
+
+     Então $\lim_{x\to p} f(x)g(x) = 0$.
+\end{corollary}
+
+\begin{proposition}Sejam
+    \begin{itemize}
+        \item $I\subseteq \mathbb R$ um intervalo aberto
+        \item $A\subseteq \mathbb R^n$ um conjunto,
+        \item $a \in \mathbb R^n$ um ponto de acumulação de $A$,
+        \item $\gamma: I \to \mathbb R^n$ uma função
+        \item $t_0 \in I$ com $\gamma(t_0) = a$
+    \end{itemize}
+
+    Assuma que:
+    \begin{itemize}
+        \item $\gamma(t)\neq a$ para todo $t \in I\setminus\{t_0\}$,
+        \item $\lim_{t\to t_0} \gamma(t) = a$, e
+        \item $\lim_{t\to t_0} f(\gamma(t)) = L$.
+    \end{itemize}
+
+    Então $\lim_{t\to t_0} f(\gamma(t)) = L$.
+\end{proposition}
