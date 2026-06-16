@@ -1,0 +1,78 @@
+
+\section{Subconjuntos fechados}
+
+Intuitivamente, um conjunto fechado é um conjunto que contém todos os seus pontos que estão ``grudados'' nele.
+
+\begin{definition}\index{conjunto fechado}
+    Seja $A$ um subconjunto de $M$.
+    Dizemos que $A$ é \emph{fechado} se, para todo ponto de acumulação $p$ de $A$, temos que $p \in A$.
+\end{definition}
+
+Uma forma frequentemente mais prática de verificar se um conjunto é fechado é o seguinte critério.
+\begin{proposition}
+    Seja $A$ um subconjunto de $M$.
+    Então, $A$ é fechado se, e somente se, seu complemento $M\setminus A$ é aberto.
+\end{proposition}
+
+\begin{proof}
+    Primeiramente, suponha que $A$ é fechado.
+    Veremos que $M\setminus A$ é aberto.
+
+    Seja $p \in M\setminus A$ arbitrário.
+    O ponto $p$ não é um ponto de acumulação de $A$, pois, caso contrário, como $A$ é fechado, teríamos que $p \in A$, o que é uma contradição.
+
+    Assim, como $p$ não é ponto de acumulação de $A$, existe $r>0$ tal que $\bigl(B(p, r)\cap A\bigr)\setminus\{p\} = \emptyset$.
+    Daí, $B(p, r)\cap A\subseteq \{p\}$.
+    Como $p \notin A$, temos que $B(p, r)\cap A = \emptyset$.
+    Dessa forma, $B(p, r)\subseteq M\setminus A$.
+
+    Reciprocamente, suponha que $M\setminus A$ é aberto.
+    Veremos que $A$ é fechado.
+    Para tanto, devemos ver que para todo $p\in M$, se $p$ é um ponto de acumulação de $A$, então $p \in A$.
+    Pela contrapositiva, basta ver que para todo $p\in M$, se $p \notin A$, então $p$ não é um ponto de acumulação de $A$.
+
+    De fato, dado $p \in M\setminus A$, como $M\setminus A$ é aberto, existe $r>0$ tal que $B(p, r)\subseteq M\setminus A$, de modo que $B(p, r)\cap A = \emptyset$.
+    Assim, $\bigl(B(p, r)\cap A\bigr)\setminus\{p\} = \emptyset$, o que mostra que $p$ não é um ponto de acumulação de $A$.
+\end{proof}
+
+\begin{example}
+    O intervalo $[a, b]$ com $a<b$ é um conjunto fechado de $\mathbb R$, pois $\mathbb R\setminus [a, b] = ]-\infty, a[ \cup ]b, +\infty[$ é uma união de conjuntos abertos, logo é aberto.
+\end{example}
+
+\begin{corollary}
+    Seja $A$ um subconjunto de $M$.
+    Então, $A$ é aberto se, e somente se, seu complemento $M\setminus A$ é fechado.
+\end{corollary}
+\begin{proof}
+    Seja $B=M\setminus A$.
+    Temos que $B$ é aberto se, e somente se, $M\setminus B$ é fechado.
+    Mas $M\setminus B = M\setminus (M\setminus A) = A$.
+    Assim, $B=M\setminus A$ é aberto se, e somente se, $M\setminus B = A$ é fechado.
+\end{proof}
+
+\begin{proposition}
+    Seja $F$ um subconjunto finito de $M$.
+    Então $F$ não possui pontos de acumulação.
+    Em particular, $F$ é fechado.
+\end{proposition}
+\begin{proof}
+    Seja $p\in M$ arbitrário.
+    Para cada $a\in F\setminus\{p\}$, seja $r_a=d(p,a)>0$.
+
+    Se $F\setminus\{p\}=\emptyset$, tome $r=1$.
+    Caso contrário, tome $r=\min\{r_a:a\in F\setminus\{p\}\}$.
+
+    Em ambos os casos, temos $r>0$ e $\bigl(B(p,r)\cap F\bigr)\setminus\{p\}=\emptyset$.
+    Logo, $p$ não é ponto de acumulação de $F$.
+
+    Como $p\in M$ foi arbitrário, $F$ não possui pontos de acumulação.
+    Portanto, por vacuidade, $F$ é fechado.
+\end{proof}
+
+\begin{proposition}
+    Sejam $A$ um subconjunto aberto de $M$ e $C$ um subconjunto fechado de $M$.
+    Então $A\setminus C$ é um conjunto aberto de $M$.
+\end{proposition}
+\begin{proof}
+    De fato, temos que $A\setminus C = A\cap(M\setminus C)$ é uma interseção de dois conjuntos abertos, logo, é aberto.
+\end{proof}

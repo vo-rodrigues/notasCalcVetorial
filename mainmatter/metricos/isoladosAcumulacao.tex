@@ -1,0 +1,140 @@
+
+\section{Pontos isolados e de acumulação}
+
+A noção de ponto isolado captura a ideia de que um ponto de um conjunto é ``separado'' dos outros pontos do conjunto.
+Há uma ``folga'' em torno dele que o separa dos outros pontos do conjunto.
+
+\begin{definition}\index{ponto isolado}
+    Sejam $A\subseteq M$ e $p \in A$.
+    Dizemos que $p$ é um \emph{ponto isolado} de $A$ se existe $r>0$ tal que
+    \[
+        B(p, r)\cap A = \{p\}.
+    \]
+\end{definition}
+
+\begin{example}
+    Em $\mathbb R^2$, seja $A = B((0,0), 1)\cup \{(2, 0)\}$.
+    Temos que $p=(2, 0)$ é um ponto isolado de $A$.
+    De fato, considere $r=1$.
+    
+    Temos que $B(p, r)\cap A=\{p\}$.
+    Com efeito, temos que $p\in B(p, r)\cap A$, pois $p \in A$ e $d(p, p) = 0 < r$.
+    Reciprocamente, se $x \in B(p, r)\cap A$, temos que $x\notin B((0,0), 1)$, pois se $x \in B((0,0), 1)\cap B(p, r)$, então $d((0,0), p) \leq d((0,0), x) + d(x, p) < 1 + r = 2$, assim, $d((0,0), p)<2$.
+    Por outro lado, $d((0,0), p)=\sqrt{(2-0)^2 + (0-0)^2} = \sqrt{4} = 2$, o que é uma contradição.
+\end{example}
+
+\subimport{}{isoladosAcumulacao-figuraExemploPontoIsolado}
+
+Um ponto de acumulação de um subconjunto $A$ de $M$ é, intuitivamente, um ponto que está ``grudado'' nos pontos de $A$ diferentes dele próprio.
+
+\begin{definition}\index{ponto de acumulação}
+    Sejam $A\subseteq M$ e $p \in M$.
+    Dizemos que $p$ é um \emph{ponto de acumulação} de $A$ se, para todo $r>0$,
+    \[
+        \bigl(B(p, r)\cap A\bigr)\setminus\{p\}\neq \emptyset.
+    \]
+\end{definition}
+
+A expressão $\bigl(B(p, r)\cap A\bigr)\setminus\{p\}\neq\emptyset$ significa que em $B(p, r)\cap A$ existe um ponto diferente de $p$.
+
+Ou seja, independente de quão pequeno seja um raio $r$ dado, teremos um ponto de $A$ diferente de $p$ que dista de $p$ menos de $r$.
+
+\subimport{}{isoladosAcumulacao-figuraPontoAcumulacao}
+
+Em $\mathbb R^n$, toda bola aberta centrada em um ponto $p$ contém pontos diferentes de $p$.
+De fato, dado $s>0$, basta tomar $q=p+\frac{s}{2}e_1$, em que $e_1=(1,0,\dots,0)$.
+Então $q\neq p$ e $d(p,q)=\frac{s}{2}<s$.
+Portanto, $\mathbb R^n$ não possui pontos isolados em si mesmo.
+
+Em um espaço métrico geral, isso pode falhar.
+Diremos que $M$ \emph{não possui pontos isolados} se, para todo $p\in M$ e todo $r>0$, existe $q\in B(p,r)$ tal que $q\neq p$.
+
+Como um primeiro resultado, veremos que, em espaços métricos sem pontos isolados, os pontos de abertos são pontos de acumulação do aberto em questão.
+Em particular, o resultado vale para abertos de $\mathbb R^n$.
+
+\begin{proposition}\label{prop:abertosPontosAcumulacao}
+    Seja $(M,d)$ um espaço métrico sem pontos isolados e seja $A$ um subconjunto aberto de $M$.
+
+    Então todo ponto de $A$ é um ponto de acumulação de $A$.
+\end{proposition}
+\begin{proof}
+    Seja $A$ um conjunto aberto de $M$ e seja $p \in A$ arbitrário.
+    Como $A$ é aberto, existe $r>0$ tal que $B(p, r)\subseteq A$.
+
+    Dado $s>0$, queremos ver que $\bigl(B(p, s)\cap A\bigr)\setminus\{p\}\neq \emptyset$.
+
+    Seja $s'=\min\{s, r\}$.
+    Como $M$ não possui pontos isolados, existe $q\in B(p,s')$ tal que $q\neq p$.
+    Como $s'\leq s$, temos $q\in B(p,s)$.
+    Como $s'\leq r$, temos $q\in B(p,r)\subseteq A$.
+
+    Portanto, $q\in \bigl(B(p, s)\cap A\bigr)\setminus\{p\}$.
+\end{proof}
+
+\subimport{}{isoladosAcumulacao-figuraAbertosPontosAcumulacao}
+
+Pontos isolados e de acumulação são, em algum sentido, antagônicos.
+
+\begin{proposition}\index{ponto isolado!ponto de acumulação}
+    Sejam $A$ um subconjunto de $M$ e $p \in A$.
+    
+    Então uma, e apenas uma das seguintes afirmações é verdadeira:
+    \begin{enumerate}[label=(\roman*)]
+        \item $p$ é um ponto isolado de $A$;
+        \item $p$ é um ponto de acumulação de $A$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    (i) e (ii) não podem valer simultaneamente:
+    a primeira afirmação diz que existe $r>0$ tal que $B(p, r)\cap A = \{p\}$.
+    Mas, então, para esse mesmo $r>0$, temos que $\bigl(B(p, r)\cap A\bigr)\setminus\{p\} = \emptyset$, o que é uma contradição com a segunda afirmação.
+
+    Para ver que uma delas deve valer, vamos supor que não vale (ii) e mostrar que (i) segue.
+    Como (ii) não vale, existe $r>0$ tal que $\bigl(B(p, r)\cap A\bigr)\setminus\{p\} = \emptyset$.
+    Veremos que $B(p, r)\cap A = \{p\}$.
+
+    De fato, temos que $p \in B(p, r)\cap A$, pois $p \in A$ e $d(p, p) = 0 < r$.
+    Reciprocamente, se $x \in B(p, r)\cap A$, temos que $x=p$, do contrário, teríamos que $x \in \bigl(B(p, r)\cap A\bigr)\setminus\{p\}$, o que é uma contradição.
+\end{proof}
+
+Temos ainda que pontos de acumulação são ``indestrutíveis'' pela remoção de um número finito de pontos.
+
+\begin{proposition}\label{proposicaoPontoAcumulacaoRemocaoPontos}
+    Sejam $A$ um subconjunto de $M$ e $p \in M$ um ponto de acumulação de $A$.
+
+    Então, para todo conjunto finito $F\subseteq M$, o ponto $p$ é um ponto de acumulação de $A\setminus F$.
+\end{proposition}
+\begin{proof}
+    Seja $F$ um conjunto finito de $M$ e seja $s>0$ arbitrário.
+
+    Devemos ver que $\bigl(B(p, s)\cap (A\setminus F)\bigr)\setminus\{p\}\neq \emptyset$.
+
+    Para cada $a \in F\setminus\{p\}$, seja $r_a = d(p, a)$.
+    Seja $r = \min(\{s\}\cup\{r_a : a \in F\setminus\{p\}\})$.
+    Temos que cada $r_a=d(p, a)$ é positivo, pois $a\neq p$.
+    Assim, $r>0$.
+
+    Como $p$ é um ponto de acumulação de $A$, temos que $\bigl(B(p, r)\cap A\bigr)\setminus\{p\}\neq \emptyset$.
+    Seja $x \in \bigl(B(p, r)\cap A\bigr)\setminus\{p\}$ arbitrário.
+
+    Temos que $x\in B(p, r)\subseteq B(p, s)$, pois $r\leq s$.
+
+    Temos que $x\notin F$, pois, dado $a \in F\setminus\{p\}$, temos que $d(p, a)=r_a\geq r$, enquanto $d(p, x)<r$.
+    Além disso, $x\neq p$.
+
+    Assim, $x \in \bigl(B(p, s)\cap (A\setminus F)\bigr)\setminus\{p\}$.
+
+    Portanto, $\bigl(B(p, s)\cap (A\setminus F)\bigr)\setminus\{p\}\neq \emptyset$.
+\end{proof}
+
+Daí, o seguinte corolário é imediato.
+\begin{corollary}
+    Seja $(M,d)$ um espaço métrico sem pontos isolados e seja $A$ um subconjunto aberto de $M$.
+    Se $F\subseteq M$ é finito, então todo ponto de $A$ é um ponto de acumulação de $A\setminus F$.
+\end{corollary}
+\begin{proof}
+    Seja $p \in A$ arbitrário.
+    Como $A$ é aberto e $M$ não possui pontos isolados, $p$ é um ponto de acumulação de $A$.
+    Como $F$ é finito, $p$ ainda é um ponto de acumulação de $A\setminus F$ pela proposição anterior.
+\end{proof}
+
