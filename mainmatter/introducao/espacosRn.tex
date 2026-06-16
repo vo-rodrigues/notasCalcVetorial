@@ -1,11 +1,19 @@
-\section{Os espaços \texorpdfstring{$\mathbb R^n$}{Rn}}\index{espaço euclidiano}
+\section{Introdução}\index{espaço euclidiano}
+Um ponto $p \in \mathbb R^n$ é descrito por $n$ coordenadas reais.
+\[
+    p = (x_1, \dots, x_n).
+\]
+
 Lembremos que $\mathbb R^2$ é o conjunto de todos os pares ordenados $(x, y)$, onde $x, y \in \mathbb R$.
 Em símbolos:
 \begin{equation*}
     \mathbb R^2 = \{(x, y) : x, y \in \mathbb R\}.
 \end{equation*}
 
-Em analogia à representação de $\mathbb R$ como uma reta, podemos visualizar $\mathbb R^2$ como o conjunto dos pontos de um plano Cartesiano.
+Em analogia à representação de $\mathbb R$ como uma reta, podemos visualizar $\mathbb R^2$ como o conjunto dos pontos de um plano cartesiano.
+
+Na Figura~\ref{fig:plano-cartesiano}, o ponto $(2,3)$ está posicionado $2$ unidades no sentido positivo do eixo $x$ e $3$ unidades no sentido positivo do eixo $y$.
+
 \begin{figure}[ht]
     \centering
     \begin{tikzpicture}
@@ -23,7 +31,8 @@ Em analogia à representação de $\mathbb R$ como uma reta, podemos visualizar 
     \node[below left] at (0,0) {0};
 
     \end{tikzpicture}
-    \caption{O plano Cartesiano.}
+    \caption{O plano cartesiano.}
+    \label{fig:plano-cartesiano}
 \end{figure}
 
 Por sua vez, o conjunto de todas as triplas ordenadas de números reais é denotado por $\mathbb R^3$.
@@ -33,6 +42,9 @@ Em símbolos:
 \end{equation*}
 
 Seguindo o padrão já comentado, podemos visualizar $\mathbb R^3$ como o conjunto dos pontos do espaço tridimensional.
+
+A tripla $(x,y,z)$ representa um ponto com três coordenadas: a primeira associada ao eixo $x$, a segunda ao eixo $y$ e a terceira ao eixo $z$.
+O ponto $(2,3,1)$ está representado na Figura~\ref{fig:espaco-tridimensional}.
 
 \begin{figure}[ht]
     \centering
@@ -61,16 +73,32 @@ Seguindo o padrão já comentado, podemos visualizar $\mathbb R^3$ como o conjun
 
     \end{tikzpicture}
     \caption{O espaço tridimensional.}
+    \label{fig:espaco-tridimensional}
 \end{figure}
 
-No geral, para $n\geq 4$, o conjunto $\mathbb R^n$ é definido como o conjunto de todas as $n$-tuplas ordenadas de números reais:
+De modo geral, para cada inteiro $n\geq 1$, o conjunto $\mathbb R^n$ é o conjunto de todas as $n$-tuplas ordenadas de números reais:
 \begin{equation*}
     \mathbb R^n = \{(x_1, \ldots, x_n) : x_1, \ldots, x_n \in \mathbb R\}.
 \end{equation*}
 
-Tal conjunto não possui uma representação gráfica simples no estilo dos anteriores, para dimensões menores.
-Porém, a teoria desenvolvida para $\mathbb R^n$, com $n\geq 4$ é uma extensão natural da teoria desenvolvida para $\mathbb R$, $\mathbb R^2$ e $\mathbb R^4$, e possui amplas aplicações práticas e teóricas.
+Para $n\geq 4$, esse conjunto não possui uma representação gráfica simples no estilo dos casos anteriores, de dimensões menores.
+Porém, a teoria desenvolvida para $\mathbb R^n$, com $n\geq 4$, é uma extensão natural da teoria desenvolvida para $\mathbb R$, $\mathbb R^2$ e $\mathbb R^3$, e possui amplas aplicações práticas e teóricas.
+
+Cada espaço $\mathbb R^n$ possui um elemento denominado \emph{origem}\index{origem}, denotado por $\vec 0$, ou simplesmente por $0$, cujas coordenadas são todas iguais ao número real $0$.
+\begin{equation*}
+    \vec 0 = (0, \ldots, 0).
+\end{equation*}
+
+Um detalhe que pode ser confuso à primeira vista, mas que não gera confusão na prática, é que a notação $0$ é utilizada tanto para o número real $0$ quanto para a origem $\vec 0$ de $\mathbb R^n$.
+Ao se escrever $0=(0, \ldots, 0)$, o primeiro símbolo $0$ representa a origem de $\mathbb R^n$, enquanto os demais representam o número real $0$, sendo, portanto, objetos de natureza diferente.
+
+No caso $n=1$, identificamos usualmente a $1$-tupla $(x)$ com o próprio número real $x$, de modo que $\mathbb R^1$ é identificado com $\mathbb R$.
+Com essa identificação, a origem de $\mathbb R^1$ é o número real $0$.
 
 Elementos de $\mathbb R^n$ serão frequentemente chamados de \emph{pontos}\index{ponto} ou \emph{vetores}\index{vetor}.
-Portanto, neste texto, pontos e vetores serão os mesmos objetos matemáticos, e tais palavras podem ser usadas indistintamente.
-Apesar disso, a palavra \emph{ponto} será usualmente utilizada em situações em que se faz referência a posições no espaço, enquanto a palavra \emph{vetor} é mais utilizada em situações em que pensamos na direção, sentido e comprimento determinados pelo ponto com relação à origem $0=(0, \ldots, 0)$\index{origem}.
+Essa dupla nomenclatura reflete duas formas diferentes de interpretar o mesmo objeto matemático.
+A palavra \emph{ponto} será usualmente utilizada em situações em que se faz referência a posições no espaço, enquanto a palavra \emph{vetor} é mais utilizada em situações em que pensamos no segmento orientado que parte da origem $\vec 0=(0, \ldots, 0)$\index{origem} e termina no ponto em questão.
+Quando esse ponto não é a origem, esse segmento determina, intuitivamente, uma direção, um sentido e um comprimento.
+Quando esse ponto é a origem, obtemos o \emph{vetor nulo}\index{vetor nulo}, que possui comprimento zero e não determina uma direção ou um sentido.
+
+O conjunto $\mathbb R^n$, munido das operações e da distância usuais que estudaremos a seguir, é chamado de \emph{espaço euclidiano} $n$-dimensional.
