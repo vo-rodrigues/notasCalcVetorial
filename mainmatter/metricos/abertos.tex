@@ -3,7 +3,7 @@ Nesta seção, discutiremos sucintamente a noção de conjunto aberto de um espa
 
 Ao longo desta seção, $(M,d)$ denotará um espaço métrico arbitrário.
 
-Aconselhamos o leitor a sempre possuir em mente o exemplo $M=\mathbb R^n$.
+Aconselhamos o leitor a ter sempre em mente o exemplo de $\mathbb R^n$ com a distância euclidiana.
 
 \begin{definition}\index{conjunto aberto}
     Seja $A$ um subconjunto de $M$.
@@ -12,9 +12,12 @@ Aconselhamos o leitor a sempre possuir em mente o exemplo $M=\mathbb R^n$.
 
 A intuição de conjunto aberto é a seguinte: para que $A$ seja aberto, é necessário que cada um dos seus pontos possua uma ``folga'' dentro de $A$.
 
+Observe que o raio $r$ da definição pode depender do ponto $p$.
+Não se exige que exista um único raio positivo que funcione simultaneamente para todos os pontos de $A$.
+
 \subimport{}{abertos-figuraAbertos}
 
-Iniciaremos vendo que a bola aberta é aberta, justificando seu nome.
+Como um primeiro exemplo, verificaremos que bolas abertas são abertas, justificando esta nomenclatura.
 
 \begin{proposition}
     Sejam $(M,d)$ um espaço métrico, $p \in M$ e $r>0$.
@@ -23,50 +26,31 @@ Iniciaremos vendo que a bola aberta é aberta, justificando seu nome.
 \begin{proof}
     Seja $q \in B(p, r)$ arbitrário.
     Note que $d(p, q) < r$.
+    Intuitivamente, $r-d(p,q)$ mede a margem que ainda sobra na desigualdade $d(p,q)<r$ (ver Figura~\ref{fig:abertosBolaAberta}).
 
-    Seja $r' = r - d(p, q) > 0$.
-    Veremos que $B(q, r') \subseteq B(p, r)$.
+    Seja $s = r - d(p, q) > 0$.
+    Veremos que $B(q, s) \subseteq B(p, r)$.
 
-    De fato, seja $x \in B(q, r')$, ou seja, $d(q, x) < r'$.
+    De fato, seja $x \in B(q, s)$, ou seja, $d(q, x) < s$.
     Então:
     \begin{align*}
         d(p, x) &\leq d(p, q) + d(q, x) \\
-        &< d(p, q) + r' = d(p, q) + (r - d(p, q)) = r.
+        &< d(p, q) + s = d(p, q) + (r - d(p, q)) = r.
     \end{align*}
 
-    Assim, $x \in B(p, r)$ e concluímos que $B(q, r') \subseteq B(p, r)$.
+    Assim, $x \in B(p, r)$ e concluímos que $B(q, s) \subseteq B(p, r)$.
 
-    Como $q \in B(p, r)$ foi arbitrário, concluímos que para todo $q \in B(p, r)$ existe $r'>0$ tal que $B(q, r')\subseteq B(p, r)$.
-
-    \begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-    % Bola B(p, r)
-    \draw[thick, dashed, Cerulean] (0,0) circle (3);
-    \filldraw[Cerulean] (0,0) circle (2pt) node[below left] {$p$};
-    \node[Cerulean] at (0,2.7) {$B(p, r)$};
-    % Raio r
-    \draw[ultra thick,Cerulean,->] (0,0) -- (2.12,2.12);
-    \node[Cerulean, left] at (1,1) {$r$};
-
-    % Bola B(q, s)
-    \filldraw[Red] (1.2,1.2) circle (2pt) node[below right] {$q$};
-    \draw[thick, dashed, Red] (1.2,1.2) circle (1.27);
-    \node[Red] at (1.2,-0.35) {$B(q, s)$};
-    % Raio s
-    \draw[Red,->] (1.2,1.2) -- (2.12,2.12);
-    \node[Red, right] at (1.5,1.5) {$s$};
-
-    % Relação de inclusão
-    \end{tikzpicture}
-    \caption{Relação de inclusão entre as bolas abertas.}
-    \end{figure}
+    Como $q \in B(p, r)$ foi arbitrário, concluímos que para todo $q \in B(p, r)$ existe $s>0$ tal que $B(q, s)\subseteq B(p, r)$.
+    Logo, pela definição, $B(p, r)$ é aberto.
 \end{proof}
+
+\subimport{}{abertos-figuraBolaAberta}
 
 Algumas propriedades básicas dos conjuntos abertos são as seguintes.
 
-\begin{proposition}\index{conjunto aberto!propriedades}
-    Sobre os abertos de um espaço métrico $M$, temos as seguintes propriedades.
+\begin{proposition}\index{conjunto aberto!propriedades}\label{prop:propriedadesAbertos}
+    Seja $(M,d)$ um espaço métrico.
+    Sobre os abertos de $M$, temos as seguintes propriedades.
     \begin{enumerate}[label=(\roman*)]
         \item $M$ e o conjunto vazio $\emptyset$ são abertos.
         \item A união de qualquer coleção de conjuntos abertos é aberta.\index{conjunto aberto!união}
@@ -87,25 +71,45 @@ Algumas propriedades básicas dos conjuntos abertos são as seguintes.
     (iii) Sejam $A_1$ e $A_2$ conjuntos abertos de $M$.
     Seja $p \in A_1\cap A_2$ arbitrário.
     Existe $r_1>0$ tal que $B(p, r_1) \subseteq A_1$ e existe $r_2>0$ tal que $B(p, r_2) \subseteq A_2$.
-    Seja $r = \min\{r_1, r_2\}$.
+    
+    Seja $r = \min\{r_1, r_2\}$, que é positivo, pois $r_1$ e $r_2$ são positivos.
     Então, $B(p, r) \subseteq B(p, r_1) \subseteq A_1$ e $B(p, r) \subseteq B(p, r_2) \subseteq A_2$, ou seja, $B(p, r) \subseteq A_1\cap A_2$.
     Assim, $A_1\cap A_2$ é aberto.
 \end{proof}
 \subimport{}{abertos-figuraIntersecaoAbertos}
 
-\begin{knowMore}
-    Um \emph{espaço topológico} é, por definição, um par $(X, \tau)$, em que $X$ é um conjunto e $\tau$ é uma coleção de subconjuntos de $X$ tal que:
-    \begin{enumerate}[label=(\roman*)]
-        \item $X$ e $\emptyset$ pertencem a $\tau$;
-        \item A união de qualquer coleção de conjuntos pertencentes a $\tau$ pertence a $\tau$;
-        \item A interseção de dois conjuntos pertencentes a $\tau$ pertence a $\tau$.
-    \end{enumerate}
-    Nesse contexto, os conjuntos pertencentes a $\tau$ são chamados de \emph{conjuntos abertos} de $X$.
-    Assim, pela proposição anterior, todo espaço métrico determina um espaço topológico: basta tomar como $\tau$ a coleção dos subconjuntos abertos de $M$.
-\end{knowMore}
+\begin{corollary}
+    Sejam $(M,d)$ um espaço métrico e $A_1, \dots, A_n$ conjuntos abertos de $M$, com $n\geq 1$.
+    Então a interseção $\bigcap_{i=1}^n A_i$ é um conjunto aberto de $M$.
+\end{corollary}
+\begin{proof}
+    Procedemos por indução em $n$.
+
+    O caso $n=1$ é trivial, pois a referida interseção é exatamente $A_1$, que é aberta por hipótese.
+
+    Suponha que a hipótese é válida para algum $n\geq 1$.
+    Veremos que a hipótese é válida para $n+1$.
+
+    De fato, temos que
+    \[
+        \bigcap_{i=1}^{n+1} A_i = \left(\bigcap_{i=1}^n A_i\right)\cap A_{n+1}.
+    \]
+    Pela hipótese de indução, $\bigcap_{i=1}^n A_i$ é aberto.
+    Além disso, $A_{n+1}$ é aberto por hipótese.
+    Logo, $\bigcap_{i=1}^{n+1} A_i$ é a interseção de dois conjuntos abertos e, portanto, é aberto pelo item (iii) da Proposição~\ref{prop:propriedadesAbertos}.
+\end{proof}
+
+\begin{example}
+    A interseção de infinitos conjuntos abertos não precisa ser aberta.
+    Em $\mathbb R$, com a distância usual, temos
+    \[
+        \bigcap_{n=1}^{\infty} \left]-\frac{1}{n},\frac{1}{n}\right[ = \{0\}.
+    \]
+    Porém, $\{0\}$ não é aberto em $\mathbb R$, pois toda bola aberta centrada em $0$ contém pontos diferentes de $0$.
+\end{example}
 
 \begin{example}\label{exemplo:intervalos-abertos-sao-abertos}
-    Em $\mathbb R$, com a distância usual, intervalos abertos $]a, b[$ com $a<b$ são conjuntos abertos.
+    Em $\mathbb R$, com a distância usual, cada intervalo aberto $]a, b[$, com $a<b$, é um conjunto aberto.
     Para ver isso, podemos escrevê-lo como uma bola aberta.
     
     Seu ponto médio, $x=\frac{a+b}{2}$, é um candidato natural a ser o centro da bola aberta.
@@ -118,14 +122,11 @@ Algumas propriedades básicas dos conjuntos abertos são as seguintes.
 
     Com efeito, dado $c \in \mathbb R$, temos que:
     \begin{align*}
-        c \in B(x, r) &\Leftrightarrow d(c, x) < r \\
+        c \in B(x, r) 
         &\Leftrightarrow |c-x| < r \\
-        &\Leftrightarrow |c-\frac{a+b}{2}| < \frac{b-a}{2} \\
-        &\Leftrightarrow -\frac{b-a}{2} < c-\frac{a+b}{2} < \frac{b-a}{2} \\
-        &\Leftrightarrow a-b< 2c - a - b < b-a \\
-        &\Leftrightarrow a-b+(a+b) < 2c < b-a+(a+b) \\
-        &\Leftrightarrow 2a< 2c < 2b \\
-        &\Leftrightarrow a < c < b \\
+        &\Leftrightarrow x-r<c<x+r \\
+        &\Leftrightarrow \frac{a+b}{2}-\frac{b-a}{2}<c<\frac{a+b}{2}+\frac{b-a}{2} \\
+        &\Leftrightarrow a<c<b \\
         &\Leftrightarrow c \in ]a, b[.
     \end{align*}
 
@@ -135,10 +136,105 @@ Algumas propriedades básicas dos conjuntos abertos são as seguintes.
 \subimport{}{abertos-figuraIntervalosAbertos}
 
 \begin{example}
-    O intervalo aberto $]a, +\infty[\subseteq \mathbb R$, com $a \in \mathbb R$, é um conjunto aberto.
+    O intervalo aberto $]a, +\infty[\subseteq \mathbb R$, com $a \in \mathbb R$, é um subconjunto aberto de $\mathbb R$.
     
     Para ver isso, basta notar que $]a, +\infty[ = \bigcup_{b>a} ]a, b[$ é uma união de conjuntos abertos, logo é aberto.
 
-    Analogamente, o intervalo aberto $]-\infty, a[$ é um conjunto aberto.
-    De fato, $]-\infty, a[ = \bigcup_{b<a} ]b, a[$ é uma união de conjuntos abertos, logo é aberto.
+    Analogamente, o intervalo aberto $]-\infty, a[$ é um subconjunto aberto de $\mathbb R$.
+    De fato, $]-\infty, a[$ é uma união de conjuntos abertos, e, portanto, aberto, pois
+    \[
+        ]-\infty, a[ = \bigcup_{b<a} ]b, a[.
+    \]
 \end{example}
+
+A noção de conjunto aberto depende do espaço ambiente.
+
+\begin{example}
+    Em $\mathbb R$, com a distância usual, o conjunto $[0,1[$ não é aberto.
+    De fato, $0\in [0,1[$, mas, para todo $r>0$, a bola $B_{\mathbb R}(0,r)=]-r,r[$ contém pontos negativos, como $-r/2$.
+    Portanto, nenhuma bola aberta de $\mathbb R$ centrada em $0$ está contida em $[0,1[$.
+
+    Por outro lado, no subespaço $A=[0,+\infty[\subseteq\mathbb R$, com a métrica herdada, temos
+    \[
+        B_A(0,1)=B_{\mathbb R}(0,1)\cap A=[0,1[.
+    \]
+    Assim, $[0,1[$ é aberto no subespaço $A$, embora não seja aberto em $\mathbb R$.
+\end{example}
+
+Note também que se $M$ é um espaço métrico e $A\subseteq M$ é considerado como subespaço de $M$, então $A$ é aberto com relação ao próprio espaço métrico $A$, mesmo que não seja aberto em $M$.
+De fato, basta aplicar o item (i) da Proposição~\ref{prop:propriedadesAbertos} ao espaço métrico $A$.
+
+\begin{knowMore}
+    A noção de espaço métrico pode ser generalizada para a noção de espaço topológico.
+
+    Um \emph{espaço topológico} é, por definição, um par $(X, \tau)$, em que $X$ é um conjunto e $\tau$ é uma coleção de subconjuntos de $X$ tal que:
+    \begin{enumerate}[label=(\roman*)]
+        \item $X$ e $\emptyset$ pertencem a $\tau$;
+        \item A união de qualquer coleção de conjuntos pertencentes a $\tau$ pertence a $\tau$;
+        \item A interseção de dois conjuntos pertencentes a $\tau$ pertence a $\tau$.
+    \end{enumerate}
+    Nesse contexto, os conjuntos pertencentes a $\tau$ são chamados de \emph{conjuntos abertos} de $X$.
+    Assim, pela Proposição~\ref{prop:propriedadesAbertos}, todo espaço métrico $(M,d)$ determina um espaço topológico $(M,\tau_d)$, em que $\tau_d$ é a coleção dos subconjuntos abertos de $M$.
+\end{knowMore}
+
+\subsection*{Exercícios}
+
+\begin{exercise}
+    Em $\mathbb R$, com a distância usual, determine quais dos seguintes subconjuntos são abertos.
+    Justifique suas respostas.
+    \begin{enumerate}[label=(\alph*)]
+        \item $]-2,3[$;
+        \item $[0,1[$;
+        \item $\mathbb R\setminus\{0\}$;
+        \item $\mathbb Z$;
+        \item $\displaystyle \bigcup_{n=1}^{\infty} ]n,n+1[$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Seja $(M,d)$ um espaço métrico e seja $A\subseteq M$.
+    Mostre que $A$ é aberto se, e somente se, $A$ pode ser escrito como uma união de bolas abertas de $M$.
+
+    Em outras palavras, mostre que $A$ é aberto se, e somente se, existe uma coleção $\mathcal B$ de bolas abertas de $M$ tal que
+    \[
+        A=\bigcup_{B\in\mathcal B} B.
+    \]
+\end{exercise}
+
+\begin{exercise}
+    Em $\mathbb R^n$, com a distância euclidiana, mostre que o conjunto
+    \[
+        A=\{x\in\mathbb R^n : \|x\|>1\}
+    \]
+    é aberto.
+\end{exercise}
+
+\begin{exercise}
+    Considere $A=[0,+\infty[\subseteq\mathbb R$ com a métrica herdada da distância usual de $\mathbb R$.
+    Determine quais dos seguintes subconjuntos são abertos no subespaço $A$.
+    Justifique suas respostas.
+    \begin{enumerate}[label=(\alph*)]
+        \item $A$;
+        \item $[0,1[$;
+        \item $]0,1[$;
+        \item $\{0\}$;
+        \item $[1,2[$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Considere o conjunto $\mathbb Z$ munido da métrica herdada da distância usual de $\mathbb R$.
+    Determine quais dos seguintes subconjuntos são abertos em $\mathbb Z$.
+\end{exercise}
+
+\begin{exercise}
+    Seja $M$ um conjunto munido da métrica discreta, isto é,
+    \[
+        d(p,q)=
+        \begin{cases}
+            0, & \text{se } p=q,\\
+            1, & \text{se } p\neq q.
+        \end{cases}
+    \]
+    Mostre que todo subconjunto de $M$ é aberto.
+\end{exercise}
