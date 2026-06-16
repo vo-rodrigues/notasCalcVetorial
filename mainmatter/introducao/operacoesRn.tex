@@ -1,6 +1,7 @@
 \section{Operações em \texorpdfstring{$\mathbb R^n$}{Rn}}
 
-Algumas operações importantes em $\mathbb R^n$ incluem soma, produto escalar, produto por escalar e normas. Nesta seção, revisaremos tais operações.
+Algumas operações importantes em $\mathbb R^n$ incluem soma, produto por escalar e produto escalar.
+Nesta seção, revisaremos tais operações.
 
 \begin{definition}
     Sejam $p=(x_1, \ldots, x_n)$ e $q=(y_1, \ldots, y_n)$ dois elementos de $\mathbb R^n$, e $\alpha \in \mathbb R$ um número real.
@@ -16,17 +17,54 @@ Algumas operações importantes em $\mathbb R^n$ incluem soma, produto escalar, 
     \begin{equation*}
         p \cdot q = (x_1, \ldots, x_n) \cdot (y_1, \ldots, y_n) = x_1y_1 + \ldots + x_ny_n=\sum_{i=1}^n x_iy_i.
     \end{equation*}
-    A \emph{norma}\index{norma}\index{norma euclidiana|see{norma}} de $p$ é definida como:
-    \begin{equation*}
-        \|p\| = \sqrt{p\cdot p}=\sqrt{x_1^2 + \ldots + x_n^2} = \sqrt{\sum_{i=1}^n x_i^2}.
-    \end{equation*}
 \end{definition}
 
-Vamos lembrar de importantes interpretações geométricas destas operações.
+Como usual, escrevemos
+\[
+    -p=(-1)p
+    \quad\text{e}\quad
+    p-q=p+(-q).
+\]
 
-A soma dos vetores $v=(3, 2)$ e $w=(-1, 1)$ pode ser visualizada como o vetor com início da origem e fim no ponto obtido posicionando-se o vetor $w$ com início no ponto final do vetor $v$, conforme ilustrado abaixo.
+Desse modo, $-(x_1, \ldots, x_n) = (-x_1, \ldots, -x_n)$ e $(x_1, \ldots, x_n)-(y_1, \ldots, y_n) = (x_1-y_1, \ldots, x_n-y_n)$.
 
-\begin{figure}[ht]\label{figure:vectorSum}
+Note que $p+q$ e $\alpha p$ são elementos de $\mathbb R^n$, enquanto $p\cdot q$ é um número real.
+Assim, a soma e a multiplicação por escalar produzem vetores, ao passo que o produto escalar associa dois vetores a um escalar.
+
+\begin{example}
+    Se $p=(1,-2,3)$, $q=(4,0,-1)$ e $\alpha=-2$, então:
+    \[
+        p+q=(5,-2,2),
+        \qquad
+        \alpha p=(-2,4,-6),
+    \]
+    e
+    \[
+        p\cdot q
+        =1\cdot4+(-2)\cdot0+3\cdot(-1)
+        =1.
+    \]
+\end{example}
+
+\begin{example}
+    Se $p=(3,-1,2)$ e $q=(1,4,-2)$, então
+    \[
+        q-p=(1,4,-2)-(3,-1,2)=(-2,5,-4).
+    \]
+    Assim, partindo de $p$ e somando o deslocamento $q-p$, chegamos a $q$:
+    \[
+        p+(q-p)
+        =(3,-1,2)+(-2,5,-4)
+        =(1,4,-2)
+        =q.
+    \]
+\end{example}
+
+Vamos lembrar de importantes interpretações geométricas da soma e da multiplicação por escalar.
+
+A soma dos vetores $v=(3, 2)$ e $w=(-1, 1)$ pode ser visualizada como o vetor com início na origem e fim no ponto obtido posicionando-se o vetor $w$ com início no ponto final do vetor $v$, conforme ilustrado na Figura~\ref{fig:soma-vetores}.
+
+\begin{figure}[ht]
     \centering
     \begin{tikzpicture}
     \draw[->,ultra thick] (-3,0)--(3,0) node[right]{$x$};
@@ -41,8 +79,9 @@ A soma dos vetores $v=(3, 2)$ e $w=(-1, 1)$ pode ser visualizada como o vetor co
     \draw[->,thick] (0,0) -- (2,3) node[above, align=left]{$v+w=(2,3)$};
     \end{tikzpicture}
     \caption{Soma de vetores em $\mathbb R^2$.}
+    \label{fig:soma-vetores}
 \end{figure}
-O produto escalar de $v=(1, 2)$ por $2$ e por $-2$ correspondem a, respectivamente, multiplicar o comprimento do vetor $v$ pelo fator $2$, mantendo a direção e sentido, e invertendo o sentido.
+A multiplicação do vetor $v=(1, 2)$ por $2$ e por $-2$ corresponde, respectivamente, a multiplicar o comprimento de $v$ por $2$, mantendo a direção e o sentido, e a multiplicar o comprimento de $v$ por $2$, mantendo a direção e invertendo o sentido, conforme ilustrado na Figura~\ref{fig:produto-por-escalar}.
 
 \begin{figure}[ht]
     \centering
@@ -52,26 +91,61 @@ O produto escalar de $v=(1, 2)$ por $2$ e por $-2$ correspondem a, respectivamen
 
     % Vetor 2v
     \draw[->,thick, draw=blue] (0,0) -- (2,4) node[above right]{$2v=(2,4)$};
-    % Vetor 2v
+    % Vetor -2v
     \draw[->,thick, draw=red] (0,0) -- (-2,-4) node[above right]{$-2v=(-2,-4)$};
     % Vetor v=(1,2)
     \draw[->,thick] (0,0) -- (1,2) node[below right]{$v=(1,2)$};
     \end{tikzpicture}
     \caption{Produto por escalar em $\mathbb R^2$.}
+    \label{fig:produto-por-escalar}
 \end{figure}
 
-A norma de um vetor $v=(x_1, \ldots, x_n)$ é o comprimento do vetor que parte da origem até o ponto $(x_1, \ldots, x_n)$ utilizando-se a métrica  usual (Euclidiana) em $\mathbb R^n$.
-Vendo $v$ como um ponto no espaço, sua norma denota a distância de $p$ até a origem.
+\begin{example}
+    Seja $v=(2,-1)$. Então
+    \[
+        0v=(0,0),
+        \qquad
+        \frac12v=(1,-\tfrac12),
+        \qquad
+        -3v=(-6,3).
+    \]
+    Multiplicar um vetor por $0$ resulta no vetor nulo.
+    
+    Multiplicar um vetor por $\frac12$ preserva a direção e o sentido, mas reduz o comprimento pela metade.
+    
+    Já multiplicar um vetor por $-3$ preserva a direção, inverte o sentido e multiplica o comprimento por $3$.
+\end{example}
 
-Quanto ao produto escalar, algumas propriedades importantes são as seguintes.
+Agora vamos nos voltar ao produto escalar.
+
+\begin{example}
+    O produto escalar entre dois vetores pode ser positivo, nulo ou negativo.
+    Por exemplo, tomando $u=(1,2)$, temos:
+    \[
+        u\cdot(2,1)=1\cdot2+2\cdot1=4>0,
+    \]
+    \[
+        u\cdot(2,-1)=1\cdot2+2\cdot(-1)=0,
+    \]
+    e
+    \[
+        u\cdot(-1,-2)=1\cdot(-1)+2\cdot(-2)=-5<0.
+    \]
+    Por outro lado,
+    \[
+        u\cdot u=1^2+2^2=5>0.
+    \]
+\end{example}
+
+Algumas propriedades importantes do produto escalar são as seguintes.
 
 \begin{proposition}\index{produto escalar!propriedades}
-    $p, q, r \in \mathbb R^n$ e $\alpha \in \mathbb R$. Então:
+    Sejam $p, q, r \in \mathbb R^n$ e $\alpha \in \mathbb R$. Então:
     \begin{enumerate}
         \item $p \cdot q = q \cdot p$ (comutatividade);
         \item $(p+q) \cdot r = p \cdot r + q \cdot r$ (distributividade);
-        \item $(\alpha p) \cdot q = \alpha(p \cdot q)$ (associatividade com escalares);
-        \item $p \cdot p = \|p\|^2$.
+        \item $(\alpha p) \cdot q = \alpha(p \cdot q)$ (homogeneidade em relação a escalares);
+        \item $p \cdot p \geq 0$.
     \end{enumerate}
 \end{proposition}
 
@@ -82,119 +156,87 @@ Quanto ao produto escalar, algumas propriedades importantes são as seguintes.
     \begin{equation*}
         p \cdot q = \sum_{i=1}^n x_iy_i = \sum_{i=1}^n y_ix_i = q \cdot p.
     \end{equation*}
+
     Para a distributividade, temos:
     \begin{align*}
         (p+q) \cdot r &= \sum_{i=1}^n (x_i+y_i)z_i \\
         &= \sum_{i=1}^n x_iz_i + \sum_{i=1}^n y_iz_i \\
         &= p \cdot r + q \cdot r.
     \end{align*}
-    Quanto a associatividade com escalares, temos:
+
+    Quanto à homogeneidade em relação a escalares, temos:
     \begin{equation*}
         (\alpha p) \cdot q = \sum_{i=1}^n (\alpha x_i)y_i = \alpha \sum_{i=1}^n x_iy_i = \alpha (p \cdot q).
     \end{equation*}
-    Finalmente, temos:
+
+    Finalmente, como $x_i^2\geq 0$ para todo $i$, temos:
     \begin{equation*}
-        p \cdot p = \sum_{i=1}^n x_iy_i = \|p\|^2.
+        p \cdot p = \sum_{i=1}^n x_i^2 \geq 0.
     \end{equation*}
 \end{proof}
 
-Algumas propriedades da norma são as seguintes.
-\begin{proposition}\index{norma!propriedades}
-    Sejam $v, w \in \mathbb R^n$ e $\alpha \in \mathbb R$. Então:
-    \begin{enumerate}[label=(\roman*)]
-        \item $\|v\| = 0$ se, e somente se, $v=0$;
-        \item $\|\alpha v\| = |\alpha| \|v\|$;
-        \item $|v\cdot w| \leq \|v\| \|w\|$ (desigualdade de Cauchy-Schwarz)\index{desigualdade de Cauchy-Schwarz};
-        \item $\|v+w\| \leq \|v\| + \|w\|$ (desigualdade triangular)\index{desigualdade triangular}.
+\subsection*{Exercícios}
+
+\begin{exercise}
+    Sejam $p=(2,-1,0,3)$ e $q=(-1,4,5,2)$ elementos de $\mathbb R^4$.
+    Calcule:
+    \begin{enumerate}[label=(\alph*)]
+        \item $p+q$;
+        \item $p-q$;
+        \item $q-p$;
+        \item $-3p$;
+        \item $p\cdot q$;
+        \item $q\cdot q$.
     \end{enumerate}
-\end{proposition}
-\begin{proof}
-    Vamos verificar cada uma das propriedades. Escreva $v=(x_1, \ldots, x_n)$ e $w=(y_1, \ldots, y_n)$.
-    \begin{enumerate}[label=(\roman*)]
-        \item Se $v=0$, então $\|v\|=\sqrt{0^2+\ldots+0^2}=0$. Reciprocamente, se $\|v\|=0$, então $\sqrt{\sum_{i=1}^n x_i^2}=0$, o que implica que $x_i=0$ para todo $i$, ou seja, $v=0$.
-        \item Temos que $\|\alpha v\| = \sqrt{(\alpha x_1)^2 + \ldots + (\alpha x_n)^2} = |\alpha|\sqrt{x_1^2 + \ldots + x_n^2} = |\alpha| \|v\|$.
-        \item Se $w=0$, então a expressão desejada é $0\leq 0$, que é verdadeira.
-        Se $w\neq 0$, então, para qualquer que seja o número real $t$, temos que:
-        \begin{align*}
-            0\leq \|v+tw\|^2 &= (v + tw) \cdot (v + tw) \\
-            &= v \cdot v + 2t(v \cdot w) + t^2(w \cdot w) \\
-            &= \|v\|^2 + 2t(v \cdot w) + t^2\|w\|^2.
-        \end{align*}
-        Pondo $t=\frac{-v \cdot w}{\|w\|^2}$, temos que:
-        \begin{align*}
-            0 &\leq \|v\|^2 - 2\frac{(v \cdot w)^2}{\|w\|^2} + \frac{(v \cdot w)^2}{\|w\|^2} \\
-            &= \|v\|^2 - \frac{(v \cdot w)^2}{\|w\|^2} \\
-            &\iff (v \cdot w)^2 \leq \|v\|^2 \|w\|^2.
-        \end{align*}
-        Assim, temos que $|v \cdot w| \leq \|v\| \|w\|$.
-        \item A desigualdade triangular segue da desigualdade de Cauchy-Schwarz:
-        \begin{equation*}
-            \|v+w\|^2 = (v+w) \cdot (v+w) = \|v\|^2 + 2v \cdot w + \|w\|^2 \leq \|v\|^2 + 2\|v\|\|w\| + \|w\|^2 = (\|v\| + \|w\|)^2.
-        \end{equation*}
+\end{exercise}
+
+\begin{exercise}
+    Sejam $p=(x_1,\ldots,x_n)$ e $q=(y_1,\ldots,y_n)$ elementos de $\mathbb R^n$.
+    Mostre que
+    \begin{enumerate}[label=(\alph*)]
+        \item $p+(q-p)=q$;
+        \item $q-p=-(p-q)$.
     \end{enumerate}
-\end{proof}
+\end{exercise}
 
+\begin{exercise}
+    Seja $u=(1,2)$.
+    Determine todos os vetores $v=(x,y)\in\mathbb R^2$ tais que $u\cdot v=0$.
+\end{exercise}
 
-O produto escalar pode ser utilizado para decidir-se \emph{ortogonalidade}\index{ortogonalidade}\index{vetores ortogonais|see{ortogonalidade}} entre vetores.
-É fato conhecido que vale a recíproca do \emph{Teorema de Pitágoras}\index{Teorema de Pitágoras}: se $\triangle BAC$ é um triângulo, então o ângulo $\angle ABC$ é reto se, e somente se, sendo $a, b, c$ respectivamente as medidas dos segmentos $\overline{BC}, \overline{AC}, \overline{AB}$, temos que $a^2=b^2+c^2$.
+\begin{exercise}
+    Sejam $p,q\in\mathbb R^n$.
+    Mostre que:
+    \[
+        (p+q)\cdot(p+q)=p\cdot p+2p\cdot q+q\cdot q.
+    \]
+\end{exercise}
 
-\begin{figure}[ht]
-    \centering
-    \begin{tikzpicture}
-    % Pontos do triângulo
-    \coordinate (B) at (0,0);
-    \coordinate (A) at (4,0);
-    \coordinate (C) at (4,3);
+\begin{exercise}
+    Sejam $p,q\in\mathbb R^n$.
+    Mostre que:
+    \[
+        (p-q)\cdot(p-q)=p\cdot p-2p\cdot q+q\cdot q.
+    \]
+\end{exercise}
 
-    % Lados do triângulo
-    \draw[thick] (B) -- (A) -- (C) -- cycle;
+\begin{exercise}
+    Seja $p\in\mathbb R^n$.
+    Mostre que $p\cdot p=0$ se, e somente se, $p=0$.
+\end{exercise}
 
-    % Marcação do ângulo reto em B
-    \draw (A) ++(-0.4,0) -- ++(0,0.4) -- ++(0.4,0);
-
-    % Nome dos vértices
-    \node[right] at (A) {$A$};
-    \node[left] at (B) {$B$};
-    \node[above right] at (C) {$C$};
-
-    % Lados a, b, c
-    \path (B) -- node[above left] {$a$} (C);
-    \path (A) -- node[right] {$b$} (C);
-    \path (A) -- node[below] {$c$} (B);
-
-    \end{tikzpicture}
-    \caption{Triângulo retângulo.}
-
-    No aspecto vetorial, dados dois vetores $v$ e $w$, perceba que o vetor $v+w=v+(-w)$ pode ser representado como o segmento que une as extremidades dos vetores $v$ e $-w$, conforme ilustrado abaixo.
-
-    \begin{tikzpicture}
-    \draw[->,ultra thick] (-3,0)--(3,0) node[right]{$x$};
-    \draw[->,ultra thick] (0,-3)--(0,3) node[above]{$y$};
-    % Vetor v
-    \draw[->,thick] (0,0) -- (2,1) node[above right]{$w$};
-    % Vetor v-w
-    \draw[->,thick] (0,0) -- (-1,-2) node[below left]{$v-w$};
-    \draw[->,dotted] (2,1) -- (1,-1);
-    % Vetor v+w
-    \draw[->,thick] (0,0) -- (1,-1) node[below right]{$v=w+(v-w)$};
-    \end{tikzpicture}
-\end{figure}
-
-Assim, os vetores $v$ e $w$ são ortogonais, se, e somente se, $\|v-w\|^2=\|v\|^2+\|w\|^2$.
-
-\begin{proposition}
-    Sejam $v, w \in \mathbb R^n$. Então, $v$ e $w$ são ortogonais se, e somente se, $v \cdot w = 0$.
-\end{proposition}
-\begin{proof}
-    Notemos que, no geral:
-    \begin{equation*}
-        \|v-w\|^2 = (v-w) \cdot (v-w) = v \cdot v - 2v \cdot w + w \cdot w = \|v\|^2 - 2v \cdot w + \|w\|^2.
-    \end{equation*}
-    Assim, temos que:
-    \begin{align*}
-        \|v-w\|^2 &= \|v\|^2 + \|w\|^2 \\
-        &\iff \|v\|^2 - 2v \cdot w + \|w\|^2 = \|v\|^2 + \|w\|^2 \\
-        &\iff -2v \cdot w = 0 \\
-        &\iff v \cdot w = 0.
-    \end{align*}
-\end{proof}
+\begin{exercise}
+    Para cada $i\in\{1,\ldots,n\}$, seja $e_i\in\mathbb R^n$ o vetor cuja $i$-ésima coordenada é $1$ e cujas demais coordenadas são $0$.
+    Mostre que:
+    \[
+        e_i\cdot e_j=
+        \begin{cases}
+            1, & \text{se } i=j,\\
+            0, & \text{se } i\neq j.
+        \end{cases}
+    \]
+    Em seguida, mostre que, se $p=(x_1,\ldots,x_n)$, então
+    \[
+        p\cdot e_i=x_i.
+    \]
+\end{exercise}
