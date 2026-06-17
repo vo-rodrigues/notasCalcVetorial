@@ -9,7 +9,7 @@ Nos pontos não isolados de seu domínio, ou seja, nos pontos de seu domínio qu
 Uma ferramenta muito útil para testar a continuidade de uma função nesses pontos é a noção de limite.
 Tal noção também dá informações sobre o comportamento de uma função nas imediações de pontos de acumulação de seu domínio que estejam em um espaço ambiente, mas que não pertençam ao domínio.
 
-Intuitivamente, $L$ é ilimite de uma função $f$ no ponto $p$ se para qualquer margem de erro em torno de $L$, obtemos uma margem de segurança no domínio de $f$ tal que, para todo ponto do domínio de $f$ dentro dessa margem de segurança distinto de $p$, a imagem desse ponto por $f$ está dentro da margem de erro em torno de $L$.
+Intuitivamente, $L$ é limite de uma função $f$ no ponto $p$ se, para qualquer margem de erro em torno de $L$, existe uma margem de segurança em torno de $p$ tal que, para todo ponto do domínio de $f$ dentro dessa margem de segurança e distinto de $p$, a imagem desse ponto por $f$ está dentro da margem de erro em torno de $L$.
 O ponto $p$ é excluído dessa análise pois a noção de limite pergunta o que ocorre perto do ponto $p$, mas não exatamente no ponto $p$.
 
 \begin{definition}\index{limite}\index{limite!definição}
@@ -18,7 +18,7 @@ O ponto $p$ é excluído dessa análise pois a noção de limite pergunta o que 
         \item $M, N$ espaços métricos,
         \item $A\subseteq M$,
         \item $f: A \to N$,
-        \item $p \in M$ um ponto de acumulação de $A$.
+        \item $p \in M$ um ponto de acumulação de $A$,
         \item $L \in N$.
     \end{itemize}
     Dizemos que $L$ é limite de $f$ em $p$ se, para todo $\epsilon > 0$, existe $\delta > 0$ tal que, para todo $x \in A\setminus\{p\}$,
@@ -27,12 +27,12 @@ O ponto $p$ é excluído dessa análise pois a noção de limite pergunta o que 
     \]
 \end{definition}
 
-A Figura~\ref{fig:limiteUnico} resume a escolha de $\delta$ na prova da Proposição~\ref{prop:limiteUnico}.
-
-\subimport{}{limiteUnico-figura}
 
 Conforme veremos mais adiante, nem sempre uma função possui limites em pontos dados.
 Porém, limites, quando existem, são únicos.
+
+
+A Figura~\ref{fig:limiteUnico} resume a escolha de $\delta$ na prova da Proposição~\ref{prop:limiteUnico}.
 
 \begin{proposition}\index{limite!unicidade}\label{prop:limiteUnico}
     Sejam
@@ -48,8 +48,6 @@ Porém, limites, quando existem, são únicos.
 \end{proposition}
 
 \begin{proof}
-    Seja $L_1, L_2 \in \mathbb R^m$ limites de $f$ em $p$.
-
     Suponha por absurdo que $L_1\neq L_2$. Então $d(L_1, L_2) > 0$.
 
     Seja $R=\frac{d(L_1, L_2)}{2} > 0$.
@@ -70,6 +68,9 @@ Porém, limites, quando existem, são únicos.
     Como $d(L_1, L_2) < d(L_1, L_2)$ é impossível, chegamos a uma contradição. Logo, $L_1 = L_2$.
 \end{proof}
 
+
+\subimport{}{limiteUnico-figura}
+
 Com isso, podemos definir uma notação muito usual para se falar de limites.
 \begin{definition}\index{limite!notação}
     Seja $A\subseteq M$ um conjunto, $f: A \to N$ uma função e $p \in A$ um ponto de acumulação de $A$.
@@ -88,31 +89,66 @@ Por exemplo, se $f:\mathbb R^2 \to \mathbb R$ é uma função e $p=(a, b)$, é c
 \]
 
 Para dimensões maiores, notações análogas são utilizadas.
+\smallskip
 
 A proposição abaixo conecta os conceitos de limite e de continuidade.
 \begin{proposition}\index{continuidade!caracterização por limite}
     Sejam:
     \begin{itemize}
-        \item $A\subseteq \mathbb R^n$ um conjunto,
-        \item $f: A \to \mathbb R^m$ uma função, e
+        \item $A\subseteq M$ um conjunto,
+        \item $f: A \to N$ uma função, e
         \item $p \in A$ um ponto de acumulação de $A$.
     \end{itemize}
 
-    Então:
-    \[
-    f \text{ é contínua em } p \text{ se, e somente se, existe } \lim_{x\to p} f(x) = f(p).
-    \]
+    São equivalentes:
+    \begin{enumerate}[label=(\roman*)]
+        \item $f$ é contínua em $p$;
+        \item $f(p)$ é limite de $f$ em $p$.
+    \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-    Se $f$ é contínua em $p$, então para todo $\epsilon>0$, existe $\delta>0$ tal que, para todo $x \in A$, se $d(x, p) < \delta$, então $d(f(x), f(p)) < \epsilon$.
-    Por definição, temos imediatamente que $f(p)=\lim_{x\to p} f(x)$.
+    Suponha que $f$ é contínua em $p$.
+    Veremos que $f(p)$ é limite de $f$ em $p$.
 
-    Agora, suponha que $f(p)$ é limite de $f$ em $p$. Então, para todo $\epsilon>0$, existe $\delta>0$ tal que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta$, então $d(f(x), f(p)) < \epsilon$.
+    Para tanto, fixe $\epsilon>0$.
+    Devemos ver que existe $\delta>0$ tal que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta$, então $d'(f(x), f(p)) < \epsilon$.
+    Ora, como $f$ é contínua em $p$, temos que tal $\delta$ existe.
+    \smallskip
+    
+    Reciprocamente, suponha que $f$ possui limite em $p$ e que tal limite é $f(p)$.
+    Devemos ver que $f$ é contínua em $p$.
 
-    Resta apenas ver que vale a implicação $d(p, p)<\delta\rightarrow d(f(p), f(p)) < \epsilon$.
-    Ora, essa implicação nos diz que se $0<\delta$ então $0<\epsilon$, o que é verdade, uma vez que $0<\epsilon$.
+    Para isso, fixamos $\epsilon>0$.
+    Como $f(p)$ é limite de $f$ em $p$, existe $\delta>0$ tal que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta$, então $d'(f(x), f(p)) < \epsilon$.
+
+    Veremos que tal $\delta$ funciona para a definição de continuidade.
+
+    De fato, devemos ver que se $x \in A$ e $d(x, p) < \delta$, então $d'(f(x), f(p)) < \epsilon$.
+    Isso decorre da escolha de $\delta$ caso $x \in A\setminus\{p\}$.
+    Já se $x = p$, então $d'(f(x), f(p)) = d'(f(p), f(p)) = 0 < \epsilon$.
 \end{proof}
+
+Assim, temos o seguinte valioso teste para se decidir se uma função é contínua em um ponto.
+
+
+O seguinte corolário sintetiza uma forma de se decidir se uma função é ou não é contínua.
+
+\begin{corollary}
+    Sejam:
+    \begin{itemize}
+        \item $A\subseteq M$ um conjunto,
+        \item $f: A \to N$ uma função, e
+        \item $p \in A$.
+    \end{itemize}
+    Então:
+    \begin{enumerate}[label=(\roman*)]
+        \item se $p$ é um ponto isolado de $A$, então $f$ é contínua em $p$;
+        \item se $p$ é um ponto de acumulação de $A$ e $f$ não possui limite em $p$, então $f$ não é contínua em $p$;
+        \item se $p$ é um ponto de acumulação de $A$ e $f$ possui limite em $p$ que é diferente de $f(p)$, então $f$ não é contínua em $p$;
+        \item se $p$ é um ponto de acumulação de $A$ e $f(p)$ é limite de $f$ em $p$, então $f$ é contínua em $p$.
+    \end{enumerate}
+\end{corollary}
 
 
 \begin{proposition}\index{limite!via funções coordenadas}Sejam
@@ -161,16 +197,6 @@ A proposição abaixo conecta os conceitos de limite e de continuidade.
 
     Assim, se de partida, ao invés de $\epsilon$, tomarmos $\delta_1, \dots, \delta_n$ que funcione para $\epsilon'=\frac{\epsilon}{\sqrt{m}}$, concluiremos que para todo $x \in A\setminus\{p\}$ com $d(x, p) < \delta$, temos que $d(f(x), L) < \epsilon'$.
 \end{proof}
-
-O seguinte corolário sintetiza uma forma de se decidir se uma função é ou não é contínua.
-
-\begin{corollary}
-    Seja $A\subseteq \mathbb R^n$ um conjunto, $f: A \to \mathbb R^m$ uma função e $p \in A$.
-    \begin{itemize}
-        \item Se $p$ é um ponto isolado de $A$, então $f$ é contínua em $p$.
-        \item Se $p$ é um ponto de acumulação de $A$, então $f$ é contínua em $p$ se, e somente se, $\lim_{x\to p} f(x) = f(p)$.
-    \end{itemize}
-\end{corollary}
 
 \begin{proposition}Sejam
     \begin{itemize}
