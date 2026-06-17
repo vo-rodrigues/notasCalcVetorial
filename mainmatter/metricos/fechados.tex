@@ -2,12 +2,15 @@
 \section{Subconjuntos fechados}
 Ao longo desta seção, $(M,d)$ denotará um espaço métrico arbitrário.
 
-Intuitivamente, um conjunto fechado é um conjunto que contém todos os pontos do espaço ambiente que estão ``grudados'' nele.
+Intuitivamente, um conjunto fechado é um conjunto que contém todos os pontos do espaço ambiente que estão ``grudados'' a ele.
 
 \begin{definition}\index{conjunto fechado}
     Seja $A$ um subconjunto de $M$.
     Dizemos que $A$ é \emph{fechado} se, para todo ponto de acumulação $p$ de $A$, temos que $p \in A$.
 \end{definition}
+
+Observe que a definição de conjunto fechado não exige que todos os pontos de $A$ sejam pontos de acumulação de $A$.
+Ela exige que todos os pontos de acumulação de $A$ pertençam a $A$.
 
 Frequentemente, uma forma mais prática de verificar se um conjunto é fechado é dada pelo seguinte critério.
 \begin{proposition}\label{prop:fechado-complemento-aberto}
@@ -40,6 +43,12 @@ Frequentemente, uma forma mais prática de verificar se um conjunto é fechado �
     O intervalo $[a, b]$ com $a<b$ é um conjunto fechado de $\mathbb R$, pois $\mathbb R\setminus [a, b] = ]-\infty, a[ \cup ]b, +\infty[$ é uma união de conjuntos abertos, logo é aberto.
 \end{example}
 
+\begin{example}
+    O intervalo $[0,1[$ não é fechado em $\mathbb R$.
+    De fato, o ponto $1$ é ponto de acumulação de $[0,1[$, pois todo intervalo aberto centrado em $1$ contém pontos de $[0,1[$.
+    Porém, $1\notin [0,1[$.
+\end{example}
+
 \begin{corollary}
     Seja $A$ um subconjunto de $M$.
     Então, $A$ é aberto se, e somente se, seu complemento $M\setminus A$ é fechado.
@@ -55,6 +64,90 @@ Frequentemente, uma forma mais prática de verificar se um conjunto é fechado �
     \]
     Portanto, $A$ é aberto se, e somente se, $M\setminus A$ é fechado.
 \end{proof}
+
+Algumas propriedades de conjuntos fechados são as seguintes.
+
+\begin{proposition}
+    Seja $(M,d)$ um espaço métrico.
+    Sobre os subconjuntos fechados de $M$, temos as seguintes propriedades.
+    \begin{enumerate}[label=(\roman*)]
+        \item $M$ e $\emptyset$ são fechados.
+        \item A interseção de qualquer coleção não vazia de subconjuntos fechados de $M$ é fechada.
+        \item Uma união finita de subconjuntos fechados de $M$ é fechada.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    (i) Vimos que $M$ e $\emptyset$ são abertos, logo, pela Proposição~\ref{prop:fechado-complemento-aberto}, seus complementos $\emptyset$ e $M$ são fechados.
+
+    (ii) Seja $\{F_i\}_{i\in I}$ uma coleção não vazia de subconjuntos fechados de $M$, onde $I$ é um conjunto de índices arbitrário.
+    Vejamos que $\bigcap_{i\in I} F_i$ é fechado.
+    Para isso, basta mostrar que $M\setminus \bigcap_{i\in I} F_i$ é aberto.
+    De fato, temos
+    \[
+        M\setminus \bigcap_{i\in I} F_i
+        =
+        \bigcup_{i\in I} (M\setminus F_i).
+    \]
+    Como cada $F_i$ é fechado, cada $M\setminus F_i$ é aberto.
+    Como qualquer união de conjuntos abertos é aberta, segue que $M\setminus \bigcap_{i\in I} F_i$ é aberto.
+    Logo, $\bigcap_{i\in I} F_i$ é fechado.
+
+    (iii) Se a união for vazia, ela é $\emptyset$, que é fechado pelo item (i).
+    Suponha então que a união é não vazia, digamos $\bigcup_{i=1}^n F_i$, com $n\geq 1$.
+    Vejamos que $\bigcup_{i=1}^n F_i$ é fechado.
+    Para isso, basta mostrar que $M\setminus \bigcup_{i=1}^n F_i$ é aberto.
+    De fato, temos
+    \[
+        M\setminus \bigcup_{i=1}^n F_i
+        =
+        \bigcap_{i=1}^n (M\setminus F_i).
+    \]
+    Como cada $F_i$ é fechado, cada $M\setminus F_i$ é aberto.
+    Como qualquer interseção finita de conjuntos abertos é aberta, segue que $M\setminus \bigcup_{i=1}^n F_i$ é aberto.
+    Logo, $\bigcup_{i=1}^n F_i$ é fechado.
+\end{proof}
+
+A palavra ``fechado'' não significa ``não aberto''.
+De fato, sendo $M$ um espaço métrico qualquer, vimos que $\emptyset$ e $M$ são ambos simultaneamente fechados e abertos em $M$.
+Um dito popular é o de que ``conjunto não é porta''.
+Conjuntos que são simultaneamente abertos e fechados são chamados de \emph{conjuntos clopen}\index{conjunto clopen} (do inglês, \emph{closed} + \emph{open}).
+
+Outro exemplo importante é dado pelas bolas fechadas.
+
+\begin{proposition}\label{prop:bola-fechada-fechado}
+    Sejam $p\in M$ e $r>0$.
+    Então a bola fechada $B[p,r]$ é um subconjunto fechado de $M$.
+\end{proposition}
+\begin{proof}
+    Pela Proposição~\ref{prop:fechado-complemento-aberto}, basta mostrar que $M\setminus B[p,r]$ é aberto.
+
+    Seja $q\in M\setminus B[p,r]$.
+    Então $d(p,q)>r$.
+    Tome
+    \[
+        s=d(p,q)-r>0.
+    \]
+
+    Veremos que $B(q,s)\subseteq M\setminus B[p,r]$.
+    De fato, se $x\in B(q,s)$, então $d(q,x)<s$.
+    Pela desigualdade triangular,
+    \[
+        d(p,q)\leq d(p,x)+d(x,q),
+    \]
+    logo
+    \[
+        d(p,x)\geq d(p,q)-d(x,q)>d(p,q)-s=r.
+    \]
+
+    Portanto, $x\notin B[p,r]$.
+    Assim, $B(q,s)\subseteq M\setminus B[p,r]$.
+    Como $q\in M\setminus B[p,r]$ foi arbitrário, $M\setminus B[p,r]$ é aberto.
+    Logo, $B[p,r]$ é fechado.
+\end{proof}
+
+A Figura~\ref{fig:bolaFechadaFechado} ilustra a escolha de $s$ na Proposição~\ref{prop:bola-fechada-fechado}.
+
+\subimport{fechados}{figuraBolaFechadaFechado}
 
 \begin{proposition}
     Seja $F$ um subconjunto finito de $M$.
@@ -91,3 +184,86 @@ Frequentemente, uma forma mais prática de verificar se um conjunto é fechado �
     é uma interseção de dois conjuntos abertos.
     Logo, $A\setminus C$ é aberto.
 \end{proof}
+
+Pontuamos que a propriedade de ser um conjunto fechado depende do espaço ambiente.
+
+\begin{example}
+    Considere o subespaço $N=]0,2[\subseteq\mathbb R$ e o subconjunto
+    \[
+        A=[1,2[ \subseteq N.
+    \]
+    Então $A$ é fechado em $N$, pois
+    \[
+        N\setminus A = ]0,1[
+    \]
+    é aberto em $N$.
+
+    Porém, $A$ não é fechado em $\mathbb R$, pois $2$ é ponto de acumulação de $A$ e $2\notin A$.
+\end{example}
+
+\section*{Exercícios}
+
+\begin{exercise}
+    Em $\mathbb R$, com a distância usual, determine quais dos seguintes subconjuntos são fechados.
+    Justifique suas respostas.
+    \begin{enumerate}[label=(\alph*)]
+        \item $[0,1]$;
+        \item $]0,1[$;
+        \item $[0,1[$;
+        \item $]-\infty,0]$;
+        \item $\mathbb R\setminus\{0\}$;
+        \item $\mathbb Z$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Sejam $a,b\in\mathbb R$, com $a<b$.
+    Mostre que os intervalos $[a,+\infty[$ e $]-\infty,b]$ são fechados em $\mathbb R$.
+\end{exercise}
+
+\begin{exercise}
+    Em $\mathbb R$, considere
+    \[
+        A=\left\{\frac1n:n\in\mathbb N,\ n\geq 1\right\}.
+    \]
+    Mostre que $0$ é ponto de acumulação de $A$.
+    Conclua que $A$ não é fechado em $\mathbb R$.
+\end{exercise}
+
+\begin{exercise}
+    Dê um exemplo de uma união infinita de subconjuntos fechados de $\mathbb R$ que não seja fechada.
+\end{exercise}
+
+\begin{exercise}
+    Sejam $A$ e $C$ subconjuntos de um espaço métrico $M$, com $A$ aberto e $C$ fechado.
+    Mostre que $C\setminus A$ é fechado.
+\end{exercise}
+
+\begin{exercise}
+    Em $\mathbb R^n$, com a distância euclidiana usual, mostre que o conjunto
+    \[
+        A=\{x\in\mathbb R^n:\|x\|\leq 1\}
+    \]
+    é fechado.
+\end{exercise}
+
+\begin{exercise}
+    Em $\mathbb R^n$, com a distância euclidiana usual, mostre que o conjunto
+    \[
+        S=\{x\in\mathbb R^n:\|x\|=1\}
+    \]
+    é fechado.
+\end{exercise}
+
+\begin{exercise}
+    Seja $(M,d)$ um espaço métrico e seja $A$ um subconjunto de $M$.
+    Mostre que $A$ é fechado se, e somente se, para todo $p\in M\setminus A$, existe $r>0$ tal que
+    \[
+        B(p,r)\cap A=\emptyset.
+    \]
+\end{exercise}
+
+\begin{exercise}
+    Considere $A=\{(x, y)\in\mathbb R^2:x<0\}$.
+    Mostre que $A$ é fechado no subespaço $A$, mas não é fechado em $\mathbb R^2$.
+\end{exercise}
