@@ -99,6 +99,32 @@ Algumas propriedades básicas dos conjuntos abertos são as seguintes.
     Logo, $\bigcap_{i=1}^{n+1} A_i$ é a interseção de dois conjuntos abertos e, portanto, é aberto pelo item (iii) da Proposição~\ref{prop:propriedadesAbertos}.
 \end{proof}
 
+O corolário abaixo estabelece uma caracterização dos conjuntos abertos em um espaço métrico.
+
+\begin{corollary}\label{corolario:abertos-uniao-bolas}
+    Seja $M$ um espaço métrico e seja $A\subseteq M$.
+    São equivalentes:
+    \begin{enumerate}[label=(\roman*)]
+        \item $A$ é aberto;
+        \item Existe uma família $(r_p)_{p\in A}$ de números reais positivos tal que
+        \[
+            A = \bigcup_{p\in A} B(p, r_p).
+        \]
+        \item $A$ é a união de uma coleção de bolas abertas.
+    \end{enumerate}
+\end{corollary}
+\begin{proof}
+    $(i)\rightarrow (ii)$.
+    Se $A$ é um conjunto aberto, então, para cada $p \in A$, existe $r_p>0$ tal que $B(p, r_p)\subseteq A$.
+    Como $B(p,r_p)\subseteq A$ para todo $p\in A$, segue que, segue que $\bigcup_{p\in A} B(p, r_p) \subseteq A$.
+
+    Temos ainda que $A \subseteq \bigcup_{p\in A} B(p, r_p)$, pois, dado $p \in A$, temos $p \in B(p, r_p)$.
+    Logo, $A = \bigcup_{p\in A} B(p, r_p)$.
+
+    $(ii)\rightarrow (iii)$ é imediato, pois se $A = \bigcup_{p\in A} B(p, r_p)$, então $A$ é a união de uma coleção de bolas abertas.
+
+    $(iii)\rightarrow (i)$ decorre do item (ii) da Proposição~\ref{prop:propriedadesAbertos} e do fato de que bolas abertas são abertas.
+\end{proof}
 \begin{example}
     A interseção de infinitos conjuntos abertos não precisa ser aberta.
     Em $\mathbb R$, com a distância usual, temos
@@ -164,6 +190,40 @@ A noção de conjunto aberto depende do espaço ambiente.
 Note também que se $M$ é um espaço métrico e $A\subseteq M$ é considerado como subespaço de $M$, então $A$ é aberto com relação ao próprio espaço métrico $A$, mesmo que não seja aberto em $M$.
 De fato, basta aplicar o item (i) da Proposição~\ref{prop:propriedadesAbertos} ao espaço métrico $A$.
 
+A relação entre os abertos de um subespaço e os do espaço ambiente é a seguinte.
+
+\begin{proposition}
+    Sejam $(M,d)$ um espaço métrico, $N\subseteq M$ um subespaço de $M$ e $A\subseteq N$.
+    Então $A$ é aberto em $N$ se, e somente se, existe um conjunto aberto $B$ de $M$ tal que $A=B\cap N$.
+\end{proposition}
+\begin{proof}
+    Suponha que $A$ é aberto em $N$.
+    Do Corolário~\ref{corolario:abertos-uniao-bolas}, existe uma família $(r_p)_{p\in A}$ de números reais positivos tal que
+    \[
+        A = \bigcup_{p\in A} B_N(p, r_p).
+    \]
+    Assim,
+    \[
+        A = \bigcup_{p\in A} \bigl(B_M(p, r_p)\cap N\bigr) = \bigcup_{p\in A} \left(B_M(p, r_p)\cap N\right) = \left(\bigcup_{p\in A} B_M(p, r_p)\right)\cap N.
+    \]
+    Tomando $B = \bigcup_{p\in A} B_M(p, r_p)$, segue a tese, pois $B$ é aberto em $M$ e $A = B\cap N$.
+
+    Reciprocamente, suponha que existe um conjunto aberto $B$ de $M$ tal que $A=B\cap N$.
+    Seja $p\in A$.
+    Então $p\in B$ e $p\in N$.
+    Como $B$ é aberto em $M$, existe $r>0$ tal que
+    \[
+        B_M(p,r)\subseteq B.
+    \]
+    Logo,
+    \[
+        B_N(p,r)=B_M(p,r)\cap N\subseteq B\cap N=A.
+    \]
+    Portanto, $A$ é aberto em $N$.
+    
+    Como $\bigcup_{p\in B} B_N(p, r_p)$ é uma união de conjuntos abertos de $N$, segue que $A$ é aberto em $N$.
+\end{proof}
+
 \begin{knowMore}
     A noção de espaço métrico pode ser generalizada para a noção de espaço topológico.
 
@@ -192,16 +252,6 @@ De fato, basta aplicar o item (i) da Proposição~\ref{prop:propriedadesAbertos}
 \end{exercise}
 
 \begin{exercise}
-    Seja $(M,d)$ um espaço métrico e seja $A\subseteq M$.
-    Mostre que $A$ é aberto se, e somente se, $A$ pode ser escrito como uma união de bolas abertas de $M$.
-
-    Em outras palavras, mostre que $A$ é aberto se, e somente se, existe uma coleção $\mathcal B$ de bolas abertas de $M$ tal que
-    \[
-        A=\bigcup_{B\in\mathcal B} B.
-    \]
-\end{exercise}
-
-\begin{exercise}
     Em $\mathbb R^n$, com a distância euclidiana, mostre que o conjunto
     \[
         A=\{x\in\mathbb R^n : \|x\|>1\}
@@ -223,8 +273,8 @@ De fato, basta aplicar o item (i) da Proposição~\ref{prop:propriedadesAbertos}
 \end{exercise}
 
 \begin{exercise}
-    Considere o conjunto $\mathbb Z$ munido da métrica herdada da distância usual de $\mathbb R$.
-    Determine quais dos seguintes subconjuntos são abertos em $\mathbb Z$.
+    Considere o conjunto $\mathbb Z$ munido da métrica usual.
+    Determine quais subconjuntos de $\mathbb Z$ são abertos em $\mathbb Z$.
 \end{exercise}
 
 \begin{exercise}
