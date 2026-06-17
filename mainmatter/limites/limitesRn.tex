@@ -1,36 +1,50 @@
-\section{Pontos de acumulação e limites}
-E quanto a pontos não isolados?
+\section{Limites em espaços métricos}
 
-Podemos estudar a continuidade deles a partir da noção de limite.
-Ao discutir a continuidade de uma função $f$ em $p$, queremos ver que $f(x)$ fica arbitrariamente próximo de $f(p)$ quando $x$ está suficientemente próximo de $p$.
-No caso de isso não ocorrer, o que pode ocorrer?
+Como na seção anterior, ao longo dessa seção, a menos que seja explicitamente dito o contrário, $(M, d)$ e $(N, d')$ são espaços métricos arbitrários.
 
-Uma das opções é que $f(x)$ se aproxime de outro valor $L \in \mathbb R^m$, com $L \neq f(p)$.
+Na seção anterior, vimos que a continuidade de uma função é trivialmente verdadeira nos pontos isolados de seu domínio.
+
+Nos pontos não isolados de seu domínio, ou seja, nos pontos de seu domínio que são pontos de acumulação, a continuidade de uma função pode ser ou não ser verdadeira, dependendo da função.
+
+Uma ferramenta muito útil para testar a continuidade de uma função nesses pontos é a noção de limite.
+Tal noção também dá informações sobre o comportamento de uma função nas imediações de pontos de acumulação de seu domínio que estejam em um espaço ambiente, mas que não pertençam ao domínio.
+
+Intuitivamente, $L$ é ilimite de uma função $f$ no ponto $p$ se para qualquer margem de erro em torno de $L$, obtemos uma margem de segurança no domínio de $f$ tal que, para todo ponto do domínio de $f$ dentro dessa margem de segurança distinto de $p$, a imagem desse ponto por $f$ está dentro da margem de erro em torno de $L$.
+O ponto $p$ é excluído dessa análise pois a noção de limite pergunta o que ocorre perto do ponto $p$, mas não exatamente no ponto $p$.
 
 \begin{definition}\index{limite}\index{limite!definição}
     Sejam
     \begin{itemize}
-        \item $n,m\geq 1$,
-        \item $A\subseteq \mathbb R^n$ um conjunto,
-        \item $f: A \to \mathbb R^m$ uma função, e
-        \item $p \in \mathbb R^n$ um ponto de acumulação de $A$.
-        \item $L \in \mathbb R^m$.
+        \item $M, N$ espaços métricos,
+        \item $A\subseteq M$,
+        \item $f: A \to N$,
+        \item $p \in M$ um ponto de acumulação de $A$.
+        \item $L \in N$.
     \end{itemize}
     Dizemos que $L$ é limite de $f$ em $p$ se, para todo $\epsilon > 0$, existe $\delta > 0$ tal que, para todo $x \in A\setminus\{p\}$,
     \[
-        \text{se } d(x, p) < \delta, \text{ então } d(f(x), L) < \epsilon.
+        \text{se } d(x, p) < \delta, \text{ então } d'(f(x), L) < \epsilon.
     \]
 \end{definition}
 
-\begin{proposition}\index{limite!unicidade}
+A Figura~\ref{fig:limiteUnico} resume a escolha de $\delta$ na prova da Proposição~\ref{prop:limiteUnico}.
+
+\subimport{}{limiteUnico-figura}
+
+Conforme veremos mais adiante, nem sempre uma função possui limites em pontos dados.
+Porém, limites, quando existem, são únicos.
+
+\begin{proposition}\index{limite!unicidade}\label{prop:limiteUnico}
     Sejam
     \begin{itemize}
-        \item $A\subseteq \mathbb R^n$ um conjunto,
-        \item $f: A \to \mathbb R^m$ uma função, e
-        \item $p \in \mathbb R^n$ um ponto de acumulação de $A$.
+        \item $M, N$ espaços métricos,
+        \item $A\subseteq M$,
+        \item $f: A \to N$,
+        \item $p \in M$ um ponto de acumulação de $A$,
+        \item $L_1, L_2 \in N$.
     \end{itemize}
 
-    Então $f$ possui no máximo um limite em $p$.
+    Se $L_1$ e $L_2$ são limites de $f$ em $p$, então $L_1 = L_2$.
 \end{proposition}
 
 \begin{proof}
@@ -38,37 +52,44 @@ Uma das opções é que $f(x)$ se aproxime de outro valor $L \in \mathbb R^m$, c
 
     Suponha por absurdo que $L_1\neq L_2$. Então $d(L_1, L_2) > 0$.
 
-    Seja $R=\frac{d(L_1, L_2)}{2} > 0$. Então, existem $\delta_1, \delta_2 > 0$ tais que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta_1$, então $d(f(x), L_1) < R$ e, se $d(x, p) < \delta_2$, então $d(f(x), L_2) < R$.
+    Seja $R=\frac{d(L_1, L_2)}{2} > 0$.
+    
+    Para $i\in \{1, 2\}$, como $L_i$ é limite de $f$ em $p$, existe $\delta_i > 0$ tal que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta_i$, então $d(f(x), L_i) < R$.
 
     Seja $\delta = \min\{\delta_1, \delta_2\}$.
-    Como $p$ é ponto de acumulação de $A$, existe $x \in B(p, \delta)\cap A\setminus \{p\}$ tal que $x \in A\setminus\{p\}$.
-    
+    Como $p$ é ponto de acumulação de $A$, existe $x \in A\setminus\{p\}$ tal que $d(x, p) < \delta$.
     Assim, $d(x, p)<\delta\leq \delta_1, \delta_2$, logo:
 
-    \begin{align*}
-        d(f(x), L_1) &< R \\
-        d(f(x), L_2) &< R.
-    \end{align*}
-
-    Assim, temos que:
-
-    \begin{align*}
-        d(L_1, L_2) &\leq d(L_1, f(x)) + d(f(x), L_2) \\
-        &< R + R = 2R = d(L_1, L_2),
-    \end{align*}
-
-    o que é uma contradição. Logo, $L_1 = L_2$.
+    \[
+        d(f(x), L_1) < R \qquad\text{e}\qquad d(f(x), L_2) < R.
+    \]
+    Assim, da desigualdade triangular, temos que:
+    \[
+        d(L_1, L_2) \leq d(L_1, f(x)) + d(f(x), L_2) < R + R = 2R = d(L_1, L_2).
+    \]
+    Como $d(L_1, L_2) < d(L_1, L_2)$ é impossível, chegamos a uma contradição. Logo, $L_1 = L_2$.
 \end{proof}
+
+Com isso, podemos definir uma notação muito usual para se falar de limites.
 \begin{definition}\index{limite!notação}
-    Seja $A\subseteq \mathbb R^n$ um conjunto, $f: A \to \mathbb R^m$ uma função e $p \in A$ um ponto de acumulação de $A$.
+    Seja $A\subseteq M$ um conjunto, $f: A \to N$ uma função e $p \in A$ um ponto de acumulação de $A$.
 
     Então, caso exista, o único limite de $f$ em $p$ é denotado por
     
-    \begin{equation*}
+    \[
     \lim_{x\to p} f(x).
-    \end{equation*}
+    \]
 \end{definition}
+A variável $x$, na definição acima, é uma variável muda.
+No caso de funções de várias variáveis, é comum usar notações alternativas quando conveniente.
+Por exemplo, se $f:\mathbb R^2 \to \mathbb R$ é uma função e $p=(a, b)$, é comum usar a notação
+\[
+    \lim_{(x, y)\to (a, b)} f(x, y).
+\]
 
+Para dimensões maiores, notações análogas são utilizadas.
+
+A proposição abaixo conecta os conceitos de limite e de continuidade.
 \begin{proposition}\index{continuidade!caracterização por limite}
     Sejam:
     \begin{itemize}
