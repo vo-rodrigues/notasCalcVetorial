@@ -1,35 +1,139 @@
 
-\section{Continuidade em \texorpdfstring{$\mathbb R^n$}{Rn}}
-Como acontece no caso unidimensional, intuitivamente, uma função $f$ é \emph{contínua}\index{continuidade}\index{função contínua|see{continuidade}} em um ponto $p$ de seu domínio se, e somente se $f(x)$ fica tão próximo de $f(p)$ quanto se queira, desde que $x$ esteja suficientemente próximo de $p$.
+\section{Funções contínuas em espaços métricos}
 
-Formalmente, temos a definição abaixo.
-Lembremos que se $p\in \mathbb R^n$ e $\epsilon>0$, então $B(p, \epsilon)=\{x\in \mathbb R^n: d(x, p)<\epsilon\}$ é a bola aberta de centro $p$ e raio $\epsilon$.
+Nessa seção, $(M, d)$ e $(N, d')$ denotarão espaços métricos arbitrários sempre que não seja explicitamente dito o contrário.
 
-Ao longo dessa seção, $n$ e $m$ denotarão números inteiros positivos.
+A noção de continuidade em espaços métricos generaliza aquela aprendida para funções de uma variável real a valores reais.
+
+Iniciaremos definindo o que é continuidade em um ponto específico.
 
 \begin{definition}\index{continuidade!definição}
     Sejam:
     \begin{itemize}
-        \item $n,m\geq 1$,
-        \item $A\subseteq \mathbb R^n$ um conjunto,
-        \item $f: A \to \mathbb R^m$ uma função, e
-        \item $p\in A$.
+        \item $(M, d)$ e $(N, d')$ espaços métricos,
+        \item $f: M \to N$ uma função, e
+        \item $p\in M$.
     \end{itemize}
 
-    Dizemos que $f$ é \emph{contínua em $p$} se, para todo $\varepsilon > 0$, existe $\delta > 0$ tal que, para todo $x \in A$,
+    Dizemos que $f$ é \emph{contínua em $p$} se, para todo $\varepsilon > 0$, existe $\delta > 0$ tal que, para todo $x \in M$,
     \[
-        \text{se } d(x, p) < \delta, \text{ então } d(f(x), f(p)) < \varepsilon.
+        \text{se } d(x, p) < \delta, \text{ então } d'(f(x), f(p)) < \varepsilon.
     \]
-
-    Dizemos que $f$ é \emph{contínua} se, para todo $q \in A$, $f$ é contínua em $q$.
 \end{definition}
 
-Notemos que, se $n=m=1$, temos exatamente a definição de continuidade pra funções de uma variável real a valores reais.
+A figura \ref{fig:continuidade} ilustra a definição de continuidade de uma função $f$ em um ponto $p$.
+
+Notemos que isso estende diretamente a definição de continuidade pontual para funções do tipo $f: A\rightarrow \mathbb R$, em que $A\subseteq \mathbb R$.
+
+Com isso, podemos definir o que é uma função contínua.
+
+\begin{definition}\index{continuidade!definição}
+    Seja $f: M \to N$ uma função entre espaços métricos.
+    Dizemos que $f$ é \emph{contínua} se $f$ é contínua em todo ponto de $M$.
+\end{definition}
+
+Assim, a continuidade é uma propriedade local, ou seja, para verificar se uma função é contínua, basta verificar se ela é contínua em cada ponto do seu domínio.
+
+Reforçamos, também, que o comportamento da função nas imediações de um ponto ``no ambiente'' que não esteja em seu domínio é irrelevante para verificar a continuidade.
+Como acontece na definição usual de continuidade pra funções de uma variável, a função $f:\mathbb R\setminus\{0\}\rightarrow \mathbb R$ dada por $f(x) = x^{-1}$ é contínua.
+O comportamento de $f$ em torno de $0$ é irrelevante, pois $0$ não pertence ao domínio de $f$.
 
 \subimport{continuidadeRn}{figura}
 
+Como um primeiro exemplo, tratemos da função identidade.
 
-Como um primeiro exemplo, tratemos das projeções.
+\begin{definition}
+    Seja $A$ um conjunto qualquer.
+
+    A função $\id_A: A\rightarrow A$ dada por $\id_A(x) = x$ para todo $x \in A$ é chamada de \emph{função identidade} de $A$.
+\end{definition}
+
+\begin{proposition}\index{função identidade}
+    Seja $M$ um espaço métrico.
+    A função identidade de $M$ em $M$, $\id_M$, é contínua.
+\end{proposition}
+\begin{proof}
+    Devemos ver que para todo $p\in M$ a função $\id_M$ é contínua em $p$.
+    Fixe $p\in M$ arbitrário.
+
+    Devemos ver que para todo $\epsilon>0$ existe $\delta>0$ tal que, para todo $x\in M$,
+
+    \[
+        \text{se } d(x, p) < \delta, \text{ então } d(\id_M(x), \id_M(p)) < \varepsilon.
+    \]
+
+    Fixe $\epsilon>0$ arbitrário.
+    Precisamos indicar um $\delta>0$ que satisfaça a condição acima.
+    Notemos que $\id_M(x) = x$ e $\id_M(p) = p$ para todo $x\in M$.
+    
+    Veremos que $\delta = \epsilon$ satisfaz a condição acima.
+    De fato, para todo $x \in M$, se $d(x, p) < \epsilon$, então $d(\id_M(x), \id_M(p)) = d(x, p) < \epsilon$, como desejado.
+
+    Assim, $\id_M$ é contínua em $p$.
+    Como $p\in M$ foi arbitrário, concluímos que $\id_M$ é contínua.
+\end{proof}
+
+Vejamos como isso se aplica a uma situação mais concreta.
+
+\begin{example}
+    Seja $f: \mathbb R^3\rightarrow \mathbb R^3$ dada por
+    \[
+        f(x, y, z) = (x, y, z).
+    \]
+    A função $f$ é contínua, pois $f$ é a função identidade de $\mathbb R^3$ em $\mathbb R^3$.
+\end{example}
+
+
+Outra classe de exemplos de funções contínuas simples são as funções constantes.
+
+\begin{definition}\index{função constante}
+    Sejam $M$ e $N$ espaços métricos.
+    Uma função $f: M\rightarrow N$ é dita \emph{constante} se existe $c\in N$ tal que, para todo $x\in M$, $f(x) = c$.
+
+    Nessas condições, dizemos que $f$ é a função constante de $M$ identicamente igual a $c$.
+\end{definition}
+\begin{proposition}
+    Sejam:
+    \begin{itemize}
+        \item $M$ e $N$ espaços métricos, e
+        \item $c \in N$.
+    \end{itemize}
+
+    Seja $f: M\rightarrow N$ a função de $M$ identicamente igual a $c$, ou seja, $f: M\rightarrow N$ dada por $f(x) = c$ para todo $x\in M$.
+
+    Então $f$ é contínua.
+\end{proposition}
+
+
+\begin{proof}
+    Devemos ver que para todo $p\in M$ a função $f$ é contínua em $p$.
+    Fixe $p\in M$ arbitrário.
+
+    Devemos ver que para todo $\epsilon>0$ existe $\delta>0$ tal que, para todo $x\in M$,
+    \[
+        \text{se } d(x, p) < \delta, \text{ então } d'(f(x), f(p)) < \varepsilon.
+    \]
+
+    Perceba que independente de $x$, temos $f(x) = c$ e $f(p) = c$.
+    Assim, $d'(f(x), f(p)) = d'(c, c) = 0$ para todo $x\in M$.
+
+    Por isso, devemos mostrar que para todo $\epsilon>0$ existe $\delta>0$ tal que, para todo $x\in M$,
+    \[
+        \text{se } d(x, p) < \delta, \text{ então } 0 < \varepsilon.
+    \]
+
+    Ora, isso é verdade para qualquer $\delta>0$.
+
+    Fixemos $\epsilon>0$ arbitrário.
+    Veremos que $\delta = 123456$ satisfaz a condição acima.
+    De fato, fixe $x \in M$ tal que $d(x, p) < \delta$.
+    Devemos ver que $0 < \epsilon$.
+    Mas isso é verdade, pois $\epsilon$ é um número real positivo.
+
+    Assim, $f$ é contínua em $p$.
+    Como $p\in M$ foi arbitrário, concluímos que $f$ é contínua.
+\end{proof}
+
 
 \begin{definition}\index{projeção}
     Seja $n\geq 1$ e $i$ um inteiro com $1\leq i\leq n$.
@@ -84,34 +188,4 @@ Assim, por exemplo, temos que:
     Seja $f: \mathbb R^3\rightarrow \mathbb R$ dada por $f(u, v, w)=v$.
     Então $f$ é contínua, pois $f$ é a projeção $\pi_2$ de $\mathbb R^3$ em $\mathbb R$.
 \end{example}
-
-Outra classe de exemplos de funções contínuas simples são as funções constantes, ou seja, as funções da forma $f(x_1, \dots, x_n) = c$ para algum $c \in \mathbb R^m$.
-
-\begin{proposition}\index{função constante}
-    Sejam:
-    \begin{itemize}
-        \item $n,m\geq 1$
-        \item $c \in \mathbb R^m$.
-    \end{itemize}
-
-    Seja $f: \mathbb R^n\rightarrow \mathbb R^m$ uma função tal que, para todo $x \in \mathbb R^n$,
-    \[
-        f(x) = c.
-    \]
-
-    Então $f$ é contínua.
-\end{proposition}
-\begin{proof}
-    Seja $p=(p_1, \dots, p_n) \in \mathbb R^n$ arbitrário e $\epsilon>0$.
-
-    Note que, dado qualquer $x=(x_1, \dots, x_n) \in \mathbb R^n$, temos que:
-    \begin{equation*}
-        d(f(x), f(p)) = d(c, c) = 0 < \epsilon.
-    \end{equation*}
-
-    Assim, se $d(x, p)<\epsilon$, então $d(f(x), f(p))<\epsilon$.
-    Logo, tomando $\delta=\epsilon$, vemos que $f$ é contínua em $p$.
-
-    Como $p\in \mathbb R^n$ foi arbitrário, concluímos que $f$ é contínua.
-\end{proof}
 

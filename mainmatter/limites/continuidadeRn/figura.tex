@@ -1,4 +1,4 @@
-\begin{figure}[H]
+\begin{figure}[ht]
     \centering
     \begin{tikzpicture}[scale=1.1]
 
@@ -6,14 +6,14 @@
         % Plano da esquerda: R^n
         %-------------------------
         \draw[->, thick] (-0.7,0) -- (6.2,0) node[right] {$x$};
-        \draw[->, thick] (0,-0.7) -- (0,4.8) node[above] {$y$};
+        \draw[->, thick] (0,-0.7) -- (0,4.6) node[above] {$y$};
         \node at (3.4,4.4) {$\mathbb{R}^n$};
 
         % Conjunto A em forma de ameba
         \draw[fill=blue!10, draw=blue!60!black, thick]
             plot[smooth cycle, tension=0.9] coordinates {
-                (1.2,3.1) (2.0,4.0) (3.3,3.7) (4.8,3.2)
-                (5.1,2.1) (4.8,0.9) (3.5,0.7) (2.3,0.9)
+                (1.2,3.1) (2.0,4.0) (3.3,3.7) (4.6,3.2)
+                (5.1,2.1) (4.6,0.9) (3.5,0.7) (2.3,0.9)
                 (1.3,1.5) (1.0,2.4)
             };
         \node at (1.9,3.0) {$A$};
@@ -33,7 +33,7 @@
         %-------------------------
         \begin{scope}[xshift=8.4cm]
             \draw[->, thick] (-0.7,0) -- (6.2,0) node[right] {$x$};
-            \draw[->, thick] (0,-0.7) -- (0,4.8) node[above] {$y$};
+            \draw[->, thick] (0,-0.7) -- (0,4.6) node[above] {$y$};
             \node at (3.4,4.4) {$\mathbb{R}^m$};
 
             % Ponto f(p)
@@ -63,4 +63,5 @@
 
     \end{tikzpicture}
     \caption{Ilustração da continuidade.}
+    \label{fig:continuidade}
 \end{figure}
