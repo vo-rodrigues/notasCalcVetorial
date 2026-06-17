@@ -45,3 +45,35 @@ Assim, $f(a) = (f_1(a), \dots, f_m(a))$.
 
     Assim, se de partida, ao invés de $\epsilon$, tomarmos $\delta_1, \dots, \delta_n$ que funcione para $\epsilon'=\frac{\epsilon}{\sqrt{m}}$, concluiremos que para todo $x \in A$ com $d(x, p) < \delta$, temos que $d(f(x), f(p)) < \epsilon'$.
 \end{proof}
+
+\section*{Exercícios}
+
+\begin{exercise}
+    Seja $f:M\rightarrow N$ uma função entre espaços métricos.
+    Mostre que $f$ é contínua se, e somente se, para todo $p\in M$ e todo $\epsilon>0$, existe $\delta>0$ tal que
+    \[
+        f[B_M(p,\delta)]\subseteq B_N(f(p),\epsilon).
+    \]
+\end{exercise}
+
+\begin{exercise}
+    Considere $\mathbb Z$ como subespaço de $\mathbb R$, com a métrica usual.
+    Mostre que toda função $f:\mathbb Z\rightarrow \mathbb R$ é contínua.
+\end{exercise}
+
+\begin{exercise}
+    Seja $f:\mathbb R^2\rightarrow\mathbb R$ dada por
+    \[
+        f(x,y)=
+        \begin{cases}
+            x, & \text{se } y=0,\\
+            y, & \text{se } y\neq 0.
+        \end{cases}
+    \]
+    Mostre que $f$ não é contínua em $(1,0)$.
+\end{exercise}
+
+\begin{exercise}
+    Seja $A\subseteq M$ um subconjunto aberto e seja $f:M\rightarrow N$ uma função contínua.
+    Mostre que $f|_A:A\rightarrow N$ é contínua.
+\end{exercise}
