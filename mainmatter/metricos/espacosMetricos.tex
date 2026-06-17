@@ -41,11 +41,11 @@ Essas noções serão essenciais para o futuro estudo de limites, continuidade e
 \begin{example}
     No caso em que $M=\mathbb R^n$ e $d$ é a distância euclidiana, temos
     \[
-        B_{\mathbb R^n}(p,r)=\{q\in\mathbb R^n:\|q-p\|<r\}
+        B(p,r)=\{q\in\mathbb R^n:\|q-p\|<r\}
     \]
     e
     \[
-        B_{\mathbb R^n}[p,r]=\{q\in\mathbb R^n:\|q-p\|\leq r\}.
+        B[p,r]=\{q\in\mathbb R^n:\|q-p\|\leq r\}.
     \]
 
     No caso particular de $\mathbb R^2$, a bola aberta $B(p,r)$ é o disco de centro $p$ e raio $r$, sem incluir a circunferência que o delimita.
@@ -96,13 +96,24 @@ As bolas abertas do subespaço são obtidas pela interseção das bolas abertas 
     Como $p,q\in A$, temos $d|_{A\times A}(p,q)=d(p,q)<r$, de modo que $q \in B_A(p,r)$.
 \end{proof}
 
+Quando trabalhando com subespaços, pode ser importante especificar em qual espaço está sendo considerada uma bola.
+A convenção abaixo ajuda a simplificar a notação no principal caso de interesse desse texto.
+
+\begin{convention}
+    Se estamos trabalhando em $\mathbb R^n$, então $B(p,r)$ e $B[p,r]$ denotarão, por convenção, as bolas abertas e fechadas de centro $p$ e raio $r$ de $\mathbb R^n$.
+
+    Assim, mesmo que, em determinado argumento, estivermos lidando com um subespaço $A\subseteq \mathbb R^n$, escreveremos $B(p,r)$ e $B[p,r]$ para nos referirmos às bolas de $\mathbb R^n$, e não às bolas do subespaço $A$.
+
+    Para nos referirmos às bolas do subespaço $A$, escreveremos explicitamente $B_A(p,r)$ e $B_A[p,r]$.
+\end{convention}
+
 \begin{example}
     Considere $A=[0,+\infty[\subseteq\mathbb R$, com a métrica herdada da distância euclidiana de $\mathbb R$.
     Então, no subespaço $A$, temos
     \[
         B_A(0,1)
         =
-        B_{\mathbb R}(0,1)\cap A
+        B(0,1)\cap A
         =
         ]-1,1[\cap [0,+\infty[
         =
@@ -120,7 +131,7 @@ As bolas abertas do subespaço são obtidas pela interseção das bolas abertas 
     Seja $p=(0,0)$.
     Pela proposição anterior, temos
     \[
-        B_A(p,1)=B_{\mathbb R^2}(p,1)\cap A=\{q\in A: d(q, p)<1\}.
+        B_A(p,1)=B(p,1)\cap A=\{q\in A: d(q, p)<1\}.
     \]
 
     Segue que
