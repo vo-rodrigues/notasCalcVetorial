@@ -1,15 +1,16 @@
 
 \section{Subconjuntos fechados}
+Ao longo desta seção, $(M,d)$ denotará um espaço métrico arbitrário.
 
-Intuitivamente, um conjunto fechado é um conjunto que contém todos os seus pontos que estão ``grudados'' nele.
+Intuitivamente, um conjunto fechado é um conjunto que contém todos os pontos do espaço ambiente que estão ``grudados'' nele.
 
 \begin{definition}\index{conjunto fechado}
     Seja $A$ um subconjunto de $M$.
     Dizemos que $A$ é \emph{fechado} se, para todo ponto de acumulação $p$ de $A$, temos que $p \in A$.
 \end{definition}
 
-Uma forma frequentemente mais prática de verificar se um conjunto é fechado é o seguinte critério.
-\begin{proposition}
+Frequentemente, uma forma mais prática de verificar se um conjunto é fechado é dada pelo seguinte critério.
+\begin{proposition}\label{prop:fechado-complemento-aberto}
     Seja $A$ um subconjunto de $M$.
     Então, $A$ é fechado se, e somente se, seu complemento $M\setminus A$ é aberto.
 \end{proposition}
@@ -45,9 +46,14 @@ Uma forma frequentemente mais prática de verificar se um conjunto é fechado é
 \end{corollary}
 \begin{proof}
     Seja $B=M\setminus A$.
-    Temos que $B$ é aberto se, e somente se, $M\setminus B$ é fechado.
-    Mas $M\setminus B = M\setminus (M\setminus A) = A$.
-    Assim, $B=M\setminus A$ é aberto se, e somente se, $M\setminus B = A$ é fechado.
+    Pela Proposição~\ref{prop:fechado-complemento-aberto}, $B$ é fechado se, e somente se, $M\setminus B$ é aberto.
+    Como $M\setminus B=M\setminus(M\setminus A)=A$, segue que
+    \[
+        M\setminus A \text{ é fechado}
+        \quad\Longleftrightarrow\quad
+        A \text{ é aberto}.
+    \]
+    Portanto, $A$ é aberto se, e somente se, $M\setminus A$ é fechado.
 \end{proof}
 
 \begin{proposition}
@@ -60,7 +66,10 @@ Uma forma frequentemente mais prática de verificar se um conjunto é fechado é
     Para cada $a\in F\setminus\{p\}$, seja $r_a=d(p,a)>0$.
 
     Se $F\setminus\{p\}=\emptyset$, tome $r=1$.
-    Caso contrário, tome $r=\min\{r_a:a\in F\setminus\{p\}\}$.
+    Caso contrário, como $F\setminus\{p\}$ é finito e não vazio, tome
+    \[
+        r=\min\{r_a:a\in F\setminus\{p\}\}.
+    \]
 
     Em ambos os casos, temos $r>0$ e $\bigl(B(p,r)\cap F\bigr)\setminus\{p\}=\emptyset$.
     Logo, $p$ não é ponto de acumulação de $F$.
@@ -74,5 +83,11 @@ Uma forma frequentemente mais prática de verificar se um conjunto é fechado é
     Então $A\setminus C$ é um conjunto aberto de $M$.
 \end{proposition}
 \begin{proof}
-    De fato, temos que $A\setminus C = A\cap(M\setminus C)$ é uma interseção de dois conjuntos abertos, logo, é aberto.
+    Como $C$ é fechado, segue da Proposição~\ref{prop:fechado-complemento-aberto} que $M\setminus C$ é aberto.
+    Assim,
+    \[
+        A\setminus C = A\cap(M\setminus C)
+    \]
+    é uma interseção de dois conjuntos abertos.
+    Logo, $A\setminus C$ é aberto.
 \end{proof}
