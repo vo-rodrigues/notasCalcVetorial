@@ -1,18 +1,4 @@
 \section{Pontos de acumulação e limites}
-
-\begin{proposition}\index{continuidade!ponto isolado}
-    Sejam
-    \begin{itemize}
-        \item $A\subseteq \mathbb R^n$ um conjunto,
-        \item $f: A \to \mathbb R^m$ uma função, e
-        \item $p \in A$.
-    \end{itemize}
-        Se $p$ é um ponto isolado de $A$, então $f$ é contínua em $p$.
-\end{proposition}
-
-\begin{proof}
-    Seja $\epsilon>0$. Como $p$ é um ponto isolado de $A$, existe um $\delta>0$ tal que $B(p,\delta) \cap A = \{p\}$. Assim, se $x \in A$ e $d(x, p) < \delta$, temos que $x = p$. Portanto, $d(f(x), f(p)) = d(f(p), f(p)) = 0 < \epsilon$. Logo, $f$ é contínua em $p$.
-\end{proof}
 E quanto a pontos não isolados?
 
 Podemos estudar a continuidade deles a partir da noção de limite.
@@ -30,9 +16,9 @@ Uma das opções é que $f(x)$ se aproxime de outro valor $L \in \mathbb R^m$, c
         \item $p \in \mathbb R^n$ um ponto de acumulação de $A$.
         \item $L \in \mathbb R^m$.
     \end{itemize}
-    Dizemos que $L$ é limite de $f$ em $p$ se, para todo $\varepsilon > 0$, existe $\delta > 0$ tal que, para todo $x \in A\setminus\{p\}$,
+    Dizemos que $L$ é limite de $f$ em $p$ se, para todo $\epsilon > 0$, existe $\delta > 0$ tal que, para todo $x \in A\setminus\{p\}$,
     \[
-        \text{se } d(x, p) < \delta, \text{ então } d(f(x), L) < \varepsilon.
+        \text{se } d(x, p) < \delta, \text{ então } d(f(x), L) < \epsilon.
     \]
 \end{definition}
 

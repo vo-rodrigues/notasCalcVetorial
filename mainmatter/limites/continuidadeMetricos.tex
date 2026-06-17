@@ -1,0 +1,352 @@
+
+\section{Funções contínuas em espaços métricos}
+
+Nesta seção, $(M, d)$ e $(N, d')$ denotarão espaços métricos arbitrários, salvo menção em contrário.
+
+A noção de continuidade em espaços métricos generaliza aquela aprendida para funções de uma variável real a valores reais.
+
+Iniciaremos definindo o que é continuidade em um ponto específico.
+
+\begin{definition}\index{continuidade!definição}
+    Sejam:
+    \begin{itemize}
+        \item $(M, d)$ e $(N, d')$ espaços métricos,
+        \item $f: M \to N$ uma função, e
+        \item $p\in M$.
+    \end{itemize}
+
+    Dizemos que $f$ é \emph{contínua em $p$} se, para todo $\epsilon > 0$, existe $\delta > 0$ tal que, para todo $x \in M$,
+    \[
+        \text{se } d(x, p) < \delta, \text{ então } d'(f(x), f(p)) < \epsilon.
+    \]
+\end{definition}
+
+Para compreender o conceito de continuidade, pedimos que o leitor imagine que possui o trabalho de, em uma jogada de sinuca, acertar uma bola de sinuca em uma caçapa.
+Imaginemos que os fenômenos naturais sejam determinísticos, de modo que ao acertar o taco na bola de uma determinada forma $x$ (que engloba posição da bola, força, ângulo, pressão atmosférica, e tudo mais que for relevante), ela se move para um ponto $f(x)$ da mesa.
+Existem condições ideais para fazer a bola cair exatamente no centro da caçapa.
+Essas condições determinam um ponto alvo $p$ que faz a bola cair exatamente no centro da caçapa, $f(p)$.
+O leitor, por mais habilidoso que seja, certamente não conseguirá atingir as exatas nanométricas condições $p$: ajustar com precisão infinita a força, ângulo, etc, às talvez desconhecidas condições de umidade do ar e pressão atmosférica é impossível.
+
+Mas isso não é um problema!
+O leitor não precisa fazer a bola atingir exatamente o ponto $f(p)$.
+Se a posição final da bola estiver suficientemente próxima do centro da caçapa, ela cairá na caçapa de qualquer forma.
+Tomando $\epsilon$ como o raio da caçapa, só precisamos que a bola, em sua posição final, esteja em $B_N(f(p), \epsilon)$.
+Nesse contexto, $\epsilon$ representa uma \emph{margem de erro}.
+
+A nova missão então não é mais produzir exatamente o efeito $f(p)$, e sim produzir um efeito pertencente ao conjunto $B_N(f(p), \epsilon)$.
+Ou seja, basta atingir as condições $x$ tais que, ao acertar a bola com essas condições, ela se mova para um ponto $f(x)$ tal que $d'(f(x), f(p)) < \epsilon$.
+Basta então determinar uma margem de segurança $\delta$ para que, tomado $x$ dentro da margem de segurança $B_M(p, \delta)$, a bola caia na caçapa.
+Equivalentemente, basta encontrar um $\delta>0$ para o qual qualquer $x$ que satisfaça $d(x, p) < \delta$ produza um efeito $f(x)$ tal que $d'(f(x), f(p)) < \epsilon$.
+A hipótese de que a função que descreve o movimento da bola seja contínua em $p$ implica que tal $\delta$ sempre existe, independentemente do quão pequena seja a margem de erro $\epsilon$ desejada no efeito final.
+
+A Figura~\ref{fig:continuidade} ilustra a definição de continuidade de uma função $f$ em um ponto $p$.
+
+\subimport{continuidadeRn}{figura}
+
+Notemos que essa definição recupera a definição usual de continuidade pontual para funções do tipo $f: A\rightarrow \mathbb R$, em que $A\subseteq \mathbb R$, quando consideramos em $A$ a métrica herdada da métrica usual de $\mathbb R$.
+
+Com isso, podemos definir o que é uma função contínua.
+
+\begin{definition}\index{continuidade!definição}
+    Seja $f: M \to N$ uma função entre espaços métricos.
+    Dizemos que $f$ é \emph{contínua} se $f$ é contínua em todo ponto de $M$.
+\end{definition}
+
+Assim, a continuidade é uma propriedade local, ou seja, para verificar se uma função é contínua, basta verificar se ela é contínua em cada ponto do seu domínio.
+
+Reforçamos, também, que o comportamento da função nas imediações de um ponto ``no ambiente'' que não esteja em seu domínio é irrelevante para verificar a continuidade.
+Como acontece na definição usual de continuidade para funções de uma variável, a função $f:\mathbb R\setminus\{0\}\rightarrow \mathbb R$ dada por $f(x) = x^{-1}$ é contínua.
+Nesse caso particular, o comportamento de $f$ em torno de $0$ é irrelevante para verificar a continuidade da função, pois $0$ não pertence ao domínio de $f$.
+
+
+
+Como um primeiro exemplo, tratemos da função identidade.
+
+\begin{definition}
+    Seja $A$ um conjunto qualquer.
+
+    A função $\id_A: A\rightarrow A$ dada por $\id_A(x) = x$ para todo $x \in A$ é chamada de \emph{função identidade} de $A$.
+\end{definition}
+
+\begin{proposition}\index{função identidade}
+    Seja $M$ um espaço métrico.
+    A função identidade de $M$ em $M$, $\id_M$, é contínua.
+\end{proposition}
+\begin{proof}
+    Devemos ver que para todo $p\in M$ a função $\id_M$ é contínua em $p$.
+    Fixe $p\in M$ arbitrário.
+
+    Devemos ver que para todo $\epsilon>0$ existe $\delta>0$ tal que, para todo $x\in M$,
+
+    \[
+        \text{se } d(x, p) < \delta, \text{ então } d(\id_M(x), \id_M(p)) < \epsilon.
+    \]
+
+    Fixe $\epsilon>0$ arbitrário.
+    Precisamos indicar um $\delta>0$ que satisfaça a condição acima.
+    Notemos que $\id_M(x) = x$ e $\id_M(p) = p$ para todo $x\in M$.
+    
+    Veremos que $\delta = \epsilon$ satisfaz a condição acima.
+    De fato, para todo $x \in M$, se $d(x, p) < \epsilon$, então $d(\id_M(x), \id_M(p)) = d(x, p) < \epsilon$, como desejado.
+
+    Assim, $\id_M$ é contínua em $p$.
+    Como $p\in M$ foi arbitrário, concluímos que $\id_M$ é contínua.
+\end{proof}
+
+Vejamos como isso se aplica a uma situação mais concreta.
+
+\begin{example}
+    Seja $f: \mathbb R^3\rightarrow \mathbb R^3$ dada por
+    \[
+        f(x, y, z) = (x, y, z).
+    \]
+    A função $f$ é contínua, pois $f$ é a função identidade de $\mathbb R^3$ em $\mathbb R^3$.
+\end{example}
+
+
+Outra classe de exemplos de funções contínuas simples são as funções constantes.
+
+\begin{definition}\index{função constante}
+    Sejam $M$ e $N$ espaços métricos.
+    Uma função $f: M\rightarrow N$ é dita \emph{constante} se existe $c\in N$ tal que, para todo $x\in M$, $f(x) = c$.
+
+    Nessas condições, dizemos que $f$ é a função constante de $M$ identicamente igual a $c$.
+\end{definition}
+\begin{proposition}
+    Sejam:
+    \begin{itemize}
+        \item $M$ e $N$ espaços métricos, e
+        \item $c \in N$.
+    \end{itemize}
+
+    Seja $f: M\rightarrow N$ a função de $M$ identicamente igual a $c$, ou seja, $f: M\rightarrow N$ dada por $f(x) = c$ para todo $x\in M$.
+
+    Então $f$ é contínua.
+\end{proposition}
+
+
+\begin{proof}
+    Devemos ver que para todo $p\in M$ a função $f$ é contínua em $p$.
+    Fixe $p\in M$ arbitrário.
+
+    Devemos ver que para todo $\epsilon>0$ existe $\delta>0$ tal que, para todo $x\in M$,
+    \[
+        \text{se } d(x, p) < \delta, \text{ então } d'(f(x), f(p)) < \epsilon.
+    \]
+
+    Perceba que, independentemente da escolha de $x$, temos $f(x) = c$ e $f(p) = c$.
+    Assim, $d'(f(x), f(p)) = d'(c, c) = 0$ para todo $x\in M$.
+
+    Por isso, devemos mostrar que para todo $\epsilon>0$ existe $\delta>0$ tal que, para todo $x\in M$,
+    \[
+        \text{se } d(x, p) < \delta, \text{ então } 0 < \epsilon.
+    \]
+
+    Ora, isso é verdade para qualquer $\delta>0$.
+
+    Fixemos $\epsilon>0$ arbitrário.
+    Veremos que $\delta = 123$ satisfaz a condição acima.
+    De fato, fixe $x \in M$ tal que $d(x, p) < \delta$.
+    Devemos ver que $0 < \epsilon$.
+    Mas isso é verdade, pois $\epsilon$ é um número real positivo.
+
+    Assim, $f$ é contínua em $p$.
+    Como $p\in M$ foi arbitrário, concluímos que $f$ é contínua.
+\end{proof}
+
+Reforçamos que a escolha de $\delta = 123$ na demonstração acima foi completamente arbitrária.
+O leitor pode substituir $123$ por seu número real positivo preferido.
+
+\begin{example}
+    Seja $g: \mathbb R^3\rightarrow \mathbb R^2$ dada por
+    \[
+        g(x, y, z) = (1, 2)
+    \]
+    para quaisquer que sejam $x, y, z \in \mathbb R$.
+
+    Então $g$ é contínua, pois $g$ é a função constante de $\mathbb R^3$ identicamente igual a $(1, 2)$.
+\end{example}
+
+
+Para mostrar diretamente da definição que uma função $f:M\rightarrow N$ não é contínua em um ponto $p\in M$, devemos negar a definição.
+Assim, basta encontrar um $\epsilon>0$ tal que, para todo $\delta>0$, exista $x\in M$ satisfazendo
+\[
+    d(x,p)<\delta
+    \qquad\text{e}\qquad
+    d'(f(x),f(p))\geq \epsilon.
+\]
+
+Agora vejamos um exemplo de uma função que não é contínua.
+
+\begin{example}\label{ex:funcaoDescontinua}
+    Seja $f: \mathbb R^2\rightarrow \mathbb R$ dada por
+    \[
+        f(x, y) = \begin{cases}
+            x, & \text{se } y = 0, \\
+            y, & \text{se } y \neq 0.
+        \end{cases}
+    \]
+    Então $f$ não é contínua em $(2, 0)$.
+    Vejamos que a condição de continuidade falha para $\epsilon=1$.
+    Devemos ver que, qualquer que seja $\delta>0$, existe $q \in \mathbb R^2$ tal que $d(q, (2, 0)) < \delta$ e $d(f(q), f(2, 0)) \geq 1$.
+
+    Temos que $f(2, 0) = 2$.
+    Dado $\delta>0$, tome $\xi=\min\{\frac{\delta}{2}, 1\}$.
+    Considere $q = (2, \xi)$.
+    Temos que
+    \[
+        d(q, (2, 0))= d((2, \xi), (2, 0)) = \sqrt{(2-2)^2 + (\xi - 0)^2} = \sqrt{\xi^2} = |\xi|=\xi\leq \frac{\delta}{2} < \delta.
+    \]
+
+    Por outro lado, como $\xi \neq 0$, temos que $f(q) = \xi$.
+    Assim:
+    \[
+        d(f(q), f(2, 0)) = d(\xi, 2) = |\xi - 2| = 2 - \xi \geq 2 - 1 = 1=\epsilon.
+    \]
+    Portanto, $f$ não é contínua em $(2, 0)$.
+    \smallskip
+
+    Por outro lado, $f$ é contínua em $(0, 0)$.
+
+    De fato, dado $\epsilon>0$, tome $\delta = \epsilon$.
+    Seja $q = (x, y) \in \mathbb R^2$ tal que $d(q, (0, 0)) < \delta$.
+    Veremos que $d(f(q), f(0, 0)) < \epsilon$.
+
+    Como $(x, y)\in B((0, 0), \delta)$, temos que $\sqrt{x^2 + y^2} < \delta$.
+    Assim,
+    \[
+        |x|\leq \sqrt{x^2+y^2}<\delta
+        \qquad\text{e}\qquad
+        |y|\leq \sqrt{x^2+y^2}<\delta.
+    \]
+
+    Dessa forma:
+    \[
+        |x| < \epsilon \qquad \text{e} \qquad |y| < \epsilon.
+    \]
+
+    Se $y=0$, então $f(q) = x$ e, portanto,
+    \[
+        d(f(q), f(0, 0)) = d(x, 0) = |x| < \delta=\epsilon.
+    \]
+
+    Analogamente, se $y\neq 0$, então $f(q)=y$ e, portanto,
+    \[
+        d(f(q), f(0, 0)) = d(y, 0) = |y| < \delta=\epsilon.
+    \]
+
+    Em qualquer caso, $d(f(q), f(0, 0)) < \epsilon$, como queríamos.
+\end{example}
+
+
+
+A continuidade se torna uma condição automática em pontos isolados do domínio de uma função.
+Se $p \in M$ é um ponto isolado, a continuidade de uma função $f: M\rightarrow N$ em $p$ nos diz, intuitivamente, que dada qualquer margem de erro $\epsilon>0$ para o efeito $f(p)$, existe uma margem de segurança $\delta>0$ tal que qualquer $x$ dentro da margem de segurança $B_M(p, \delta)$ produz um efeito $f(x)$ dentro da margem de erro $B_N(f(p), \epsilon)$.
+Ora, se $p$ é um ponto isolado de $M$, existe $\delta>0$ tal que $B_M(p, \delta) = \{p\}$.
+Assim, escolhendo $x$ em tal margem de segurança, $x$ fatalmente é $p$, e, portanto, $f(x)=f(p)$.
+
+Formalmente, temos o seguinte resultado.
+\begin{proposition}
+    Seja $f:M\rightarrow N$ uma função entre espaços métricos.
+    Se $p\in M$ é um ponto isolado de $M$, então $f$ é contínua em $p$.
+\end{proposition}
+\begin{proof}
+    Seja $p\in M$ um ponto isolado de $M$.
+    Então existe $\delta>0$ tal que $B_M(p, \delta) = \{p\}$.
+
+    Seja $\epsilon>0$ arbitrário.
+    Veremos que tal $\delta$ satisfaz a condição de continuidade de $f$ em $p$.
+
+    De fato, seja $x \in M$ tal que $d(x, p) < \delta$.
+    Então $x \in B_M(p, \delta)$, logo $x = p$, e, portanto, $d'(f(x), f(p)) = d'(f(p), f(p)) = 0 < \epsilon$, como queríamos.
+\end{proof}
+
+Com isso, podemos ver no seguinte exemplo que a continuidade de uma função depende de seu domínio, e não só de alguma expressão definidora para a função.
+
+\begin{example}
+    Seja $A=([0, 1]\times[0, 1])\cup \{(2, 0)\}\subseteq \mathbb R^2$ e seja $f: A\rightarrow \mathbb R$ dada por
+    \[
+        f(x, y) = \begin{cases}
+            x, & \text{se } (x, y) \in A\setminus\{(2, 0)\}, \\
+            100, & \text{se } (x, y) = (2, 0).
+        \end{cases}
+    \]
+    Então $f$ é contínua em $(2, 0)$, pois $(2, 0)$ é um ponto isolado de $A$.
+    
+    De fato, $B((2, 0), 1) \cap A = \{(2, 0)\}$ (verifique!), logo $(2, 0)$ é um ponto isolado de $A$.
+
+    Por outro lado, seja $g: \mathbb R^2\rightarrow \mathbb R$ dada por
+    \[
+        g(x, y) = \begin{cases}
+            x, & \text{se } (x, y) \in \mathbb R^2\setminus\{(2, 0)\}, \\
+            100, & \text{se } (x, y) = (2, 0).
+        \end{cases}
+    \]
+    Então $g$ não é contínua em $(2, 0)$.
+
+    De fato, dado $\epsilon = 1$, seja $\delta>0$ arbitrário.
+    Tome $q = (2, \xi)$, onde $\xi = \min\{\frac{\delta}{2}, 1\}$.
+    Então $d(q, (2, 0)) = \xi < \delta$.
+    Como $\xi>0$, temos $q\neq (2,0)$, logo $g(q)=2$.
+    Assim,
+    \[
+        d(g(q), g(2, 0)) = d(2, 100) = |2 - 100| = 98 > \epsilon.
+    \]
+
+    Nesse exemplo, perceba que $g|_{A} = f$.
+    A função $g$ não é contínua em $(2, 0)$, mas, ao restringi-la a $A$, obtemos a função $f$, que é contínua em $(2, 0)$!
+\end{example}
+
+Verificar diretamente que uma função é ou não é contínua em um ponto pode ser uma tarefa difícil.
+O Cálculo Diferencial fornece técnicas para verificar a continuidade de uma função em um ponto sem precisar verificar diretamente a definição de continuidade.
+Para tanto, é útil verificar que certas funções são contínuas, e que a continuidade é preservada por certas operações.
+Combinando esses resultados, e com uso de limites, é possível verificar a continuidade de importantes classes de funções sem precisar verificar diretamente a definição de continuidade.
+
+Antes de avançarmos nessa direção, mostraremos uma importante caracterização de funções contínuas em termos de abertos e fechados.
+
+\begin{proposition}\index{continuidade!caracterização por abertos}\index{continuidade!caracterização por fechados}
+    Seja $f: M \to N$ uma função entre espaços métricos.
+    São equivalentes:
+
+    \begin{enumerate}[label=(\roman*)]
+        \item $f$ é contínua;
+        \item para todo aberto $A\subseteq N$, $f^{-1}[A]$ é aberto em $M$;
+        \item para todo fechado $F\subseteq N$, $f^{-1}[F]$ é fechado em $M$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    $(i)\rightarrow (ii)$: seja $A\subseteq N$ um aberto.
+    Veremos que $f^{-1}[A]$ é aberto.
+    Tome $p \in f^{-1}[A]$ arbitrário.
+    Segue que $f(p) \in A$.
+    Como $A$ é aberto, existe $\epsilon>0$ tal que $B_N(f(p), \epsilon)\subseteq A$.
+
+    Como $f$ é contínua em $p$, existe $\delta>0$ tal que, para todo $x \in M$, se $d(x, p) < \delta$, então $d'(f(x), f(p)) < \epsilon$.
+
+    Afirmo que $B_M(p, \delta)\subseteq f^{-1}[A]$.
+    De fato, seja $x \in B_M(p, \delta)$ arbitrário.
+    Então $d(x, p) < \delta$, logo $d'(f(x), f(p)) < \epsilon$, ou seja, $f(x) \in B_N(f(p), \epsilon)\subseteq A$.
+    Assim, $f(x)\in A$, ou seja, $x \in f^{-1}[A]$.
+
+    Como $p \in f^{-1}[A]$ foi arbitrário, concluímos que $f^{-1}[A]$ é aberto em $M$.
+
+    $(ii)\rightarrow (iii)$: seja $F\subseteq N$ um fechado.
+    Veremos que $f^{-1}[F]$ é fechado.
+
+    Como $F$ é fechado, $N\setminus F$ é aberto.
+    Assim, $f^{-1}[N\setminus F]=f^{-1}[N]\setminus f^{-1}[F]$ é aberto, ou seja, $M\setminus f^{-1}[F]$ é aberto.
+    Daí, $f^{-1}[F]$ é fechado em $M$, como queríamos.
+
+    $(iii)\rightarrow (i)$: seja $p \in M$ arbitrário.
+    Veremos que $f$ é contínua em $p$.
+    Para tanto, seja dado $\epsilon>0$ arbitrário.
+    Devemos encontrar $\delta>0$ tal que, para todo $x \in M$, se $d(x, p) < \delta$, então $d'(f(x), f(p)) < \epsilon$.
+
+    Seja $F = N\setminus B_N(f(p), \epsilon)$.
+    Segue que $F$ é fechado, logo $f^{-1}[F]=M\setminus f^{-1}[B_N(f(p), \epsilon)]$ é fechado, ou seja, $f^{-1}[B_N(f(p), \epsilon)]$ é aberto.
+
+    Como $f^{-1}[B_N(f(p), \epsilon)]$ é aberto e $p\in f^{-1}[B_N(f(p), \epsilon)]$, existe $\delta>0$ tal que $B_M(p, \delta)\subseteq f^{-1}[B_N(f(p), \epsilon)]$.
+
+    Vejamos que $\delta$ é como buscamos: dado $x\in M$ tal que $d(x, p) < \delta$, temos $x \in B_M(p, \delta)\subseteq f^{-1}[B_N(f(p), \epsilon)]$.
+    Daí, $x \in f^{-1}[B_N(f(p), \epsilon)]$, ou seja, $f(x) \in B_N(f(p), \epsilon)$, e, portanto, $d'(f(x), f(p)) < \epsilon$, como queríamos.
+\end{proof}
