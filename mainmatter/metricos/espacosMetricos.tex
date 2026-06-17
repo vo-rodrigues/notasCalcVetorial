@@ -1,6 +1,6 @@
 \section{Espaços métricos}
 
-Na Proposição~\ref{prop:distanciaRn}, vimos que a distância euclidiana usual de $\mathbb R^n$ satisfaz algumas propriedades básicas típicas do que se espera que uma noção de distância possua.
+Na Proposição~\ref{prop:distanciaRn}, vimos que a distância euclidiana de $\mathbb R^n$ satisfaz algumas propriedades básicas típicas do que se espera que uma noção de distância possua.
 O conceito de espaço métrico consiste em nada mais do que um conjunto $M$ munido de uma função $d$ que satisfaz exatamente aquelas propriedades.
 
 \begin{definition}\index{espaço métrico}\index{métrica}\label{def:espMetrico}
@@ -15,7 +15,7 @@ O conceito de espaço métrico consiste em nada mais do que um conjunto $M$ muni
 \end{definition}
 
 \begin{example}
-    Quando $M=\mathbb R^n$ e $d$ é a distância euclidiana usual, obtemos o principal exemplo deste texto.
+    Quando $M=\mathbb R^n$ e $d$ é a distância euclidiana, obtemos o principal exemplo deste texto.
     Nesse caso, para $p,q\in\mathbb R^n$, temos
     \[
         d(p,q)=\|p-q\|.
@@ -39,7 +39,7 @@ Essas noções serão essenciais para o futuro estudo de limites, continuidade e
 \end{definition}
 
 \begin{example}
-    No caso em que $M=\mathbb R^n$ e $d$ é a distância euclidiana usual, temos
+    No caso em que $M=\mathbb R^n$ e $d$ é a distância euclidiana, temos
     \[
         B_{\mathbb R^n}(p,r)=\{q\in\mathbb R^n:\|q-p\|<r\}
     \]
@@ -70,6 +70,15 @@ Isso é formalizado na seguinte definição.
 
 É imediato da Definição~\ref{def:espMetrico} que o subespaço de um espaço métrico é, de fato, um espaço métrico (veja o Exercício~\ref{ex:subespacoEspacoMetrico}).
 
+\begin{definition}
+    Se $A\subseteq \mathbb R^n$, então a métrica usual de $A$, ou a distância usual de $A$, ou, ainda, a distância euclidiana em $A$, é a métrica herdada da distância euclidiana de $\mathbb R^n$.
+
+    Ou seja, é a distância $d:A\times A\to \mathbb R$ dada por
+    \[
+        d(p,q)=\|p-q\|,
+    \]
+\end{definition}
+
 As bolas abertas do subespaço são obtidas pela interseção das bolas abertas originais com o subespaço.
 
 \begin{proposition}
@@ -88,7 +97,7 @@ As bolas abertas do subespaço são obtidas pela interseção das bolas abertas 
 \end{proof}
 
 \begin{example}
-    Considere $A=[0,+\infty[\subseteq\mathbb R$, com a métrica herdada da distância euclidiana usual de $\mathbb R$.
+    Considere $A=[0,+\infty[\subseteq\mathbb R$, com a métrica herdada da distância euclidiana de $\mathbb R$.
     Então, no subespaço $A$, temos
     \[
         B_A(0,1)
@@ -107,7 +116,7 @@ As bolas abertas do subespaço são obtidas pela interseção das bolas abertas 
     \[
         A=\mathbb R\times [0,+\infty[=\{(x,y)\in\mathbb R^2:y\geq 0\}\subseteq\mathbb R^2,
     \]
-    com a métrica herdada da distância euclidiana usual de $\mathbb R^2$.
+    com a métrica herdada da distância euclidiana de $\mathbb R^2$.
     Seja $p=(0,0)$.
     Pela proposição anterior, temos
     \[
@@ -148,21 +157,21 @@ As bolas abertas do subespaço são obtidas pela interseção das bolas abertas 
 \end{exercise}
 
 \begin{exercise}
-    Em $\mathbb R$, com a distância euclidiana usual, descreva explicitamente os seguintes conjuntos:
+    Em $\mathbb R$, com a distância euclidiana, descreva explicitamente os seguintes conjuntos:
     \[
         B(2,3),\qquad B[2,3],\qquad B(-1,1/2),\qquad B[-1,1/2].
     \]
 \end{exercise}
 
 \begin{exercise}
-    Em $\mathbb R^2$, com a distância euclidiana usual, descreva explicitamente os conjuntos
+    Em $\mathbb R^2$, com a distância euclidiana, descreva explicitamente os conjuntos
     \[
         B((0,0),1),\qquad B[(1,2),1].
     \]
 \end{exercise}
 
 \begin{exercise}
-    Em $\mathbb R^2$, com a distância euclidiana usual, seja $p=(1,-1)$.
+    Em $\mathbb R^2$, com a distância euclidiana, seja $p=(1,-1)$.
     Determine se os pontos
     \[
         (1,0),\qquad (3,-1),\qquad (2,0),\qquad (1+\sqrt2,-1)
@@ -176,7 +185,7 @@ As bolas abertas do subespaço são obtidas pela interseção das bolas abertas 
 \end{exercise}
 
 \begin{exercise}
-    Considere $A=[0,+\infty[\subseteq\mathbb R$, com a métrica herdada da distância euclidiana usual de $\mathbb R$.
+    Considere $A=[0,+\infty[\subseteq\mathbb R$, com a métrica herdada da distância euclidiana de $\mathbb R$.
     Calcule:
     \[
         B_A(0,1),\qquad B_A[0,1],\qquad B_A(2,1),\qquad B_A[2,1].
@@ -184,7 +193,7 @@ As bolas abertas do subespaço são obtidas pela interseção das bolas abertas 
 \end{exercise}
 
 \begin{exercise}
-    Considere $A=[0,+\infty[\subseteq\mathbb R$, com a métrica herdada da distância euclidiana usual de $\mathbb R$.
+    Considere $A=[0,+\infty[\subseteq\mathbb R$, com a métrica herdada da distância euclidiana de $\mathbb R$.
     Mostre que, para todo $r>0$, temos
     \[
         B_A(0,r)=[0,r[.
@@ -204,7 +213,7 @@ As bolas abertas do subespaço são obtidas pela interseção das bolas abertas 
     \[
         A=\mathbb R\times[0,+\infty[\subseteq\mathbb R^2
     \]
-    com a métrica herdada da distância euclidiana usual de $\mathbb R^2$.
+    com a métrica herdada da distância euclidiana de $\mathbb R^2$.
     Calcule explicitamente:
     \[
         B_A((1,0),1)
@@ -219,7 +228,7 @@ As bolas abertas do subespaço são obtidas pela interseção das bolas abertas 
     \[
         A=\mathbb R\times[0,+\infty[\subseteq\mathbb R^2
     \]
-    com a métrica herdada da distância euclidiana usual de $\mathbb R^2$.
+    com a métrica herdada da distância euclidiana de $\mathbb R^2$.
     Seja $p=(0,1)$.
     Descreva geometricamente a bola aberta
     \[
@@ -252,6 +261,6 @@ As bolas abertas do subespaço são obtidas pela interseção das bolas abertas 
 \end{exercise}
 
 \begin{exercise}
-    Considere $\mathbb Z$ como subespaço de $\mathbb R$, com a métrica herdada da distância euclidiana usual de $\mathbb R$.
+    Considere $\mathbb Z$ como subespaço de $\mathbb R$, com a métrica herdada da distância euclidiana de $\mathbb R$.
     Dado $n \in \mathbb Z$, determine $B_{\mathbb Z}(n,\frac{1}{2})$ e $B_{\mathbb Z}[n,\frac{1}{2}]$.
 \end{exercise}
