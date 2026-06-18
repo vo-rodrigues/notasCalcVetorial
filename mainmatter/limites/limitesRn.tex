@@ -131,9 +131,6 @@ A proposição abaixo conecta os conceitos de limite e de continuidade.
 
 Assim, temos o seguinte valioso teste para se decidir se uma função é contínua em um ponto.
 
-
-O seguinte corolário sintetiza uma forma de se decidir se uma função é ou não é contínua.
-
 \begin{corollary}
     Sejam:
     \begin{itemize}
@@ -149,6 +146,16 @@ O seguinte corolário sintetiza uma forma de se decidir se uma função é ou n�
         \item se $p$ é um ponto de acumulação de $A$ e $f(p)$ é limite de $f$ em $p$, então $f$ é contínua em $p$.
     \end{enumerate}
 \end{corollary}
+\begin{proof}
+    O item (i) segue do fato de que toda função é contínua nos pontos isolados de seu domínio.
+
+    Suponha agora que $p$ é ponto de acumulação de $A$.
+    Pelo resultado anterior, $f$ é contínua em $p$ se, e somente se, $f(p)$ é limite de $f$ em $p$.
+
+    Portanto, se $f$ não possui limite em $p$, então $f$ não é contínua em $p$.
+    Se $f$ possui limite em $p$, mas esse limite é diferente de $f(p)$, então, pela unicidade do limite, $f(p)$ não é limite de $f$ em $p$, e portanto $f$ não é contínua em $p$.
+    Finalmente, se $f(p)$ é limite de $f$ em $p$, então $f$ é contínua em $p$.
+\end{proof}
 
 
 \begin{proposition}\index{limite!via funções coordenadas}Sejam
@@ -253,4 +260,21 @@ O seguinte corolário sintetiza uma forma de se decidir se uma função é ou n�
     Se $f$ é contínua em $p$ e $g$ é contínua em $f(p)$, então $g\circ f$ é contínua em $p$.
 
     Consequentemente, se $f$ e $g$ são contínuas, então $g\circ f$ é contínua.
+\end{proposition}
+\begin{proposition}
+    Sejam:
+    \begin{itemize}
+        \item $M, N, P$ espaços métricos (como $\mathbb R^n$ e $\mathbb R^m$ e $\mathbb R^k$),
+        \item $s\in A\subseteq M$ um conjunto,
+        \item $p \in B\subseteq N$ um conjunto,
+        \item $\gamma: A \to B$ uma função,
+        \item $f: B \to \mathbb R^k$ uma função,
+        \item $p=\lim_{t\to s} \gamma(t)$, ponto de acumulação de $B$,
+        \item $L=\lim_{x\to p} f(x)$.
+    \end{itemize}
+    Suponha que $\gamma(t)\neq p$ para todo $t \in A\setminus\{s\}$.
+    Então
+    \[
+        \lim_{t\to s} (f\circ \gamma)(t) = L.
+    \]
 \end{proposition}
