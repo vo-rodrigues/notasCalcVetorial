@@ -60,37 +60,42 @@ Nesse caso particular, o comportamento de $f$ em torno de $0$ é irrelevante par
 
 
 
-Como um primeiro exemplo, tratemos da função identidade.
+Como um primeiro exemplo, tratemos da função identidade e das inclusões
 
 \begin{definition}
-    Seja $A$ um conjunto qualquer.
+    Sejam $A$ um conjunto qualquer.
 
     A função $\id_A: A\rightarrow A$ dada por $\id_A(x) = x$ para todo $x \in A$ é chamada de \emph{função identidade} de $A$.
+
+    No contexto em que $B$ é um conjunto tal que $A\subseteq B$, tal função é denominada \emph{inclusão} de $A$ em $B$.
+    Ou seja, a inclusão de $A$ em $B$ é a função $i: A\rightarrow B$ dada por $i(x) = x$ para todo $x \in A$.
 \end{definition}
 
 \begin{proposition}\index{função identidade}
-    Seja $M$ um espaço métrico.
-    A função identidade de $M$ em $M$, $\id_M$, é contínua.
+    Seja $M$ um espaço métrico e $A\subseteq M$ um subespaço de $M$.
+    Então a inclusão $i: A\rightarrow M$ dada por $i(x) = x$ para todo $x \in A$ é contínua.
+
+    Em particular, $\id_M: M\rightarrow M$ é contínua.
 \end{proposition}
 \begin{proof}
-    Devemos ver que para todo $p\in M$ a função $\id_M$ é contínua em $p$.
-    Fixe $p\in M$ arbitrário.
+    Devemos ver que para todo $p\in A$ a função $i$ é contínua em $p$.
+    Fixe $p\in A$ arbitrário.
 
-    Devemos ver que para todo $\epsilon>0$ existe $\delta>0$ tal que, para todo $x\in M$,
+    Devemos ver que para todo $\epsilon>0$ existe $\delta>0$ tal que, para todo $x\in A$,
 
     \[
-        \text{se } d(x, p) < \delta, \text{ então } d(\id_M(x), \id_M(p)) < \epsilon.
+        \text{se } d(x, p) < \delta, \text{ então } d(i(x), i(p)) < \epsilon.
     \]
 
     Fixe $\epsilon>0$ arbitrário.
     Precisamos indicar um $\delta>0$ que satisfaça a condição acima.
-    Notemos que $\id_M(x) = x$ e $\id_M(p) = p$ para todo $x\in M$.
+    Notemos que $i(x) = x$ e $i(p) = p$ para todo $x\in A$.
     
     Veremos que $\delta = \epsilon$ satisfaz a condição acima.
-    De fato, para todo $x \in M$, se $d(x, p) < \epsilon$, então $d(\id_M(x), \id_M(p)) = d(x, p) < \epsilon$, como desejado.
+    De fato, para todo $x \in A$, se $d(x, p) < \epsilon$, então $d(i(x), i(p)) = d(x, p) < \epsilon$, como desejado.
 
-    Assim, $\id_M$ é contínua em $p$.
-    Como $p\in M$ foi arbitrário, concluímos que $\id_M$ é contínua.
+    Assim, $i$ é contínua em $p$.
+    Como $p\in A$ foi arbitrário, concluímos que $i$ é contínua.
 \end{proof}
 
 Vejamos como isso se aplica a uma situação mais concreta.
@@ -101,6 +106,14 @@ Vejamos como isso se aplica a uma situação mais concreta.
         f(x, y, z) = (x, y, z).
     \]
     A função $f$ é contínua, pois $f$ é a função identidade de $\mathbb R^3$ em $\mathbb R^3$.
+\end{example}
+
+\begin{example}
+    Seja $f: \mathbb [0, 1]^2\rightarrow \mathbb R^2$ dada por
+    \[
+        f(x, y) = (x, y).
+    \]
+    A função $f$ é contínua, pois $f$ é a inclusão de $[0, 1]^2$ em $\mathbb R^2$.
 \end{example}
 
 
@@ -263,7 +276,7 @@ Formalmente, temos o seguinte resultado.
 
 Com isso, podemos ver no seguinte exemplo que a continuidade de uma função depende de seu domínio, e não só de alguma expressão definidora para a função.
 
-\begin{example}
+\begin{example}\label{ex:restricaoContinuidade}
     Seja $A=([0, 1]\times[0, 1])\cup \{(2, 0)\}\subseteq \mathbb R^2$ e seja $f: A\rightarrow \mathbb R$ dada por
     \[
         f(x, y) = \begin{cases}
