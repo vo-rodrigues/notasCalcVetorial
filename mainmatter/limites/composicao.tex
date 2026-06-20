@@ -2,33 +2,31 @@
 
 Nessa seção, a menos que explicitamente indicado, consideraremos que $(M, d_M)$, $(N, d_N)$ e $(P, d_P)$ são espaços métricos arbitrários.
 
-Estudaremos como se comportam limites a luz da composição de funções.
+Estudaremos como se comportam limites à luz da composição de funções.
 
-O teorema abaixo diz que, sob hipóteses adequadas, a continuidade de funções permite que o limite ``entre'' em uma composição.
+A proposição abaixo diz que, sob hipóteses adequadas, a continuidade de funções permite que o limite ``entre'' em uma composição.
 
 \begin{proposition}
     Sejam
     \begin{itemize}
         \item $A\subseteq M$ um subespaço,
         \item $B\subseteq N$ um subespaço,
-        \item $f: A \to B$ uma função, e
-        \item $g: B \to P$ uma função.
-        \item $a \in M$ um ponto de acumulação de $A$.
-        \item $L \in B$.
+        \item $f: A \to B$ uma função,
+        \item $g: B \to P$ uma função,
+        \item $a \in M$ um ponto de acumulação de $A$, e
+        \item $L\in B$.
     \end{itemize}
 
-    Suponha que $L$ é limite de $f$ em $a$.
+    Suponha que $L$ é limite de $f$ em $a$ e que $g$ é contínua em $L$.
     Então $g(L)$ é limite de $g\circ f$ em $a$.
 
-    Em outras palavras, se $\lim_{x\to a} f(x)$ existe e $g$ é uma função contínua em $\lim_{x\to a} f(x)$, então:
-
+    Em outras palavras, se $\lim_{x\to a} f(x)$ existe e pertence a $B$, e $g$ é uma função contínua em $\lim_{x\to a} f(x)$, então
     \[
         \lim_{x\to a} g(f(x)) = g\left(\lim_{x\to a} f(x)\right).
     \]
 \end{proposition}
 
 \begin{proof}
-    Suponha que $L$ é limite de $f$ em $a$.
     Devemos mostrar que $g(L)$ é limite de $g\circ f$ em $a$.
 
     Devemos ver que, fixado $\epsilon>0$, existe $\delta>0$ tal que, para todo $x \in A\setminus\{a\}$, 
@@ -44,14 +42,18 @@ O teorema abaixo diz que, sob hipóteses adequadas, a continuidade de funções 
     O número $\delta>0$ acima é como buscado: suponha que $x \in A\setminus\{a\}$ é tal que $d_M(x, a) < \delta$.
     Então $d_N(f(x), L) < \nu$.
     Pondo $y = f(x)$, temos que $d_N(y, L) < \nu$, e, portanto, $d_P(g(y), g(L)) < \epsilon$.
+    Como $y=f(x)$, segue que
+    \[
+        d_P(g(f(x)), g(L)) < \epsilon.
+    \]
 \end{proof}
 
 \begin{corollary}
     Sejam
     \begin{itemize}
-        \item $f: M \to N$ uma função, e
-        \item $g: N \to P$ uma função.
-        \item $a \in M$ um ponto de acumulação de $M$.
+        \item $f: M \to N$ uma função,
+        \item $g: N \to P$ uma função, e
+        \item $a \in M$.
     \end{itemize}
 
     Se $f$ é contínua em $a$ e $g$ é contínua em $f(a)$, então $g\circ f$ é contínua em $a$.
@@ -60,15 +62,15 @@ O teorema abaixo diz que, sob hipóteses adequadas, a continuidade de funções 
 \end{corollary}
 
 \begin{proof}
-    Se $a \in M$ é um ponto isolado, então trivialmente $g\circ f$ é contínua em $a$.
+    Se $a$ é um ponto isolado de $M$, então $g\circ f$ é contínua em $a$, pois toda função é contínua em pontos isolados de seu domínio.
 
-    Se $a \in M$ é um ponto de acumulação de $M$, então
+    Suponha, então, que $a$ é um ponto de acumulação de $M$.
+    Como $f$ é contínua em $a$, temos
     \[
-        \lim_{x\to a} f(x) = f(a),
+        \lim_{x\to a} f(x) = f(a).
     \]
 
     Assim, da proposição anterior, temos
-
     \[
         \lim_{x\to a} g(f(x)) = g\left(\lim_{x\to a} f(x)\right) = g(f(a)).
     \]
@@ -76,26 +78,27 @@ O teorema abaixo diz que, sob hipóteses adequadas, a continuidade de funções 
     Portanto, $g\circ f$ é contínua em $a$.
 \end{proof}
 
-O teorema abaixo nos mostra que, sob certas hipóteses, podemos ``compor limites''.
-Alguns textos encaram o teorema abaixo como um teorema de substituição de variáveis em limites.
+O resultado abaixo nos mostra que, sob certas hipóteses, podemos ``compor limites''.
+Alguns textos encaram esta proposição como um teorema de substituição de variáveis em limites.
 
 \begin{proposition}
     Sejam
     \begin{itemize}
         \item $A\subseteq M$ um subespaço,
         \item $B\subseteq N$ um subespaço,
-        \item $f: A \to B$ uma função, e
-        \item $g: B \to P$ uma função.
-        \item $a \in M$ um ponto de acumulação de $A$.
-        \item $b \in N$ um ponto de acumulação de $B$.
+        \item $f: A \to N$ uma função,
+        \item $g: B \to P$ uma função,
+        \item $a \in M$ um ponto de acumulação de $A$,
+        \item $b \in N$ um ponto de acumulação de $B$, e
         \item $L \in P$.
     \end{itemize}
 
 
     Suponha que:
     \begin{itemize}
-        \item $L$ é limite de $g$ em $b$, e
-        \item $b$ é limite de $f$ em $a$.
+        \item $f[A] \subseteq B$,
+        \item $L$ é limite de $g$ em $b$,
+        \item $b$ é limite de $f$ em $a$, e
         \item $f(x)\neq b$ para todo $x \in A\setminus\{a\}$.
     \end{itemize}
 
@@ -115,11 +118,11 @@ Alguns textos encaram o teorema abaixo como um teorema de substituição de vari
     \]
 
     Fixe $\epsilon>0$.
-    Como $L$ é limite de $g$ em $b$, existe $\nu>0$ tal que, para todo $y \in B$, se $d_N(y, L) < \nu$, então $d_P(g(y), g(L)) < \epsilon$.
+    Como $L$ é limite de $g$ em $b$, existe $\nu>0$ tal que, para todo $y \in B$, se $d_N(y, b) < \nu$, então $d_P(g(y), L) < \epsilon$.
 
     Como $b$ é limite de $f$ em $a$, existe $\delta>0$ tal que, para todo $x \in A\setminus\{a\}$, se $d_M(x, a) < \delta$, então $d_N(f(x), b) < \nu$.
 
     O número $\delta>0$ acima é como buscado: suponha que $x \in A\setminus\{a\}$ é tal que $d_M(x, a) < \delta$.
     Então $d_N(f(x), b) < \nu$ e $f(x)\in B\setminus\{b\}$.
-    Segue que $d_P(g(f(x)), g(L)) < \epsilon$.
+    Segue que $d_P(g(f(x)), L) < \epsilon$.
 \end{proof}
