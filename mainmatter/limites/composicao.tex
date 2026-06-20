@@ -1,12 +1,12 @@
 \section{Composição de funções contínuas e limites}
 
-Nessa seção, a menos que explicitamente indicado, consideraremos que $(M, d_M)$, $(N, d_N)$ e $(P, d_P)$ são espaços métricos arbitrários.
+Nesta seção, a menos que explicitamente indicado, consideraremos que $(M, d_M)$, $(N, d_N)$ e $(P, d_P)$ são espaços métricos arbitrários.
 
 Estudaremos como se comportam limites à luz da composição de funções.
 
 A proposição abaixo diz que, sob hipóteses adequadas, a continuidade de funções permite que o limite ``entre'' em uma composição.
 
-\begin{proposition}
+\begin{proposition}\label{prop:composicaoLimites}
     Sejam
     \begin{itemize}
         \item $A\subseteq M$ um subespaço,
@@ -20,13 +20,20 @@ A proposição abaixo diz que, sob hipóteses adequadas, a continuidade de funç
     Suponha que $L$ é limite de $f$ em $a$ e que $g$ é contínua em $L$.
     Então $g(L)$ é limite de $g\circ f$ em $a$.
 
-    Em outras palavras, se $\lim_{x\to a} f(x)$ existe e pertence a $B$, e $g$ é uma função contínua em $\lim_{x\to a} f(x)$, então
+    Em outras palavras, se $\lim_{x\to a} f(x)$ existe e pertence a $B$, e $g$ é contínua em $\lim_{x\to a} f(x)$, então
     \[
         \lim_{x\to a} g(f(x)) = g\left(\lim_{x\to a} f(x)\right).
     \]
 \end{proposition}
 
 \begin{proof}
+    A ideia geral da demonstração será a seguinte: primeiro escolhemos uma margem de erro $\epsilon$ no espaço final $P$.
+    A continuidade de $g$ transforma essa margem de erro em uma margem de segurança $\nu$ no espaço intermediário $N$.
+    Por fim, o limite de $f$ em $a$ transforma essa margem $\nu$ em uma margem de segurança $\delta$ no espaço inicial $M$.
+    Essa ideia está ilustrada na Figura~\ref{fig:composicao}.
+
+    \subimport{composicao}{figura}
+
     Devemos mostrar que $g(L)$ é limite de $g\circ f$ em $a$.
 
     Devemos ver que, fixado $\epsilon>0$, existe $\delta>0$ tal que, para todo $x \in A\setminus\{a\}$, 
@@ -46,6 +53,8 @@ A proposição abaixo diz que, sob hipóteses adequadas, a continuidade de funç
     \[
         d_P(g(f(x)), g(L)) < \epsilon.
     \]
+
+    Portanto, $g(L)$ é limite de $g\circ f$ em $a$.
 \end{proof}
 
 \begin{corollary}
@@ -58,7 +67,7 @@ A proposição abaixo diz que, sob hipóteses adequadas, a continuidade de funç
 
     Se $f$ é contínua em $a$ e $g$ é contínua em $f(a)$, então $g\circ f$ é contínua em $a$.
 
-    Consequentemente, a composição de funções contínuas é contínua.
+    Consequentemente, se $f$ e $g$ são contínuas, então $g\circ f$ é contínua.
 \end{corollary}
 
 \begin{proof}
@@ -75,7 +84,7 @@ A proposição abaixo diz que, sob hipóteses adequadas, a continuidade de funç
         \lim_{x\to a} g(f(x)) = g\left(\lim_{x\to a} f(x)\right) = g(f(a)).
     \]
 
-    Portanto, $g\circ f$ é contínua em $a$.
+    Como isso vale para todo $a\in M$, segue que, se $f$ e $g$ são contínuas, então $g\circ f$ é contínua.
 \end{proof}
 
 O resultado abaixo nos mostra que, sob certas hipóteses, podemos ``compor limites''.
@@ -110,19 +119,85 @@ Alguns textos encaram esta proposição como um teorema de substituição de var
 \end{proposition}
 
 \begin{proof}
-    Devemos mostrar que $L$ é limite de $g\circ f$ em $a$.
-
-    Devemos ver que, fixado $\epsilon>0$, existe $\delta>0$ tal que, para todo $x \in A\setminus\{a\}$, 
+    Seja $C=B\cup\{b\}$, considerado como subespaço de $N$.
+    Defina $\widetilde g:C\to P$ por
     \[
-        \text{se } d_M(x, a) < \delta,\qquad \text{então} \qquad d_P(g(f(x)), L) < \epsilon.
+        \widetilde g(y)=
+        \begin{cases}
+            L, & \text{se } y=b,\\
+            g(y), & \text{se } y\in B\setminus\{b\}.
+        \end{cases}
     \]
 
-    Fixe $\epsilon>0$.
-    Como $L$ é limite de $g$ em $b$, existe $\nu>0$ tal que, para todo $y \in B$, se $d_N(y, b) < \nu$, então $d_P(g(y), L) < \epsilon$.
+    Como $L$ é limite de $g$ em $b$, temos que $L$ é limite de $\widetilde g$ em $b$.
+    Além disso, $\widetilde g(b)=L$.
+    Portanto, $\widetilde g$ é contínua em $b$.
 
-    Como $b$ é limite de $f$ em $a$, existe $\delta>0$ tal que, para todo $x \in A\setminus\{a\}$, se $d_M(x, a) < \delta$, então $d_N(f(x), b) < \nu$.
+    Como $f[A]\subseteq B\subseteq C$, podemos considerar $f$ como uma função de $A$ em $C$.
+    Como $b$ é limite de $f$ em $a$ e $\widetilde g$ é contínua em $b$, pela Proposição~\ref{prop:composicaoLimites}, temos que
+    \[
+        \lim_{x\to a} \widetilde g(f(x))=\widetilde g(b)=L.
+    \]
 
-    O número $\delta>0$ acima é como buscado: suponha que $x \in A\setminus\{a\}$ é tal que $d_M(x, a) < \delta$.
-    Então $d_N(f(x), b) < \nu$ e $f(x)\in B\setminus\{b\}$.
-    Segue que $d_P(g(f(x)), L) < \epsilon$.
+    Por hipótese, para todo $x\in A\setminus\{a\}$, temos $f(x)\neq b$.
+    Portanto, para todo $x\in A\setminus\{a\}$,
+    \[
+        \widetilde g(f(x))=g(f(x)).
+    \]
+
+    Como as funções $g\circ f$ e $\widetilde g\circ f$ coincidem em $A\setminus\{a\}$, segue que
+    \[
+        \lim_{x\to a} g(f(x))=\lim_{x\to a} \widetilde g(f(x))=L.
+    \]
 \end{proof}
+
+\begin{example}\label{ex:composicaoLimitesFalsa}
+    A hipótese de que $f(x)\neq b$ para todo $x\in A\setminus\{a\}$ não pode ser simplesmente removida.
+
+    Considere $M=A=\mathbb R$, $N=B=\mathbb R^2$ e $P=\mathbb R$, todos com as métricas usuais.
+    Tome $a=0$ e $b=(0,0)$.
+    Defina $f:\mathbb R\to\mathbb R^2$ por
+    \[
+        f(x)=(0,0)
+    \]
+    para todo $x\in\mathbb R$.
+    Então
+    \[
+        \lim_{x\to 0} f(x)=(0,0).
+    \]
+
+    Agora defina $g:\mathbb R^2\to\mathbb R$ por
+    \[
+        g(p)=
+        \begin{cases}
+            1, & \text{se } p=(0,0),\\
+            0, & \text{se } p\neq (0,0).
+        \end{cases}
+    \]
+
+    A Figura~\ref{fig:composicaoLimitesFalsa} ilustra esse exemplo.
+
+    \subimport{composicao}{composicaoLimitesFalsa}
+
+    Temos
+    \[
+        \lim_{p\to (0,0)} g(p)=0,
+    \]
+    pois, para $p\neq (0,0)$, temos $g(p)=0$.
+
+    Porém,
+    \[
+        (g\circ f)(x)=g(f(x))=g(0,0)=1
+    \]
+    para todo $x\in\mathbb R$.
+    Portanto,
+    \[
+        \lim_{x\to 0} g(f(x))=1\neq 0.
+    \]
+
+    Assim, embora $\lim_{x\to 0} f(x)=(0,0)$ e $\lim_{p\to (0,0)} g(p)=0$, não temos
+    \[
+        \lim_{x\to 0} g(f(x))=\lim_{p\to (0,0)} g(p).
+    \]
+    O problema é que $f(x)=(0,0)=b$ para todo $x$, de modo que a composição avalia $g$ exatamente no ponto que o limite de $g$ está sendo tomado, e o cálculo do limite de $g$ em $b$ não leva em consideração o valor de $g$ em $b$.
+\end{example}

@@ -64,41 +64,10 @@ Vamos lembrar de importantes interpretações geométricas da soma e da multipli
 
 A soma dos vetores $v=(3, 2)$ e $w=(-1, 1)$ pode ser visualizada como o vetor com início na origem e fim no ponto obtido posicionando-se o vetor $w$ com início no ponto final do vetor $v$, conforme ilustrado na Figura~\ref{fig:soma-vetores}.
 
-\begin{figure}[ht]
-    \centering
-    \begin{tikzpicture}
-    \draw[->,ultra thick] (-3,0)--(3,0) node[right]{$x$};
-    \draw[->,ultra thick] (0,-3)--(0,3) node[above]{$y$};
-    % Vetor v=(3,2)
-    \draw[->,thick] (0,0) -- (3,2) node[below right]{$v=(3,2)$};
-    % Vetor w=(-1,1)
-    \draw[->,thick] (0,0) -- (-1,1) node[left]{$w=(-1,1)$};
-    % Vetor cópia w=(-1,1)
-    \draw[->,dotted] (3,2) -- (2,3) node[midway, right, text=darkgray]{$w$};
-    % Soma v+w
-    \draw[->,thick] (0,0) -- (2,3) node[above, align=left]{$v+w=(2,3)$};
-    \end{tikzpicture}
-    \caption{Soma de vetores em $\mathbb R^2$.}
-    \label{fig:soma-vetores}
-\end{figure}
+\subimport{operacoesRn}{somaVetores}
 A multiplicação do vetor $v=(1, 2)$ por $2$ e por $-2$ corresponde, respectivamente, a multiplicar o comprimento de $v$ por $2$, mantendo a direção e o sentido, e a multiplicar o comprimento de $v$ por $2$, mantendo a direção e invertendo o sentido, conforme ilustrado na Figura~\ref{fig:produto-por-escalar}.
 
-\begin{figure}[ht]
-    \centering
-    \begin{tikzpicture}
-    \draw[->,ultra thick] (-3,0)--(3,0) node[right]{$x$};
-    \draw[->,ultra thick] (0,-3)--(0,3) node[above]{$y$};
-
-    % Vetor 2v
-    \draw[->,thick, draw=blue] (0,0) -- (2,4) node[above right]{$2v=(2,4)$};
-    % Vetor -2v
-    \draw[->,thick, draw=red] (0,0) -- (-2,-4) node[above right]{$-2v=(-2,-4)$};
-    % Vetor v=(1,2)
-    \draw[->,thick] (0,0) -- (1,2) node[below right]{$v=(1,2)$};
-    \end{tikzpicture}
-    \caption{Produto por escalar em $\mathbb R^2$.}
-    \label{fig:produto-por-escalar}
-\end{figure}
+\subimport{operacoesRn}{produtoPorEscalar}
 
 \begin{example}
     Seja $v=(2,-1)$. Então

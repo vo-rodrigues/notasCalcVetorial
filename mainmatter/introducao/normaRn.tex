@@ -84,53 +84,11 @@ Algumas propriedades da norma são as seguintes.
 A relação entre norma e produto escalar pode ser utilizada para decidir-se \emph{ortogonalidade}\index{ortogonalidade}\index{vetores ortogonais|see{ortogonalidade}} entre vetores.
 É fato conhecido que vale a recíproca do \emph{Teorema de Pitágoras}\index{Teorema de Pitágoras}: se $\triangle BAC$ é um triângulo, então o ângulo $\angle BAC$ é reto se, e somente se, sendo $a, b, c$ respectivamente as medidas dos segmentos $\overline{BC}, \overline{AC}, \overline{AB}$, temos que $a^2=b^2+c^2$.
 
-\begin{figure}[ht]
-    \centering
-    \begin{tikzpicture}
-    % Pontos do triângulo
-    \coordinate (B) at (0,0);
-    \coordinate (A) at (4,0);
-    \coordinate (C) at (4,3);
+\subimport{normaRn}{trianguloRetangulo}
 
-    % Lados do triângulo
-    \draw[thick] (B) -- (A) -- (C) -- cycle;
+No aspecto vetorial, dados dois vetores $v$ e $w$, perceba que o vetor $v-w=v+(-w)$ pode ser representado como o segmento orientado que une a extremidade de $w$ à extremidade de $v$, conforme ilustrado na Figura~\ref{fig:diferenca-vetores}.
 
-    % Marcação do ângulo reto em A
-    \draw (A) ++(-0.4,0) -- ++(0,0.4) -- ++(0.4,0);
-
-    % Nome dos vértices
-    \node[right] at (A) {$A$};
-    \node[left] at (B) {$B$};
-    \node[above right] at (C) {$C$};
-
-    % Lados a, b, c
-    \path (B) -- node[above left] {$a$} (C);
-    \path (A) -- node[right] {$b$} (C);
-    \path (A) -- node[below] {$c$} (B);
-
-    \end{tikzpicture}
-    \caption{Triângulo retângulo.}
-    \label{fig:triangulo-retangulo}
-\end{figure}
-
-    No aspecto vetorial, dados dois vetores $v$ e $w$, perceba que o vetor $v-w=v+(-w)$ pode ser representado como o segmento orientado que une a extremidade de $w$ à extremidade de $v$, conforme ilustrado na Figura~\ref{fig:diferenca-vetores}.
-
-\begin{figure}[ht]
-    \centering
-    \begin{tikzpicture}
-    \draw[->,ultra thick] (-3,0)--(3,0) node[right]{$x$};
-    \draw[->,ultra thick] (0,-3)--(0,3) node[above]{$y$};
-    % Vetor v
-    \draw[->,thick] (0,0) -- (2,1) node[above right]{$w$};
-    % Vetor v-w
-    \draw[->,thick] (0,0) -- (-1,-2) node[below left]{$v-w$};
-    \draw[->,dotted] (2,1) -- (1,-1);
-    % Vetor v+w
-    \draw[->,thick] (0,0) -- (1,-1) node[below right]{$v$};
-    \end{tikzpicture}
-    \caption{O vetor $v-w$ como deslocamento da extremidade de $w$ até a extremidade de $v$.}
-    \label{fig:diferenca-vetores}
-\end{figure}
+\subimport{normaRn}{diferencaVetores}
 
 Motivados pela recíproca do Teorema de Pitágoras, dizemos que dois vetores $v,w\in\mathbb R^n$ são \emph{ortogonais} quando
 \[

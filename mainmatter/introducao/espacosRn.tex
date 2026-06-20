@@ -14,26 +14,7 @@ Em analogia à representação de $\mathbb R$ como uma reta, podemos visualizar 
 
 Na Figura~\ref{fig:plano-cartesiano}, o ponto $(2,3)$ está posicionado $2$ unidades no sentido positivo do eixo $x$ e $3$ unidades no sentido positivo do eixo $y$.
 
-\begin{figure}[ht]
-    \centering
-    \begin{tikzpicture}
-    \draw[->,ultra thick] (-4,0)--(4,0) node[right]{$x$};
-    \draw[->,ultra thick] (0,-4)--(0,4) node[above]{$y$};
-    % Ponto (2,3)
-    \filldraw[black] (2,3) circle (2pt);
-    \node[above right] at (2,3) {$(2,3)$};
-    \draw[dotted] (2,0) -- (2,3);
-    \draw[dotted] (0,3) -- (2,3);
-    \draw (2,0.1) -- (2,-0.1);
-    \node[below] at (2,0) {2};
-    \draw (0.1,3) -- (-0.1,3);
-    \node[left] at (0,3) {3};
-    \node[below left] at (0,0) {0};
-
-    \end{tikzpicture}
-    \caption{O plano cartesiano.}
-    \label{fig:plano-cartesiano}
-\end{figure}
+\subimport{espacosRn}{planoCartesiano}
 
 Por sua vez, o conjunto de todas as triplas ordenadas de números reais é denotado por $\mathbb R^3$.
 Em símbolos:
@@ -46,35 +27,7 @@ Seguindo o padrão já comentado, podemos visualizar $\mathbb R^3$ como o conjun
 A tripla $(x,y,z)$ representa um ponto com três coordenadas: a primeira associada ao eixo $x$, a segunda ao eixo $y$ e a terceira ao eixo $z$.
 O ponto $(2,3,1)$ está representado na Figura~\ref{fig:espaco-tridimensional}.
 
-\begin{figure}[ht]
-    \centering
-    \tdplotsetmaincoords{70}{110}
-    \begin{tikzpicture}[tdplot_main_coords]
-    % Eixos
-    \draw[->,ultra thick] (-4,0,0)--(4,0,0) node[right]{$x$};
-    \draw[->,ultra thick] (0,-4,0)--(0,4,0) node[above]{$y$};
-    \draw[->,ultra thick] (0,0,-4)--(0,0,4) node[above]{$z$};
-    % Ponto (2,3,1)
-    \filldraw[black] (2,3,1) circle (2pt);
-    \node[above right] at (2,3,1) {$(2,3,1)$};
-    % Linhas pontilhadas
-    \draw[dotted] (2,0,0) -- (2,3,0) -- (2,3,1);
-    \draw[dotted] (0,3,0) -- (2,3,0);
-    \draw[dotted] (2,0,0) -- (2,0,1) -- (2,3,1);
-    \draw[dotted] (0,0,1) -- (2,0,1);
-    % Marcas nos eixos
-    \draw (2,0.1,0) -- (2,-0.1,0);
-    \node[below] at (2,0,0) {2};
-    \draw (0.1,3,0) -- (-0.1,3,0);
-    \node[left] at (0,3,0) {3};
-    \draw (0.1,0,1) -- (-0.1,0,1);
-    \node[left] at (0,0,1) {1};
-    \node[below left] at (0,0,0) {0};
-
-    \end{tikzpicture}
-    \caption{O espaço tridimensional.}
-    \label{fig:espaco-tridimensional}
-\end{figure}
+\subimport{espacosRn}{espacoTridimensional}
 
 De modo geral, para cada inteiro $n\geq 1$, o conjunto $\mathbb R^n$ é o conjunto de todas as $n$-tuplas ordenadas de números reais:
 \begin{equation*}
