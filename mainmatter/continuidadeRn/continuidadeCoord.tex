@@ -1,16 +1,83 @@
 \section{Limites e continuidade em coordenadas}
-Se $A$ é qualquer conjunto e $f: A \to \mathbb R^m$ é uma função, então para cada $a \in A$, $f(a)$, sendo um elemento de $\mathbb R^m$, é um ponto $(y_1, \dots, y_m)$.
-As coordenadas $y_i$ são denotadas por $f_i(a)$.
-Assim, $f(a) = (f_1(a), \dots, f_m(a))$.
+
+Ao estudar funções que saem de um domínio e chegam em $\mathbb R^m$, é muito frequente que possamos reduzir o estudo de suas propriedades ao estudo de suas funções coordenadas.
+
+Lembremos a definição de função coordenada.
 
 \begin{definition}
-    Seja $f: A \to \mathbb R^m$ uma função.
-    As \emph{funções coordenadas}\index{função coordenada}\index{coordenadas|seealso{função coordenada}} de $f$ são as únicas funções $f_i: A \to \mathbb R$ tal que, para todo $a \in A$, temos $f(a) = (f_1(a), \dots, f_m(a))$.
+    Seja $f: A \to B^m$ uma função, em que $m\geq 1$.
+
+    Para cada $a \in A$, $f(a)$, sendo um elemento de $B^m$, é um ponto $(b_1, \dots, b_m)$.
+    As coordenadas $b_i$ são denotadas por $f_i(a)$.
+
+    Dessa forma, os números reais $f_1(a), \dots, f_m(a)$ são os únicos números reais tais que $f(a) = (f_1(a), \dots, f_m(a))$.
+
+    Para cada $i\in\{1,\dots,m\}$, a função $f_i: A \to B$ assim definida é chamada de \emph{$i$-ésima função coordenada} de $f$.
 \end{definition}
+
+\begin{example}
+    Seja $f: \mathbb R^2\rightarrow \mathbb R^3$ dada por $f(x, y) = (x+y, x-y, xy)$.
+    Então as funções coordenadas de $f$ são dadas por:
+
+    \begin{align*}
+         & f_1: \mathbb R^2\rightarrow \mathbb R, \quad f_1(x, y) = x+y;\\
+         & f_2: \mathbb R^2\rightarrow \mathbb R, \quad f_2(x, y) = x-y;\\
+         & f_3: \mathbb R^2\rightarrow \mathbb R, \quad f_3(x, y) = xy.
+    \end{align*}
+\end{example}
+
+Um caso importante é o das projeções, que são as funções coordenadas da função identidade de $\mathbb R^n$.
+
+\begin{definition}
+    Para cada $i\in\{1,\dots,n\}$, a $i$-ésima projeção de $\mathbb R^n$ em $\mathbb R$, denotada por $\pi_i$, é a $i$-ésima função coordenada da função identidade de $\mathbb R^n$.
+
+    Ou seja, $\pi_i: \mathbb R^n\rightarrow \mathbb R$ é a função dada por
+
+    \[
+        \pi_i(x_1, \dots, x_n) = x_i.
+    \]
+\end{definition}
+
+\begin{lemma}
+    Seja $n\geq 1$ e $i$ um inteiro com $1\leq i\leq n$.
+
+    Então a $i$-ésima projeção de $\mathbb R^n$ em $\mathbb R$ é contínua.
+
+    Ou seja, a função $\pi_i: \mathbb R^n\rightarrow \mathbb R$ dada por
+    \[
+        \pi_i(x_1, \dots, x_n) = x_i
+    \]
+
+    é contínua em todos os pontos de $\mathbb R^n$.
+\end{lemma}
+
+\begin{proof}
+    Seja $p=(p_1, \dots, p_n) \in \mathbb R^n$ arbitrário e $\epsilon>0$.
+
+    Devemos ver que existe $\delta>0$ tal que, para todo $x=(x_1, \dots, x_n) \in \mathbb R^n$, se $d(x, p) < \delta$, então $d(\pi_i(x), \pi_i(p)) < \epsilon$.
+
+    Antes de sugerir um $\delta$, vamos tomar um $\delta>0$ arbitrário e explorar as implicações de $d(x, p) < \delta$.
+
+    Se $x\in \mathbb R^n$ é tal que $d(x, p) < \delta$, então
+
+    \[
+        \sqrt{(x_1 - p_1)^2 + \cdots + (x_n - p_n)^2} < \delta.
+    \]
+
+    Ora, então,
+
+    \[
+        d(\pi_i(x), \pi_i(p))=|x_i - p_i| = \sqrt{(x_i - p_i)^2} \leq \sqrt{(x_1 - p_1)^2 + \cdots + (x_n - p_n)^2} < \delta.
+    \]
+
+    Assim, tomando $\delta = \epsilon$, temos que $d(\pi_i(x), \pi_i(p)) < \epsilon$ sempre que $d(x, p) < \delta$.
+    Isso atesta a continuidade de $\pi_i$ em $p$.
+
+    Como $p\in \mathbb R^n$ foi arbitrário, concluímos que $\pi_i$ é contínua em todos os pontos de $\mathbb R^n$.
+\end{proof}
 
 \begin{proposition}\index{continuidade!via funções coordenadas}
     Seja $A\subseteq \mathbb R^n$ um conjunto e $f: A \to \mathbb R^m$ uma função.
-
     Então, $f$ é contínua em $p \in A$ se, e somente se, todas as funções coordenadas $f_i$ são contínuas em $p$.
 \end{proposition}
 
