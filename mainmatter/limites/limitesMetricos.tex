@@ -10,7 +10,7 @@ Uma ferramenta muito útil para testar a continuidade de uma função nesses pon
 Tal noção também dá informações sobre o comportamento de uma função nas imediações de pontos de acumulação de seu domínio que estejam em um espaço ambiente, mas que não pertençam ao domínio.
 
 Intuitivamente, $L$ é limite de uma função $f$ no ponto $p$ se, para qualquer margem de erro em torno de $L$, existe uma margem de segurança em torno de $p$ tal que, para todo ponto do domínio de $f$ dentro dessa margem de segurança e distinto de $p$, a imagem desse ponto por $f$ está dentro da margem de erro em torno de $L$.
-O ponto $p$ é excluído dessa análise pois a noção de limite pergunta o que ocorre perto do ponto $p$, mas não exatamente no ponto $p$.
+O ponto $p$ é excluído dessa análise, pois a noção de limite pergunta o que ocorre perto do ponto $p$, mas não exatamente no ponto $p$.
 
 \begin{definition}\index{limite}\index{limite!definição}
     Sejam
@@ -27,10 +27,8 @@ O ponto $p$ é excluído dessa análise pois a noção de limite pergunta o que 
     \]
 \end{definition}
 
-
 Conforme veremos mais adiante, nem sempre uma função possui limites em pontos dados.
 Porém, limites, quando existem, são únicos.
-
 
 A Figura~\ref{fig:limiteUnico} resume a escolha de $\delta$ na prova da Proposição~\ref{prop:limiteUnico}.
 
@@ -98,6 +96,13 @@ Por exemplo, se $f:\mathbb R^2 \to \mathbb R$ é uma função e $p=(a, b)$, é c
 
 Para dimensões maiores, notações análogas são utilizadas.
 \smallskip
+
+
+Observe que continuidade em $p$ só faz sentido quando $p$ pertence ao domínio da função.
+Já o limite em $p$ pode fazer sentido mesmo quando $p$ não pertence ao domínio, desde que $p$ seja ponto de acumulação do domínio.
+
+Assim, quando $p\in A$, podemos comparar o limite de $f$ em $p$ com o valor $f(p)$.
+Quando $p\notin A$, podemos estudar o limite de $f$ em $p$, mas não faz sentido perguntar se $f$ é contínua em $p$.
 
 A proposição abaixo conecta os conceitos de limite e de continuidade.
 \begin{proposition}\index{continuidade!caracterização por limite}
@@ -207,6 +212,9 @@ Para o enunciado abaixo, lembremos que, se $M$ é um espaço métrico e $p \in M
     E essa é exatamente a afirmação de que $L$ é limite de $f$ em $p$.
 \end{proof}
 
+O exemplo abaixo mostra como limites podem ser usados para provar mais facilmente que certas funções não são contínuas em alguns de seus pontos.
+Perceba que não foi necessário recorrer à definição que envolve épsilons e deltas.
+
 \begin{example}\label{ex:limiteNaoImporta}
     Seja $f:\mathbb R^2\rightarrow \mathbb R$ dada por
     \[
@@ -216,20 +224,37 @@ Para o enunciado abaixo, lembremos que, se $M$ é um espaço métrico e $p \in M
         \end{cases}
     \]
 
-    Seja $A=\mathbb R^2\setminus\{(0,0)\}$.
+    A Figura~\ref{fig:limiteNaoImporta} ilustra o gráfico de $f$.
+
+    \subimport{limitesMetricos}{figuraLimiteNaoImporta}
+
+    Seja $A=\mathbb R^2\setminus\{(0,0)\}$ e seja $1_{\mathbb R^2}:\mathbb R^2\to\mathbb R$ a função constante identicamente igual a $1$.
 
     A função $f$ não é contínua em $(0, 0)$.
     De fato, primeiro note que $(0, 0)$ é ponto de acumulação de $\mathbb R^2$ e de $A$.
-    Como o valor de $f$ em $(0, 0)$ não importa para o limite, temos
+    Como o valor de $f$ em $(0, 0)$ não importa para o limite e como funções constantes são contínuas, temos
     \[
         \lim_{(x, y)\to (0, 0)} f(x, y)
         =
         \lim_{(x, y)\to (0, 0)} (f|_{A})(x, y)
         =
-        \lim_{(x, y)\to (0, 0)} 1_A(x, y)
+        \lim_{(x, y)\to (0, 0)} (1_{\mathbb R^2}|_{A})(x, y)
         =
-        1,
+        \lim_{(x, y)\to (0, 0)} 1_{\mathbb R^2}(x, y)
+        =
+        1.
     \]
-    em que $1_A:A\to\mathbb R$ é a função constante identicamente igual a $1$.
+
     Assim, $\lim_{(x, y)\to (0, 0)} f(x, y) = 1 \neq f(0, 0)$, e, portanto, $f$ não é contínua em $(0, 0)$.
 \end{example}
+\subsection*{Exercícios}
+\begin{exercise}
+    Seja $f:M\rightarrow N$ uma função entre espaços métricos, seja $A\subseteq M$ um subespaço, seja $a\in A$ um ponto de acumulação de $A$ e seja $L\in N$.
+
+    Mostre que $L$ é limite de $f|_A$ em $a$ se, e somente se, para todo $\epsilon>0$ existe $\delta>0$ tal que
+    \[
+        f\left[B_A(a, \delta)\cap A\setminus\{a\}\right]\subseteq B_N(L, \epsilon).
+    \]
+    
+    Interprete geometricamente este resultado.
+\end{exercise}

@@ -1,0 +1,51 @@
+\begin{figure}[H]
+    \centering
+    \tdplotsetmaincoords{70}{135}
+    \begin{tikzpicture}[
+        tdplot_main_coords,
+        scale=1.45,
+        line cap=round,
+        line join=round
+    ]
+        % Pontos especiais do grafico.
+        \coordinate (origem) at (0,0,0);
+        \coordinate (pontoFaltante) at (0,0,1);
+
+        % Projecao do plano z=1 no dominio R^2.
+        \draw[gray!60, dashed] (-2.25,-1.60,0) -- (2.25,-1.60,0) --
+            (2.25,1.60,0) -- (-2.25,1.60,0) -- cycle;
+
+        % Eixos coordenados, com o eixo vertical representando os valores de f.
+        \draw[->, very thick] (-2.75,0,0) -- (2.95,0,0) node[below] {$x$};
+        \draw[->, very thick] (0,-2.25,0) -- (0,2.55,0) node[right] {$y$};
+        \draw[very thick] (0,0,-0.30) -- (0,0,1);
+
+
+
+        % Parte principal do grafico: plano z=1 para (x,y) diferente de (0,0).
+        \path[fill=Cerulean!14, fill opacity=0.55, draw=Cerulean!70!black, thick]
+            (-2.25,-1.60,1) -- (2.25,-1.60,1) --
+            (2.25,1.60,1) -- (-2.25,1.60,1) -- cycle;
+
+
+
+        % Segmento vertical sobre a origem, indicando a descontinuidade.
+        \draw[gray!65, dashed] (origem) -- (pontoFaltante);
+
+        % Trecho superior do eixo z, desenhado apos o plano para ficar opaco.
+        \draw[->, very thick] (0,0,1) -- (0,0,1.95) node[left] {$f(x,y)=z$};
+
+        % Rotulo do ponto que pertence ao grafico.
+        \node[black, right=7pt] at (origem) {$(0,0,f(0,0))$};
+
+        % Ponto aberto: o valor 1 seria o limite, mas nao e f(0,0).
+        \draw[Cerulean!70!black, very thick, fill=white] (pontoFaltante) circle (2.8pt);
+
+        % Rotulo do ponto removido do plano z=1.
+        \node[black, right=7pt] at (pontoFaltante) {$(0,0,1)$};
+        % Valor real da funcao na origem: f(0,0)=0.
+        \filldraw[Cerulean!70!black] (origem) circle (2.5pt);
+    \end{tikzpicture}
+    \caption{Gráfico de $f$, com eixo vertical $z=f(x,y)$.}
+    \label{fig:limiteNaoImporta}
+\end{figure}
