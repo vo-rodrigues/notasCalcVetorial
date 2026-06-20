@@ -1,49 +1,54 @@
 \section{Restrições e extensões}
-Nessa seção, a menos que explicitamente indicado, consideraremos que $(M, d)$ e $(N, d')$ são espaços métricos arbitrários.
+Nesta seção, a menos que explicitamente indicado, consideraremos que $(M, d)$ e $(N, d')$ são espaços métricos arbitrários.
 
-Os limites são preservados por restrições sempre que ainda fazem sentido.
+Começaremos com restrições de domínio.
+Ao restringir uma função, passamos a controlar menos pontos perto do ponto em que o limite é calculado.
+Por isso, limites são preservados por restrições sempre que ainda fazem sentido.
 
-A demonstração abaixo se baseia no fato de que se $f:M\rightarrow N$ é uma função e $i: A\rightarrow M$ é a inclusão de $A$ em $M$, então $f|_A = f\circ i$.
-De fato, $\dom(f|_A)=\dom(f\circ i)=A$ e, dado $x \in A$, temos $f|_A(x)=f(x)=f(i(x))=f\circ i(x)$.
-
-\begin{proposition}Sejam
+\begin{proposition}\label{prop:limiteRestricaoDominio}
+    Sejam
     \begin{itemize}
         \item $A\subseteq M$ um subespaço,
-        \item $p$ ponto de acumulação de $A$,
+        \item $p$ um ponto de acumulação de $A$,
         \item $f: M \to N$ uma função, e
         \item $L\in N$.
     \end{itemize}
 
     Se $L$ é limite de $f$ em $p$, então $L$ é limite de $f|_A$ em $p$.
 
-    Em outras palavras, se existe $\lim_{x\to p} f(x)$, então existe $\lim_{x\to p} f|_A(x)$, e
+    Em outras palavras, se existe $\lim_{x\to p} f(x)$, então existe $\lim_{x\to p} (f|_A)(x)$, e
     \[
-        \lim_{x\to p} f|_A(x) = \lim_{x\to p} f(x).
+        \lim_{x\to p} (f|_A)(x) = \lim_{x\to p} f(x).
     \]
 \end{proposition}
 
 \begin{proof}
     Suponha que $L$ é limite de $f$ em $p$.
-    Seja $i:A\rightarrow M$ a inclusão de $A$ em $M$.
+    Fixe $\epsilon>0$.
 
-    Temos que $i$ é contínua em $p$ e $p$ é ponto de acumulação de $A$, então $p=\lim_{x\to p} i(x)$.
-    Além disso, $i:A\rightarrow M$ é uma função injetora.
-
-    Logo, pelo teorema da mudança de variável em limites,
+    Como $L$ é limite de $f$ em $p$, existe $\delta>0$ tal que, para todo $x\in M\setminus\{p\}$, se $d(x,p)<\delta$, então
     \[
-        \lim_{x\to p} f|_A(x) = \lim_{x\to p} f(i(x)) = \lim_{x\to p} f(x) = L.
+        d'(f(x),L)<\epsilon.
     \]
-    E, portanto, $L$ é limite de $f|_A$ em $p$.    
+
+    Tome $x\in A\setminus\{p\}$ tal que $d(x,p)<\delta$.
+    Como $A\subseteq M$, temos $x\in M\setminus\{p\}$.
+    Portanto,
+    \[
+        d'((f|_A)(x),L)=d'(f(x),L)<\epsilon.
+    \]
+
+    Assim, $L$ é limite de $f|_A$ em $p$.
 \end{proof}
 
-Disso, decorre que a continuidade também é preservada por restrições.
+Disso decorre que a continuidade também é preservada por restrições.
 
-\begin{corollary}Sejam
+\begin{corollary}\label{cor:continuidadeRestricao}
+    Sejam
     \begin{itemize}
         \item $A\subseteq M$ um subespaço,
-        \item $f: M \to N$ uma função,
-        \item $p\in A$, e
-        \item $f: A \to N$ uma função.
+        \item $f: M \to N$ uma função, e
+        \item $p\in A$.
     \end{itemize}
 
     Se $f$ é contínua em $p$, então $f|_A$ é contínua em $p$.
@@ -54,99 +59,79 @@ Disso, decorre que a continuidade também é preservada por restrições.
 \begin{proof}
     Suponha que $f$ é contínua em $p$.
 
-    Se $p$ é um ponto isolado de $A$, então $f|_A$ é contínua em $p$ trivialmente.
+    Se $p$ é um ponto isolado de $A$, então $f|_A$ é contínua em $p$.
 
-    Se $p$ é um ponto de acumulação de $A$, então, pela proposição anterior,
-
-    \[
-        \lim_{x\to p} f|_A(x) = \lim_{x\to p} f(x) = f(p),
-    \]
-
-    Assim, $f|_A$ é contínua em $p$.
+    Suponha, então, que $p$ é um ponto de acumulação de $A$.
+    Como $f$ é contínua em $p$, temos que $f(p)$ é limite de $f$ em $p$.
+    Pela Proposição~\ref{prop:limiteRestricaoDominio}, $f(p)$ é limite de $f|_A$ em $p$.
+    Como $(f|_A)(p)=f(p)$, segue que $f|_A$ é contínua em $p$.
 \end{proof}
 
-Dessa forma, se $f$ é contínua em $p$, então $f|_A$ é contínua em $p$.
-
-A recíproca não é verdadeira!
+A recíproca não é verdadeira.
 No Exemplo~\ref{ex:restricaoContinuidade}, vimos que existem funções $f$ que não são contínuas em $p$, mas cuja restrição $f|_A$ é contínua em $p$.
 
-Por outro lado, em alguns casos, a continuidade é preservada por extensões.
+Por outro lado, quando o subespaço é aberto e contém o ponto, a restrição e a função original têm o mesmo comportamento local nesse ponto.
 
-\begin{proposition}Sejam
+\begin{proposition}\label{prop:limiteRestricaoAberto}
+    Sejam
     \begin{itemize}
-        \item $A\subseteq M$ um subconjunto
-        \item $f: M \to N$ uma função,
-        \item $p\in A$ é ponto de acumulação de $A$,
-        \item $f: M \to N$ uma função, e
+        \item $A\subseteq M$ um subespaço aberto,
+        \item $f: M\to N$ uma função,
+        \item $p\in A$ um ponto de acumulação de $M$, e
         \item $L\in N$.
     \end{itemize}
 
-    Suponha que:
-        \begin{itemize}
-            \item $f|_A$ é contínua em $p$, e
-            \item $L$ é limite de $f|_A$ em $p$.
-        \end{itemize}
+    Então $L$ é limite de $f$ em $p$ se, e somente se, $L$ é limite de $f|_A$ em $p$.
 
-    Se $L$ é limite de $f|_A$ em $p$, então $L$ é limite de $f$ em $p$.
-
-    Em outras palavras, se existe $\lim_{x\to p} (f|_A)(x)$, então existe $\lim_{x\to p} f(x)$, e
+    Em outras palavras,
     \[
-        \lim_{x\to p} f|_A(x) = \lim_{x\to p} f(x).
+        \lim_{x\to p} (f|_A)(x)=\lim_{x\to p} f(x),
     \]
+    no sentido de que um dos limites acima existe se, e somente se, o outro existe, e, nesse caso, eles são iguais.
 \end{proposition}
 
 \begin{proof}
-    Suponha que $L$ é limite de $f|_A$ em $p$.
-    Devemos mostrar que $L$ é limite de $f$ em $p$.
-    Ou seja, dado $\epsilon>0$, devemos mostrar que existe $\delta>0$ tal que, para todo $x\in M\setminus\{p\}$,
-    
+    Como $A$ é aberto e $p\in A$, existe $r>0$ tal que $B_M(p,r)\subseteq A$.
+    Como $p$ é ponto de acumulação de $M$, segue que $p$ é ponto de acumulação de $A$.
+    De fato, dado $s>0$, tomando $\rho=\min\{r,s\}$, existe $x\in M\setminus\{p\}$ tal que $d(x,p)<\rho$.
+    Como $d(x,p)<r$, temos $x\in A$.
+
+    As funções $f:M\to N$ e $f|_A:A\to N$ coincidem no aberto $A$ de $M$.
+    Mais precisamente,
     \[
-        \text{se } d(x, p) < \delta \qquad\text{então}\qquad d'(f(x), L) < \epsilon.
+        (M\cap A)\setminus\{p\}=(A\cap A)\setminus\{p\},
     \]
+    e $f(x)=(f|_A)(x)$ para todo $x$ nesse conjunto.
 
-    Sabemos que $L$ é limite de $f|_A$ em $p$, então, para o $\epsilon>0$ dado, existe $\delta_1>0$ tal que, para todo $x\in A\setminus\{p\}$,
-    \[
-        \text{se } d(x, p) < \delta_1 \qquad\text{então}\qquad d'((f|_A)(x), L) < \epsilon.
-    \]
-
-    Como $A$ é aberto e $p$ é um ponto de acumulação de $A$, existe $\delta_2>0$ tal que $B_M(p, \delta_2) \subseteq A$.
-
-    Seja $\delta = \min\{\delta_1, \delta_2\}$.
-    Fixe $x \in M\setminus\{p\}$ tal que $d(x, p) < \delta$.
-    Assim, $d(x, p) < \delta_1$ e $d(x, p) < \delta_2$.
-    
-    Como $d(x, p) < \delta_2$, temos $x \in B_M(p, \delta_2) \subseteq A$.
-    Assim, $x \in A\setminus\{p\}$ e $d(x, p) < \delta_1$, então $d'((f|_A)(x), L) < \epsilon$.
-    Como $(f|_A)(x) = f(x)$, segue que $d'(f(x), L) < \epsilon$.
+    Portanto, a equivalência segue da Proposição~\ref{prop:localidadeLimite}.
 \end{proof}
 
-\begin{corollary}Sejam
+\begin{corollary}\label{cor:continuidadeRestricaoAberto}
+    Sejam
     \begin{itemize}
         \item $A\subseteq M$ um subespaço aberto,
-        \item $f: A \to N$ uma função,
-        \item $p\in A$, e
-        \item $f: A \to N$ uma função.
+        \item $f: M\to N$ uma função, e
+        \item $p\in A$.
     \end{itemize}
 
-    Se $f|_A$ é contínua em $p$, então $f$ é contínua em $p$.
+    Então $f$ é contínua em $p$ se, e somente se, $f|_A$ é contínua em $p$.
 
-    Consequentemente, se $f|_A$ é contínua, então $f$ é contínua.
+    Consequentemente, $f$ é contínua em todos os pontos de $A$ se, e somente se, $f|_A$ é contínua.
 \end{corollary}
+
 \begin{proof}
-    Suponha que $f|_A$ é contínua em $p$.
+    Se $p$ é um ponto isolado de $M$, então $f$ é contínua em $p$.
+    Além disso, $p$ também é ponto isolado de $A$, e, portanto, $f|_A$ é contínua em $p$.
 
-    Se $p$ é um ponto isolado de $M$, então $f$ é contínua em $p$ trivialmente.
-
-    Se $p$ é um ponto de acumulação de $M$, então é um ponto de acumulação de $A$, pois se $\{p\}$ fosse aberto em $A$, também seria em $M$, uma vez que $A\subseteq M$ é aberto em $M$.
-
-    Pela proposição anterior,
+    Suponha, então, que $p$ é ponto de acumulação de $M$.
+    Pela Proposição~\ref{prop:limiteRestricaoAberto},
     \[
-        \lim_{x\to p} f(x) = \lim_{x\to p} f|_A(x) = f(p),
+        f(p) \text{ é limite de } f \text{ em } p
+        \iff
+        f(p) \text{ é limite de } f|_A \text{ em } p.
     \]
-
-    Portanto, $f$ é contínua em $p$.
+    Como $(f|_A)(p)=f(p)$, a equivalência segue da caracterização da continuidade por limites.
 \end{proof}
-
 
 \begin{example}
     Nesse exemplo, continuaremos o exemplo do Exemplo~\ref{ex:limiteNaoImporta} sobre a função $f:\mathbb R^2\rightarrow \mathbb R$ dada por
@@ -158,35 +143,35 @@ Por outro lado, em alguns casos, a continuidade é preservada por extensões.
     \]
 
     Já vimos que $f$ não é contínua em $(0, 0)$.
-    No entanto, temos que $f$ é contínua nos pontos de $A=\mathbb R^2\setminus\{(0, 0)\}$, pois $f|_{A}$ é uma função constante, que é contínua, e $A$ é um conjunto aberto.
+    No entanto, temos que $f$ é contínua nos pontos de $A=\mathbb R^2\setminus\{(0, 0)\}$.
+    De fato, $A$ é aberto, $f|_A$ é uma função constante, e então o Corolário~\ref{cor:continuidadeRestricaoAberto} mostra que $f$ é contínua em todo ponto de $A$.
 
     Assim, o conjunto dos pontos de $\mathbb R^2$ para os quais $f$ é contínua é $\mathbb R^2\setminus\{(0, 0)\}$.
 \end{example}
 
 Uma outra questão que pode surgir naturalmente é a seguinte: sabemos que a função $f:\mathbb R\rightarrow \mathbb R$ dada por $f(x) = x^2$ é contínua.
-Porém, essa mesma função pode ser vista como uma função de $\mathbb R$ em $[0, +\infty)$, e, pode-se perguntar, se nesse sentido, ela ainda é contínua.
+Porém, essa mesma função pode ser vista como uma função de $\mathbb R$ em $[0, +\infty)$.
+Pode-se perguntar se, nesse sentido, ela ainda é contínua.
 
 A proposição abaixo responde essa pergunta positivamente, e de forma geral.
 
-\begin{proposition}Sejam
+\begin{proposition}\label{prop:limiteRestricaoContradominio}
+    Sejam
     \begin{itemize}
         \item $f: M \to N$ uma função,
-        \item $a \in M$ um ponto de acumulação de $M$.
-        \item $N'$ um subespaço de $N$ tal que $f[M]\subseteq N'$,
-        \item $L\in N'$
+        \item $a \in M$ um ponto de acumulação de $M$,
+        \item $N'$ um subespaço de $N$ tal que $f[M]\subseteq N'$, e
+        \item $L\in N'$.
     \end{itemize}
-    Então $L$ é limite de $f:M\to N$ em $a$, se, e somente se $L$ é limite de $f:M\to N'$ em $a$.
-    Em outras palavras, restringir contradomínios não altera a noção de limite para pontos do espaço restrito.
-\end{proposition}
-\begin{proof}
-    Suponha que $L$ é limite de $f:M\to N'$ em $a$.
-    Seja $i: N'\rightarrow N$ a inclusão de $N'$ em $N$.
-    Então $L=i(L)\in M$ é limite de $i\circ f:M\to N$ em $a$, pois $i$ é contínua.
-    Porém, $i\circ f=f$, assim, segue a tese.
 
-    Reciprocamente, suponha que $L$ é limite de $f:M\to N$ em $a$.
-    Para ver que $L$ é limite de $f:M\to N'$ em $a$, devemos ver que dado $\epsilon>0$, existe $\delta>0$ tal que, para todo $x\in M\setminus\{a\}$, se $d(x, a) < \delta$, então $d'(f(x), L) < \epsilon$.
-    Mas isso é diretamente garantido pelo fato de $L$ ser limite de $f:M\to N$ em $a$.
+    Então $L$ é limite de $f:M\to N$ em $a$ se, e somente se, $L$ é limite da mesma função vista como função $f:M\to N'$ em $a$.
+
+    Em outras palavras, restringir contradomínios não altera a noção de limite, desde que o candidato a limite pertença ao contradomínio restrito.
+\end{proposition}
+
+\begin{proof}
+    A distância de $f(x)$ a $L$, calculada em $N'$, é a mesma distância de $f(x)$ a $L$, calculada em $N$, pois $N'$ está munido da métrica de subespaço.
+    Portanto, as duas condições de limite são exatamente a mesma condição com os mesmos $\epsilon$ e $\delta$.
 \end{proof}
 
 \begin{example}
@@ -199,30 +184,36 @@ A proposição abaixo responde essa pergunta positivamente, e de forma geral.
     \]
 
     Então $f:\mathbb R^2\rightarrow \mathbb R^2\setminus\{(0, 0)\}$ não possui limite considerando o contradomínio $\mathbb R^2\setminus\{(0, 0)\}$.
-    
-    De fato, se possuísse, existiria $L\in \mathbb R^2\setminus\{(0, 0)\}$ tal que $L$ é limite de $f:\mathbb R^2\rightarrow \mathbb R^2\setminus\{(0, 0)\}$.
-    Porém, $L$ seria limite de $f:\mathbb R^2\rightarrow \mathbb R^2$ em $(0, 0)$, o que é impossível, pois teríamos:
+
+    De fato, se possuísse, existiria $L\in \mathbb R^2\setminus\{(0, 0)\}$ tal que $L$ é limite de $f:\mathbb R^2\rightarrow \mathbb R^2\setminus\{(0, 0)\}$ em $(0, 0)$.
+    Porém:
     \begin{align*}
-            & L \text{ é limite de } f \text{ em } (0, 0) \\
+            & L \text{ é limite de } f:\mathbb R^2\to \mathbb R^2\setminus\{(0, 0)\} \text{ em } (0, 0) \\
+        \implies & L \text{ é limite de } f:\mathbb R^2\to \mathbb R^2 \text{ em } (0, 0)\\
         \implies & L \text{ é limite de } f|_{\mathbb R^2\setminus\{(0, 0)\}} \text{ em } (0, 0)\\
         \implies & L \text{ é limite de } \id_{\mathbb R^2}|_{\mathbb R^2\setminus\{(0, 0)\}} \text{ em } (0, 0)\\
         \implies & L \text{ é limite de } \id_{\mathbb R^2} \text{ em } (0, 0)\\
-        \implies & L = (0, 0),
+        \implies & L = (0, 0).
     \end{align*}
-    E, portanto, $(0, 0)=L\in \mathbb R^2\setminus\{(0, 0)\}$.
+
+    A primeira implicação usa a Proposição~\ref{prop:limiteRestricaoContradominio}; a segunda usa a Proposição~\ref{prop:limiteRestricaoDominio}; a terceira usa a igualdade $f|_{\mathbb R^2\setminus\{(0,0)\}}=\id_{\mathbb R^2}|_{\mathbb R^2\setminus\{(0,0)\}}$; a quarta usa a Proposição~\ref{prop:localidadeLimite}.
+    Chegamos a uma contradição, pois $L$ deveria pertencer a $\mathbb R^2\setminus\{(0,0)\}$.
 \end{example}
 
 \begin{corollary}
     Sejam
     \begin{itemize}
         \item $f: M \to N$ uma função,
-        \item $a \in M$.
+        \item $a \in M$, e
         \item $N'$ um subespaço de $N$ tal que $f[M]\subseteq N'$.
     \end{itemize}
-    Então $f:M\to N$ é contínua em $a$, se, e somente se, $f:M\to N'$ é contínua em $a$.
+
+    Então $f:M\to N$ é contínua em $a$ se, e somente se, a mesma função vista como função $f:M\to N'$ é contínua em $a$.
 \end{corollary}
+
 \begin{proof}
-    Se $a$ é um ponto isolado de $M$, então ambas $f:M\to N$ e $f:M\to N'$ são contínuas em $a$ trivialmente.
+    Se $a$ é um ponto isolado de $M$, então ambas as funções são contínuas em $a$.
+
     Se $a$ é um ponto de acumulação de $M$, então:
     \begin{align*}
             & f:M\to N \text{ é contínua em } a\\

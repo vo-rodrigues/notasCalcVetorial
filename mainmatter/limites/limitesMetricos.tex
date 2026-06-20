@@ -105,7 +105,7 @@ Assim, quando $p\in A$, podemos comparar o limite de $f$ em $p$ com o valor $f(p
 Quando $p\notin A$, podemos estudar o limite de $f$ em $p$, mas não faz sentido perguntar se $f$ é contínua em $p$.
 
 A proposição abaixo conecta os conceitos de limite e de continuidade.
-\begin{proposition}\index{continuidade!caracterização por limite}
+\begin{proposition}\index{continuidade!caracterização por limite}\label{prop:continuidadeLimite}
     Sejam:
     \begin{itemize}
         \item $A\subseteq M$ um subespaço,
@@ -171,46 +171,63 @@ Assim, temos o seguinte valioso teste para se decidir se uma função é contín
 \end{proof}
 
 
-Por fim, a noção de limite não depende do que ocorre no ponto para o qual o limite é calculado.
+Por fim, registramos uma forma precisa do princípio de que a noção de limite depende apenas do comportamento da função em uma vizinhança perfurada do ponto.
 
-Para o enunciado abaixo, lembremos que, se $M$ é um espaço métrico e $p \in M$, então $p$ é um ponto de acumulação de $M$ se, e somente se, $p$ é um ponto de acumulação de $M\setminus\{p\}$, pois $\{p\}$ é finito (ver Proposição~\ref{prop:pontoAcumulacaoRemocaoFinitos}).
-
-\begin{proposition}
+\begin{proposition}[Caráter local do limite]\index{limite!caráter local}\label{prop:localidadeLimite}
     Sejam
     \begin{itemize}
-        \item $f: M \to N$ uma função,
-        \item $p\in M$ um ponto de acumulação de $M$, e
+        \item $M, N$ espaços métricos,
+        \item $A_1,A_2\subseteq M$,
+        \item $f_1:A_1\to N$ e $f_2:A_2\to N$ funções,
+        \item $a\in M$ um ponto de acumulação de $A_1$ e de $A_2$, e
         \item $L\in N$.
     \end{itemize}
 
-    Então $L$ é limite de $f$ em $p$ se, e somente se, $L$ é limite de $f|_{M\setminus\{p\}}$ em $p$.
-
-    Em outras palavras, nesse caso,
+    Suponha que existe um aberto $U\subseteq M$ tal que $a\in U$,
     \[
-        \lim_{x\to p} (f|_{M\setminus\{p\}})(x) = \lim_{x\to p} f(x),
+        (A_1\cap U)\setminus\{a\}\subseteq (A_2\cap U),
     \]
-    no sentido de que um dos limites acima existe se, e somente se, o outro existe, e, nesse caso, os dois limites são iguais.
+    e, para todo $x\in (A_1\cap U)\setminus\{a\}$,
+    \[
+        f_1(x)=f_2(x).
+    \]
+
+    Nessas condições, se $L$ é limite de $f_2$ em $a$, então $L$ é limite de $f_1$ em $a$.
+
+    Em particular, se $f_2$ possui limite em $a$, então  $f_1$ possui limite em $a$, e, nesse caso,
+    \[
+        \lim_{x\to a} f_1(x)=\lim_{x\to a} f_2(x).
+    \]
 \end{proposition}
 
 \begin{proof}
-    Seja $A=M\setminus\{p\}$.
+    Devemos ver que fixado $\epsilon>0$, existe $\delta>0$ tal que, para todo $x \in A_1\setminus\{a\}$, se $d(x, a) < \delta$, então $d'(f_1(x), L) < \epsilon$.
 
-    Pela Proposição~\ref{prop:pontoAcumulacaoRemocaoFinitos}, o ponto $p$ é ponto de acumulação de $A$.
-    Além disso, como $p\notin A$, temos $A\setminus\{p\}=A$.
-
-    A afirmação de que $L$ é limite de $f|_{A}$ em $p$ diz que
+    Fixe $\epsilon>0$.
+    Como $L$ é limite de $f_2$ em $a$, existe $\delta_1>0$ tal que, para todo $x\in A_2\setminus\{a\}$, se $d(x,a)<\delta_1$, então
     \[
-        \forall \epsilon > 0\, \exists \delta > 0\, \forall x \in A,\,
-        \bigl(d(x, p) < \delta \implies d'((f|_{A})(x), L) < \epsilon\bigr).
-    \]
-    Como $A=M\setminus\{p\}$ e $(f|_A)(x)=f(x)$ para todo $x\in A$, essa afirmação é equivalente a
-    \[
-        \forall \epsilon > 0\, \exists \delta > 0\, \forall x \in M\setminus\{p\},\,
-        \bigl(d(x, p) < \delta \implies d'(f(x), L) < \epsilon\bigr).
+        d'(f_2(x),L)<\epsilon.
     \]
 
-    E essa é exatamente a afirmação de que $L$ é limite de $f$ em $p$.
+    Como $U$ é aberto e $a\in U$, existe $\delta_2>0$ tal que $B_M(a,\delta_2)\subseteq U$.
+    Seja $\delta=\min\{\delta_1,\delta_2\}$.
+
+    Tome $x\in A_1\setminus\{a\}$ tal que $d(x,a)<\delta$.
+    Como $d(x,a)<\delta_2$, temos $x\in U$.
+    Logo,
+    \[
+        x\in (A_1\cap U)\setminus\{a\}\subseteq (A_2\cap U)\setminus\{a\}.
+    \]
+    Portanto, $x\in A_2\setminus\{a\}$ e $f_1(x)=f_2(x)$.
+    Como $d(x,a)<\delta_1$, segue que
+    \[
+        d'(f_1(x),L)=d'(f_2(x),L)<\epsilon.
+    \]
+
+    Assim, $L$ é limite de $f_1$ em $a$.
 \end{proof}
+
+Em particular, alterar, remover ou acrescentar o valor de uma função no próprio ponto $a$ não altera seu limite em $a$, desde que o limite continue fazendo sentido.
 
 O exemplo abaixo mostra como limites podem ser usados para provar mais facilmente que certas funções não são contínuas em alguns de seus pontos.
 Perceba que não foi necessário recorrer à definição que envolve épsilons e deltas.
@@ -228,17 +245,13 @@ Perceba que não foi necessário recorrer à definição que envolve épsilons e
 
     \subimport{limitesMetricos}{limiteNaoImporta}
 
-    Seja $A=\mathbb R^2\setminus\{(0,0)\}$ e seja $1_{\mathbb R^2}:\mathbb R^2\to\mathbb R$ a função constante identicamente igual a $1$.
+    Seja $1_{\mathbb R^2}:\mathbb R^2\to\mathbb R$ a função constante identicamente igual a $1$.
 
     A função $f$ não é contínua em $(0, 0)$.
-    De fato, primeiro note que $(0, 0)$ é ponto de acumulação de $\mathbb R^2$ e de $A$.
-    Como o valor de $f$ em $(0, 0)$ não importa para o limite e como funções constantes são contínuas, temos
+    De fato, primeiro note que $(0, 0)$ é ponto de acumulação de $\mathbb R^2$.
+    Como $f$ e $1_{\mathbb R^2}$ coincidem em $\mathbb R^2\setminus\{(0,0)\}$, a Proposição~\ref{prop:localidadeLimite}, a Proposição~\ref{prop:continuidadeLimite} e a continuidade das funções constantes dão
     \[
         \lim_{(x, y)\to (0, 0)} f(x, y)
-        =
-        \lim_{(x, y)\to (0, 0)} (f|_{A})(x, y)
-        =
-        \lim_{(x, y)\to (0, 0)} (1_{\mathbb R^2}|_{A})(x, y)
         =
         \lim_{(x, y)\to (0, 0)} 1_{\mathbb R^2}(x, y)
         =
@@ -253,7 +266,7 @@ Perceba que não foi necessário recorrer à definição que envolve épsilons e
 
     Mostre que $L$ é limite de $f|_A$ em $a$ se, e somente se, para todo $\epsilon>0$ existe $\delta>0$ tal que
     \[
-        f\left[B_A(a, \delta)\cap A\setminus\{a\}\right]\subseteq B_N(L, \epsilon).
+        (f|_A)\left[B_A(a,\delta)\setminus\{a\}\right]\subseteq B_N(L,\epsilon).
     \]
     
     Interprete geometricamente este resultado.
