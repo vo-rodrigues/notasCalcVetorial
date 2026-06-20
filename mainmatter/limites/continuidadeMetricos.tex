@@ -25,7 +25,7 @@ Para compreender o conceito de continuidade, pedimos que o leitor imagine que po
 Imaginemos que os fenômenos naturais sejam determinísticos, de modo que ao acertar o taco na bola de uma determinada forma $x$ (que engloba posição da bola, força, ângulo, pressão atmosférica, e tudo mais que for relevante), ela se move para um ponto $f(x)$ da mesa.
 Existem condições ideais para fazer a bola cair exatamente no centro da caçapa.
 Essas condições determinam um ponto alvo $p$ que faz a bola cair exatamente no centro da caçapa, $f(p)$.
-O leitor, por mais habilidoso que seja, certamente não conseguirá atingir as exatas nanométricas condições $p$: ajustar com precisão infinita a força, ângulo, etc, às talvez desconhecidas condições de umidade do ar e pressão atmosférica é impossível.
+O leitor, por mais habilidoso que seja, certamente não conseguirá atingir as exatas nanométricas condições $p$: ajustar com precisão infinita a força, ângulo, etc., às talvez desconhecidas condições de umidade do ar e pressão atmosférica é impossível.
 
 Mas isso não é um problema!
 O leitor não precisa fazer a bola atingir exatamente o ponto $f(p)$.
@@ -363,3 +363,15 @@ Antes de avançarmos nessa direção, mostraremos uma importante caracterizaçã
     Vejamos que $\delta$ é como buscamos: dado $x\in M$ tal que $d(x, p) < \delta$, temos $x \in B_M(p, \delta)\subseteq f^{-1}[B_N(f(p), \epsilon)]$.
     Daí, $x \in f^{-1}[B_N(f(p), \epsilon)]$, ou seja, $f(x) \in B_N(f(p), \epsilon)$, e, portanto, $d'(f(x), f(p)) < \epsilon$, como queríamos.
 \end{proof}
+
+\subsection*{Exercícios}
+\begin{exercise}
+    Seja $f:M\rightarrow N$ uma função entre espaços métricos e $p \in M$.
+
+    Mostre que $L$ é limite de $f|_A$ em $p$ se, e somente se, para todo $\epsilon>0$ existe $\delta>0$ tal que
+    \[
+        f\left[B_M(p, \delta)\right]\subseteq B_N(f(p), \epsilon).
+    \]
+    
+    Interprete geometricamente este resultado.
+\end{exercise}
