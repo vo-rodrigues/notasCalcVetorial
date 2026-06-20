@@ -148,45 +148,9 @@ Por outro lado, em alguns casos, a continuidade é preservada por extensões.
     Portanto, $f$ é contínua em $p$.
 \end{proof}
 
-Por fim, a noção de limite não depende do que ocorre no ponto para o qual o limite é calculado.
-
-
-\begin{proposition}Sejam
-    \begin{itemize}
-        \item $f: M \to N$ uma função,
-        \item $p\in M$ é ponto de acumulação de $M$,
-        \item $f: M \to N$ uma função, e
-        \item $L\in N$.
-    \end{itemize}
-
-    Então $p$ é um ponto de acumulação de $M$ e $L$ é limite de $f$ em $p$, se, e somente se $L$ é limite de $f|_{M\setminus\{p\}}$ em $p$.
-
-    Em outras palavras, nesse caso,
-    \[
-        \lim_{x\to p} f|_{M\setminus\{p\}}(x) = \lim_{x\to p} f(x).
-    \]
-\end{proposition}
-
-\begin{proof}
-    Já vimos que $M$ e $M\setminus\{p\}$ têm os mesmos pontos de acumulação, pois $\{p\}$ é finito.
-
-    Se $L$ é limite de $f$ em $p$, então, $L$ é limite de $f|_{M\setminus\{p\}}$ em $p$, pois limites são preservados por restrições.
-
-    Reciprocamente, se $L$ é limite de $f|_{M\setminus\{p\}}$ em $p$, temos que
-    \[
-        \forall \epsilon > 0\, \exists \delta > 0\, \forall x \in M\setminus\{p\}, (d(x, p) < \delta \implies d'(f|_{M\setminus\{p\}}(x), L) < \epsilon).
-    \]
-    O que é imediatamente equivalente a
-    \[
-        \forall \epsilon > 0\, \exists \delta > 0\, \forall x \in M\setminus\{p\}, (d(x, p) < \delta \implies d'(f(x), L) < \epsilon).
-    \]
-
-    Assim, $L$ é limite de $f$ em $p$.
-\end{proof}
-
 
 \begin{example}\label{ex:restricaoContinuidade}
-    Seja $f:\mathbb R^2\rightarrow \mathbb R$ dada por
+    Nesse exemplo, continuaremos o exemplo do Exemplo~\ref{ex:limiteNaoImporta} sobre a função $f:\mathbb R^2\rightarrow \mathbb R$ dada por
     \[
         f(x, y) = \begin{cases}
             1, & \text{se } (x, y) \neq (0, 0),\\
@@ -194,17 +158,10 @@ Por fim, a noção de limite não depende do que ocorre no ponto para o qual o l
         \end{cases}
     \]
 
-    Temos que $f$ é contínua nos pontos de $A=\mathbb R^2\setminus\{(0, 0)\}$, pois $f|_{A}$ é uma função constante, que é contínua, e $A$ é um conjunto aberto.
+    Já vimos que $f$ não é contínua em $(0, 0)$.
+    No entanto, temos que $f$ é contínua nos pontos de $A=\mathbb R^2\setminus\{(0, 0)\}$, pois $f|_{A}$ é uma função constante, que é contínua, e $A$ é um conjunto aberto.
 
-    No entanto, $f$ não é contínua em $(0, 0)$.
-    De fato, primeiro note que $(0, 0)$.
-    Como o valor de $f$ em $(0, 0)$ não importa para o limite, temos
-    \[
-        \lim_{(x, y)\to (0, 0)} f(x, y) = \lim_{(x, y)\to (0, 0)} f|_{A}(x, y) = \lim_{(x, y)\to (0, 0)} 1|_{A}(x, y) = \lim_{(x, y)\to (0, 0)} 1|_{\mathbb R^2} = 1,
-    \]
-    em que $1_A$ e $1_{\mathbb R^2}$ são as funções constantes de $A$ e $\mathbb R^2$ identicamente iguais a $1$, respectivamente.
-
-    Assim, $\lim_{(x, y)\to (0, 0)} f(x, y) = 1 \neq f(0, 0)$, e, portanto, $f$ não é contínua em $(0, 0)$.
+    Assim, o conjunto dos pontos de $\mathbb R^2$ para os quais $f$ é contínua é $\mathbb R^2\setminus\{(0, 0)\}$.
 \end{example}
 
 Uma outra questão que pode surgir naturalmente é a seguinte: sabemos que a função $f:\mathbb R\rightarrow \mathbb R$ dada por $f(x) = x^2$ é contínua.

@@ -164,3 +164,72 @@ Assim, temos o seguinte valioso teste para se decidir se uma função é contín
     Se $f$ possui limite em $p$, mas esse limite é diferente de $f(p)$, então, pela unicidade do limite, $f(p)$ não é limite de $f$ em $p$, e, portanto, $f$ não é contínua em $p$.
     Finalmente, se $f(p)$ é limite de $f$ em $p$, então $f$ é contínua em $p$.
 \end{proof}
+
+
+Por fim, a noção de limite não depende do que ocorre no ponto para o qual o limite é calculado.
+
+Para o enunciado abaixo, lembremos que, se $M$ é um espaço métrico e $p \in M$, então $p$ é um ponto de acumulação de $M$ se, e somente se, $p$ é um ponto de acumulação de $M\setminus\{p\}$, pois $\{p\}$ é finito (ver Proposição~\ref{prop:pontoAcumulacaoRemocaoFinitos}).
+
+\begin{proposition}
+    Sejam
+    \begin{itemize}
+        \item $f: M \to N$ uma função,
+        \item $p\in M$ um ponto de acumulação de $M$, e
+        \item $L\in N$.
+    \end{itemize}
+
+    Então $L$ é limite de $f$ em $p$ se, e somente se, $L$ é limite de $f|_{M\setminus\{p\}}$ em $p$.
+
+    Em outras palavras, nesse caso,
+    \[
+        \lim_{x\to p} (f|_{M\setminus\{p\}})(x) = \lim_{x\to p} f(x),
+    \]
+    no sentido de que um dos limites acima existe se, e somente se, o outro existe, e, nesse caso, os dois limites são iguais.
+\end{proposition}
+
+\begin{proof}
+    Seja $A=M\setminus\{p\}$.
+
+    Pela Proposição~\ref{prop:pontoAcumulacaoRemocaoFinitos}, o ponto $p$ é ponto de acumulação de $A$.
+    Além disso, como $p\notin A$, temos $A\setminus\{p\}=A$.
+
+    A afirmação de que $L$ é limite de $f|_{A}$ em $p$ diz que
+    \[
+        \forall \epsilon > 0\, \exists \delta > 0\, \forall x \in A,\,
+        \bigl(d(x, p) < \delta \implies d'((f|_{A})(x), L) < \epsilon\bigr).
+    \]
+    Como $A=M\setminus\{p\}$ e $(f|_A)(x)=f(x)$ para todo $x\in A$, essa afirmação é equivalente a
+    \[
+        \forall \epsilon > 0\, \exists \delta > 0\, \forall x \in M\setminus\{p\},\,
+        \bigl(d(x, p) < \delta \implies d'(f(x), L) < \epsilon\bigr).
+    \]
+
+    E essa é exatamente a afirmação de que $L$ é limite de $f$ em $p$.
+\end{proof}
+
+\begin{example}\label{ex:limiteNaoImporta}
+    Seja $f:\mathbb R^2\rightarrow \mathbb R$ dada por
+    \[
+        f(x, y) = \begin{cases}
+            1, & \text{se } (x, y) \neq (0, 0),\\
+            0, & \text{se } (x, y) = (0, 0).
+        \end{cases}
+    \]
+
+    Seja $A=\mathbb R^2\setminus\{(0,0)\}$.
+
+    A função $f$ não é contínua em $(0, 0)$.
+    De fato, primeiro note que $(0, 0)$ é ponto de acumulação de $\mathbb R^2$ e de $A$.
+    Como o valor de $f$ em $(0, 0)$ não importa para o limite, temos
+    \[
+        \lim_{(x, y)\to (0, 0)} f(x, y)
+        =
+        \lim_{(x, y)\to (0, 0)} (f|_{A})(x, y)
+        =
+        \lim_{(x, y)\to (0, 0)} 1_A(x, y)
+        =
+        1,
+    \]
+    em que $1_A:A\to\mathbb R$ é a função constante identicamente igual a $1$.
+    Assim, $\lim_{(x, y)\to (0, 0)} f(x, y) = 1 \neq f(0, 0)$, e, portanto, $f$ não é contínua em $(0, 0)$.
+\end{example}
