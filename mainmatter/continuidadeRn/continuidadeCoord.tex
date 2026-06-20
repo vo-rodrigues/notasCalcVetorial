@@ -5,24 +5,27 @@ Ao estudar funções que saem de um domínio e chegam em $\mathbb R^m$, é muito
 Lembremos a definição de função coordenada.
 
 \begin{definition}
-    Seja $f: A \to B^m$ uma função, em que $m\geq 1$.
+    Sejam $A$ e $B$ conjuntos e seja $f: A \to B^m$ uma função.
 
-    Para cada $a \in A$, $f(a)$, sendo um elemento de $B^m$, é um ponto $(b_1, \dots, b_m)$.
+    Para cada $a \in A$, $f(a)$, sendo um elemento de $B^m$, é uma $m$-upla $(b_1, \dots, b_m)$.
     As coordenadas $b_i$ são denotadas por $f_i(a)$.
 
-    Dessa forma, os números reais $f_1(a), \dots, f_m(a)$ são os únicos números reais tais que $f(a) = (f_1(a), \dots, f_m(a))$.
+    Dessa forma, $f_1(a), \dots, f_m(a)$ são os únicos elementos de $B$ tais que
+    \[
+        f(a) = (f_1(a), \dots, f_m(a)).
+    \]
 
     Para cada $i\in\{1,\dots,m\}$, a função $f_i: A \to B$ assim definida é chamada de \emph{$i$-ésima função coordenada} de $f$.
 \end{definition}
 
 \begin{example}
-    Seja $f: \mathbb R^2\rightarrow \mathbb R^3$ dada por $f(x, y) = (x+y, x-y, xy)$.
+    Seja $f: \mathbb R^2\to \mathbb R^3$ dada por $f(x, y) = (x+y, x-y, xy)$.
     Então as funções coordenadas de $f$ são dadas por:
 
     \begin{align*}
-         & f_1: \mathbb R^2\rightarrow \mathbb R, \quad f_1(x, y) = x+y;\\
-         & f_2: \mathbb R^2\rightarrow \mathbb R, \quad f_2(x, y) = x-y;\\
-         & f_3: \mathbb R^2\rightarrow \mathbb R, \quad f_3(x, y) = xy.
+         & f_1: \mathbb R^2\to \mathbb R, \quad f_1(x, y) = x+y;\\
+         & f_2: \mathbb R^2\to \mathbb R, \quad f_2(x, y) = x-y;\\
+         & f_3: \mathbb R^2\to \mathbb R, \quad f_3(x, y) = xy.
     \end{align*}
 \end{example}
 
@@ -31,7 +34,7 @@ Um caso importante é o das projeções, que são as funções coordenadas da fu
 \begin{definition}
     Para cada $i\in\{1,\dots,n\}$, a $i$-ésima projeção de $\mathbb R^n$ em $\mathbb R$, denotada por $\pi_i$, é a $i$-ésima função coordenada da função identidade de $\mathbb R^n$.
 
-    Ou seja, $\pi_i: \mathbb R^n\rightarrow \mathbb R$ é a função dada por
+    Ou seja, $\pi_i: \mathbb R^n\to \mathbb R$ é a função dada por
 
     \[
         \pi_i(x_1, \dots, x_n) = x_i.
@@ -43,7 +46,7 @@ Um caso importante é o das projeções, que são as funções coordenadas da fu
 
     Então a $i$-ésima projeção de $\mathbb R^n$ em $\mathbb R$ é contínua.
 
-    Ou seja, a função $\pi_i: \mathbb R^n\rightarrow \mathbb R$ dada por
+    Ou seja, a função $\pi_i: \mathbb R^n\to \mathbb R$ dada por
     \[
         \pi_i(x_1, \dots, x_n) = x_i
     \]
@@ -76,120 +79,221 @@ Um caso importante é o das projeções, que são as funções coordenadas da fu
     Como $p\in \mathbb R^n$ foi arbitrário, concluímos que $\pi_i$ é contínua em todos os pontos de $\mathbb R^n$.
 \end{proof}
 
-\begin{proposition}\index{continuidade!via funções coordenadas}
-    Seja $A\subseteq \mathbb R^n$ um conjunto e $f: A \to \mathbb R^m$ uma função.
-    Então, $f$ é contínua em $p \in A$ se, e somente se, todas as funções coordenadas $f_i$ são contínuas em $p$.
+Note que, se $f:A\to \mathbb R^m$ é uma função, sendo $f_1, \dots, f_m$ suas funções coordenadas, temos que, para cada $i\in\{1,\dots,m\}$,
+\[
+    f_i = \pi_i \circ f,
+\]
+em que $\pi_i:\mathbb R^m\to\mathbb R$ é a $i$-ésima projeção de $\mathbb R^m$ em $\mathbb R$.
+
+De fato, se $a\in A$, então $f_i(a)$ é a $i$-ésima coordenada de $f(a)$, ou seja,
+\[
+    f_i(a)=\pi_i(f(a)).
+\]
+
+\begin{proposition}\index{limites!via coordenadas}
+    Sejam:
+    \begin{itemize}
+        \item $(M, d_M)$ um espaço métrico,
+        \item $A\subseteq M$ um subespaço,
+        \item $f: A \to \mathbb R^m$ uma função,
+        \item $p \in M$ um ponto de acumulação de $A$, e
+        \item $L=(L_1, \dots, L_m)\in \mathbb R^m$.
+    \end{itemize}
+
+    Então $L$ é limite de $f$ em $p$ se, e somente se, para todo $i \in \{1, \dots, m\}$, $L_i$ é limite de $f_i$ em $p$.
 \end{proposition}
 
 \begin{proof}
-    Primeiro, suponha que $f$ é contínua em $p$.
-    Vejamos que cada função coordenada $f_i$ é contínua em $p$.
-    
-    Para isso, fixamos um $i \in \{1, \dots, m\}$ e consideramos $\epsilon>0$.
+Primeiro, suponha que $L$ é limite de $f$ em $p$.
+Dado $i \in \{1, \dots, m\}$, temos que $f_i=\pi_i\circ f$ e que a função $\pi_i: \mathbb R^m\to \mathbb R$ é contínua. Portanto,
+\[
+    \lim_{x\to p} f_i(x)
+    =
+    \lim_{x\to p} \pi_i(f(x))
+    =
+    \pi_i\left(\lim_{x\to p} f(x)\right)
+    =
+    \pi_i(L)
+    =
+    L_i.
+\]
 
-    Como $f$ é contínua em $p$, existe $\delta>0$ tal que, para todo $x \in A$, se $d(x, p) < \delta$, então $d(f(x), f(p)) < \epsilon$.
+    Reciprocamente, suponha que para todo $i$, $L_i$ é limite de $f_i$ em $p$.
 
-    Veremos que o mesmo $\delta$ funciona para $f_i$.
-    De fato, se $d(x, p) < \delta$, então temos:
+    Devemos ver que, dado $\epsilon>0$, existe $\delta>0$ tal que, para todo $x \in A\setminus\{p\}$, se $d_M(x, p) < \delta$, então $d(f(x), L) < \epsilon$.
+    Fixe $\epsilon>0$ arbitrário.
+
+    Antes de prosseguirmos com $\epsilon$, fixemos um $\bar \epsilon>0$ arbitrário.
+    Nós iremos escolher um $\bar \epsilon$ conveniente posteriormente.
+
+    Por hipótese, para cada $i\in \{1, \dots, m\}$, existe $\delta_i>0$ tal que, para todo $x\in A\setminus\{p\}$, se $d_M(x, p) < \delta_i$, então $|f_i(x) - L_i| < \bar \epsilon$.
+
+    Seja $\delta = \min\{\delta_1, \ldots, \delta_m\}$. Então, se $x \in A\setminus\{p\}$ é tal que $d_M(x, p) < \delta$, temos que:
 
     \begin{align*}
-        |f_i(x) - f_i(p)| &= \sqrt{(f_i(x) - f_i(p))^2} \\
-        &= \sqrt{(f_1(x) - f_1(p))^2 + \cdots + (f_m(x) - f_m(p))^2} \\
-        &= \|f(x) - f(p)\| = d(f(x), f(p)) < \epsilon.
+        d(f(x), L) &= \sqrt{(f_1(x) - L_1)^2 + \cdots + (f_m(x) - L_m)^2} \\
+        &< \sqrt{\bar \epsilon^2+\dots+\bar \epsilon^2}= \sqrt{m}\bar \epsilon.
     \end{align*}
 
-    Portanto, $f_i$ é contínua em $p$.
+    Ou seja:
+    \begin{equation}\label{eq:limiteViaCoordenadas}
+        d(f(x), L) < \sqrt{m}\bar \epsilon.
+    \end{equation}
 
-    Reciprocamente, suponha que para todo $i$, $f_i$ é contínua em $p$.
-    Fixamos $\epsilon>0$ e, para cada $i$, existe $\delta_i>0$ tal que, se $d(x, p) < \delta_i$, então $|f_i(x) - f_i(p)| < \epsilon$.
-
-    Seja $\delta = \min\{\delta_1, \ldots, \delta_m\}$. Então, se $d(x, p) < \delta$, temos que:
-
-    \begin{align*}
-        d(f(x), f(p)) &= \sqrt{(f_1(x) - f_1(p))^2 + \cdots + (f_m(x) - f_m(p))^2} \\
-        &< \sqrt{\epsilon^2+\dots+\epsilon^2}= \sqrt{m}\epsilon.
-    \end{align*}
-
-    Assim, se de partida, ao invés de $\epsilon$, tomarmos $\delta_1, \dots, \delta_n$ que funcione para $\epsilon'=\frac{\epsilon}{\sqrt{m}}$, concluiremos que para todo $x \in A$ com $d(x, p) < \delta$, temos que $d(f(x), f(p)) < \epsilon'$.
+    Assim, apliquemos a construção acima para $\bar \epsilon = \dfrac{\epsilon}{\sqrt{m}}$, obtendo $\delta$ como antes.
+    Então, pela desigualdade \eqref{eq:limiteViaCoordenadas}, se $x \in A\setminus\{p\}$ é tal que $d_M(x, p) < \delta$, temos que
+    \[
+        d(f(x), L) < \sqrt{m}\bar \epsilon = \sqrt{m}\frac{\epsilon}{\sqrt{m}} = \epsilon.
+    \]
+    Como $\epsilon>0$ foi arbitrário, concluímos que $L$ é limite de $f$ em $p$.
 \end{proof}
+
+A Figura~\ref{fig:continuidadeCoord} ilustra a ideia da demonstração acima no caso $m=2$.
+
+\subimport{continuidadeCoord}{imageLimite}
+
+
+\begin{corollary}\index{continuidade!via coordenadas}
+    Sejam:
+    \begin{itemize}
+        \item $(M, d_M)$ um espaço métrico,
+        \item $f: M \to \mathbb R^m$ uma função, e
+        \item $p \in M$.
+    \end{itemize}
+
+    Sejam $f_1, \dots, f_m$ as funções coordenadas de $f$.
+
+    Então $f$ é contínua em $p$ se, e somente se, para todo $i \in \{1, \dots, m\}$, $f_i$ é contínua em $p$.
+
+    Consequentemente, $f$ é contínua se, e somente se, para todo $i \in \{1, \dots, m\}$, $f_i$ é contínua.
+\end{corollary}
+
+\begin{proof}
+    Se $p$ é um ponto isolado de $M$, trivialmente $f$ é contínua em $p$ e cada $f_i$ é contínua em $p$, pois a continuidade é automática em pontos isolados.
+
+    Resta considerar o caso em que $p$ é um ponto de acumulação de $M$.
+    Nesse caso, pela proposição anterior:
+
+    \begin{align*}
+        & f \text{ é contínua em } p \\
+        \Leftrightarrow\quad & \lim_{x\to p} f(x) = f(p) \\
+        \Leftrightarrow\quad & \forall i \in \{1, \dots, m\}\, \lim_{x\to p} f_i(x) = f_i(p) \\
+        \Leftrightarrow\quad & \forall i \in \{1, \dots, m\}\, f_i \text{ é contínua em } p.
+    \end{align*}
+
+    A afirmação sobre continuidade de $f$ segue aplicando a equivalência acima a cada ponto $p\in M$.
+\end{proof}
+
+\begin{example}
+    Seja $f:\mathbb R\to \mathbb R^2$ dada por $f(x)=(x^2, \sin x)$.
+
+    As funções coordenadas de $f$ são $f_1(x)=x^2$ e $f_2(x)=\sin x$.
+
+    Do nosso conhecimento sobre funções de uma variável, sabemos que $f_1$ e $f_2$ são funções contínuas.
+    Assim, $f$ é contínua.
+\end{example}
+
+\begin{example}
+    Seja $g:\mathbb R\to \mathbb R^2$ dada por
+
+    \[
+        g(x) = \begin{cases}
+            (x^2, \sin x), & \text{se } x\neq 0;\\
+            (0, 1), & \text{se } x=0.
+        \end{cases}
+    \]
+
+    As funções coordenadas de $g$ são $g_1:\mathbb R\to \mathbb R$ e $g_2:\mathbb R\to \mathbb R$ dadas por
+
+    \[
+        g_1(x) = \begin{cases}
+            x^2, & \text{se } x\neq 0;\\
+            0, & \text{se } x=0,
+        \end{cases}
+    \]
+
+    \[
+        g_2(x) = \begin{cases}
+            \sin x, & \text{se } x\neq 0;\\
+            1, & \text{se } x=0.
+        \end{cases}
+    \]
+
+    Note que $g_1(x)=x^2$ para todo $x\in \mathbb R$, e, portanto, $g_1$ é contínua.
+
+    Por outro lado, o conjunto de pontos de continuidade de $g_2$ é $\mathbb R\setminus\{0\}$.
+
+    Portanto, o conjunto de pontos de continuidade de $g$ é a interseção do conjunto de pontos de continuidade de $g_1$ com o conjunto de pontos de continuidade de $g_2$, ou seja, $\mathbb R\setminus\{0\}$.
+\end{example}
+
+\begin{example}
+    Seja $f:\mathbb R^2\rightarrow \mathbb R^2$ dada por
+
+    \[
+        f(x, y)=(\cos(x), \sin(y)).
+    \]
+    
+    A função $f$ é contínua.
+    De fato, as funções coordenadas de $f$ são as funções $f_1,f_2:\mathbb R^2\to \mathbb R$ dadas por
+    \[
+        f_1(x, y)=\cos(x), \quad f_2(x, y)=\sin(y).
+    \]
+
+    Temos que $f_1$ é contínua, pois $f_1=\cos\circ \pi_1$, composição de funções contínuas.
+    Analogamente, $f_2$ é contínua, pois $f_2=\sin\circ \pi_2$, composição de funções contínuas.
+    Portanto, $f$ é contínua.
+\end{example}
 
 \section*{Exercícios}
 
 \begin{exercise}
-    Seja $f:M\rightarrow N$ uma função entre espaços métricos.
-    Mostre que $f$ é contínua se, e somente se, para todo $p\in M$ e todo $\epsilon>0$, existe $\delta>0$ tal que
-    \[
-        f[B_M(p,\delta)]\subseteq B_N(f(p),\epsilon).
-    \]
+    Em cada item abaixo, justifique a continuidade da função indicada.
+
+    \begin{enumerate}[label=(\alph*)]
+        \item $f:\mathbb R^2\to\mathbb R^3$ dada por
+        \[
+            f(x,y)=(x,y,0).
+        \]
+
+        \item $g:\mathbb R\to\mathbb R^2$ dada por
+        \[
+            g(x)=(x^2,\sin x).
+        \]
+
+        \item $h:[0,+\infty[\to\mathbb R^2$ dada por
+        \[
+            h(x)=(\sqrt{x},x).
+        \]
+
+        \item $\varphi:]0,+\infty[^2\to\mathbb R^3$ dada por
+        \[
+            \varphi(x,y)=\left(\sqrt{x},\frac{1}{y},\sin x\right).
+        \]
+    \end{enumerate}
 \end{exercise}
 
 \begin{exercise}
-    Considere $\mathbb Z$ como subespaço de $\mathbb R$, com a métrica usual.
-    Mostre que toda função $f:\mathbb Z\rightarrow \mathbb R$ é contínua.
-\end{exercise}
-
-\begin{exercise}
-    Seja $f:\mathbb R^2\rightarrow\mathbb R$ dada por
+    Seja $g:\mathbb R\to\mathbb R^2$ dada por
     \[
-        f(x,y)=
+        g(x)=
         \begin{cases}
-            x, & \text{se } y=0,\\
-            y, & \text{se } y\neq 0.
+            (x,\sin x), & \text{se } x\neq 0,\\
+            (0,1), & \text{se } x=0.
         \end{cases}
     \]
-    Mostre que $f$ não é contínua em $(1,0)$.
+
+    Determine o conjunto dos pontos de continuidade de $g$.
 \end{exercise}
 
 \begin{exercise}
-    Seja $A\subseteq M$ um subconjunto aberto e seja $f:M\rightarrow N$ uma função contínua.
-    Mostre que $f|_A:A\rightarrow N$ é contínua.
-\end{exercise}
-
-
-
-\begin{proposition}\index{limite!via funções coordenadas}Sejam
-    \begin{itemize}
-        \item $A\subseteq \mathbb R^n$ um conjunto,
-        \item $f: A \to \mathbb R^m$ uma função, e
-        \item $p \in A$ um ponto de acumulação de $A$.
-        \item $L=(L_1, \dots, L_m)\in \mathbb R^m$.
-    \end{itemize}
-
-    Então:
+    Seja $A=\mathbb R^2\setminus\{(1,2)\}$ e seja
+    $f:A\to\mathbb R^3$ dada por
     \[
-        L \text{ é limite de } f \text{ em } p \text{ se, e somente se, } \forall i \in \{1, \dots, m\}\, L_i \text{ é limite de } f_i \text{ em } p.
+        f(x,y)=(y,x,5).
     \]
-\end{proposition}
 
-\begin{proof}
-    Primeiro, suponha que $L$ é limite de $f$ em $p$.
-    Vejamos que cada $L_i$ é limite de $f_i$ em $p$.
-    
-    Para isso, fixamos um $i \in \{1, \dots, m\}$ e consideramos $\epsilon>0$.
-
-    Como $L$ é limite de $f$ em $p$, existe $\delta>0$ tal que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta$, então $d(f(x), L) < \epsilon$.
-
-    Veremos que o mesmo $\delta$ funciona para $f_i$.
-    De fato, se $d(x, p) < \delta$, então temos:
-
-    \begin{align*}
-        |f_i(x) - L_i| &= \sqrt{(f_i(x) - L_i)^2} \\
-        &= \sqrt{(f_1(x) - L_1)^2 + \cdots + (f_m(x) - L_m)^2} \\
-        &= \|f(x) - L\| = d(f(x), L) < \epsilon.
-    \end{align*}
-
-    Portanto, $f_i$ é limite de $f_i$ em $p$.
-
-    Reciprocamente, suponha que para todo $i$, $L_i$ é limite de $f_i$ em $p$.
-    Fixamos $\epsilon>0$ e, para cada $i$, existe $\delta_i>0$ tal que, se $x \in A\setminus\{p\}$ e $d(x, p) < \delta_i$, então $|f_i(x) - L_i| < \epsilon$.
-
-    Seja $\delta = \min\{\delta_1, \ldots, \delta_m\}$.
-    Então, se $x \in A\setminus\{p\}$ e $d(x, p) < \delta$, temos que:
-
-    \begin{align*}
-        d(f(x), L) &= \sqrt{(f_1(x) - L_1)^2 + \cdots + (f_m(x) - L_m)^2} \\
-        &< \sqrt{\epsilon^2+\dots+\epsilon^2}= \sqrt{m}\epsilon.
-    \end{align*}
-
-    Assim, se de partida, ao invés de $\epsilon$, tomarmos $\delta_1, \dots, \delta_n$ que funcione para $\epsilon'=\frac{\epsilon}{\sqrt{m}}$, concluiremos que para todo $x \in A\setminus\{p\}$ com $d(x, p) < \delta$, temos que $d(f(x), L) < \epsilon'$.
-\end{proof}
+    Calcule justificando com os resultados já apresentados.
+    \[
+        \lim_{(x,y)\to(1,2)} f(x,y).
+    \]
+\end{exercise}
