@@ -1,6 +1,15 @@
 \section{Restrições e extensões}
 Nesta seção, a menos que explicitamente indicado, consideraremos que $(M, d)$ e $(N, d')$ são espaços métricos arbitrários.
 
+Nesta seção, examinaremos três situações diferentes:
+\begin{itemize}
+    \item restringir o domínio de uma função;
+    \item restringir o domínio a um aberto que contém o ponto considerado;
+    \item restringir o contradomínio de uma função.
+\end{itemize}
+
+A ideia comum é entender quais informações sobre limites e continuidade são preservadas quando mudamos o domínio ou o contradomínio de uma função sem alterar sua lei de formação.
+
 Começaremos com restrições de domínio.
 Ao restringir uma função, passamos a controlar menos pontos perto do ponto em que o limite é calculado.
 Por isso, limites são preservados por restrições sempre que ainda fazem sentido.
@@ -67,6 +76,12 @@ No Exemplo~\ref{ex:restricaoContinuidade}, vimos que existem funções $f$ que n
 
 Por outro lado, quando o subespaço é aberto e contém o ponto, a restrição e a função original têm o mesmo comportamento local nesse ponto.
 
+A diferença entre uma restrição arbitrária e uma restrição a um aberto que contém o ponto é que, no segundo caso, não perdemos nenhum ponto suficientemente próximo de $p$.
+De fato, se $A$ é aberto e $p\in A$, então existe $r>0$ tal que $B_M(p,r)\subseteq A$, como ilustra a Figura~\ref{fig:restricaoAberto}.
+
+\subimport{restricoes}{figura}
+Assim, para estudar o comportamento de $f$ suficientemente perto de $p$, tanto faz olhar para $f$ em $M$ ou para $f|_A$ em $A$.
+
 \begin{proposition}\label{prop:limiteRestricaoAberto}
     Sejam
     \begin{itemize}
@@ -125,7 +140,7 @@ Por outro lado, quando o subespaço é aberto e contém o ponto, a restrição e
 \end{proof}
 
 \begin{example}
-    Nesse exemplo, continuaremos o exemplo do Exemplo~\ref{ex:limiteNaoImporta} sobre a função $f:\mathbb R^2\rightarrow \mathbb R$ dada por
+    Neste exemplo, retomaremos o Exemplo~\ref{ex:limiteNaoImporta}, sobre a função
     \[
         f(x, y) = \begin{cases}
             1, & \text{se } (x, y) \neq (0, 0),\\
@@ -179,7 +194,6 @@ A proposição abaixo responde essa pergunta positivamente, e de forma geral.
 
 \begin{proof}
     Se $a$ é um ponto isolado de $M$, então ambas as funções são contínuas em $a$.
-
     Se $a$ é um ponto de acumulação de $M$, então:
     \begin{align*}
             & f:M\to N \text{ é contínua em } a\\
@@ -188,7 +202,6 @@ A proposição abaixo responde essa pergunta positivamente, e de forma geral.
         \iff & f:M\to N' \text{ é contínua em } a.
     \end{align*}
 \end{proof}
-
 
 \begin{example}
     Seja $f:\mathbb R^2\rightarrow \mathbb R^2\setminus\{(0, 0)\}$ dada por
@@ -199,7 +212,7 @@ A proposição abaixo responde essa pergunta positivamente, e de forma geral.
         \end{cases}
     \]
 
-    Então $f:\mathbb R^2\rightarrow \mathbb R^2\setminus\{(0, 0)\}$ não possui limite considerando o contradomínio $\mathbb R^2\setminus\{(0, 0)\}$.
+    Então $f:\mathbb R^2\rightarrow \mathbb R^2\setminus\{(0, 0)\}$ não possui limite em $(0,0)$ considerando o contradomínio $\mathbb R^2\setminus\{(0, 0)\}$.
 
     De fato, se possuísse, existiria $L\in \mathbb R^2\setminus\{(0, 0)\}$ tal que $L$ é limite de $f:\mathbb R^2\rightarrow \mathbb R^2\setminus\{(0, 0)\}$ em $(0, 0)$.
     Porém, como $f$ e $\id_{\mathbb R^2}$ coincidem em $\mathbb R^2\setminus\{(0, 0)\}$, temos que:
@@ -212,3 +225,40 @@ A proposição abaixo responde essa pergunta positivamente, e de forma geral.
 
     Chegamos a uma contradição, pois $L$ deveria pertencer a $\mathbb R^2\setminus\{(0,0)\}$.
 \end{example}
+
+Este exemplo ilustra que restringir o contradomínio não altera as distâncias envolvidas na definição de limite, mas altera o conjunto dos candidatos possíveis a limite.
+No espaço ambiente $\mathbb R^2$, o comportamento de $f$ perto de $(0,0)$ força o candidato a limite a ser $(0,0)$.
+Como $(0,0)$ não pertence ao contradomínio $\mathbb R^2\setminus\{(0,0)\}$, nenhum limite existe nesse contradomínio.
+
+Em resumo, nessa seção, vimos que:
+\begin{itemize}
+    \item restringir o domínio preserva limites e continuidade, sempre que os limites ainda fazem sentido;
+    \item se a restrição é feita a um aberto que contém o ponto considerado, então a função original e sua restrição têm o mesmo comportamento local nesse ponto;
+    \item restringir o contradomínio não altera as desigualdades da definição de limite, mas pode eliminar candidatos a limite que não pertencem ao contradomínio restrito.
+\end{itemize}
+
+\section*{Exercícios}
+
+\begin{exercise}
+    Considere a função $f:\mathbb R^2\to \mathbb R$ dada por
+    \[
+        f(x, y)=
+        \begin{cases}
+            1, & \text{se } x\geq 0,\\
+            0, & \text{se } x<0.
+        \end{cases}
+    \]
+    Seja $A=[0,+\infty[\times\mathbb R$.
+
+    Mostre que $f|_A$ é contínua em $(0,0)$, mas $f$ não é contínua em $(0,0)$.
+    Explique por que isso não contradiz o Corolário~\ref{cor:continuidadeRestricaoAberto}.
+\end{exercise}
+
+\begin{exercise}
+    Seja $\widetilde f:\mathbb R\to\mathbb R$ dada por $\widetilde f(x)=x^2$,
+    e seja $f:\mathbb R\to [0,+\infty[$ dada pela mesma lei de formação,
+    isto é, $f(x)=x^2$.
+
+    Use a Proposição~\ref{prop:limiteRestricaoContradominio} e o fato de que
+    $\widetilde f$ é contínua para mostrar que $f$ é contínua.
+\end{exercise}
