@@ -1,6 +1,6 @@
 \section{Limites em espaços métricos}
 
-Como na seção anterior, ao longo dessa seção, a menos que seja explicitamente dito o contrário, $(M, d)$ e $(N, d')$ são espaços métricos arbitrários.
+Como na seção anterior, ao longo desta seção, a menos que seja explicitamente dito o contrário, $(M, d)$ e $(N, d')$ são espaços métricos arbitrários.
 
 Na seção anterior, vimos que a continuidade de uma função é trivialmente verdadeira nos pontos isolados de seu domínio.
 
@@ -48,24 +48,25 @@ A Figura~\ref{fig:limiteUnico} resume a escolha de $\delta$ na prova da Proposi�
 \end{proposition}
 
 \begin{proof}
-    Suponha por absurdo que $L_1\neq L_2$. Então $d(L_1, L_2) > 0$.
+    Suponha por absurdo que $L_1\neq L_2$.
+    Então $d'(L_1, L_2) > 0$.
 
-    Seja $R=\frac{d(L_1, L_2)}{2} > 0$.
+    Seja $R=\frac{d'(L_1, L_2)}{2} > 0$.
     
-    Para $i\in \{1, 2\}$, como $L_i$ é limite de $f$ em $p$, existe $\delta_i > 0$ tal que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta_i$, então $d(f(x), L_i) < R$.
+    Para $i\in \{1, 2\}$, como $L_i$ é limite de $f$ em $p$, existe $\delta_i > 0$ tal que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta_i$, então $d'(f(x), L_i) < R$.
 
     Seja $\delta = \min\{\delta_1, \delta_2\}$.
     Como $p$ é ponto de acumulação de $A$, existe $x \in A\setminus\{p\}$ tal que $d(x, p) < \delta$.
     Assim, $d(x, p)<\delta\leq \delta_1, \delta_2$, logo:
 
     \[
-        d(f(x), L_1) < R \qquad\text{e}\qquad d(f(x), L_2) < R.
+        d'(f(x), L_1) < R \qquad\text{e}\qquad d'(f(x), L_2) < R.
     \]
     Assim, da desigualdade triangular, temos que:
     \[
-        d(L_1, L_2) \leq d(L_1, f(x)) + d(f(x), L_2) < R + R = 2R = d(L_1, L_2).
+        d'(L_1, L_2) \leq d'(L_1, f(x)) + d'(f(x), L_2) < R + R = 2R = d'(L_1, L_2).
     \]
-    Como $d(L_1, L_2) < d(L_1, L_2)$ é impossível, chegamos a uma contradição. Logo, $L_1 = L_2$.
+    Como $d'(L_1, L_2) < d'(L_1, L_2)$ é impossível, chegamos a uma contradição. Logo, $L_1 = L_2$.
 \end{proof}
 
 
@@ -73,7 +74,7 @@ A Figura~\ref{fig:limiteUnico} resume a escolha de $\delta$ na prova da Proposi�
 
 Com isso, podemos definir uma notação muito usual para se falar de limites.
 \begin{definition}\index{limite!notação}
-    Seja $A\subseteq M$ um conjunto, $f: A \to N$ uma função e $p \in A$ um ponto de acumulação de $A$.
+    Seja $A\subseteq M$ um conjunto, $f: A \to N$ uma função e $p \in M$ um ponto de acumulação de $A$.
 
     Então, caso exista, o único limite de $f$ em $p$ é denotado por
     
@@ -81,7 +82,14 @@ Com isso, podemos definir uma notação muito usual para se falar de limites.
     \lim_{x\to p} f(x).
     \]
 \end{definition}
-A variável $x$, na definição acima, é uma variável muda.
+A variável $x$, na notação acima, é uma variável muda.
+Ou seja, ela funciona como parte da notação, e não como a representação de algum objeto específico e independente.
+Pensamos em $x$ como um ponto do domínio que se aproxima de $p$, mas a letra $x$ pode ser alterada por qualquer outra letra sem que isso altere o significado da notação.
+Dessa forma, quando o limite existe,
+\[
+    \lim_{x\to p} f(x) = \lim_{\alpha\to p} f(\alpha) = \lim_{u\to p} f(u).
+\]
+
 No caso de funções de várias variáveis, é comum usar notações alternativas quando conveniente.
 Por exemplo, se $f:\mathbb R^2 \to \mathbb R$ é uma função e $p=(a, b)$, é comum usar a notação
 \[
@@ -95,7 +103,7 @@ A proposição abaixo conecta os conceitos de limite e de continuidade.
 \begin{proposition}\index{continuidade!caracterização por limite}
     Sejam:
     \begin{itemize}
-        \item $A\subseteq M$ um conjunto,
+        \item $A\subseteq M$ um subespaço,
         \item $f: A \to N$ uma função, e
         \item $p \in A$ um ponto de acumulação de $A$.
     \end{itemize}
@@ -116,7 +124,7 @@ A proposição abaixo conecta os conceitos de limite e de continuidade.
     Ora, como $f$ é contínua em $p$, temos que tal $\delta$ existe.
     \smallskip
     
-    Reciprocamente, suponha que $f$ possui limite em $p$ e que tal limite é $f(p)$.
+    Reciprocamente, suponha que $f(p)$ é limite de $f$ em $p$.
     Devemos ver que $f$ é contínua em $p$.
 
     Para isso, fixamos $\epsilon>0$.
@@ -134,7 +142,7 @@ Assim, temos o seguinte valioso teste para se decidir se uma função é contín
 \begin{corollary}
     Sejam:
     \begin{itemize}
-        \item $A\subseteq M$ um conjunto,
+        \item $A\subseteq M$ um subespaço,
         \item $f: A \to N$ uma função, e
         \item $p \in A$.
     \end{itemize}
@@ -153,54 +161,6 @@ Assim, temos o seguinte valioso teste para se decidir se uma função é contín
     Pelo resultado anterior, $f$ é contínua em $p$ se, e somente se, $f(p)$ é limite de $f$ em $p$.
 
     Portanto, se $f$ não possui limite em $p$, então $f$ não é contínua em $p$.
-    Se $f$ possui limite em $p$, mas esse limite é diferente de $f(p)$, então, pela unicidade do limite, $f(p)$ não é limite de $f$ em $p$, e portanto $f$ não é contínua em $p$.
+    Se $f$ possui limite em $p$, mas esse limite é diferente de $f(p)$, então, pela unicidade do limite, $f(p)$ não é limite de $f$ em $p$, e, portanto, $f$ não é contínua em $p$.
     Finalmente, se $f(p)$ é limite de $f$ em $p$, então $f$ é contínua em $p$.
-\end{proof}
-
-
-\begin{proposition}\index{limite!via funções coordenadas}Sejam
-    \begin{itemize}
-        \item $A\subseteq \mathbb R^n$ um conjunto,
-        \item $f: A \to \mathbb R^m$ uma função, e
-        \item $p \in A$ um ponto de acumulação de $A$.
-        \item $L=(L_1, \dots, L_m)\in \mathbb R^m$.
-    \end{itemize}
-
-    Então:
-    \[
-        L \text{ é limite de } f \text{ em } p \text{ se, e somente se, } \forall i \in \{1, \dots, m\}\, L_i \text{ é limite de } f_i \text{ em } p.
-    \]
-\end{proposition}
-
-\begin{proof}
-    Primeiro, suponha que $L$ é limite de $f$ em $p$.
-    Vejamos que cada $L_i$ é limite de $f_i$ em $p$.
-    
-    Para isso, fixamos um $i \in \{1, \dots, m\}$ e consideramos $\epsilon>0$.
-
-    Como $L$ é limite de $f$ em $p$, existe $\delta>0$ tal que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta$, então $d(f(x), L) < \epsilon$.
-
-    Veremos que o mesmo $\delta$ funciona para $f_i$.
-    De fato, se $d(x, p) < \delta$, então temos:
-
-    \begin{align*}
-        |f_i(x) - L_i| &= \sqrt{(f_i(x) - L_i)^2} \\
-        &= \sqrt{(f_1(x) - L_1)^2 + \cdots + (f_m(x) - L_m)^2} \\
-        &= \|f(x) - L\| = d(f(x), L) < \epsilon.
-    \end{align*}
-
-    Portanto, $f_i$ é limite de $f_i$ em $p$.
-
-    Reciprocamente, suponha que para todo $i$, $L_i$ é limite de $f_i$ em $p$.
-    Fixamos $\epsilon>0$ e, para cada $i$, existe $\delta_i>0$ tal que, se $x \in A\setminus\{p\}$ e $d(x, p) < \delta_i$, então $|f_i(x) - L_i| < \epsilon$.
-
-    Seja $\delta = \min\{\delta_1, \ldots, \delta_m\}$.
-    Então, se $x \in A\setminus\{p\}$ e $d(x, p) < \delta$, temos que:
-
-    \begin{align*}
-        d(f(x), L) &= \sqrt{(f_1(x) - L_1)^2 + \cdots + (f_m(x) - L_m)^2} \\
-        &< \sqrt{\epsilon^2+\dots+\epsilon^2}= \sqrt{m}\epsilon.
-    \end{align*}
-
-    Assim, se de partida, ao invés de $\epsilon$, tomarmos $\delta_1, \dots, \delta_n$ que funcione para $\epsilon'=\frac{\epsilon}{\sqrt{m}}$, concluiremos que para todo $x \in A\setminus\{p\}$ com $d(x, p) < \delta$, temos que $d(f(x), L) < \epsilon'$.
 \end{proof}

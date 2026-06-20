@@ -30,9 +30,11 @@ De fato, $\dom(f|_A)=\dom(f\circ i)=A$ e, dado $x \in A$, temos $f|_A(x)=f(x)=f(
     Temos que $i$ é contínua em $p$ e $p$ é ponto de acumulação de $A$, então $p=\lim_{x\to p} i(x)$.
     Além disso, $i:A\rightarrow M$ é uma função injetora.
 
-    Logo, pelo teorema da mudança de variável em limites ()
-
-    
+    Logo, pelo teorema da mudança de variável em limites,
+    \[
+        \lim_{x\to p} f|_A(x) = \lim_{x\to p} f(i(x)) = \lim_{x\to p} f(x) = L.
+    \]
+    E, portanto, $L$ é limite de $f|_A$ em $p$.    
 \end{proof}
 
 Disso, decorre que a continuidade também é preservada por restrições.
@@ -119,7 +121,7 @@ Por outro lado, em alguns casos, a continuidade é preservada por extensões.
     Como $(f|_A)(x) = f(x)$, segue que $d'(f(x), L) < \epsilon$.
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}Sejam
     \begin{itemize}
         \item $A\subseteq M$ um subespaço aberto,
         \item $f: A \to N$ uma função,
@@ -204,3 +206,72 @@ Por fim, a noção de limite não depende do que ocorre no ponto para o qual o l
 
     Assim, $\lim_{(x, y)\to (0, 0)} f(x, y) = 1 \neq f(0, 0)$, e, portanto, $f$ não é contínua em $(0, 0)$.
 \end{example}
+
+Uma outra questão que pode surgir naturalmente é a seguinte: sabemos que a função $f:\mathbb R\rightarrow \mathbb R$ dada por $f(x) = x^2$ é contínua.
+Porém, essa mesma função pode ser vista como uma função de $\mathbb R$ em $[0, +\infty)$, e, pode-se perguntar, se nesse sentido, ela ainda é contínua.
+
+A proposição abaixo responde essa pergunta positivamente, e de forma geral.
+
+\begin{proposition}Sejam
+    \begin{itemize}
+        \item $f: M \to N$ uma função,
+        \item $a \in M$ um ponto de acumulação de $M$.
+        \item $N'$ um subespaço de $N$ tal que $f[M]\subseteq N'$,
+        \item $L\in N'$
+    \end{itemize}
+    Então $L$ é limite de $f:M\to N$ em $a$, se, e somente se $L$ é limite de $f:M\to N'$ em $a$.
+    Em outras palavras, restringir contradomínios não altera a noção de limite para pontos do espaço restrito.
+\end{proposition}
+\begin{proof}
+    Suponha que $L$ é limite de $f:M\to N'$ em $a$.
+    Seja $i: N'\rightarrow N$ a inclusão de $N'$ em $N$.
+    Então $L=i(L)\in M$ é limite de $i\circ f:M\to N$ em $a$, pois $i$ é contínua.
+    Porém, $i\circ f=f$, assim, segue a tese.
+
+    Reciprocamente, suponha que $L$ é limite de $f:M\to N$ em $a$.
+    Para ver que $L$ é limite de $f:M\to N'$ em $a$, devemos ver que dado $\epsilon>0$, existe $\delta>0$ tal que, para todo $x\in M\setminus\{a\}$, se $d(x, a) < \delta$, então $d'(f(x), L) < \epsilon$.
+    Mas isso é diretamente garantido pelo fato de $L$ ser limite de $f:M\to N$ em $a$.
+\end{proof}
+
+\begin{example}
+    Seja $f:\mathbb R^2\rightarrow \mathbb R^2\setminus\{(0, 0)\}$ dada por
+    \[
+        f(x, y) =\begin{cases}
+            (x, y), & \text{se } (x, y) \neq (0, 0),\\
+            (1, 1), & \text{se } (x, y) = (0, 0).
+        \end{cases}
+    \]
+
+    Então $f:\mathbb R^2\rightarrow \mathbb R^2\setminus\{(0, 0)\}$ não possui limite considerando o contradomínio $\mathbb R^2\setminus\{(0, 0)\}$.
+    
+    De fato, se possuísse, existiria $L\in \mathbb R^2\setminus\{(0, 0)\}$ tal que $L$ é limite de $f:\mathbb R^2\rightarrow \mathbb R^2\setminus\{(0, 0)\}$.
+    Porém, $L$ seria limite de $f:\mathbb R^2\rightarrow \mathbb R^2$ em $(0, 0)$, o que é impossível, pois teríamos:
+    \begin{align*}
+            & L \text{ é limite de } f \text{ em } (0, 0) \\
+        \implies & L \text{ é limite de } f|_{\mathbb R^2\setminus\{(0, 0)\}} \text{ em } (0, 0)\\
+        \implies & L \text{ é limite de } \id_{\mathbb R^2}|_{\mathbb R^2\setminus\{(0, 0)\}} \text{ em } (0, 0)\\
+        \implies & L \text{ é limite de } \id_{\mathbb R^2} \text{ em } (0, 0)\\
+        \implies & L = (0, 0),
+    \end{align*}
+    E, portanto, $(0, 0)=L\in \mathbb R^2\setminus\{(0, 0)\}$.
+\end{example}
+
+\begin{corollary}
+    Sejam
+    \begin{itemize}
+        \item $f: M \to N$ uma função,
+        \item $a \in M$.
+        \item $N'$ um subespaço de $N$ tal que $f[M]\subseteq N'$,
+    \end{itemize}
+    Então $f:M\to N$ é contínua em $a$, se, e somente se, $f:M\to N'$ é contínua em $a$.
+\end{corollary}
+\begin{proof}
+    Se $a$ é um ponto isolado de $M$, então ambas $f:M\to N$ e $f:M\to N'$ são contínuas em $a$ trivialmente.
+    Se $a$ é um ponto de acumulação de $M$, então:
+    \begin{align*}
+            & f:M\to N \text{ é contínua em } a\\
+        \iff & f(a) \text{ é limite de } f:M\to N \text{ em } a\\
+        \iff & f(a) \text{ é limite de } f:M\to N' \text{ em } a\\
+        \iff & f:M\to N' \text{ é contínua em } a.
+    \end{align*}
+\end{proof}

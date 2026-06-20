@@ -77,3 +77,52 @@ Assim, $f(a) = (f_1(a), \dots, f_m(a))$.
     Seja $A\subseteq M$ um subconjunto aberto e seja $f:M\rightarrow N$ uma função contínua.
     Mostre que $f|_A:A\rightarrow N$ é contínua.
 \end{exercise}
+
+
+
+\begin{proposition}\index{limite!via funções coordenadas}Sejam
+    \begin{itemize}
+        \item $A\subseteq \mathbb R^n$ um conjunto,
+        \item $f: A \to \mathbb R^m$ uma função, e
+        \item $p \in A$ um ponto de acumulação de $A$.
+        \item $L=(L_1, \dots, L_m)\in \mathbb R^m$.
+    \end{itemize}
+
+    Então:
+    \[
+        L \text{ é limite de } f \text{ em } p \text{ se, e somente se, } \forall i \in \{1, \dots, m\}\, L_i \text{ é limite de } f_i \text{ em } p.
+    \]
+\end{proposition}
+
+\begin{proof}
+    Primeiro, suponha que $L$ é limite de $f$ em $p$.
+    Vejamos que cada $L_i$ é limite de $f_i$ em $p$.
+    
+    Para isso, fixamos um $i \in \{1, \dots, m\}$ e consideramos $\epsilon>0$.
+
+    Como $L$ é limite de $f$ em $p$, existe $\delta>0$ tal que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta$, então $d(f(x), L) < \epsilon$.
+
+    Veremos que o mesmo $\delta$ funciona para $f_i$.
+    De fato, se $d(x, p) < \delta$, então temos:
+
+    \begin{align*}
+        |f_i(x) - L_i| &= \sqrt{(f_i(x) - L_i)^2} \\
+        &= \sqrt{(f_1(x) - L_1)^2 + \cdots + (f_m(x) - L_m)^2} \\
+        &= \|f(x) - L\| = d(f(x), L) < \epsilon.
+    \end{align*}
+
+    Portanto, $f_i$ é limite de $f_i$ em $p$.
+
+    Reciprocamente, suponha que para todo $i$, $L_i$ é limite de $f_i$ em $p$.
+    Fixamos $\epsilon>0$ e, para cada $i$, existe $\delta_i>0$ tal que, se $x \in A\setminus\{p\}$ e $d(x, p) < \delta_i$, então $|f_i(x) - L_i| < \epsilon$.
+
+    Seja $\delta = \min\{\delta_1, \ldots, \delta_m\}$.
+    Então, se $x \in A\setminus\{p\}$ e $d(x, p) < \delta$, temos que:
+
+    \begin{align*}
+        d(f(x), L) &= \sqrt{(f_1(x) - L_1)^2 + \cdots + (f_m(x) - L_m)^2} \\
+        &< \sqrt{\epsilon^2+\dots+\epsilon^2}= \sqrt{m}\epsilon.
+    \end{align*}
+
+    Assim, se de partida, ao invés de $\epsilon$, tomarmos $\delta_1, \dots, \delta_n$ que funcione para $\epsilon'=\frac{\epsilon}{\sqrt{m}}$, concluiremos que para todo $x \in A\setminus\{p\}$ com $d(x, p) < \delta$, temos que $d(f(x), L) < \epsilon'$.
+\end{proof}
