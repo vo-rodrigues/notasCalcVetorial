@@ -23,22 +23,17 @@ Por isso, limites são preservados por restrições sempre que ainda fazem senti
 \end{proposition}
 
 \begin{proof}
-    Suponha que $L$ é limite de $f$ em $p$.
-    Fixe $\epsilon>0$.
+    Como $p$ é ponto de acumulação de $A$ e $A\subseteq M$, temos que $p$ é ponto de acumulação de $M$.
 
-    Como $L$ é limite de $f$ em $p$, existe $\delta>0$ tal que, para todo $x\in M\setminus\{p\}$, se $d(x,p)<\delta$, então
+    As funções $f|_A:A\to N$ e $f:M\to N$ coincidem em $A\setminus\{p\}$.
+    Mais precisamente, tomando $U=M$, temos
     \[
-        d'(f(x),L)<\epsilon.
+        (A\cap U)\setminus\{p\}=A\setminus\{p\}\subseteq M
     \]
+    e $(f|_A)(x)=f(x)$
+    para todo $x\in A\setminus\{p\}$.
 
-    Tome $x\in A\setminus\{p\}$ tal que $d(x,p)<\delta$.
-    Como $A\subseteq M$, temos $x\in M\setminus\{p\}$.
-    Portanto,
-    \[
-        d'((f|_A)(x),L)=d'(f(x),L)<\epsilon.
-    \]
-
-    Assim, $L$ é limite de $f|_A$ em $p$.
+    Portanto, pela Proposição~\ref{prop:localidadeLimite}, se $L$ é limite de $f$ em $p$, então $L$ é limite de $f|_A$ em $p$.
 \end{proof}
 
 Disso decorre que a continuidade também é preservada por restrições.
@@ -93,17 +88,13 @@ Por outro lado, quando o subespaço é aberto e contém o ponto, a restrição e
 \begin{proof}
     Como $A$ é aberto e $p\in A$, existe $r>0$ tal que $B_M(p,r)\subseteq A$.
     Como $p$ é ponto de acumulação de $M$, segue que $p$ é ponto de acumulação de $A$.
-    De fato, dado $s>0$, tomando $\rho=\min\{r,s\}$, existe $x\in M\setminus\{p\}$ tal que $d(x,p)<\rho$.
-    Como $d(x,p)<r$, temos $x\in A$.
 
-    As funções $f:M\to N$ e $f|_A:A\to N$ coincidem no aberto $A$ de $M$.
-    Mais precisamente,
-    \[
-        (M\cap A)\setminus\{p\}=(A\cap A)\setminus\{p\},
-    \]
-    e $f(x)=(f|_A)(x)$ para todo $x$ nesse conjunto.
+    Se $L$ é limite de $f$ em $p$, então $L$ é limite de $f|_A$ em $p$ pela Proposição~\ref{prop:limiteRestricaoDominio}.
 
-    Portanto, a equivalência segue da Proposição~\ref{prop:localidadeLimite}.
+    Reciprocamente, suponha que $L$ é limite de $f|_A$ em $p$.
+    Como $f$ e $f|_A$ coincidem no aberto $A$, que contém $p$, a Proposição~\ref{prop:localidadeLimite} dá que $L$ é limite de $f$ em $p$.
+
+    Portanto, $L$ é limite de $f$ em $p$ se, e somente se, $L$ é limite de $f|_A$ em $p$.
 \end{proof}
 
 \begin{corollary}\label{cor:continuidadeRestricaoAberto}
@@ -174,31 +165,6 @@ A proposição abaixo responde essa pergunta positivamente, e de forma geral.
     Portanto, as duas condições de limite são exatamente a mesma condição com os mesmos $\epsilon$ e $\delta$.
 \end{proof}
 
-\begin{example}
-    Seja $f:\mathbb R^2\rightarrow \mathbb R^2\setminus\{(0, 0)\}$ dada por
-    \[
-        f(x, y) =\begin{cases}
-            (x, y), & \text{se } (x, y) \neq (0, 0),\\
-            (1, 1), & \text{se } (x, y) = (0, 0).
-        \end{cases}
-    \]
-
-    Então $f:\mathbb R^2\rightarrow \mathbb R^2\setminus\{(0, 0)\}$ não possui limite considerando o contradomínio $\mathbb R^2\setminus\{(0, 0)\}$.
-
-    De fato, se possuísse, existiria $L\in \mathbb R^2\setminus\{(0, 0)\}$ tal que $L$ é limite de $f:\mathbb R^2\rightarrow \mathbb R^2\setminus\{(0, 0)\}$ em $(0, 0)$.
-    Porém:
-    \begin{align*}
-            & L \text{ é limite de } f:\mathbb R^2\to \mathbb R^2\setminus\{(0, 0)\} \text{ em } (0, 0) \\
-        \implies & L \text{ é limite de } f:\mathbb R^2\to \mathbb R^2 \text{ em } (0, 0)\\
-        \implies & L \text{ é limite de } f|_{\mathbb R^2\setminus\{(0, 0)\}} \text{ em } (0, 0)\\
-        \implies & L \text{ é limite de } \id_{\mathbb R^2}|_{\mathbb R^2\setminus\{(0, 0)\}} \text{ em } (0, 0)\\
-        \implies & L \text{ é limite de } \id_{\mathbb R^2} \text{ em } (0, 0)\\
-        \implies & L = (0, 0).
-    \end{align*}
-
-    A primeira implicação usa a Proposição~\ref{prop:limiteRestricaoContradominio}; a segunda usa a Proposição~\ref{prop:limiteRestricaoDominio}; a terceira usa a igualdade $f|_{\mathbb R^2\setminus\{(0,0)\}}=\id_{\mathbb R^2}|_{\mathbb R^2\setminus\{(0,0)\}}$; a quarta usa a Proposição~\ref{prop:localidadeLimite}.
-    Chegamos a uma contradição, pois $L$ deveria pertencer a $\mathbb R^2\setminus\{(0,0)\}$.
-\end{example}
 
 \begin{corollary}
     Sejam
@@ -222,3 +188,27 @@ A proposição abaixo responde essa pergunta positivamente, e de forma geral.
         \iff & f:M\to N' \text{ é contínua em } a.
     \end{align*}
 \end{proof}
+
+
+\begin{example}
+    Seja $f:\mathbb R^2\rightarrow \mathbb R^2\setminus\{(0, 0)\}$ dada por
+    \[
+        f(x, y) =\begin{cases}
+            (x, y), & \text{se } (x, y) \neq (0, 0),\\
+            (1, 1), & \text{se } (x, y) = (0, 0).
+        \end{cases}
+    \]
+
+    Então $f:\mathbb R^2\rightarrow \mathbb R^2\setminus\{(0, 0)\}$ não possui limite considerando o contradomínio $\mathbb R^2\setminus\{(0, 0)\}$.
+
+    De fato, se possuísse, existiria $L\in \mathbb R^2\setminus\{(0, 0)\}$ tal que $L$ é limite de $f:\mathbb R^2\rightarrow \mathbb R^2\setminus\{(0, 0)\}$ em $(0, 0)$.
+    Porém, como $f$ e $\id_{\mathbb R^2}$ coincidem em $\mathbb R^2\setminus\{(0, 0)\}$, temos que:
+    \begin{align*}
+        & L \text{ é limite de } f:\mathbb R^2\to \mathbb R^2\setminus\{(0, 0)\} \text{ em } (0, 0) \\
+        \implies & L \text{ é limite de } f:\mathbb R^2\to \mathbb R^2 \text{ em } (0, 0)\\
+        \implies & L \text{ é limite de } \id_{\mathbb R^2} \text{ em } (0, 0)\\
+        \implies & L = (0, 0).
+    \end{align*}
+
+    Chegamos a uma contradição, pois $L$ deveria pertencer a $\mathbb R^2\setminus\{(0,0)\}$.
+\end{example}
