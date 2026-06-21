@@ -1,144 +1,292 @@
 \section{O Teorema do Confronto}\index{Teorema do Confronto}\index{sanduíche, teorema do|see{Teorema do Confronto}}
 
+Em muitos limites, não é necessário conhecer exatamente o valor da função perto do ponto.
+Às vezes basta aprisioná-la entre duas funções cujo comportamento já conhecemos.
 
-\begin{proposition}Sejam
+Essa é a ideia do Teorema do Confronto.
+Ele transforma desigualdades em limites.
+
+\begin{proposition}[Teorema do Confronto]\index{limite!Teorema do Confronto}
+    Sejam:
     \begin{itemize}
-        \item $A\subseteq \mathbb R^n$ um conjunto,
-        \item $f, g: A \to \mathbb R$ funções,
-        \item $p \in \mathbb R^n$ um ponto de acumulação de $A$,
-        \item $L=\lim_{x\to p} f(x)$, e,
-        \item $M=\lim_{x\to p} g(x)$.
+        \item $(M,d_M)$ um espaço métrico,
+        \item $A\subseteq M$ um subespaço,
+        \item $f,g,h:A\to\mathbb R$ funções,
+        \item $p\in M$ um ponto de acumulação de $A$, e
+        \item $L\in\mathbb R$.
     \end{itemize}
 
-    Então:
-    \begin{enumerate}[label=(\alph*)]
-        \item $\displaystyle \lim_{x\to p}(f+g)(x) = L + M$,
-        \item $\displaystyle \lim_{x\to p}(f-g)(x) = L - M$, e 
-        \item $\displaystyle \lim_{x\to p}(fg)(x) = LM$.
-    \end{enumerate}
-\end{proposition}
-
-\begin{proposition}Sejam
-    \begin{itemize}
-        \item $A\subseteq \mathbb R^n$ um conjunto,
-        \item $f, g: A \to \mathbb R$ funções,
-        \item $p \in A$.
-    \end{itemize}
-
-    Se $f$ e $g$ são contínuas em $p$, então:
-    \begin{enumerate}[label=(\alph*)]
-        \item $f+g$ é contínua em $p$,
-        \item $f-g$ é contínua em $p$, e
-        \item $fg$ é contínua em $p$.
-    \end{enumerate}
-
-    Consequentemente, se $f$ e $g$ são contínuas, então $f+g$, $f-g$ e $fg$ são contínuas.
-\end{proposition}
-
-\begin{proposition}Sejam
-    \begin{itemize}
-        \item $A\subseteq \mathbb R^n$ um conjunto,
-        \item $f, g: A \to \mathbb R$ funções com $g(x)\neq 0$ para todo $x \in A$,
-        \item $p \in \mathbb R^n$ um ponto de acumulação de $A$,
-        \item $L=\lim_{x\to p} f(x)$, e,
-        \item $M=\lim_{x\to p} g(x)$.
-    \end{itemize}
-
-    Então:
+    Suponha que existe $\rho>0$ tal que, para todo $x\in A\setminus\{p\}$,
     \[
-        \lim_{x\to p}\frac{f(x)}{g(x)} = \frac{L}{M}.
-    \]
-\end{proposition}
-
-\begin{proposition}Sejam
-    \begin{itemize}
-        \item $A\subseteq \mathbb R^n$ um conjunto,
-        \item $f, g: A \to \mathbb R$ funções com $g(x)\neq 0$ para todo $x \in A$,
-        \item $p\in A$.
-    \end{itemize}
-
-    Se $f$ e $g$ são contínuas em $p$, então $\displaystyle\frac{f}{g}$ é contínua em $p$.
-
-    Consequentemente, se $f$ e $g$ são contínuas, então $\displaystyle\frac{f}{g}$ é contínua.
-\end{proposition}
-
-
-\begin{proposition}\index{limite!Teorema do Confronto}
-    Sejam $f, g, h: A \to \mathbb R$ uma função, onde $A\subseteq \mathbb R^m$.
-
-    Sejam $p \in A$ um ponto de acumulação de $A$ e $L \in \mathbb R$.
-
-    Suponha que existe uma bola aberta $B$ em torno de $p$ tal que, para todo $x \in B\cap A\setminus\{p\}$, temos que $f(x) \leq g(x) \leq h(x)$.
-
-    Nessas hipóteses, se $\lim_{x\to p} f(x) = \lim_{x\to p} h(x) = L$, então $\lim_{x\to p} g(x) = L$.
-\end{proposition}
-
-\begin{proposition}\index{limite!Teorema do Confronto}
-    Sejam
-    \begin{itemize}
-        \item $A\subseteq \mathbb R^n$ um conjunto,
-        \item $f, g, h: A \to \mathbb R$ funções,
-        \item $p \in \mathbb R^n$ um ponto de acumulação de $A$, e
-        \item $L \in \mathbb R$.
-    \end{itemize}
-
-    Suponha que existe uma bola aberta $B$ em torno de $p$ tal que, para todo $x \in B\cap A\setminus\{p\}$, temos
-    \[
-        f(x) \leq g(x) \leq h(x).
+        d_M(x,p)<\rho
+        \quad\Longrightarrow\quad
+        f(x)\leq g(x)\leq h(x).
     \]
 
-    Então:
+    Se
     \[
-        \text{se } \lim_{x\to p} f(x) = \lim_{x\to p} h(x) = L, \text{ então } \lim_{x\to p} g(x) = L.
+        \lim_{x\to p}f(x)=L
+        \qquad\text{e}\qquad
+        \lim_{x\to p}h(x)=L,
+    \]
+    então
+    \[
+        \lim_{x\to p}g(x)=L.
     \]
 \end{proposition}
 
 \begin{proof}
-    Seja dado $\epsilon > 0$.
-    
-    Como $\lim_{x\to p} f(x) = L$, existe $\delta_f>0$ tal que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta_f$, então $|f(x) - L| < \epsilon$.
+    Fixe $\epsilon>0$.
 
-    Analogamente, como $\lim_{x\to p} h(x) = L$, existe $\delta_h>0$ tal que, para todo $x \in A\setminus\{p\}$, se $d(x, p) < \delta_h$, então $|h(x) - L| < \epsilon$.
+    Como $\lim_{x\to p}f(x)=L$, existe $\delta_f>0$ tal que, para todo $x\in A\setminus\{p\}$,
+    \[
+        \text{se }d_M(x,p)<\delta_f,\text{ então } |f(x)-L|<\epsilon.
+    \]
+    Em particular, para tais $x$,
+    \[
+        L-\epsilon<f(x).
+    \]
 
-    Por fim, existe $\delta_g>0$ tal que, para todo $x \in B(p, \delta_g)$, se $x \in A\setminus\{p\}$, então $f(x) \leq g(x) \leq h(x)$.
+    Como $\lim_{x\to p}h(x)=L$, existe $\delta_h>0$ tal que, para todo $x\in A\setminus\{p\}$,
+    \[
+        \text{se }d_M(x,p)<\delta_h,\text{ então } |h(x)-L|<\epsilon.
+    \]
+    Em particular, para tais $x$,
+    \[
+        h(x)<L+\epsilon.
+    \]
 
-    Seja $\delta = \min\{\delta_f, \delta_h, \delta_g\}$.
+    Tome
+    \[
+        \delta=\min\{\rho,\delta_f,\delta_h\}.
+    \]
 
-    Seja $x \in A\setminus\{p\}$ tal que $d(x, p) < \delta$, então $-\epsilon<f(x) - L \leq g(x) - L \leq h(x) - L < \epsilon$, logo, $|g(x) - L| < \epsilon$, ou seja, $d(g(x), L) < \epsilon$.
+    Se $x\in A\setminus\{p\}$ e $d_M(x,p)<\delta$, então
+    \[
+        L-\epsilon<f(x)\leq g(x)\leq h(x)<L+\epsilon.
+    \]
+    Logo,
+    \[
+        |g(x)-L|<\epsilon.
+    \]
+
+    Como $\epsilon>0$ foi arbitrário, concluímos que $\lim_{x\to p}g(x)=L$.
 \end{proof}
-\begin{corollary}
-    Sejam
+
+\begin{corollary}\index{limite!dominação por uma função que tende a zero}
+    Sejam:
     \begin{itemize}
-        \item $A\subseteq \mathbb R^n$ um conjunto,
-        \item $f, g$ funções,
-        \item $p \in \mathbb R^n$ um ponto de acumulação de $A$, e
-        \item $L \in \mathbb R$.
+        \item $(M,d_M)$ um espaço métrico,
+        \item $A\subseteq M$ um subespaço,
+        \item $u:A\to\mathbb R$ e $v:A\to\mathbb R$ funções,
+        \item $p\in M$ um ponto de acumulação de $A$, e
+        \item $L\in\mathbb R$.
+    \end{itemize}
+
+    Suponha que existe $\rho>0$ tal que, para todo $x\in A\setminus\{p\}$,
+    \[
+        d_M(x,p)<\rho
+        \quad\Longrightarrow\quad
+        |u(x)-L|\leq v(x).
+    \]
+
+    Se
+    \[
+        \lim_{x\to p}v(x)=0,
+    \]
+    então
+    \[
+        \lim_{x\to p}u(x)=L.
+    \]
+\end{corollary}
+
+\begin{proof}
+    Da desigualdade $|u(x)-L|\leq v(x)$, obtemos
+    \[
+        -v(x)\leq u(x)-L\leq v(x).
+    \]
+    Somando $L$ em todos os termos,
+    \[
+        L-v(x)\leq u(x)\leq L+v(x).
+    \]
+
+    Pelas regras de operações com limites,
+    \[
+        \lim_{x\to p}(L-v(x))=L
+        \qquad\text{e}\qquad
+        \lim_{x\to p}(L+v(x))=L.
+    \]
+
+    O Teorema do Confronto implica, então, que
+    \[
+        \lim_{x\to p}u(x)=L.
+    \]
+\end{proof}
+
+\begin{corollary}
+    Sejam:
+    \begin{itemize}
+        \item $(M,d_M)$ um espaço métrico,
+        \item $A\subseteq M$ um subespaço,
+        \item $f,g:A\to\mathbb R$ funções, e
+        \item $p\in M$ um ponto de acumulação de $A$.
     \end{itemize}
 
     Suponha que:
     \begin{itemize}
-        \item existe uma bola aberta $B$ em torno de $p$ tal que $g|_B$ é limitada, ou seja, tal que existe $M>0$ tal que, para todo $x \in B\cap A\setminus\{p\}$, temos $|g(x)| < M$, e
-        \item $\lim_{x\to p} f(x) = 0$.
-     \end{itemize}
+        \item $\lim_{x\to p}f(x)=0$, e
+        \item $g$ é limitada em uma vizinhança perfurada de $p$, isto é, existem $\rho>0$ e $C>0$ tais que, para todo $x\in A\setminus\{p\}$,
+        \[
+            d_M(x,p)<\rho
+            \quad\Longrightarrow\quad
+            |g(x)|\leq C.
+        \]
+    \end{itemize}
 
-     Então $\lim_{x\to p} f(x)g(x) = 0$.
+    Então
+    \[
+        \lim_{x\to p}f(x)g(x)=0.
+    \]
 \end{corollary}
 
-\begin{proposition}Sejam
-    \begin{itemize}
-        \item $I\subseteq \mathbb R$ um intervalo aberto
-        \item $A\subseteq \mathbb R^n$ um conjunto,
-        \item $a \in \mathbb R^n$ um ponto de acumulação de $A$,
-        \item $\gamma: I \to \mathbb R^n$ uma função
-        \item $t_0 \in I$ com $\gamma(t_0) = a$
-    \end{itemize}
+\begin{proof}
+    Para todo $x\in A\setminus\{p\}$ suficientemente próximo de $p$, temos
+    \[
+        |f(x)g(x)|\leq C|f(x)|.
+    \]
 
-    Assuma que:
-    \begin{itemize}
-        \item $\gamma(t)\neq a$ para todo $t \in I\setminus\{t_0\}$,
-        \item $\lim_{t\to t_0} \gamma(t) = a$, e
-        \item $\lim_{t\to t_0} f(\gamma(t)) = L$.
-    \end{itemize}
+    Como $\lim_{x\to p}f(x)=0$, temos também
+    \[
+        \lim_{x\to p}C|f(x)|=0.
+    \]
+    De fato, dado $\epsilon>0$, basta tomar $x$ suficientemente próximo de $p$ para que $|f(x)|<\frac{\epsilon}{C}$.
 
-    Então $\lim_{t\to t_0} f(\gamma(t)) = L$.
-\end{proposition}
+    Pelo corolário anterior, aplicado a $u=fg$, $v=C|f|$ e $L=0$, segue que
+    \[
+        \lim_{x\to p}f(x)g(x)=0.
+    \]
+\end{proof}
+
+\begin{example}
+    Consideremos a função $F:\mathbb R^2\setminus\{(0,0)\}\to\mathbb R$ dada por
+    \[
+        F(x,y)=\frac{x^2y}{x^2+y^2}.
+    \]
+
+    Vamos calcular
+    \[
+        \lim_{(x,y)\to(0,0)}F(x,y).
+    \]
+
+    Para $(x,y)\neq(0,0)$, temos $x^2\leq x^2+y^2$.
+    Portanto,
+    \[
+        |F(x,y)|
+        =
+        \left|\frac{x^2y}{x^2+y^2}\right|
+        =
+        \frac{x^2|y|}{x^2+y^2}
+        \leq
+        |y|.
+    \]
+
+    Além disso,
+    \[
+        |y|\leq \sqrt{x^2+y^2}.
+    \]
+    Como $\sqrt{x^2+y^2}=d((x,y),(0,0))$ tende a $0$ quando $(x,y)$ tende a $(0,0)$, o Teorema do Confronto dá
+    \[
+        \lim_{(x,y)\to(0,0)}F(x,y)=0.
+    \]
+\end{example}
+
+\begin{example}
+    Seja $G:\mathbb R^2\setminus\{(0,0)\}\to\mathbb R$ dada por
+    \[
+        G(x,y)=x^2\sin\left(\frac{1}{x^2+y^2}\right).
+    \]
+
+    Como $|\sin t|\leq 1$ para todo $t\in\mathbb R$, temos
+    \[
+        |G(x,y)|
+        \leq
+        x^2
+        \leq
+        x^2+y^2.
+    \]
+
+    Como $\lim_{(x,y)\to(0,0)}(x^2+y^2)=0$, segue do Teorema do Confronto que
+    \[
+        \lim_{(x,y)\to(0,0)}G(x,y)=0.
+    \]
+
+    Assim, a função $\widetilde G:\mathbb R^2\to\mathbb R$ dada por
+    \[
+        \widetilde G(x,y)=
+        \begin{cases}
+            x^2\sin\left(\frac{1}{x^2+y^2}\right), & \text{se }(x,y)\neq(0,0),\\
+            0, & \text{se }(x,y)=(0,0),
+        \end{cases}
+    \]
+    é contínua em $(0,0)$.
+\end{example}
+
+\begin{example}
+    O Teorema do Confronto também é útil para reconhecer limites de funções que oscilam muito.
+    Por exemplo, a função
+    \[
+        H(x,y)=\|(x,y)\|\cos\left(\frac{1}{\|(x,y)\|}\right),
+        \qquad (x,y)\neq(0,0),
+    \]
+    satisfaz
+    \[
+        |H(x,y)|\leq \|(x,y)\|.
+    \]
+    Como $\|(x,y)\|\to 0$ quando $(x,y)\to(0,0)$, concluímos que
+    \[
+        \lim_{(x,y)\to(0,0)}H(x,y)=0.
+    \]
+\end{example}
+
+\section*{Exercícios}
+
+\begin{exercise}
+    Use o Teorema do Confronto para calcular
+    \[
+        \lim_{(x,y)\to(0,0)}\frac{xy^2}{x^2+y^2}.
+    \]
+\end{exercise}
+
+\begin{exercise}
+    Mostre que a função $f:\mathbb R^2\to\mathbb R$ dada por
+    \[
+        f(x,y)=
+        \begin{cases}
+            \dfrac{x^3}{x^2+y^2}, & \text{se }(x,y)\neq(0,0),\\
+            0, & \text{se }(x,y)=(0,0),
+        \end{cases}
+    \]
+    é contínua em $(0,0)$.
+\end{exercise}
+
+\begin{exercise}
+    Seja $u:A\to\mathbb R$ uma função definida em um subespaço $A$ de um espaço métrico $M$, e seja $p$ um ponto de acumulação de $A$.
+    Suponha que existe uma função $v:A\to\mathbb R$ tal que $|u(x)|\leq v(x)$ para todo $x\in A\setminus\{p\}$ suficientemente próximo de $p$.
+
+    Mostre que, se $\lim_{x\to p}v(x)=0$, então $\lim_{x\to p}u(x)=0$.
+\end{exercise}
+
+\begin{exercise}
+    Calcule, se existir,
+    \[
+        \lim_{(x,y)\to(0,0)}(x^2+y^2)\sin\left(\frac{1}{x^2+y^2}\right).
+    \]
+\end{exercise}
+
+\begin{exercise}
+    Seja $f:A\to\mathbb R$ uma função limitada em uma vizinhança perfurada de $p$, e seja $g:A\to\mathbb R$ tal que $\lim_{x\to p}g(x)=0$.
+    Mostre que
+    \[
+        \lim_{x\to p}f(x)g(x)=0.
+    \]
+\end{exercise}

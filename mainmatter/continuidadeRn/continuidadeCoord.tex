@@ -2,22 +2,6 @@
 
 Ao estudar funções que saem de um domínio e chegam em $\mathbb R^m$, é muito frequente que possamos reduzir o estudo de suas propriedades ao estudo de suas funções coordenadas.
 
-Lembremos a definição de função coordenada.
-
-\begin{definition}
-    Sejam $A$ e $B$ conjuntos e seja $f: A \to B^m$ uma função.
-
-    Para cada $a \in A$, $f(a)$, sendo um elemento de $B^m$, é uma $m$-upla $(b_1, \dots, b_m)$.
-    As coordenadas $b_i$ são denotadas por $f_i(a)$.
-
-    Dessa forma, $f_1(a), \dots, f_m(a)$ são os únicos elementos de $B$ tais que
-    \[
-        f(a) = (f_1(a), \dots, f_m(a)).
-    \]
-
-    Para cada $i\in\{1,\dots,m\}$, a função $f_i: A \to B$ assim definida é chamada de \emph{$i$-ésima função coordenada} de $f$.
-\end{definition}
-
 \begin{example}
     Seja $f: \mathbb R^2\to \mathbb R^3$ dada por $f(x, y) = (x+y, x-y, xy)$.
     Então as funções coordenadas de $f$ são dadas por:
@@ -31,16 +15,6 @@ Lembremos a definição de função coordenada.
 
 Um caso importante é o das projeções, que são as funções coordenadas da função identidade de $\mathbb R^n$.
 
-\begin{definition}
-    Para cada $i\in\{1,\dots,n\}$, a $i$-ésima projeção de $\mathbb R^n$ em $\mathbb R$, denotada por $\pi_i$, é a $i$-ésima função coordenada da função identidade de $\mathbb R^n$.
-
-    Ou seja, $\pi_i: \mathbb R^n\to \mathbb R$ é a função dada por
-
-    \[
-        \pi_i(x_1, \dots, x_n) = x_i.
-    \]
-\end{definition}
-
 \begin{lemma}
     Seja $n\geq 1$ e $i$ um inteiro com $1\leq i\leq n$.
 
@@ -50,7 +24,6 @@ Um caso importante é o das projeções, que são as funções coordenadas da fu
     \[
         \pi_i(x_1, \dots, x_n) = x_i
     \]
-
     é contínua em todos os pontos de $\mathbb R^n$.
 \end{lemma}
 

@@ -1,0 +1,540 @@
+\section{Operações com limites e continuidade}
+
+Na seção anterior, vimos que uma função a valores em $\mathbb R^m$ pode ser estudada coordenada a coordenada.
+Agora veremos que as operações algébricas usuais também se comportam bem com limites e continuidade.
+
+A ideia central desta seção é simples: se duas funções se aproximam de certos valores, então a soma se aproxima da soma desses valores.
+Quando as funções são reais, o mesmo vale para produtos, inversos e quocientes, desde que as expressões estejam definidas.
+
+\begin{proposition}\index{limite!soma}\index{limite!diferença}\index{limite!multiplicação por escalar}
+    Sejam:
+    \begin{itemize}
+        \item $(M,d_M)$ um espaço métrico,
+        \item $A\subseteq M$ um subespaço,
+        \item $f,g:A\to\mathbb R^m$ funções,
+        \item $p\in M$ um ponto de acumulação de $A$,
+        \item $L,S\in\mathbb R^m$, e
+        \item $\lambda\in\mathbb R$.
+    \end{itemize}
+
+    Se
+    \[
+        \lim_{x\to p} f(x)=L
+        \qquad\text{e}\qquad
+        \lim_{x\to p} g(x)=S,
+    \]
+    então:
+    \begin{enumerate}[label=(\alph*)]
+        \item $\displaystyle \lim_{x\to p} (f+g)(x)=L+S$;
+        \item $\displaystyle \lim_{x\to p} (f-g)(x)=L-S$;
+        \item $\displaystyle \lim_{x\to p} (\lambda f)(x)=\lambda L$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    Comecemos pela soma.
+    Fixe $\epsilon>0$.
+
+    Como $L$ é limite de $f$ em $p$, existe $\delta_f>0$ tal que, para todo $x\in A\setminus\{p\}$,
+    \[
+        \text{se }d_M(x,p)<\delta_f,\text{ então }d(f(x),L)<\frac{\epsilon}{2}.
+    \]
+
+    Analogamente, como $S$ é limite de $g$ em $p$, existe $\delta_g>0$ tal que, para todo $x\in A\setminus\{p\}$,
+    \[
+        \text{se }d_M(x,p)<\delta_g,\text{ então }d(g(x),S)<\frac{\epsilon}{2}.
+    \]
+
+    Tome $\delta=\min\{\delta_f,\delta_g\}$.
+    Se $x\in A\setminus\{p\}$ e $d_M(x,p)<\delta$, então:
+    \begin{align*}
+        d((f+g)(x),L+S)
+        &=\|(f(x)+g(x))-(L+S)\|\\
+        &=\|(f(x)-L)+(g(x)-S)\|\\
+        &\leq \|f(x)-L\|+\|g(x)-S\|\\
+        &=d(f(x),L)+d(g(x),S)\\
+        &<\frac{\epsilon}{2}+\frac{\epsilon}{2}
+        =\epsilon.
+    \end{align*}
+    Logo, $\lim_{x\to p}(f+g)(x)=L+S$.
+
+    Para a multiplicação por escalar, se $\lambda=0$, então $\lambda f$ é a função constante igual a $0$, e o limite é $0=\lambda L$.
+
+    Suponha, então, que $\lambda\neq 0$.
+    Fixe $\epsilon>0$.
+    Como $L$ é limite de $f$ em $p$, existe $\delta>0$ tal que, para todo $x\in A\setminus\{p\}$,
+    \[
+        \text{se }d_M(x,p)<\delta,\text{ então }d(f(x),L)<\frac{\epsilon}{|\lambda|}.
+    \]
+    Assim, se $x\in A\setminus\{p\}$ e $d_M(x,p)<\delta$, então
+    \[
+        d((\lambda f)(x),\lambda L)
+        =
+        \|\lambda f(x)-\lambda L\|
+        =
+        |\lambda|\|f(x)-L\|
+        <
+        |\lambda|\frac{\epsilon}{|\lambda|}
+        =
+        \epsilon.
+    \]
+    Portanto, $\lim_{x\to p}(\lambda f)(x)=\lambda L$.
+
+    Por fim, a diferença é consequência dos dois itens já provados, pois
+    \[
+        f-g=f+(-1)g.
+    \]
+    Assim,
+    \[
+        \lim_{x\to p}(f-g)(x)
+        =
+        L+(-1)S
+        =
+        L-S.
+    \]
+\end{proof}
+
+\begin{corollary}\index{continuidade!soma}\index{continuidade!diferença}\index{continuidade!multiplicação por escalar}
+    Sejam $A\subseteq M$ um subespaço de um espaço métrico $(M,d_M)$ e sejam $f,g:A\to\mathbb R^m$ funções.
+
+    Se $f$ e $g$ são contínuas em $p\in A$, então $f+g$ e $f-g$ são contínuas em $p$.
+
+    Além disso, para todo $\lambda\in\mathbb R$, se $f$ é contínua em $p$, então $\lambda f$ é contínua em $p$.
+
+    Consequentemente, se $f$ e $g$ são contínuas, então $f+g$ e $f-g$ são contínuas; e, para todo $\lambda\in\mathbb R$, $\lambda f$ é contínua.
+\end{corollary}
+
+\begin{proof}
+    Se $p$ é ponto isolado de $A$, todas as funções com domínio $A$ são contínuas em $p$.
+
+    Suponha, então, que $p$ é ponto de acumulação de $A$.
+    Como $f$ e $g$ são contínuas em $p$, temos
+    \[
+        \lim_{x\to p} f(x)=f(p)
+        \qquad\text{e}\qquad
+        \lim_{x\to p} g(x)=g(p).
+    \]
+    Pela proposição anterior,
+    \[
+        \lim_{x\to p}(f+g)(x)=f(p)+g(p)=(f+g)(p),
+    \]
+    \[
+        \lim_{x\to p}(f-g)(x)=f(p)-g(p)=(f-g)(p),
+    \]
+    e
+    \[
+        \lim_{x\to p}(\lambda f)(x)=\lambda f(p)=(\lambda f)(p).
+    \]
+    Logo, $f+g$, $f-g$ e $\lambda f$ são contínuas em $p$.
+
+    A afirmação global segue aplicando o resultado ponto a ponto.
+\end{proof}
+
+\begin{example}
+    Seja $F:\mathbb R^2\to\mathbb R^2$ dada por
+    \[
+        F(x,y)=(x,y)+(y,x).
+    \]
+    A primeira parcela é a função identidade de $\mathbb R^2$, e a segunda parcela é a função $G(x,y)=(y,x)$, cujas coordenadas são projeções.
+    Portanto, ambas são contínuas.
+    Assim, $F$ é contínua.
+
+    Naturalmente, simplificando a expressão, temos
+    \[
+        F(x,y)=(x+y,x+y).
+    \]
+\end{example}
+
+\begin{lemma}\index{limite!limitação local}
+    Sejam:
+    \begin{itemize}
+        \item $(M,d_M)$ um espaço métrico,
+        \item $A\subseteq M$ um subespaço,
+        \item $f:A\to\mathbb R$ uma função,
+        \item $p\in M$ um ponto de acumulação de $A$, e
+        \item $L\in\mathbb R$.
+    \end{itemize}
+
+    Se $\lim_{x\to p}f(x)=L$, então $f$ é limitada em alguma vizinhança perfurada de $p$.
+
+    Mais precisamente, existem $\rho>0$ e $C>0$ tais que, para todo $x\in A\setminus\{p\}$,
+    \[
+        d_M(x,p)<\rho
+        \quad\Longrightarrow\quad
+        |f(x)|\leq C.
+    \]
+\end{lemma}
+
+\begin{proof}
+    Apliquemos a definição de limite com margem de erro igual a $1$.
+    Existe $\rho>0$ tal que, para todo $x\in A\setminus\{p\}$,
+    \[
+        \text{se }d_M(x,p)<\rho,\text{ então } |f(x)-L|<1.
+    \]
+
+    Para tais $x$, temos:
+    \[
+        |f(x)|
+        =
+        |f(x)-L+L|
+        \leq
+        |f(x)-L|+|L|
+        <
+        1+|L|.
+    \]
+
+    Portanto, podemos tomar $C=1+|L|$.
+\end{proof}
+
+\begin{proposition}\index{limite!produto}
+    Sejam:
+    \begin{itemize}
+        \item $(M,d_M)$ um espaço métrico,
+        \item $A\subseteq M$ um subespaço,
+        \item $f,g:A\to\mathbb R$ funções,
+        \item $p\in M$ um ponto de acumulação de $A$, e
+        \item $L,S\in\mathbb R$.
+    \end{itemize}
+
+    Se
+    \[
+        \lim_{x\to p}f(x)=L
+        \qquad\text{e}\qquad
+        \lim_{x\to p}g(x)=S,
+    \]
+    então
+    \[
+        \lim_{x\to p}(fg)(x)=LS.
+    \]
+\end{proposition}
+
+\begin{proof}
+    Pelo lema anterior, existem $\rho>0$ e $C>0$ tais que, para todo $x\in A\setminus\{p\}$,
+    \[
+        d_M(x,p)<\rho
+        \quad\Longrightarrow\quad
+        |f(x)|\leq C.
+    \]
+
+    Fixe $\epsilon>0$.
+
+    Como $L$ é limite de $f$ em $p$, existe $\delta_f>0$ tal que, para todo $x\in A\setminus\{p\}$,
+    \[
+        \text{se }d_M(x,p)<\delta_f,\text{ então } |f(x)-L|<\frac{\epsilon}{2(|S|+1)}.
+    \]
+
+    Como $S$ é limite de $g$ em $p$, existe $\delta_g>0$ tal que, para todo $x\in A\setminus\{p\}$,
+    \[
+        \text{se }d_M(x,p)<\delta_g,\text{ então } |g(x)-S|<\frac{\epsilon}{2C}.
+    \]
+
+    Tome $\delta=\min\{\rho,\delta_f,\delta_g\}$.
+    Se $x\in A\setminus\{p\}$ e $d_M(x,p)<\delta$, então:
+    \begin{align*}
+        |(fg)(x)-LS|
+        &=
+        |f(x)g(x)-LS|\\
+        &=
+        |f(x)g(x)-f(x)S+f(x)S-LS|\\
+        &=
+        |f(x)(g(x)-S)+S(f(x)-L)|\\
+        &\leq
+        |f(x)|\,|g(x)-S|+|S|\,|f(x)-L|\\
+        &<
+        C\frac{\epsilon}{2C}
+        +
+        |S|\frac{\epsilon}{2(|S|+1)}\\
+        &<
+        \frac{\epsilon}{2}+\frac{\epsilon}{2}
+        =
+        \epsilon.
+    \end{align*}
+
+    Logo, $\lim_{x\to p}(fg)(x)=LS$.
+\end{proof}
+
+\begin{corollary}\index{continuidade!produto}
+    Sejam $A\subseteq M$ um subespaço de um espaço métrico $(M,d_M)$ e sejam $f,g:A\to\mathbb R$ funções.
+
+    Se $f$ e $g$ são contínuas em $p\in A$, então $fg$ é contínua em $p$.
+
+    Consequentemente, se $f$ e $g$ são contínuas, então $fg$ é contínua.
+\end{corollary}
+
+\begin{proof}
+    Se $p$ é ponto isolado de $A$, então $fg$ é contínua em $p$.
+
+    Suponha que $p$ é ponto de acumulação de $A$.
+    Como $f$ e $g$ são contínuas em $p$, temos
+    \[
+        \lim_{x\to p}f(x)=f(p)
+        \qquad\text{e}\qquad
+        \lim_{x\to p}g(x)=g(p).
+    \]
+    Pela proposição anterior,
+    \[
+        \lim_{x\to p}(fg)(x)=f(p)g(p)=(fg)(p).
+    \]
+    Portanto, $fg$ é contínua em $p$.
+
+    A afirmação global segue aplicando o resultado em cada ponto do domínio.
+\end{proof}
+
+\begin{example}
+    A função $P:\mathbb R^3\to\mathbb R$ dada por
+    \[
+        P(x,y,z)=3x^2yz-7xz+5
+    \]
+    é contínua.
+
+    De fato, as funções $(x,y,z)\mapsto x$, $(x,y,z)\mapsto y$ e $(x,y,z)\mapsto z$ são projeções, portanto contínuas.
+    Produtos, multiplicações por escalares e somas preservam continuidade.
+    Logo, $P$ é contínua.
+\end{example}
+
+\begin{proposition}\index{limite!inversa multiplicativa}
+    Sejam:
+    \begin{itemize}
+        \item $(M,d_M)$ um espaço métrico,
+        \item $A\subseteq M$ um subespaço,
+        \item $f:A\to\mathbb R$ uma função,
+        \item $p\in M$ um ponto de acumulação de $A$, e
+        \item $L\in\mathbb R\setminus\{0\}$.
+    \end{itemize}
+
+    Suponha que
+    \[
+        \lim_{x\to p}f(x)=L.
+    \]
+
+    Seja
+    \[
+        B=\{x\in A:f(x)\neq 0\}.
+    \]
+
+    Então $p$ é ponto de acumulação de $B$ e
+    \[
+        \lim_{x\to p}\frac{1}{f(x)}=\frac{1}{L},
+    \]
+    onde $\frac{1}{f}$ é vista como função de $B$ em $\mathbb R$.
+\end{proposition}
+
+\begin{proof}
+    Como $L\neq 0$, temos $\frac{|L|}{2}>0$.
+    Pela hipótese de limite, existe $\rho>0$ tal que, para todo $x\in A\setminus\{p\}$,
+    \[
+        \text{se }d_M(x,p)<\rho,\text{ então } |f(x)-L|<\frac{|L|}{2}.
+    \]
+
+    Para tais $x$, temos
+    \[
+        |f(x)|
+        =
+        |L+(f(x)-L)|
+        \geq
+        |L|-|f(x)-L|
+        >
+        |L|-\frac{|L|}{2}
+        =
+        \frac{|L|}{2}.
+    \]
+    Em particular, $f(x)\neq 0$.
+    Portanto, todo ponto de $A\setminus\{p\}$ suficientemente próximo de $p$ pertence a $B$.
+    Como $p$ é ponto de acumulação de $A$, segue que $p$ também é ponto de acumulação de $B$.
+
+    Fixe agora $\epsilon>0$.
+    Como $L$ é limite de $f$ em $p$, existe $\delta_1>0$ tal que, para todo $x\in A\setminus\{p\}$,
+    \[
+        \text{se }d_M(x,p)<\delta_1,\text{ então }
+        |f(x)-L|<\frac{\epsilon |L|^2}{2}.
+    \]
+
+    Tome $\delta=\min\{\rho,\delta_1\}$.
+    Se $x\in B\setminus\{p\}$ e $d_M(x,p)<\delta$, então $x\in A\setminus\{p\}$, $|f(x)|>\frac{|L|}{2}$ e:
+    \[
+        \left|\frac{1}{f(x)}-\frac{1}{L}\right|
+        =
+        \left|\frac{L-f(x)}{f(x)L}\right|
+        =
+        \frac{|f(x)-L|}{|f(x)|\,|L|}
+        <
+        \frac{|f(x)-L|}{\frac{|L|}{2}|L|}
+        =
+        \frac{2|f(x)-L|}{|L|^2}
+        <
+        \epsilon.
+    \]
+
+    Logo,
+    \[
+        \lim_{x\to p}\frac{1}{f(x)}=\frac{1}{L}.
+    \]
+\end{proof}
+
+\begin{corollary}\index{limite!quociente}
+    Sejam:
+    \begin{itemize}
+        \item $(M,d_M)$ um espaço métrico,
+        \item $A\subseteq M$ um subespaço,
+        \item $f,g:A\to\mathbb R$ funções,
+        \item $p\in M$ um ponto de acumulação de $A$, e
+        \item $L,S\in\mathbb R$, com $S\neq 0$.
+    \end{itemize}
+
+    Se
+    \[
+        \lim_{x\to p}f(x)=L
+        \qquad\text{e}\qquad
+        \lim_{x\to p}g(x)=S,
+    \]
+    então, pondo
+    \[
+        B=\{x\in A:g(x)\neq 0\},
+    \]
+    temos que $p$ é ponto de acumulação de $B$ e
+    \[
+        \lim_{x\to p}\frac{f(x)}{g(x)}=\frac{L}{S},
+    \]
+    onde $\frac{f}{g}$ é vista como função de $B$ em $\mathbb R$.
+\end{corollary}
+
+\begin{proof}
+    Pela proposição anterior aplicada a $g$, temos que $p$ é ponto de acumulação de $B$ e
+    \[
+        \lim_{x\to p}\frac{1}{g(x)}=\frac{1}{S}.
+    \]
+
+    Além disso, como $B\subseteq A$, a mesma escolha de $\delta$ que mostra que $f(x)$ se aproxima de $L$ para $x\in A\setminus\{p\}$ também mostra que $f(x)$ se aproxima de $L$ para $x\in B\setminus\{p\}$.
+    Assim,
+    \[
+        \lim_{x\to p} f(x)=L
+    \]
+    quando $f$ é considerada apenas no domínio $B$.
+
+    Aplicando a regra do produto no domínio $B$, obtemos:
+    \[
+        \lim_{x\to p}\frac{f(x)}{g(x)}
+        =
+        \lim_{x\to p}\left(f(x)\frac{1}{g(x)}\right)
+        =
+        L\frac{1}{S}
+        =
+        \frac{L}{S}.
+    \]
+\end{proof}
+
+\begin{corollary}\index{continuidade!inversa multiplicativa}\index{continuidade!quociente}
+    Sejam $A\subseteq M$ um subespaço de um espaço métrico $(M,d_M)$ e sejam $f,g:A\to\mathbb R$ funções.
+
+    \begin{enumerate}[label=(\alph*)]
+        \item Se $f$ é contínua em $p\in A$ e $f(p)\neq 0$, então $\frac{1}{f}$ é contínua em $p$, quando considerada no domínio $\{x\in A:f(x)\neq 0\}$.
+        \item Se $f$ e $g$ são contínuas em $p\in A$ e $g(p)\neq 0$, então $\frac{f}{g}$ é contínua em $p$, quando considerada no domínio $\{x\in A:g(x)\neq 0\}$.
+    \end{enumerate}
+
+    Consequentemente, se $g(x)\neq 0$ para todo $x\in A$ e $f,g$ são contínuas, então $\frac{f}{g}:A\to\mathbb R$ é contínua.
+\end{corollary}
+
+\begin{proof}
+    Provemos o item (a).
+    Seja $B=\{x\in A:f(x)\neq 0\}$.
+    Como $f(p)\neq 0$, temos $p\in B$.
+
+    Se $p$ é ponto isolado de $B$, então $\frac{1}{f}$ é contínua em $p$.
+
+    Suponha que $p$ é ponto de acumulação de $B$.
+    Como $f$ é contínua em $p$, temos
+    \[
+        \lim_{x\to p} f(x)=f(p).
+    \]
+    Pelo resultado sobre inversas, considerando $f$ restrita a $B$, temos
+    \[
+        \lim_{x\to p}\frac{1}{f(x)}=\frac{1}{f(p)}.
+    \]
+    Como $\frac{1}{f}(p)=\frac{1}{f(p)}$, segue que $\frac{1}{f}$ é contínua em $p$.
+
+    O item (b) segue do item (a) e da continuidade de produtos:
+    \[
+        \frac{f}{g}=f\frac{1}{g}.
+    \]
+
+    A afirmação global segue aplicando o item (b) em cada ponto de $A$.
+\end{proof}
+
+\begin{example}
+    Seja $R:\mathbb R^2\setminus\{(x,y):x^2+y^2=1\}\to\mathbb R$ dada por
+    \[
+        R(x,y)=\frac{x^2+y}{x^2+y^2-1}.
+    \]
+
+    O numerador e o denominador são funções polinomiais, logo contínuas.
+    No domínio indicado, o denominador nunca se anula.
+    Portanto, $R$ é contínua.
+\end{example}
+
+\begin{corollary}\index{função polinomial}\index{continuidade!função polinomial}
+    Toda função polinomial $P:\mathbb R^n\to\mathbb R$ é contínua.
+\end{corollary}
+
+\begin{proof}
+    Uma função polinomial é obtida a partir de funções constantes e projeções por um número finito de somas, produtos e multiplicações por escalares.
+    Funções constantes e projeções são contínuas.
+    Como as operações acima preservam continuidade, toda função polinomial é contínua.
+\end{proof}
+
+\begin{corollary}\index{função racional}\index{continuidade!função racional}
+    Se $P,Q:\mathbb R^n\to\mathbb R$ são funções polinomiais e
+    \[
+        D=\{x\in\mathbb R^n:Q(x)\neq 0\},
+    \]
+    então a função racional $\frac{P}{Q}:D\to\mathbb R$ é contínua.
+\end{corollary}
+
+\begin{proof}
+    Pelo corolário anterior, $P$ e $Q$ são contínuas.
+    No domínio $D$, o denominador $Q$ não se anula.
+    Portanto, o quociente $\frac{P}{Q}$ é contínuo em $D$.
+\end{proof}
+
+\section*{Exercícios}
+
+\begin{exercise}
+    Calcule os limites abaixo, justificando com as regras de operações.
+    \begin{enumerate}[label=(\alph*)]
+        \item $\displaystyle \lim_{(x,y)\to(1,2)}(x^2y+3x-4y)$.
+        \item $\displaystyle \lim_{(x,y,z)\to(0,1,-1)}(xz+y^2)$.
+        \item $\displaystyle \lim_{(x,y)\to(2,1)}\frac{x^2+y}{x-y}$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Seja $f:\mathbb R^2\to\mathbb R^3$ dada por
+    \[
+        f(x,y)=(x^2+y,\ xy,\ 3x-y).
+    \]
+    Mostre que $f$ é contínua.
+\end{exercise}
+
+\begin{exercise}
+    Determine o conjunto dos pontos de continuidade da função $f:\mathbb R^2\setminus\{(0,0)\}\to\mathbb R$ dada por
+    \[
+        f(x,y)=\frac{x-y}{x^2+y^2}.
+    \]
+\end{exercise}
+
+\begin{exercise}
+    Seja $A\subseteq M$ um subespaço de um espaço métrico e sejam $f,g:A\to\mathbb R$ funções contínuas.
+    Mostre que a função $h:A\to\mathbb R^2$ dada por
+    \[
+        h(x)=(f(x)+g(x), f(x)g(x))
+    \]
+    é contínua.
+\end{exercise}
+
+\begin{exercise}
+    Seja $f:A\to\mathbb R$ uma função e seja $p$ um ponto de acumulação de $A$.
+    Suponha que $\lim_{x\to p}f(x)=L$.
+    Mostre diretamente da definição que
+    \[
+        \lim_{x\to p}|f(x)|=|L|.
+    \]
+\end{exercise}
