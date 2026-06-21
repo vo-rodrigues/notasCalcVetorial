@@ -3,9 +3,6 @@
 Na seção anterior, vimos que uma função a valores em $\mathbb R^m$ pode ser estudada coordenada a coordenada.
 Agora veremos que as operações algébricas usuais também se comportam bem com limites e continuidade.
 
-A ideia central desta seção é simples: se duas funções se aproximam de certos valores, então a soma se aproxima da soma desses valores.
-Quando as funções são reais, o mesmo vale para produtos, inversos e quocientes, desde que as expressões estejam definidas.
-
 \begin{proposition}\index{limite!soma}\index{limite!diferença}\index{limite!multiplicação por escalar}
     Sejam:
     \begin{itemize}
@@ -32,17 +29,17 @@ Quando as funções são reais, o mesmo vale para produtos, inversos e quociente
 \end{proposition}
 
 \begin{proof}
-    Comecemos pela soma.
-    Fixe $\epsilon>0$.
+    (a) Fixe $\epsilon>0$.
+    Temporariamente, fixemos $\bar \epsilon>0$ arbitrário.
 
     Como $L$ é limite de $f$ em $p$, existe $\delta_f>0$ tal que, para todo $x\in A\setminus\{p\}$,
     \[
-        \text{se }d_M(x,p)<\delta_f,\text{ então }d(f(x),L)<\frac{\epsilon}{2}.
+        \text{se }d_M(x,p)<\delta_f,\text{ então }d(f(x),L)<\bar \epsilon.
     \]
 
     Analogamente, como $S$ é limite de $g$ em $p$, existe $\delta_g>0$ tal que, para todo $x\in A\setminus\{p\}$,
     \[
-        \text{se }d_M(x,p)<\delta_g,\text{ então }d(g(x),S)<\frac{\epsilon}{2}.
+        \text{se }d_M(x,p)<\delta_g,\text{ então }d(g(x),S)<\bar \epsilon.
     \]
 
     Tome $\delta=\min\{\delta_f,\delta_g\}$.
@@ -53,18 +50,27 @@ Quando as funções são reais, o mesmo vale para produtos, inversos e quociente
         &=\|(f(x)-L)+(g(x)-S)\|\\
         &\leq \|f(x)-L\|+\|g(x)-S\|\\
         &=d(f(x),L)+d(g(x),S)\\
-        &<\frac{\epsilon}{2}+\frac{\epsilon}{2}
-        =\epsilon.
+        &<\bar \epsilon+\bar \epsilon
+        =2\bar \epsilon.
     \end{align*}
+
+    Portanto, escolhendo de partida $\bar \epsilon=\frac{\epsilon}{2}$, temos, nessas condições, que
+    \[
+            d((f+g)(x),L+S)<2\bar \epsilon=2\frac{\epsilon}{2}=\epsilon.
+    \]
     Logo, $\lim_{x\to p}(f+g)(x)=L+S$.
+    
+    \medskip
 
-    Para a multiplicação por escalar, se $\lambda=0$, então $\lambda f$ é a função constante igual a $0$, e o limite é $0=\lambda L$.
-
+    (b) Se $\lambda=0$, então $\lambda f$ é a função constante igual a $0$, e o limite é $0=\lambda L$.
     Suponha, então, que $\lambda\neq 0$.
+
     Fixe $\epsilon>0$.
+    Temporariamente, fixemos $\bar \epsilon>0$ arbitrário.
+
     Como $L$ é limite de $f$ em $p$, existe $\delta>0$ tal que, para todo $x\in A\setminus\{p\}$,
     \[
-        \text{se }d_M(x,p)<\delta,\text{ então }d(f(x),L)<\frac{\epsilon}{|\lambda|}.
+        \text{se }d_M(x,p)<\delta,\text{ então }d(f(x),L)<\bar \epsilon.
     \]
     Assim, se $x\in A\setminus\{p\}$ e $d_M(x,p)<\delta$, então
     \[
@@ -74,13 +80,17 @@ Quando as funções são reais, o mesmo vale para produtos, inversos e quociente
         =
         |\lambda|\|f(x)-L\|
         <
-        |\lambda|\frac{\epsilon}{|\lambda|}
-        =
-        \epsilon.
+        |\lambda|\bar \epsilon.
     \]
+
+    Portanto, escolhendo de partida $\bar \epsilon=\frac{\epsilon}{|\lambda|}$, temos, nessas condições, que
+    \[
+        d((\lambda f)(x),\lambda L)<|\lambda|\bar \epsilon=|\lambda|\frac{\epsilon}{|\lambda|}=\epsilon.
+    \]
+
     Portanto, $\lim_{x\to p}(\lambda f)(x)=\lambda L$.
 
-    Por fim, a diferença é consequência dos dois itens já provados, pois
+    (c) Este item é consequência dos dois itens já provados, pois
     \[
         f-g=f+(-1)g.
     \]
@@ -95,11 +105,15 @@ Quando as funções são reais, o mesmo vale para produtos, inversos e quociente
 \end{proof}
 
 \begin{corollary}\index{continuidade!soma}\index{continuidade!diferença}\index{continuidade!multiplicação por escalar}
-    Sejam $A\subseteq M$ um subespaço de um espaço métrico $(M,d_M)$ e sejam $f,g:A\to\mathbb R^m$ funções.
+    Sejam:
+    \begin{itemize}
+        \item $(M,d_M)$ um espaço métrico,
+        \item $f,g:M\to\mathbb R^m$ funções,
+        \item $p\in M$, e
+        \item $\lambda\in\mathbb R$.
+    \end{itemize}
 
-    Se $f$ e $g$ são contínuas em $p\in A$, então $f+g$ e $f-g$ são contínuas em $p$.
-
-    Além disso, para todo $\lambda\in\mathbb R$, se $f$ é contínua em $p$, então $\lambda f$ é contínua em $p$.
+    Se $f$ e $g$ são contínuas em $p$, então $f+g$ e $f-g$ são contínuas em $p$.
 
     Consequentemente, se $f$ e $g$ são contínuas, então $f+g$ e $f-g$ são contínuas; e, para todo $\lambda\in\mathbb R$, $\lambda f$ é contínua.
 \end{corollary}
@@ -127,22 +141,25 @@ Quando as funções são reais, o mesmo vale para produtos, inversos e quociente
     \]
     Logo, $f+g$, $f-g$ e $\lambda f$ são contínuas em $p$.
 
-    A afirmação global segue aplicando o resultado ponto a ponto.
+    A afirmação final segue aplicando o resultado ponto a ponto.
 \end{proof}
+
+\begin{example}
+    Seja $f:\mathbb R^2\to\mathbb R$ dada por
+    \[
+        F(x,y)=x+2y
+    \]
+    $F$ é contínua, pois é a soma da projeção $(x,y)\mapsto x$ com a multiplicação por escalar $2$ da projeção $(x,y)\mapsto y$.
+\end{example}
 
 \begin{example}
     Seja $F:\mathbb R^2\to\mathbb R^2$ dada por
     \[
-        F(x,y)=(x,y)+(y,x).
+        F(x,y)=(x+y,x-y).
     \]
-    A primeira parcela é a função identidade de $\mathbb R^2$, e a segunda parcela é a função $G(x,y)=(y,x)$, cujas coordenadas são projeções.
-    Portanto, ambas são contínuas.
-    Assim, $F$ é contínua.
 
-    Naturalmente, simplificando a expressão, temos
-    \[
-        F(x,y)=(x+y,x+y).
-    \]
+    Suas funções coordenadas são $F_1(x,y)=x+y$ e $F_2(x,y)=x-y$.
+    Ambas são contínuas, pois são somas ou diferenças de projeções, que são contínuas.    
 \end{example}
 
 \begin{lemma}\index{limite!limitação local}
