@@ -1,15 +1,15 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
+from formatadorTicks import formatter_oculta_tick_central
 
-
-x = np.linspace(-20, 20, 300)
-y = np.linspace(-20, 20, 300)
+x = np.linspace(-22, 22, 300)
+y = np.linspace(-22, 22, 300)
 X, Y = np.meshgrid(x, y)
 
-Z = X + Y
+Z = X**2 + Y**2
 
-fig = plt.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(8, 6))
 
 ax = fig.add_subplot(111, projection="3d")
 
@@ -23,18 +23,20 @@ surf = ax.plot_surface(
     ccount=300
 )
 # Ajusta a proporção visual dos eixos
-ax.set_box_aspect((1, 1, .9))
+ax.set_box_aspect((1, 1, 1))
 
-fig.colorbar(surf, ax=ax, shrink=0.6, pad=0.1)
+ax.view_init(elev=15, azim=60)
 
-ax.view_init(elev=25, azim=-45)
-
-ax.set_xlabel(r"$x$", fontsize=12, labelpad=0)
-ax.set_ylabel(r"$y$", fontsize=12, labelpad=0)
-ax.set_zlabel(r"$z$", fontsize=12, labelpad=0)
+ax.tick_params(axis="x", labelsize=8, pad=-5)
+ax.tick_params(axis="y", labelsize=8, pad=-5)
+ax.tick_params(axis="z", labelsize=8, pad=0)
+ax.set_xlabel(r"$x$", fontsize=11, labelpad=-16)
+ax.set_ylabel(r"$y$", fontsize=11, labelpad=-16)
 ax.xaxis.set_major_locator(MultipleLocator(10))
+ax.xaxis.set_major_formatter(formatter_oculta_tick_central(ax.xaxis))
 ax.yaxis.set_major_locator(MultipleLocator(10))
-ax.zaxis.set_major_locator(MultipleLocator(10))
+ax.yaxis.set_major_formatter(formatter_oculta_tick_central(ax.yaxis))
+ax.zaxis.set_major_locator(MultipleLocator(200))
 
 from pathlib import Path
 
@@ -42,7 +44,7 @@ from pathlib import Path
 script_dir = Path(__file__).resolve().parent
 
 # Caminho relativo à pasta do script
-saida = script_dir / "../mainmatter/introducao/funcoesRn/planoXpY.png"
+saida = script_dir / "../mainmatter/introducao/funcoesRn/paraboloide.jpg"
 saida = saida.resolve()
 
 # Cria a pasta, se ela não existir
@@ -53,5 +55,5 @@ fig.savefig(
     dpi=300,
     bbox_inches="tight",
     pad_inches=0.05,
-    pil_kwargs={"optimize": True, "compress_level": 9}
+    pil_kwargs={"optimize": True, "quality": 95}
 )
