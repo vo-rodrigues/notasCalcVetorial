@@ -1,0 +1,256 @@
+\section{Conjuntos Limitados}
+
+Uma noção simples, mas muito útil, é a de \emph{conjuntos limitados}.
+A noção de conjunto limitado corresponde a um conjunto que cabe em uma bola.
+
+\begin{definition}\index{conjunto limitado}\index{limitado!conjunto}
+    Seja $(M,d)$ um espaço métrico e seja $A\subseteq M$.
+    Dizemos que $A$ é \emph{limitado} se $A=\emptyset$ ou existem $p\in M$ e $R>0$ tais que
+    \[
+        A\subseteq B_M[p,R].
+    \]
+\end{definition}
+
+Assim, um conjunto é limitado quando todos os seus pontos ficam a uma distância uniformemente controlada de algum ponto do espaço.
+O ponto escolhido como centro da bola não é essencial, como veremos na Proposição~\ref{prop:centroConjuntoLimitado}.
+
+\begin{example}
+    Em $\mathbb R$, com a distância euclidiana, os intervalos $[0,1]$, $]0,1[$ e $[-2,3]$ são limitados.
+    De fato, todos eles estão contidos em $B_{\mathbb R}[0,3]=[-3,3]$.
+\end{example}
+
+\begin{example}
+    $\mathbb R^n$ é ilimitado em $\mathbb R^n$.
+    De fato, dada qualquer bola fechada $B[p,R]$, seja $x=(z, 0, \dots, 0)$, em que $z$ é um número real tal que $z > R + \|p\|$.
+    Escreva $p=(p_1, \dots, p_n)$.
+    Então $x\in\mathbb R^n$, mas $x\notin B[p,R]$, pois
+    \[
+        d(x,p)=\|x-p\|
+        =\sqrt{(z-p_1)^2+p_2^2+\cdots+p_n^2}
+        \geq |z-p_1|=z-p_1>R.
+    \]
+\end{example}
+
+\begin{example}
+    Em $\mathbb R^2$, o quadrado $[0,1]^2$ é limitado.
+    De fato, se $(x,y)\in[0,1]^2$, então
+    \[
+        \|(x,y)\|\leq \sqrt{1^2+1^2}=\sqrt2.
+    \]
+    Logo, $[0,1]^2\subseteq B_{\mathbb R^2}[(0,0),\sqrt2]$.
+\end{example}
+
+A proposição abaixo mostra que, se um conjunto é limitado, então ele está contido em uma bola com centro em qualquer ponto do espaço a nossa escolha.
+
+\begin{proposition}\index{conjunto limitado!centro da bola}\label{prop:centroConjuntoLimitado}
+    Seja $(M,d)$ um espaço métrico e seja $A\subseteq M$ limitado.
+    Então, para todo $q\in M$, existe $S>0$ tal que
+    \[
+        A\subseteq B_M[q,S].
+    \]
+\end{proposition}
+
+\begin{proof}
+    Fixe $q$ como no enunciado.
+    
+    Se $A$ é vazio, note que $A\subseteq B_M[q,1]$.
+    Caso contrário, existem $p\in M$ e $R>0$ tais que
+    \[
+        A\subseteq B_M[p,R].
+    \]
+    Tome $S=d(q,p)+R$.
+    Se $x\in A$, então $d(x,p)\leq R$.
+    Pela desigualdade triangular,
+    \[
+        d(x,q)\leq d(x,p)+d(p,q)\leq R+d(p,q)=S.
+    \]
+    Portanto, $A\subseteq B_M[q,S]$.
+\end{proof}
+
+\subimport{conjuntosLimitados}{centroConjuntoLimitado}
+
+\begin{corollary}\label{cor:limitadoRnNorma}
+    Seja $A\subseteq\mathbb R^n$, com a distância euclidiana.
+    Então $A$ é limitado se, e somente se, existe $C>0$ tal que, para todo $x\in A$,
+    \[
+        \|x\|\leq C.
+    \]
+\end{corollary}
+
+\begin{proof}
+    Se $A$ é limitado, pela Proposição~\ref{prop:centroConjuntoLimitado}, aplicada com centro $0\in\mathbb R^n$, existe $C>0$ tal que
+    \[
+        A\subseteq B_{\mathbb R^n}[0,C].
+    \]
+    Logo, $\|x\|\leq C$ para todo $x\in A$.
+
+    Reciprocamente, se existe $C>0$ tal que $\|x\|\leq C$ para todo $x\in A$, então $A\subseteq B_{\mathbb R^n}[0,C]$, e, portanto, $A$ é limitado.
+\end{proof}
+
+No caso particular de subconjuntos de $\mathbb R$, com a distância usual, essa noção coincide com a noção de limitado estudada no Capítulo 1: um conjunto $A\subseteq\mathbb R$ é limitado, no sentido métrico, se, e somente se, existem $m,M\in\mathbb R$ tais que
+\[
+    m\leq x\leq M
+\]
+para todo $x\in A$.
+De fato, se $A\subseteq\mathbb R$ é limitado no sentido métrico, então existem $p\in\mathbb R$ e $R>0$ tais que
+\[
+    A\subseteq B_{\mathbb R}[p,R]=[p-R,p+R].
+\]
+Logo, $A$ é limitado inferiormente por $p-R$ e limitado superiormente por $p+R$.
+Reciprocamente, se existem $m,M\in\mathbb R$ tais que
+\[
+    m\leq x\leq M
+\]
+para todo $x\in A$.
+Então, para todo $x\in A$, temos que $|x|\leq \max\{|m|,|M|\}+1$.
+Logo, $A$ é limitado no sentido métrico.
+
+\begin{proposition}\index{conjunto limitado!propriedades}
+    Seja $(M,d)$ um espaço métrico.
+    \begin{enumerate}[label=(\roman*)]
+        \item Toda bola aberta ou fechada de $M$ é limitada.
+        \item Todo subconjunto de um conjunto limitado é limitado.
+        \item Uma união finita de conjuntos limitados é limitada.
+        \item Todo subconjunto finito de $M$ é limitado.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    Para o item (i), sejam $p\in M$ e $R>0$.
+    Temos:
+    \[
+        B_M(p,R)\subseteq B_M[p,R]
+        \qquad\text{e}\qquad
+        B_M[p,R]\subseteq B_M[p,R].
+    \]
+    Logo, ambas as bolas estão contidas em uma bola fechada.
+
+    Para o item (ii), suponha que $A\subseteq B$ e que $B$ é limitado.
+    Se $B=\emptyset$, então $A=\emptyset$, e, portanto, $A$ é limitado.
+    Caso contrário, existem $p\in M$ e $R>0$ tais que $B\subseteq B_M[p,R]$.
+    Daí, $A\subseteq B_M[p,R]$, e $A$ é limitado.
+
+    Para o item (iii), primeiro note que a união vazia é, por definição, o conjunto vazio, que é limitado.
+    Assim, podemos supor que nossa união é de uma coleção finita não vazia de conjuntos.
+    Sejam $A_1, \dots, A_k$ conjuntos limitados.
+    Se $M=\emptyset$, então $A_1=\cdots=A_k=\emptyset$, e $A_1\cup\cdots\cup A_k=\emptyset$ é limitado.
+    Caso contrário, seja $p\in M$.
+    Pela Proposição~\ref{prop:centroConjuntoLimitado}, para cada $i\in\{1,\dots,k\}$, existe $R_i>0$ tal que
+    \[
+        A_i\subseteq B_M[p,R_i].
+    \]
+    Tome $R=\max\{R_1,\dots,R_k\}$.
+    Então $A_i\subseteq B_M[p,R]$ para todo $i$, e, portanto,
+    \[
+        A_1\cup\cdots\cup A_k\subseteq B_M[p,R].
+    \]
+    Assim, $A_1\cup\cdots\cup A_k$ é limitado.
+
+    O item (iv) segue do fato de que cada conjunto unitário $\{p\}$ é limitado, pois $\{p\}\subseteq B_M[p,1]$, e do item (iii), pois todo conjunto finito é uma união finita de conjuntos unitários.
+\end{proof}
+
+Agora iremos introduzir a noção de função limitada.
+
+\begin{definition}\index{função!limitada}\index{limitado!função}
+    Sejam:
+    \begin{itemize}
+        \item $A$ um conjunto,
+        \item $(N,d_N)$ um espaço métrico,
+        \item $f:A\to N$ uma função, e
+        \item $B\subseteq A$.
+    \end{itemize}
+
+    Dizemos que $f$ é \emph{limitada em $B$} se $f[B]$ é um subconjunto limitado de $N$.
+
+    Se $B=A$, dizemos simplesmente que $f$ é \emph{limitada}.
+\end{definition}
+
+No caso particular de funções a valores reais, a definição acima diz que $f:A\to\mathbb R$ é limitada em $B\subseteq A$ se, e somente se, existe $C>0$ tal que, para todo $x\in B$,
+\[
+    |f(x)|\leq C.
+\]
+
+Mais adiante, estudaremos limites em espaços métricos.
+Apesar da semelhança entre as palavras, ``ser limitada'' e ``ter limite'' são ideias diferentes: limitação significa que a imagem fica contida em alguma bola; limite descreve o comportamento da função quando os pontos do domínio se aproximam de um ponto.
+O leitor deve se atentar para não confundir os dois conceitos.
+
+\begin{example}
+    A função $f:\mathbb R^3\to\mathbb R$ dada por
+    \[
+        f(x,y,z)=\sin(x+y+z)+\cos(xy+z)
+    \]
+    é limitada.
+
+    De fato, para todo $(x,y,z)\in\mathbb R^3$,
+    \[
+        |f(x,y,z)|\leq |\sin(x+y+z)|+|\cos(xy+z)|\leq 1+1=2.
+    \]
+    Portanto, $f[\mathbb R^3]\subseteq B_{\mathbb R}[0,2]$.
+\end{example}
+
+\begin{example}
+    A função $h:\mathbb R\to\mathbb R^2$ dada por
+    \[
+        h(t)=(\cos t,\sin t)
+    \]
+    é limitada.
+    De fato, para todo $t\in\mathbb R$,
+    \[
+        \|h(t)\|=\sqrt{\cos^2 t+\sin^2 t}=1.
+    \]
+    Logo, $h[\mathbb R]\subseteq B_{\mathbb R^2}[(0,0),1]$.
+\end{example}
+
+\begin{example}
+    A função $g:\mathbb R\setminus\{0\}\to\mathbb R$ dada por
+    \[
+        g(x)=\frac{1}{x}
+    \]
+    não é limitada.
+    De fato, dado $C>0$, tome $x=\frac{1}{C+1}$.
+    Então $x\in\mathbb R\setminus\{0\}$ e
+    \[
+        |g(x)|=C+1>C.
+    \]
+
+    Por outro lado, $g$ é limitada em $[1,+\infty[$, pois
+    \[
+        g\bigl[[1,+\infty[\bigr] = ]0,1]\subseteq B_{\mathbb R}[0,1].
+    \]
+\end{example}
+
+\subsection*{Exercícios}
+
+\begin{exercise}
+    Dê um exemplo de um subconjunto de $\mathbb R^2$ que seja limitado, mas não seja aberto nem fechado.
+\end{exercise}
+
+\begin{exercise}
+    Seja $A\subseteq\mathbb R^n$ limitado e seja $v\in\mathbb R^n$.
+    Mostre que
+    \[
+        A+v=\{a+v:a\in A\}
+    \]
+    é limitado.
+\end{exercise}
+
+\begin{exercise}
+    Seja $A\subseteq\mathbb R^n$ limitado e seja $\lambda \in \mathbb R$.
+    Mostre que
+    \[
+        \lambda A=\{\lambda a:a\in A\}
+    \]
+    é limitado.
+\end{exercise}
+
+\begin{exercise}
+    Em cada item, decida se a função dada é limitada.
+    Justifique sua resposta.
+
+    \begin{enumerate}[label=(\alph*)]
+        \item $f:]0,1[\to\mathbb R$, dada por $f(x)=\dfrac{1}{x}$.
+        \item $g:[1,+\infty[\to\mathbb R$, dada por $g(x)=\dfrac{1}{x}$.
+        \item $h:\mathbb R^2\to\mathbb R$, dada por $h(x,y)=x^2+y^2$.
+        \item $\gamma:\mathbb R\to\mathbb R^2$, dada por $\gamma(t)=(\cos t,\sin t)$.
+    \end{enumerate}
+\end{exercise}
