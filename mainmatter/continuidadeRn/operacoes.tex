@@ -62,7 +62,7 @@ Agora veremos que as operações algébricas usuais também se comportam bem com
     
     \medskip
 
-    (b) Se $\lambda=0$, então $\lambda f$ é a função constante igual a $0$, e o limite é $0=\lambda L$.
+    (c) Se $\lambda=0$, então $\lambda f$ é a função constante igual a $0$, e o limite é $0=\lambda L$.
     Suponha, então, que $\lambda\neq 0$.
 
     Fixe $\epsilon>0$.
@@ -90,7 +90,7 @@ Agora veremos que as operações algébricas usuais também se comportam bem com
 
     Portanto, $\lim_{x\to p}(\lambda f)(x)=\lambda L$.
 
-    (c) Este item é consequência dos dois itens já provados, pois
+    (b) Este item é consequência dos dois itens já provados, pois
     \[
         f-g=f+(-1)g.
     \]
@@ -113,15 +113,15 @@ Agora veremos que as operações algébricas usuais também se comportam bem com
         \item $\lambda\in\mathbb R$.
     \end{itemize}
 
-    Se $f$ e $g$ são contínuas em $p$, então $f+g$ e $f-g$ são contínuas em $p$.
+    Se $f$ e $g$ são contínuas em $p$, então $f+g$, $f-g$ e $\lambda f$ são contínuas em $p$.
 
     Consequentemente, se $f$ e $g$ são contínuas, então $f+g$ e $f-g$ são contínuas; e, para todo $\lambda\in\mathbb R$, $\lambda f$ é contínua.
 \end{corollary}
 
 \begin{proof}
-    Se $p$ é ponto isolado de $A$, todas as funções com domínio $A$ são contínuas em $p$.
+    Se $p$ é ponto isolado de $M$, todas as funções com domínio $M$ são contínuas em $p$.
 
-    Suponha, então, que $p$ é ponto de acumulação de $A$.
+    Suponha, então, que $p$ é ponto de acumulação de $M$.
     Como $f$ e $g$ são contínuas em $p$, temos
     \[
         \lim_{x\to p} f(x)=f(p)
@@ -147,9 +147,9 @@ Agora veremos que as operações algébricas usuais também se comportam bem com
 \begin{example}
     Seja $f:\mathbb R^2\to\mathbb R$ dada por
     \[
-        F(x,y)=x+2y
+        f(x,y)=x+2y.
     \]
-    $F$ é contínua, pois é a soma da projeção $(x,y)\mapsto x$ com a multiplicação por escalar $2$ da projeção $(x,y)\mapsto y$.
+    A função $f$ é contínua, pois é a soma da projeção $(x,y)\mapsto x$ com a multiplicação por escalar $2$ da projeção $(x,y)\mapsto y$.
 \end{example}
 
 \begin{example}
@@ -162,46 +162,14 @@ Agora veremos que as operações algébricas usuais também se comportam bem com
     Ambas são contínuas, pois são somas ou diferenças de projeções, que são contínuas.    
 \end{example}
 
-\begin{lemma}\index{limite!limitação local}
-    Sejam:
-    \begin{itemize}
-        \item $(M,d_M)$ um espaço métrico,
-        \item $A\subseteq M$ um subespaço,
-        \item $f:A\to\mathbb R$ uma função,
-        \item $p\in M$ um ponto de acumulação de $A$, e
-        \item $L\in\mathbb R$.
-    \end{itemize}
-
-    Se $\lim_{x\to p}f(x)=L$, então $f$ é limitada em alguma vizinhança perfurada de $p$.
-
-    Mais precisamente, existem $\rho>0$ e $C>0$ tais que, para todo $x\in A\setminus\{p\}$,
+\begin{example}
+    Seja $f:\mathbb R^2\to\mathbb R$ dada por
     \[
-        d_M(x,p)<\rho
-        \quad\Longrightarrow\quad
-        |f(x)|\leq C.
+        f(x,y)=\cos(x)+2y+e^y.
     \]
-\end{lemma}
-
-\begin{proof}
-    Apliquemos a definição de limite com margem de erro igual a $1$.
-    Existe $\rho>0$ tal que, para todo $x\in A\setminus\{p\}$,
-    \[
-        \text{se }d_M(x,p)<\rho,\text{ então } |f(x)-L|<1.
-    \]
-
-    Para tais $x$, temos:
-    \[
-        |f(x)|
-        =
-        |f(x)-L+L|
-        \leq
-        |f(x)-L|+|L|
-        <
-        1+|L|.
-    \]
-
-    Portanto, podemos tomar $C=1+|L|$.
-\end{proof}
+    A função $f$ é contínua, pois é uma soma de funções contínuas.
+    Cada parcela é contínua, pois é um múltiplo ou composição de funções contínuas.
+\end{example}
 
 \begin{proposition}\index{limite!produto}
     Sejam:
@@ -226,7 +194,7 @@ Agora veremos que as operações algébricas usuais também se comportam bem com
 \end{proposition}
 
 \begin{proof}
-    Pelo lema anterior, existem $\rho>0$ e $C>0$ tais que, para todo $x\in A\setminus\{p\}$,
+    Como $f$ possui limite em $p$, $f$ é limitada em alguma vizinhança de $p$, ou seja, existem $\rho>0$ e $C>0$ tais que, para todo $x\in A$,
     \[
         d_M(x,p)<\rho
         \quad\Longrightarrow\quad
@@ -234,15 +202,16 @@ Agora veremos que as operações algébricas usuais também se comportam bem com
     \]
 
     Fixe $\epsilon>0$.
+    Temporariamente, fixemos $\bar \epsilon_f>0$ e $\bar \epsilon_g>0$ arbitrários.
 
     Como $L$ é limite de $f$ em $p$, existe $\delta_f>0$ tal que, para todo $x\in A\setminus\{p\}$,
     \[
-        \text{se }d_M(x,p)<\delta_f,\text{ então } |f(x)-L|<\frac{\epsilon}{2(|S|+1)}.
+        \text{se }d_M(x,p)<\delta_f,\text{ então } |f(x)-L|<\bar \epsilon_f.
     \]
 
     Como $S$ é limite de $g$ em $p$, existe $\delta_g>0$ tal que, para todo $x\in A\setminus\{p\}$,
     \[
-        \text{se }d_M(x,p)<\delta_g,\text{ então } |g(x)-S|<\frac{\epsilon}{2C}.
+        \text{se }d_M(x,p)<\delta_g,\text{ então } |g(x)-S|<\bar \epsilon_g.
     \]
 
     Tome $\delta=\min\{\rho,\delta_f,\delta_g\}$.
@@ -258,16 +227,25 @@ Agora veremos que as operações algébricas usuais também se comportam bem com
         &\leq
         |f(x)|\,|g(x)-S|+|S|\,|f(x)-L|\\
         &<
-        C\frac{\epsilon}{2C}
+        C\bar \epsilon_g
         +
-        |S|\frac{\epsilon}{2(|S|+1)}\\
-        &<
+        |S|\bar \epsilon_f
+        .
+    \end{align*}
+
+    Se, de partida, escolhermos $\bar \epsilon_f$ e $\bar \epsilon_g$ tais que $C\bar \epsilon_g+|S|\bar \epsilon_f\leq\epsilon$, isso termina a demonstração de que $\lim_{x\to p}(fg)(x)=LS$.
+
+    Isso é possível: basta escolher, por exemplo, $\bar \epsilon_f=\frac{\epsilon}{2(|S|+1)}$ e $\bar \epsilon_g=\frac{\epsilon}{2C}$.
+    Assim:
+    \[
+        C\bar \epsilon_g+|S|\bar \epsilon_f
+        =
+        C\frac{\epsilon}{2C}+|S|\frac{\epsilon}{2(|S|+1)}
+        <
         \frac{\epsilon}{2}+\frac{\epsilon}{2}
         =
         \epsilon.
-    \end{align*}
-
-    Logo, $\lim_{x\to p}(fg)(x)=LS$.
+    \]
 \end{proof}
 
 \begin{corollary}\index{continuidade!produto}
@@ -294,22 +272,22 @@ Agora veremos que as operações algébricas usuais também se comportam bem com
     \]
     Portanto, $fg$ é contínua em $p$.
 
-    A afirmação global segue aplicando o resultado em cada ponto do domínio.
+    A afirmação final segue aplicando o resultado em cada ponto do domínio.
 \end{proof}
 
 \begin{example}
     A função $P:\mathbb R^3\to\mathbb R$ dada por
     \[
-        P(x,y,z)=3x^2yz-7xz+5
+        P(u,v,w)=3u^2vw-7uw+5
     \]
     é contínua.
 
-    De fato, as funções $(x,y,z)\mapsto x$, $(x,y,z)\mapsto y$ e $(x,y,z)\mapsto z$ são projeções, portanto contínuas.
+    De fato, as funções $(u,v,w)\mapsto u$, $(u,v,w)\mapsto v$ e $(u,v,w)\mapsto w$ são projeções, portanto contínuas.
     Produtos, multiplicações por escalares e somas preservam continuidade.
     Logo, $P$ é contínua.
 \end{example}
 
-\begin{proposition}\index{limite!inversa multiplicativa}
+\begin{proposition}\index{limite!inversa multiplicativa}\label{prop:inversaMultiplicativa}
     Sejam:
     \begin{itemize}
         \item $(M,d_M)$ um espaço métrico,
@@ -331,12 +309,16 @@ Agora veremos que as operações algébricas usuais também se comportam bem com
 
     Então $p$ é ponto de acumulação de $B$ e
     \[
-        \lim_{x\to p}\frac{1}{f(x)}=\frac{1}{L},
+        \lim_{x\to p}\dfrac{1}{f(x)}=\dfrac{1}{L},
     \]
-    onde $\frac{1}{f}$ é vista como função de $B$ em $\mathbb R$.
+    em que $\dfrac{1}{f}$ é vista como função de $B$ em $\mathbb R$.
 \end{proposition}
 
 \begin{proof}
+    Iniciaremos verificando que $p$ é ponto de acumulação de $B$.
+    Seja $r>0$ dado.
+    Veremos que existe $x\in B$ tal que $d_M(x,p)<r$ e $x\neq p$.
+
     Como $L\neq 0$, temos $\frac{|L|}{2}>0$.
     Pela hipótese de limite, existe $\rho>0$ tal que, para todo $x\in A\setminus\{p\}$,
     \[
@@ -355,37 +337,25 @@ Agora veremos que as operações algébricas usuais também se comportam bem com
         =
         \frac{|L|}{2}.
     \]
-    Em particular, $f(x)\neq 0$.
-    Portanto, todo ponto de $A\setminus\{p\}$ suficientemente próximo de $p$ pertence a $B$.
-    Como $p$ é ponto de acumulação de $A$, segue que $p$ também é ponto de acumulação de $B$.
+    Em particular, $f(x)\neq 0$, ou seja, $x\in B$.
+    
+    Seja $\bar r=\min\{r,\rho\}$.
+    Como $p$ é ponto de acumulação de $A$, existe $x\in A\setminus\{p\}$ tal que $d_M(x,p)<\bar r\leq\rho$.
+    Para tal $x$, temos $x\in B$, $d_M(x,p)<r$ e $x\neq p$.
+    Logo, $p$ é ponto de acumulação de $B$.
+    \medskip
 
-    Fixe agora $\epsilon>0$.
-    Como $L$ é limite de $f$ em $p$, existe $\delta_1>0$ tal que, para todo $x\in A\setminus\{p\}$,
-    \[
-        \text{se }d_M(x,p)<\delta_1,\text{ então }
-        |f(x)-L|<\frac{\epsilon |L|^2}{2}.
-    \]
+    Para a afirmação sobre limite, sabemos do nosso conhecimento sobre funções de uma variável que a função $u:\mathbb R\setminus\{0\}\to\mathbb R$ dada por $u(t)=\frac{1}{t}$ é contínua.
 
-    Tome $\delta=\min\{\rho,\delta_1\}$.
-    Se $x\in B\setminus\{p\}$ e $d_M(x,p)<\delta$, então $x\in A\setminus\{p\}$, $|f(x)|>\frac{|L|}{2}$ e:
+    Como $B\subseteq A$ e $p$ é ponto de acumulação de $B$, a preservação de limites por restrição de domínio dá
     \[
-        \left|\frac{1}{f(x)}-\frac{1}{L}\right|
-        =
-        \left|\frac{L-f(x)}{f(x)L}\right|
-        =
-        \frac{|f(x)-L|}{|f(x)|\,|L|}
-        <
-        \frac{|f(x)-L|}{\frac{|L|}{2}|L|}
-        =
-        \frac{2|f(x)-L|}{|L|^2}
-        <
-        \epsilon.
+        \lim_{x\to p}(f|_B)(x)=L.
     \]
-
-    Logo,
+    Além disso, considerando $f|_B$ como função de $B$ em $\mathbb R\setminus\{0\}$, temos
     \[
-        \lim_{x\to p}\frac{1}{f(x)}=\frac{1}{L}.
+        \frac{1}{f}=u\circ (f|_B).
     \]
+    Assim, como $u$ é contínua em $L$ e $f|_B$ tem limite $L$ em $p$, segue da preservação de limites por funções contínuas que $\frac{1}{f}$ tem limite $\frac{1}{L}$ em $p$.
 \end{proof}
 
 \begin{corollary}\index{limite!quociente}
@@ -416,65 +386,65 @@ Agora veremos que as operações algébricas usuais também se comportam bem com
 \end{corollary}
 
 \begin{proof}
-    Pela proposição anterior aplicada a $g$, temos que $p$ é ponto de acumulação de $B$ e
+    Pela Proposição~\ref{prop:inversaMultiplicativa} aplicada a $g$, temos que $p$ é ponto de acumulação de $B$ e
     \[
         \lim_{x\to p}\frac{1}{g(x)}=\frac{1}{S}.
     \]
 
-    Além disso, como $B\subseteq A$, a mesma escolha de $\delta$ que mostra que $f(x)$ se aproxima de $L$ para $x\in A\setminus\{p\}$ também mostra que $f(x)$ se aproxima de $L$ para $x\in B\setminus\{p\}$.
-    Assim,
+    Como $B\subseteq A$ e $p$ é ponto de acumulação de $B$, a preservação de limites por restrição de domínio dá
     \[
-        \lim_{x\to p} f(x)=L
+        \lim_{x\to p}(f|_B)(x)=L.
     \]
-    quando $f$ é considerada apenas no domínio $B$.
 
-    Aplicando a regra do produto no domínio $B$, obtemos:
+    Logo, pela proposição sobre produtos, segue que
     \[
         \lim_{x\to p}\frac{f(x)}{g(x)}
         =
-        \lim_{x\to p}\left(f(x)\frac{1}{g(x)}\right)
+        \lim_{x\to p}\left((f|_B)(x)\frac{1}{g(x)}\right)
         =
-        L\frac{1}{S}
+        L\cdot\frac{1}{S}
         =
         \frac{L}{S}.
     \]
 \end{proof}
 
 \begin{corollary}\index{continuidade!inversa multiplicativa}\index{continuidade!quociente}
-    Sejam $A\subseteq M$ um subespaço de um espaço métrico $(M,d_M)$ e sejam $f,g:A\to\mathbb R$ funções.
+    Sejam
+    \begin{itemize}
+        \item $(M,d_M)$ um espaço métrico,
+        \item $f,g:M\to\mathbb R$ funções,
+        \item $p\in M$.
+    \end{itemize}
 
-    \begin{enumerate}[label=(\alph*)]
-        \item Se $f$ é contínua em $p\in A$ e $f(p)\neq 0$, então $\frac{1}{f}$ é contínua em $p$, quando considerada no domínio $\{x\in A:f(x)\neq 0\}$.
-        \item Se $f$ e $g$ são contínuas em $p\in A$ e $g(p)\neq 0$, então $\frac{f}{g}$ é contínua em $p$, quando considerada no domínio $\{x\in A:g(x)\neq 0\}$.
-    \end{enumerate}
+    Suponha que $f$ e $g$ são contínuas em $p$ e que $g(p)\neq 0$.
 
-    Consequentemente, se $g(x)\neq 0$ para todo $x\in A$ e $f,g$ são contínuas, então $\frac{f}{g}:A\to\mathbb R$ é contínua.
+    Então a função $h=\frac{f}{g}:\{x\in M:g(x)\neq 0\}\to\mathbb R$ é contínua em $p$.
+    
+    Consequentemente, o quociente de funções contínuas é contínuo em todo o seu domínio.
 \end{corollary}
 
 \begin{proof}
-    Provemos o item (a).
-    Seja $B=\{x\in A:f(x)\neq 0\}$.
-    Como $f(p)\neq 0$, temos $p\in B$.
+    Seja $B=\{x\in M:g(x)\neq 0\}$.
 
-    Se $p$ é ponto isolado de $B$, então $\frac{1}{f}$ é contínua em $p$.
+    Se $p$ é ponto isolado de $M$, também é de $B$, e, portanto, $h$ é contínua em $p$.
 
-    Suponha que $p$ é ponto de acumulação de $B$.
-    Como $f$ é contínua em $p$, temos
+    Caso contrário, $p$ é ponto de acumulação de $M$.
+    Como $f$ e $g$ são contínuas em $p$, temos
     \[
-        \lim_{x\to p} f(x)=f(p).
-    \]
-    Pelo resultado sobre inversas, considerando $f$ restrita a $B$, temos
-    \[
-        \lim_{x\to p}\frac{1}{f(x)}=\frac{1}{f(p)}.
-    \]
-    Como $\frac{1}{f}(p)=\frac{1}{f(p)}$, segue que $\frac{1}{f}$ é contínua em $p$.
-
-    O item (b) segue do item (a) e da continuidade de produtos:
-    \[
-        \frac{f}{g}=f\frac{1}{g}.
+        \lim_{x\to p}f(x)=f(p)
+        \qquad\text{e}\qquad
+        \lim_{x\to p}g(x)=g(p).
     \]
 
-    A afirmação global segue aplicando o item (b) em cada ponto de $A$.
+    Pela Proposição~\ref{prop:inversaMultiplicativa}, aplicada a $g$, temos que $p$ é ponto de acumulação de $B=\{x\in M:g(x)\neq 0\}$.
+
+    Pelo corolário sobre quocientes,
+    \[
+        \lim_{x\to p}\frac{f(x)}{g(x)}=\frac{f(p)}{g(p)}=h(p).
+    \]
+    Logo, $h$ é contínua em $p$.
+
+    A afirmação final segue aplicando o corolário em cada ponto do domínio.
 \end{proof}
 
 \begin{example}
@@ -487,30 +457,6 @@ Agora veremos que as operações algébricas usuais também se comportam bem com
     No domínio indicado, o denominador nunca se anula.
     Portanto, $R$ é contínua.
 \end{example}
-
-\begin{corollary}\index{função polinomial}\index{continuidade!função polinomial}
-    Toda função polinomial $P:\mathbb R^n\to\mathbb R$ é contínua.
-\end{corollary}
-
-\begin{proof}
-    Uma função polinomial é obtida a partir de funções constantes e projeções por um número finito de somas, produtos e multiplicações por escalares.
-    Funções constantes e projeções são contínuas.
-    Como as operações acima preservam continuidade, toda função polinomial é contínua.
-\end{proof}
-
-\begin{corollary}\index{função racional}\index{continuidade!função racional}
-    Se $P,Q:\mathbb R^n\to\mathbb R$ são funções polinomiais e
-    \[
-        D=\{x\in\mathbb R^n:Q(x)\neq 0\},
-    \]
-    então a função racional $\frac{P}{Q}:D\to\mathbb R$ é contínua.
-\end{corollary}
-
-\begin{proof}
-    Pelo corolário anterior, $P$ e $Q$ são contínuas.
-    No domínio $D$, o denominador $Q$ não se anula.
-    Portanto, o quociente $\frac{P}{Q}$ é contínuo em $D$.
-\end{proof}
 
 \section*{Exercícios}
 
@@ -539,19 +485,10 @@ Agora veremos que as operações algébricas usuais também se comportam bem com
 \end{exercise}
 
 \begin{exercise}
-    Seja $A\subseteq M$ um subespaço de um espaço métrico e sejam $f,g:A\to\mathbb R$ funções contínuas.
+    Seja $A\subseteq M$ um subespaço de um espaço métrico $(M,d_M)$ e sejam $f,g:A\to\mathbb R$ funções contínuas.
     Mostre que a função $h:A\to\mathbb R^2$ dada por
     \[
         h(x)=(f(x)+g(x), f(x)g(x))
     \]
     é contínua.
-\end{exercise}
-
-\begin{exercise}
-    Seja $f:A\to\mathbb R$ uma função e seja $p$ um ponto de acumulação de $A$.
-    Suponha que $\lim_{x\to p}f(x)=L$.
-    Mostre diretamente da definição que
-    \[
-        \lim_{x\to p}|f(x)|=|L|.
-    \]
 \end{exercise}

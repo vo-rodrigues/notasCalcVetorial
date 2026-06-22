@@ -2,17 +2,15 @@
 
 Funções de várias variáveis podem ser difíceis de visualizar diretamente.
 Uma técnica muito útil é aproximar o ponto por curvas.
-Ao compor uma função de várias variáveis com uma curva, obtemos uma função de uma variável, que costuma ser mais simples de estudar.
-
-O princípio básico é o seguinte: se uma função possui limite em um ponto, então esse mesmo limite aparece ao longo de qualquer curva que se aproxima desse ponto sem ficar presa nele.
+Ao compor uma função de várias variáveis com uma curva, obtemos uma função de uma variável, e, com isso, podemos aplicar nossos conhecimentos sobre limites e continuidade de funções de uma variável real.
 
 \begin{proposition}\index{limite!ao longo de curvas}
     Sejam:
     \begin{itemize}
         \item $A\subseteq\mathbb R^n$ um conjunto,
-        \item $f:A\to\mathbb R^m$ uma função,
+        \item $f:A\to\mathbb R$ uma função,
         \item $p\in\mathbb R^n$ um ponto de acumulação de $A$,
-        \item $L\in\mathbb R^m$,
+        \item $L\in\mathbb R$,
         \item $I\subseteq\mathbb R$ um conjunto,
         \item $t_0\in\mathbb R$ um ponto de acumulação de $I$, e
         \item $\gamma:I\to A$ uma função.
@@ -21,12 +19,7 @@ O princípio básico é o seguinte: se uma função possui limite em um ponto, e
     Suponha que:
     \begin{itemize}
         \item $\lim_{t\to t_0}\gamma(t)=p$;
-        \item existe $\eta>0$ tal que, para todo $t\in I\setminus\{t_0\}$,
-        \[
-            |t-t_0|<\eta
-            \quad\Longrightarrow\quad
-            \gamma(t)\neq p;
-        \]
+        \item Para todo $t\in I\setminus\{t_0\}$, temos $\gamma(t)\neq p$; e
         \item $\lim_{x\to p}f(x)=L$.
     \end{itemize}
 
@@ -36,89 +29,32 @@ O princípio básico é o seguinte: se uma função possui limite em um ponto, e
     \]
 \end{proposition}
 
-\begin{proof}
-    Fixe $\epsilon>0$.
+\begin{proof}Esse resultado é um caso particular da substituição de variável em limites (Proposição~\ref{prop:substituicaoLimites}).
+De fato, como $\gamma(t)\to p$ quando $t\to t_0$ e como $\gamma(t)\neq p$ para $t\neq t_0$, segue que:
 
-    Como $\lim_{x\to p}f(x)=L$, existe $\delta_f>0$ tal que, para todo $x\in A\setminus\{p\}$,
-    \[
-        \text{se }d(x,p)<\delta_f,\text{ então }d(f(x),L)<\epsilon.
-    \]
-
-    Como $\lim_{t\to t_0}\gamma(t)=p$, existe $\delta_\gamma>0$ tal que, para todo $t\in I\setminus\{t_0\}$,
-    \[
-        \text{se }|t-t_0|<\delta_\gamma,\text{ então }d(\gamma(t),p)<\delta_f.
-    \]
-
-    Tome
-    \[
-        \delta=\min\{\eta,\delta_\gamma\}.
-    \]
-
-    Se $t\in I\setminus\{t_0\}$ e $|t-t_0|<\delta$, então $\gamma(t)\neq p$ e $d(\gamma(t),p)<\delta_f$.
-    Como $\gamma(t)\in A$, temos $\gamma(t)\in A\setminus\{p\}$.
-    Portanto,
-    \[
-        d(f(\gamma(t)),L)<\epsilon.
-    \]
-
-    Logo,
-    \[
-        \lim_{t\to t_0}f(\gamma(t))=L.
-    \]
+\[
+    L=\lim_{x\to p}f(x)=\lim_{t\to t_0}f(\gamma(t)).
+\]
 \end{proof}
 
 \begin{corollary}[Teste negativo por curvas]\index{limite!teste negativo por curvas}
     Seja $f:A\to\mathbb R^m$, com $A\subseteq\mathbb R^n$, e seja $p$ um ponto de acumulação de $A$.
 
-    Se existir uma curva $\gamma:I\to A$ tal que $\gamma(t)\to p$ quando $t\to t_0$, $\gamma(t)\neq p$ para $t\neq t_0$ suficientemente próximo de $t_0$, e $f\circ\gamma$ não possuir limite em $t_0$, então $f$ não possui limite em $p$.
-
-    Além disso, se existirem duas curvas $\gamma_1:I_1\to A$ e $\gamma_2:I_2\to A$ que se aproximam de $p$ e tais que
-    \[
-        \lim_{t\to t_1}f(\gamma_1(t))
-        \neq
-        \lim_{t\to t_2}f(\gamma_2(t)),
-    \]
-    então $f$ não possui limite em $p$.
+    \begin{enumerate}[label=(\alph*)]
+        \item Se existir uma curva $\gamma:I\to A$ tal que $t_0$ é ponto de acumulação de $I$, $\gamma(t)\to p$ quando $t\to t_0$, $\gamma(t)\neq p$ para $t\neq t_0$ e $f\circ\gamma$ não possuir limite em $t_0$, então $f$ não possui limite em $p$.
+        \item Se existirem duas curvas $\gamma_1:I_1\to A$ e $\gamma_2:I_2\to A$ tais que, para $i \in \{1,2\}$, $t_i$ é ponto de acumulação de $I_i$, $\gamma_i(t)\to p$ quando $t\to t_i$, $\gamma_i(t)\neq p$ para $t\neq t_i$ e
+        \[
+            \lim_{t\to t_1}f(\gamma_1(t))
+            \neq
+            \lim_{t\to t_2}f(\gamma_2(t)),
+        \]
+        então $f$ não possui limite em $p$.
+    \end{enumerate}
 \end{corollary}
 
 \begin{proof}
-    Se $f$ possuísse limite em $p$, então, pela proposição anterior, toda curva que se aproxima de $p$ satisfazendo as hipóteses teria, após composição com $f$, esse mesmo limite.
-    Portanto, uma curva sem limite, ou duas curvas com limites diferentes, impossibilitam a existência do limite de $f$ em $p$.
+    Se $f$ possuísse limite em $p$, então, pela proposição anterior, todos os limites expressos em (a) e (b) existiriam e seriam iguais a $L=\lim_{x\to p}f(x)$, o que é uma contradição.
 \end{proof}
-
-\begin{corollary}\index{continuidade!teste negativo por curvas}
-    Seja $A\subseteq\mathbb R^n$, seja $f:A\to\mathbb R^m$ uma função e seja $p\in A$.
-
-    Se $f$ é contínua em $p$, então, para toda curva contínua $\gamma:I\to A$ e todo $t_0\in I$ tal que $\gamma(t_0)=p$, a função
-    \[
-        f\circ\gamma:I\to\mathbb R^m
-    \]
-    é contínua em $t_0$.
-
-    Consequentemente, se existe uma curva contínua $\gamma:I\to A$ com $\gamma(t_0)=p$ tal que $f\circ\gamma$ não é contínua em $t_0$, então $f$ não é contínua em $p$.
-\end{corollary}
-
-\begin{proof}
-    Fixe $\epsilon>0$.
-    Como $f$ é contínua em $p$, existe $\delta_f>0$ tal que, para todo $x\in A$,
-    \[
-        \text{se }d(x,p)<\delta_f,\text{ então }d(f(x),f(p))<\epsilon.
-    \]
-
-    Como $\gamma$ é contínua em $t_0$ e $\gamma(t_0)=p$, existe $\delta_\gamma>0$ tal que, para todo $t\in I$,
-    \[
-        \text{se }|t-t_0|<\delta_\gamma,\text{ então }d(\gamma(t),p)<\delta_f.
-    \]
-
-    Assim, para todo $t\in I$ com $|t-t_0|<\delta_\gamma$,
-    \[
-        d(f(\gamma(t)),f(\gamma(t_0)))=d(f(\gamma(t)),f(p))<\epsilon.
-    \]
-    Portanto, $f\circ\gamma$ é contínua em $t_0$.
-
-    A última afirmação é a contrapositiva da primeira.
-\end{proof}
-
 \begin{example}
     Seja $f:\mathbb R^2\setminus\{(0,0)\}\to\mathbb R$ dada por
     \[
@@ -204,144 +140,6 @@ O princípio básico é o seguinte: se uma função possui limite em um ponto, e
     Esse exemplo mostra que testar somente retas pode sugerir um comportamento falso.
 \end{example}
 
-O teste negativo por curvas é frequentemente o mais usado: encontramos uma curva ruim e concluímos que o limite não existe ou que a função não é contínua.
-Mas existe também uma versão completa do teste, desde que aceitemos caminhos de teste cujos domínios sejam subconjuntos de $\mathbb R$, e não apenas intervalos.
-
-\begin{definition}\index{caminho de teste}
-    Seja $A\subseteq\mathbb R^n$ e seja $p\in\mathbb R^n$.
-
-    Um \emph{caminho de teste em $A$ chegando a $p$} é uma função $\gamma:D\to A$, em que $D\subseteq\mathbb R$ possui $0$ como ponto de acumulação e
-    \[
-        \lim_{t\to 0}\gamma(t)=p.
-    \]
-
-    Dizemos que o caminho de teste é \emph{perfurado} se $\gamma(t)\neq p$ para todo $t\in D$.
-\end{definition}
-
-\begin{proposition}[Teste completo por caminhos]\index{limite!teste completo por caminhos}
-    Seja $A\subseteq\mathbb R^n$, seja $f:A\to\mathbb R^m$, seja $p$ um ponto de acumulação de $A$ e seja $L\in\mathbb R^m$.
-
-    Então $\lim_{x\to p}f(x)=L$ se, e somente se, para todo caminho de teste perfurado $\gamma:D\to A$ chegando a $p$, temos
-    \[
-        \lim_{t\to 0}f(\gamma(t))=L.
-    \]
-\end{proposition}
-
-\begin{proof}
-    A ida é a mesma ideia da proposição sobre limites ao longo de curvas.
-    Se $\lim_{x\to p}f(x)=L$ e $\gamma:D\to A$ é um caminho de teste perfurado chegando a $p$, então, dado $\epsilon>0$, existe $\delta_f>0$ tal que
-    \[
-        x\in A\setminus\{p\},\ d(x,p)<\delta_f
-        \quad\Longrightarrow\quad
-        d(f(x),L)<\epsilon.
-    \]
-    Como $\gamma(t)\to p$, existe $\delta_\gamma>0$ tal que
-    \[
-        t\in D,\ 0<|t|<\delta_\gamma
-        \quad\Longrightarrow\quad
-        d(\gamma(t),p)<\delta_f.
-    \]
-    Como $\gamma$ é perfurado, $\gamma(t)\in A\setminus\{p\}$ para todo $t\in D$.
-    Logo,
-    \[
-        d(f(\gamma(t)),L)<\epsilon
-    \]
-    sempre que $t\in D$ e $0<|t|<\delta_\gamma$.
-    Portanto,
-    \[
-        \lim_{t\to 0}f(\gamma(t))=L.
-    \]
-
-    Provemos a recíproca por contraposição.
-    Suponha que $L$ não é limite de $f$ em $p$.
-    Então existe $\epsilon_0>0$ tal que, para todo $\delta>0$, podemos encontrar $x\in A\setminus\{p\}$ satisfazendo
-    \[
-        d(x,p)<\delta
-        \qquad\text{e}\qquad
-        d(f(x),L)\geq\epsilon_0.
-    \]
-
-    Para cada inteiro $k\geq 1$, aplique essa afirmação com $\delta=\frac{1}{k}$.
-    Obtemos $x_k\in A\setminus\{p\}$ tal que
-    \[
-        d(x_k,p)<\frac{1}{k}
-        \qquad\text{e}\qquad
-        d(f(x_k),L)\geq\epsilon_0.
-    \]
-
-    Defina
-    \[
-        D=\left\{\frac{1}{k}:k\in\mathbb N,\ k\geq 1\right\}
-    \]
-    e $\gamma:D\to A$ por
-    \[
-        \gamma\left(\frac{1}{k}\right)=x_k.
-    \]
-
-    O conjunto $D$ possui $0$ como ponto de acumulação, e $\gamma(t)\to p$ quando $t\to 0$ em $D$, pois $d(x_k,p)<\frac{1}{k}$.
-    Além disso, $\gamma$ é perfurado, pois $x_k\neq p$ para todo $k$.
-
-    Porém,
-    \[
-        d(f(\gamma(1/k)),L)=d(f(x_k),L)\geq\epsilon_0
-    \]
-    para todo $k$.
-    Portanto, $f\circ\gamma$ não tende a $L$ quando $t\to 0$ em $D$.
-
-    Assim, a hipótese sobre todos os caminhos de teste perfurados implica necessariamente que
-    \[
-        \lim_{x\to p}f(x)=L.
-    \]
-\end{proof}
-
-\begin{corollary}[Teste completo de continuidade]\index{continuidade!teste completo por caminhos}
-    Seja $A\subseteq\mathbb R^n$, seja $f:A\to\mathbb R^m$ e seja $p\in A$.
-
-    Então $f$ é contínua em $p$ se, e somente se, para todo conjunto $D\subseteq\mathbb R$ com $0\in D$ e $0$ ponto de acumulação de $D$, e para toda função $\gamma:D\to A$ contínua em $0$ tal que $\gamma(0)=p$, a função $f\circ\gamma:D\to\mathbb R^m$ é contínua em $0$.
-\end{corollary}
-
-\begin{proof}
-    Se $p$ é ponto isolado de $A$, então $f$ é contínua em $p$.
-    Além disso, se $\gamma:D\to A$ é contínua em $0$ e $\gamma(0)=p$, então, para $t$ suficientemente próximo de $0$, temos $\gamma(t)=p$.
-    Logo, $f\circ\gamma$ é contínua em $0$.
-
-    Suponha, então, que $p$ é ponto de acumulação de $A$.
-
-    Se $f$ é contínua em $p$, então $f\circ\gamma$ é contínua em $0$ pela continuidade de composições.
-    De fato, dado $\epsilon>0$, existe $\delta_f>0$ tal que
-    \[
-        x\in A,\ d(x,p)<\delta_f
-        \quad\Longrightarrow\quad
-        d(f(x),f(p))<\epsilon.
-    \]
-    Como $\gamma$ é contínua em $0$ e $\gamma(0)=p$, existe $\delta_\gamma>0$ tal que
-    \[
-        t\in D,\ |t|<\delta_\gamma
-        \quad\Longrightarrow\quad
-        d(\gamma(t),p)<\delta_f.
-    \]
-    Logo, para $t\in D$ com $|t|<\delta_\gamma$,
-    \[
-        d(f(\gamma(t)),f(\gamma(0)))=d(f(\gamma(t)),f(p))<\epsilon.
-    \]
-    Portanto, $f\circ\gamma$ é contínua em $0$.
-
-    Reciprocamente, suponha que $f$ não é contínua em $p$.
-    Como $p$ é ponto de acumulação de $A$, temos que $f(p)$ não é limite de $f$ em $p$.
-    Pela prova da proposição anterior, existe um caminho de teste perfurado $\alpha:D_0\to A$ chegando a $p$ tal que $f(\alpha(t))$ não tende a $f(p)$ quando $t\to 0$ em $D_0$.
-
-    Defina $D=D_0\cup\{0\}$ e $\gamma:D\to A$ por
-    \[
-        \gamma(0)=p
-        \qquad\text{e}\qquad
-        \gamma(t)=\alpha(t)\text{ se }t\in D_0.
-    \]
-    Então $\gamma$ é contínua em $0$ e $\gamma(0)=p$.
-    Porém $f\circ\gamma$ não é contínua em $0$, pois não se aproxima de $f(p)=(f\circ\gamma)(0)$ ao longo dos pontos de $D_0$.
-
-    Portanto, se $f\circ\gamma$ é contínua em $0$ para todo caminho de teste contínuo $\gamma$ com $\gamma(0)=p$, então $f$ é contínua em $p$.
-\end{proof}
-
 \section*{Exercícios}
 
 \begin{exercise}
@@ -360,35 +158,5 @@ Mas existe também uma versão completa do teste, desde que aceitemos caminhos d
             0, & \text{se }(x,y)=(0,0).
         \end{cases}
     \]
-    Use curvas para decidir se $f$ é contínua em $(0,0)$.
-\end{exercise}
-
-\begin{exercise}
-    Seja $g:\mathbb R^2\to\mathbb R$ dada por
-    \[
-        g(x,y)=
-        \begin{cases}
-            \dfrac{x^2y}{x^4+y^2}, & \text{se }(x,y)\neq(0,0),\\
-            0, & \text{se }(x,y)=(0,0).
-        \end{cases}
-    \]
-    Verifique que, ao longo de toda reta passando pela origem, o limite de $g$ é $0$.
-    Em seguida, encontre uma curva que mostre que $g$ não é contínua em $(0,0)$.
-\end{exercise}
-
-\begin{exercise}
-    Seja $F:\mathbb R^2\to\mathbb R^2$ dada por
-    \[
-        F(x,y)=
-        \begin{cases}
-            \left(\dfrac{xy}{x^2+y^2}, x+y\right), & \text{se }(x,y)\neq(0,0),\\
-            (0,0), & \text{se }(x,y)=(0,0).
-        \end{cases}
-    \]
-    Use curvas e o critério por coordenadas para mostrar que $F$ não é contínua em $(0,0)$.
-\end{exercise}
-
-\begin{exercise}
-    Seja $f:A\to\mathbb R^m$ uma função contínua em $p\in A$, e seja $\gamma:I\to A$ uma curva contínua tal que $\gamma(t_0)=p$.
-    Mostre diretamente pela definição de continuidade que $f\circ\gamma$ é contínua em $t_0$.
+    Decida se $f$ é contínua em $(0,0)$.
 \end{exercise}

@@ -1,10 +1,8 @@
 \section{O Teorema do Confronto}\index{Teorema do Confronto}\index{sanduíche, teorema do|see{Teorema do Confronto}}
 
-Em muitos limites, não é necessário conhecer exatamente o valor da função perto do ponto.
-Às vezes basta aprisioná-la entre duas funções cujo comportamento já conhecemos.
+Às vezes, ao se calcular o limite de uma função complicada, basta aprisioná-la entre duas funções cujo comportamento já conhecemos que possuem um mesmo limite.
 
-Essa é a ideia do Teorema do Confronto.
-Ele transforma desigualdades em limites.
+Essa é a ideia é formalizada pelo Teorema do Confronto.
 
 \begin{proposition}[Teorema do Confronto]\index{limite!Teorema do Confronto}
     Sejam:
@@ -66,6 +64,10 @@ Ele transforma desigualdades em limites.
         L-\epsilon<f(x)\leq g(x)\leq h(x)<L+\epsilon.
     \]
     Logo,
+    \[
+        \epsilon<g(x)-L<\epsilon,
+    \]
+    e, portanto,
     \[
         |g(x)-L|<\epsilon.
     \]
@@ -211,11 +213,9 @@ Ele transforma desigualdades em limites.
         |G(x,y)|
         \leq
         x^2
-        \leq
-        x^2+y^2.
     \]
 
-    Como $\lim_{(x,y)\to(0,0)}(x^2+y^2)=0$, segue do Teorema do Confronto que
+    Como $\lim_{(x,y)\to(0,0)}x^2=0$, segue do Teorema do Confronto que
     \[
         \lim_{(x,y)\to(0,0)}G(x,y)=0.
     \]
@@ -270,23 +270,8 @@ Ele transforma desigualdades em limites.
 \end{exercise}
 
 \begin{exercise}
-    Seja $u:A\to\mathbb R$ uma função definida em um subespaço $A$ de um espaço métrico $M$, e seja $p$ um ponto de acumulação de $A$.
-    Suponha que existe uma função $v:A\to\mathbb R$ tal que $|u(x)|\leq v(x)$ para todo $x\in A\setminus\{p\}$ suficientemente próximo de $p$.
-
-    Mostre que, se $\lim_{x\to p}v(x)=0$, então $\lim_{x\to p}u(x)=0$.
-\end{exercise}
-
-\begin{exercise}
     Calcule, se existir,
     \[
-        \lim_{(x,y)\to(0,0)}(x^2+y^2)\sin\left(\frac{1}{x^2+y^2}\right).
-    \]
-\end{exercise}
-
-\begin{exercise}
-    Seja $f:A\to\mathbb R$ uma função limitada em uma vizinhança perfurada de $p$, e seja $g:A\to\mathbb R$ tal que $\lim_{x\to p}g(x)=0$.
-    Mostre que
-    \[
-        \lim_{x\to p}f(x)g(x)=0.
+        \lim_{(x,y)\to(0,0)}(x^2+y^2)\sin\left(\frac{x^2}{x^2+y^2}\right).
     \]
 \end{exercise}
