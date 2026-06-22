@@ -260,6 +260,90 @@ Perceba que não foi necessário recorrer à definição que envolve épsilons e
 
     Assim, $\lim_{(x, y)\to (0, 0)} f(x, y) = 1 \neq f(0, 0)$, e, portanto, $f$ não é contínua em $(0, 0)$.
 \end{example}
+
+Encerramos esta seção com uma relação entre a existência pontual de limites e a limitação de funções.
+Apesar das palavras serem parecidas, o leitor deve prosseguir com cuidado.
+Não podemos confundir o conceito de ``função limitada'' com o conceito de ``função que possui limite''.
+A terminologia parecida pode levar a enganos.
+
+\begin{lemma}\index{limite!limitação local}\label{lem:limiteImplicaLimitacaoLocal}
+    Sejam:
+    \begin{itemize}
+        \item $(M,d)$ e $(N,d')$ espaços métricos,
+        \item $A\subseteq M$,
+        \item $f:A\to N$ uma função,
+        \item $p\in M$ um ponto de acumulação de $A$, e
+        \item $L\in N$.
+    \end{itemize}
+
+    Se $\lim_{x\to p}f(x)=L$, então $f$ é limitada em alguma vizinhança de $p$ em $A$.
+    Mais precisamente, existe $\rho>0$ tal que
+    \[
+        f[A\cap B_M(p,\rho)]
+    \]
+    é um subconjunto limitado de $N$.
+\end{lemma}
+
+\begin{proof}
+    Apliquemos a definição de limite com $\epsilon=1$.
+    Existe $\rho>0$ tal que, para todo $x\in A\setminus\{p\}$,
+    \[
+        \text{se }d(x,p)<\rho,\text{ então } d'(f(x),L)<1.
+    \]
+
+    Portanto,
+    \[
+        f[(A\cap B_M(p,\rho))\setminus\{p\}]\subseteq B_N(L,1)\subseteq B_N[L,1].
+    \]
+    Logo, $f[(A\cap B_M(p,\rho))\setminus\{p\}]$ é limitado.
+    Se $p\notin A$, isso encerra a prova.
+
+    Já se $p\in A$, temos ainda que $\{f(p)\}$ é limitado, pois é um conjunto finito.
+    Assim, $f[A\cap B_M(p,\rho)]$ é limitado, pois
+    \[
+        f[A\cap B_M(p,\rho)]
+        =
+        f[(A\cap B_M(p,\rho))\setminus\{p\}]\cup \{f(p)\}
+    \]
+    e a união de dois conjuntos limitados é limitada.
+\end{proof}
+
+\begin{corollary}\index{continuidade!limitação local}\label{cor:continuidadeImplicaLimitacaoLocal}
+    Sejam:
+    \begin{itemize}
+        \item $(M,d)$ e $(N,d')$ espaços métricos,
+        \item $A\subseteq M$ um subespaço,
+        \item $f:A\to N$ uma função, e
+        \item $p\in A$.
+    \end{itemize}
+
+    Se $f$ é contínua em $p$, então $f$ é limitada em alguma vizinhança de $p$.
+    Mais precisamente, existe $\rho>0$ tal que
+    \[
+        f[A\cap B_M(p,\rho)]
+    \]
+    é um subconjunto limitado de $N$.
+\end{corollary}
+
+\begin{proof}
+    Se $p$ é um ponto isolado de $A$, então existe $\rho>0$ tal que $A\cap B_M(p,\rho)=\{p\}$, e, portanto, $f[A\cap B_M(p,\rho)]=\{f(p)\}$ é limitado.
+
+    Se $p$ é um ponto de acumulação de $A$, então, pela Proposição~\ref{prop:continuidadeLimite}, $f(p)$ é limite de $f$ em $p$, e, portanto, pelo Lema~\ref{lem:limiteImplicaLimitacaoLocal}, existe $\rho>0$ tal que $f[A\cap B_M(p,\rho)]$ é limitado.
+\end{proof}
+
+O lema e o corolário acima são resultados locais.
+Uma função pode ter limite em um ponto e não ser limitada em todo seu domínio: a função identidade $f:\mathbb R^2\to\mathbb R^2$ é contínua, mas não é limitada, pois $f[\mathbb R^2]=\mathbb R^2$ não é limitado.
+
+Por outro lado, uma função pode ser limitada e ainda assim não possuir limite em determinado ponto.
+Por exemplo, a função $f:\mathbb R\to\mathbb R$ dada por
+\[
+    f(x) = \begin{cases}
+        1, & \text{se } x \geq 0,\\
+        0, & \text{se } x < 0.
+    \end{cases}
+\]
+Tal função é limitada, mas não possui limite em $0$, pois, do conhecimento que já possuímos sobre funções de uma variável, sabemos que $\lim_{x\to 0^-} f(x) = 0$ e $\lim_{x\to 0^+} f(x) = 1$.
+
 \subsection*{Exercícios}
 \begin{exercise}
     Seja $f:M\rightarrow N$ uma função entre espaços métricos, seja $A\subseteq M$ um subespaço, seja $a\in A$ um ponto de acumulação de $A$ e seja $L\in N$.
