@@ -355,6 +355,49 @@ Assim, para desenhar o gráfico de uma função $f:D\to\mathbb R$, pensamos no p
     \label{fig:paraboloide}
 \end{figure}
 
+\subsection{Funções polinomiais e racionais de várias variáveis}
+Encerraremos essa seção com as definições que generalizam funções polinomiais e funções racionais para o caso de funções de várias variáveis reais.
+
+\begin{definition}
+    Seja $f:\mathbb R^n\to\mathbb R$ uma função.
+    
+    Dizemos que $f$ é \emph{monomial} se for um produto de projeções e constantes.
+    Dizemos que $f$ é \emph{polinomial} se for uma soma de funções monomiais.
+
+    Uma função racional é um quociente de funções polinomiais (no domínio do quociente).
+\end{definition}
+
+\begin{example}
+    A função $f:\mathbb R^3\to\mathbb R$ dada por
+    \[
+        f(x,y,z)=2x^2y
+    \]
+    é monomial, e, portanto, polinomial e racional.
+
+    A função $g:\mathbb R^3\to\mathbb R$ dada por
+    \[
+        g(x,y,z)=2x
+    \]
+    é monomial, e, portanto, polinomial e racional.
+
+    A função $h:\mathbb R^4\to\mathbb R$ dada por
+    \[
+        h(x,y,z,w)=0
+    \]
+    é constante, portanto, monomial, polinomial e racional.
+
+    A função $k:\mathbb R^3\to\mathbb R$ dada por
+    \[
+        k(x,y,z)=3xy^2z+2x-5
+    \]
+    é polinomial, e, portanto, racional.
+
+    Finalmente, a função $m:\{(x, y, z)\in\mathbb R^3:3xy^2z+2x-5\neq 0\}\to\mathbb R$ dada por
+    \[
+        m(x,y,z)=\frac{2x^2y}{3xy^2z+2x-5}
+    \]
+    é racional.
+\end{example}
 \subsection*{Exercícios}
 
 \begin{exercise}
