@@ -1,0 +1,45 @@
+\section{Definição}
+\begin{definition}
+    Sejam
+    \begin{itemize}
+        \item $A\subseteq \mathbb R^n$ aberto;
+        \item $p \in A$ um ponto interior de $A$;
+        \item $f:A\to \mathbb R^m$ uma função.
+    \end{itemize}
+    Dizemos que $f$ é \textbf{diferenciável} em $p$ se existe uma transformação linear $T:\mathbb R^n\to \mathbb R^m$ tal que
+    \[
+        \lim_{h\to 0} \frac{f(p+h)-f(p)-T(h)}{\|h\|} = 0.
+    \]
+\end{definition}
+
+\begin{lemma}
+    Sejam
+    \begin{itemize}
+        \item $A\subseteq \mathbb R^n$ aberto;
+        \item $p \in A$ um ponto interior de $A$;
+        \item $f:A\to \mathbb R^m$ uma função diferenciável em $p$.
+    \end{itemize}
+    Seja $T$ a transformação linear que satisfaz a definição de diferenciabilidade, ou seja, tal que
+    \[
+        \lim_{h\to 0} \frac{f(p+h)-f(p)-T(h)}{\|h\|} = 0.
+    \]
+    Então $T$ é a única tal função, e, para cada $i=1,\dots,n$, temos
+    \[
+        T(e_i) = \frac{\partial f}{\partial x_i}(p).
+    \]
+\end{lemma}
+
+\begin{proof}
+    Seja dado $i \in \{1,\dots,n\}$.
+    Temos que:
+    \begin{align*}
+        \frac{\partial f}{\partial x_i}(p) &= \lim_{t\to 0} \frac{f(p+te_i)-f(p)}{t} \\
+        &= \lim_{t\to 0} \frac{f(p+te_i)-f(p)-T(te_i)+T(te_i)}{t}\\
+        &= \lim_{t\to 0} \frac{f(p+te_i)-f(p)-T(te_i)}{t} +\frac{tT(e_i)}{t} \\
+        &= \lim_{t\to 0} \frac{f(p+te_i)-f(p)-T(te_i)}{t} + T(e_i) \\
+        &= \lim_{t\to 0} \frac{f(p+te_i)-f(p)-T(te_i)}{t\|te_i\|}\|te_i\| + T(e_i) \\
+        &= \lim_{t\to 0} \frac{f(p+te_i)-f(p)-T(te_i)}{\|te_i\|}\frac{|t|}{t} + T(e_i) \\
+        &= 0 + T(e_i) \\
+        &= T(e_i).
+    \end{align*}
+\end{proof}
